@@ -1,0 +1,31 @@
+{
+  "name": "capstone",
+  "version": "1.0.0",
+  "description": "Capstone",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gendoc": "jsdoc lib/network.js lib/node.js lib/edge.js -d doc/ -t node_modules/jsdoc-skyceil"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodigu/capstone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodigu/capstone/issues"
+  },
+  "homepage": "https://github.com/rodigu/capstone#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "clean-jsdoc-theme": "^3.0.7",
+    "fuse.js": "^6.4.6",
+    "jaguarjs-jsdoc": "^1.1.0",
+    "jsdoc-skyceil": "^2.0.0"
+  }
+}
