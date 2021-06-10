@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Class: Edge</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/nav.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.3/fuse.min.js"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="text/css" rel="stylesheet" href="styles/skyceil.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="utilities">
+        <div id="search">
+            <input type="text" id="search-box" placeholder="Search"><br>
+            <div id="search-results" style="display: none;"></div>
+        </div>
+        <button class="theme" data-theme="light"><i class="fas fa-moon"></i></button>
+    </div>
+    <hr>
+    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="Edge.html">Edge</a></b><ul class="has-class-methods"><li><span class="small-icon M">M</span><a href="Edge.html#nodes">nodes</a></li><li><span class="small-icon M">M</span><a href="Edge.html#nodes">nodes</a></li></ul></li><li><span class="small-icon C">C</span><b><a href="Network.html">Network</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="Network.html#_newEID">_newEID</a></li><li><span class="small-icon F">F</span><a href="Network.html#_newEID">_newEID</a></li><li><span class="small-icon F">F</span><a href="Network.html#addEdge">addEdge</a></li><li><span class="small-icon F">F</span><a href="Network.html#addEdge">addEdge</a></li><li><span class="small-icon F">F</span><a href="Network.html#addNode">addNode</a></li><li><span class="small-icon F">F</span><a href="Network.html#addNode">addNode</a></li></ul></li><li><span class="small-icon C">C</span><a href="Node.html">Node</a></li></ul>
+</nav>
+
+<div id="main">
+    <div class="burger">
+        <div class="burger-line-1"></div>
+        <div class="burger-line-2"></div>
+        <div class="burger-line-3"></div>
+    </div>
+
+    <h1 class="page-title">Class: Edge</h1>
+
+    
+
+
+
+
+<section>
+<header>
+    <hr>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>Edge<span class="signature">(nodeA, nodeB, weight<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description"><p>Edge class</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="Edge"><span class="type-signature"></span>new Edge<span class="signature">(nodeA, nodeB, weight<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Edge class</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>nodeA</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+                
+                </td>
+
+                
+                    <td class="attributes">
+                    
+
+                    
+
+                    
+                    </td>
+                
+
+                
+                    <td class="default">
+                    
+                    </td>
+                
+
+                <td class="description last"><p>id for nodeA</p></td>
+            </tr>
+
+        
+
+            <tr>
+                
+                    <td class="name"><code>nodeB</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+                
+                </td>
+
+                
+                    <td class="attributes">
+                    
+
+                    
+
+                    
+                    </td>
+                
+
+                
+                    <td class="default">
+                    
+                    </td>
+                
+
+                <td class="description last"><p>id for nodeB</p></td>
+            </tr>
+
+        
+
+            <tr>
+                
+                    <td class="name"><code>weight</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">number</span>
+
+
+                
+                </td>
+
+                
+                    <td class="attributes">
+                    
+                        &lt;optional><br>
+                    
+
+                    
+
+                    
+                    </td>
+                
+
+                
+                    <td class="default">
+                    
+                        1
+                    
+                    </td>
+                
+
+                <td class="description last"><p>edge's weight</p></td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="edge.js.html">edge.js</a>, <a href="edge.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+    
+    </div>
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="Edge.html">Edge</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Edge.html">Edge</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="nodes"><span class="type-signature"></span>nodes<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>get IDs for node A and node B</p>
+</div>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="edge.js.html">edge.js</a>, <a href="edge.js.html#line22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+<hr>
+        
+            
+<h4 class="name" id="nodes"><span class="type-signature"></span>nodes<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>get IDs for node A and node B</p>
+</div>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="edge.js.html">edge.js</a>, <a href="edge.js.html#line22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+<hr>
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+<header>
+    <hr>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="Edge.html">Edge</a></span>Edge<span class="signature">(nodeA, nodeB, weight<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description"><p>Edge class</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="Edge"><span class="type-signature"></span>new Edge<span class="signature">(nodeA, nodeB, weight<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Edge class</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+            <th>Default</th>
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>nodeA</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+                
+                </td>
+
+                
+                    <td class="attributes">
+                    
+
+                    
+
+                    
+                    </td>
+                
+
+                
+                    <td class="default">
+                    
+                    </td>
+                
+
+                <td class="description last"><p>id for nodeA</p></td>
+            </tr>
+
+        
+
+            <tr>
+                
+                    <td class="name"><code>nodeB</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+                
+                </td>
+
+                
+                    <td class="attributes">
+                    
+
+                    
+
+                    
+                    </td>
+                
+
+                
+                    <td class="default">
+                    
+                    </td>
+                
+
+                <td class="description last"><p>id for nodeB</p></td>
+            </tr>
+
+        
+
+            <tr>
+                
+                    <td class="name"><code>weight</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">number</span>
+
+
+                
+                </td>
+
+                
+                    <td class="attributes">
+                    
+                        &lt;optional><br>
+                    
+
+                    
+
+                    
+                    </td>
+                
+
+                
+                    <td class="default">
+                    
+                        1
+                    
+                    </td>
+                
+
+                <td class="description last"><p>edge's weight</p></td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="edge.js.html">edge.js</a>, <a href="edge.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+    
+    </div>
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="Edge.html">Edge</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Edge.html">Edge</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="nodes"><span class="type-signature"></span>nodes<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>get IDs for node A and node B</p>
+</div>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="edge.js.html">edge.js</a>, <a href="edge.js.html#line22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+<hr>
+        
+            
+<h4 class="name" id="nodes"><span class="type-signature"></span>nodes<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>get IDs for node A and node B</p>
+</div>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="edge.js.html">edge.js</a>, <a href="edge.js.html#line22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+<hr>
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 09 2021 23:32:35 GMT-0300 (Hora oficial do Brasil) using <a href="https://github.com/devsnowflake/jsdoc-skyceil">Skyceil Theme</a>
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+
+</body>
+</html>
