@@ -27,7 +27,7 @@
         <button class="theme" data-theme="light"><i class="fas fa-moon"></i></button>
     </div>
     <hr>
-    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="Edge.html">Edge</a></b><ul class="has-class-methods"><li><span class="small-icon M">M</span><a href="Edge.html#nodes">nodes</a></li></ul></li><li><span class="small-icon C">C</span><b><a href="Network.html">Network</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="Network.html#addEdge">addEdge</a></li><li><span class="small-icon F">F</span><a href="Network.html#addNode">addNode</a></li></ul></li><li><span class="small-icon C">C</span><a href="Node.html">Node</a></li></ul>
+    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="Edge.html">Edge</a></b><ul class="has-class-methods"><li><span class="small-icon M">M</span><a href="Edge.html#nodes">nodes</a></li></ul></li><li><span class="small-icon C">C</span><b><a href="Network.html">Network</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="Network.html#_newEID">_newEID</a></li><li><span class="small-icon F">F</span><a href="Network.html#_newNID">_newNID</a></li><li><span class="small-icon F">F</span><a href="Network.html#addEdge">addEdge</a></li><li><span class="small-icon F">F</span><a href="Network.html#addNode">addNode</a></li></ul></li><li><span class="small-icon C">C</span><a href="Node.html">Node</a></li></ul>
 </nav>
 
 <div id="main">
@@ -46,8 +46,8 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { Node } from '/node'
-import { Edge } from '/edge'
+            <pre class="prettyprint source linenums"><code>import { Node } from './node.js'
+import { Edge } from './edge.js'
 
 /** Network class */
 
@@ -55,24 +55,25 @@ export class Network {
   /**
    * Network class constructor
    *
-   * @param    {boolean}  [isDirected=false]   if true, edges are directed A -> B
-   * @param    {number}   [edgeLimit=500]      limit for number of edges in the network
-   * @param    {number}   [nodeLimit=500]      limit for number of nodes in the network
+   * @param    {Object}   obj
+   * @param    {boolean}  [obj.isDirected=false]   if true, edges are directed A -> B
+   * @param    {number}   [obj.edgeLimit=500]      limit for number of edges in the network
+   * @param    {number}   [obj.nodeLimit=500]      limit for number of nodes in the network
    *
-   * @property {Map&lt;string|number, Node>}  _nodes       Map with Network's nodes
-   * @property {Map&lt;string|number, Edge>}  _edges       Map with Network's edges
-   * @property {boolean}                  isDirected    if true, edges are directed A -> B
-   * @property {number}                   edgeLimit     limit for number of edges in the network
-   * @property {number}                   nodeLimit     limit for number of nodes in the network
-   * @property {number|string}            edgeLimit     Last known free Edge ID, used when creating unassigned IDs, and when an Edge is deleted
-   * @property {number|string}            nodeLimit     Last known free Node ID, used when creating unassigned IDs, and when an Node is deleted
+   * @property  {Map&lt;string|number, Node>}  _nodes       Map with Network's nodes
+   * @property  {Map&lt;string|number, Edge>}  _edges       Map with Network's edges
+   * @property  {boolean} isDirected    if true, edges are directed A -> B
+   * @property  {number}  _edgeLimit    limit for number of edges in the network
+   * @property  {number}  _nodeLimit    limit for number of nodes in the network
+   * @property  {number}  _freeNID      Last known free Node ID, used when creating unassigned IDs, and when an Node is deleted
+   * @property  {number}  _freeEID      Last known free Edge ID, used when creating unassigned IDs, and when an Edge is deleted
    */
-  constructor ({ isDirected = false, edgeLimit = 500, nodeLimit = 500 }) {
+  constructor ({ isDirected = false, edgeLimit = 500, nodeLimit = 500 } = {}) {
     this._edges = new Map()
     this._nodes = new Map()
     this.isDirected = isDirected
-    this.edgeLimit = edgeLimit
-    this.nodeLimit = nodeLimit
+    this._edgeLimit = edgeLimit
+    this._nodeLimit = nodeLimit
     this._freeEID = 0
     this._freeNID = 0
   }
@@ -88,36 +89,33 @@ export class Network {
   /**
    * Adds a new edge to the newtwork
    *
-   * @param  {string|number}  [id]      Edge's unique ID. If not given, an automatic ID will be generated
-   * @param  {string|number}  nodeA     NodeA's ID
-   * @param  {string|number}  nodeB     NodeB's ID
-   * @param  {number}  [weight=1]       Edge's weight
-   * @param  {boolean} [doForce=false]  If true, if either any of the nodes does not exist
+   * @param  {Object} obj
+   * @param  {string|number}  [obj.id]      Edge's unique ID. If not given, an automatic ID will be generated
+   * @param  {string|number}  obj.nodeA     NodeA's ID
+   * @param  {string|number}  obj.nodeB     NodeB's ID
+   * @param  {number}  [obj.weight=1]       Edge's weight
+   * @param  {boolean} [obj.doForce=false]  If true, if either any of the nodes does not exist
    *
-   * @returns {void}
-   *
-   * @throws When trying to add existing edge
-   * @throws When trying to add edge over allowed limit
-   * @throws When trying to add edge on inexistent node (if not forcing edge)
+   * @throws Error when trying to add existing edge
+   * @throws Error when trying to add edge over allowed limit
+   * @throws Error when trying to add edge on inexistent node (if not forcing edge)
    */
-  addEdge ({ id, nodeA, nodeB, weight = 1, doForce = false }) {
-    if (this._edges.has(id)) {
+  addEdge ({ id, nodeA, nodeB, weight = 1, doForce = false } = {}) {
+    if (this._edges.has(id))
       throw { message: Network.ERROR.EXISTING_EDGE }
-    }
-    if (this._edges.size >= this.limit) {
+
+    if (this._edges.size >= this._edgeLimit)
       throw { message: Network.ERROR.EDGE_LIMIT }
-    }
 
     if (!doForce) {
-      if (!!this._nodes.has(nodeA)) {
+      if (!this._nodes.has(nodeA))
         throw { message: Network.ERROR.INEXISTENT_NODE, node: nodeA }
-      }
-      if (!!this._nodes.has(nodeB)) {
+
+      if (!this._nodes.has(nodeB))
         throw { message: Network.ERROR.INEXISTENT_NODE, node: nodeB }
-      }
     } else {
-      if (!!this._nodes.has(nodeA)) this.addNode({ id: nodeA })
-      if (!!this._nodes.has(nodeB)) this.addNode({ id: nodeB })
+      if (!this._nodes.has(nodeA)) this.addNode({ id: nodeA })
+      if (!this._nodes.has(nodeB)) this.addNode({ id: nodeB })
     }
 
     id = id ?? this._newEID()
@@ -125,26 +123,48 @@ export class Network {
     this._edges.set(id, new Edge({ nodeA, nodeB, weight }))
   }
 
-  /**
-   * Adds new node to network with the specified weight and ID
-   *
-   * @param  {string|number} id  New node's ID
-   * @param  {number} [weight=1] Node's weight
-   */
-  addNode ({ id, weight = 1 }) {
 
+  /**
+   * Adds a new node to the newtwork
+   *
+   * @param  {Object} obj
+   * @param  {number|string} obj.id   description
+   * @param  {number} [obj.weight=1]  description
+   */
+  addNode ({ id, weight = 1 } = {}) {
+    if (this._nodes.size >= this._nodeLimit)
+      throw { message: Network.ERROR.NODE_LIMIT }
+
+    if (this._nodes.has(id))
+      throw { message: Network.ERROR.EXISTING_NODE }
+
+    id = id ?? this._newNID()
+
+    this._nodes.set(id, new Node({ id, weight }))
   }
 
   /**
    * Generates new Edge ID
-   * @private
    *
    * @return {number}  Edge ID
    */
   _newEID () {
     const id = this._freeEID++
     while (this._edges.has(id)) {
-      id = Math.floor(Math.random(this.edgeLimit))
+      id = Math.floor(Math.random(this._edgeLimit))
+    }
+    return id
+  }
+
+  /**
+   * Generates new Node ID
+   *
+   * @return {number}  Node ID
+   */
+  _newNID () {
+    const id = this._freeNID++
+    while (this._node.has(id)) {
+      id = Math.floor(Math.random(this._nodeLimit))
     }
     return id
   }
@@ -171,7 +191,7 @@ Network.ERROR = {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 09 2021 23:39:24 GMT-0300 (Hora oficial do Brasil) using <a href="https://github.com/devsnowflake/jsdoc-skyceil">Skyceil Theme</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Jun 10 2021 22:09:31 GMT-0300 (Hora oficial do Brasil) using <a href="https://github.com/devsnowflake/jsdoc-skyceil">Skyceil Theme</a>
 </footer>
 
 <script>prettyPrint();</script>

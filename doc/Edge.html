@@ -27,7 +27,7 @@
         <button class="theme" data-theme="light"><i class="fas fa-moon"></i></button>
     </div>
     <hr>
-    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="Edge.html">Edge</a></b><ul class="has-class-methods"><li><span class="small-icon M">M</span><a href="Edge.html#nodes">nodes</a></li></ul></li><li><span class="small-icon C">C</span><b><a href="Network.html">Network</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="Network.html#addEdge">addEdge</a></li><li><span class="small-icon F">F</span><a href="Network.html#addNode">addNode</a></li></ul></li><li><span class="small-icon C">C</span><a href="Node.html">Node</a></li></ul>
+    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="Edge.html">Edge</a></b><ul class="has-class-methods"><li><span class="small-icon M">M</span><a href="Edge.html#nodes">nodes</a></li></ul></li><li><span class="small-icon C">C</span><b><a href="Network.html">Network</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="Network.html#_newEID">_newEID</a></li><li><span class="small-icon F">F</span><a href="Network.html#_newNID">_newNID</a></li><li><span class="small-icon F">F</span><a href="Network.html#addEdge">addEdge</a></li><li><span class="small-icon F">F</span><a href="Network.html#addNode">addNode</a></li></ul></li><li><span class="small-icon C">C</span><a href="Node.html">Node</a></li></ul>
 </nav>
 
 <div id="main">
@@ -48,7 +48,7 @@
 <header>
     <hr>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Edge<span class="signature">(nodeA, nodeB, weight<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Edge<span class="signature">(obj)</span><span class="type-signature"></span></h2>
         
             <div class="class-description">Edge class</div>
         
@@ -65,7 +65,7 @@
     
 
     
-    <h4 class="name" id="Edge"><span class="type-signature"></span>new Edge<span class="signature">(nodeA, nodeB, weight<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Edge"><span class="type-signature"></span>new Edge<span class="signature">(obj)</span><span class="type-signature"></span></h4>
     
 
     
@@ -73,7 +73,7 @@
 
 
 <div class="description">
-    Edge class
+    Edge class. Note that, to acces nodes, the `nodes` getter is used
 </div>
 
 
@@ -86,6 +86,49 @@
 
     <h5>Parameters:</h5>
     
+
+<div class="table-box">
+    <table class="params">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>obj</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">Object</span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last">
+                    <h6>Properties</h6>
+                    
 
 <div class="table-box">
     <table class="params">
@@ -230,8 +273,98 @@
     </table>
 </div>
 
+                </td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
 
 
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<div class="table-box">
+    <table class="props">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            <tr>
+                
+                    <td class="name"><code>_nodeA</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last">id for nodeA of the Edge</td>
+            </tr>
+
+        
+
+            <tr>
+                
+                    <td class="name"><code>_nodeB</code></td>
+                
+
+                <td class="type">
+                
+                    
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+                
+                </td>
+
+                
+
+                
+
+                <td class="description last">id for nodeB of the Edge</td>
+            </tr>
+
+        
+        </tbody>
+    </table>
+</div>
 
 
 
@@ -368,7 +501,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="edge.js.html">edge.js</a>, <a href="edge.js.html#line22">line 22</a>
+        <a href="edge.js.html">edge.js</a>, <a href="edge.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -406,7 +539,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 09 2021 23:39:24 GMT-0300 (Hora oficial do Brasil) using <a href="https://github.com/devsnowflake/jsdoc-skyceil">Skyceil Theme</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Jun 10 2021 22:09:31 GMT-0300 (Hora oficial do Brasil) using <a href="https://github.com/devsnowflake/jsdoc-skyceil">Skyceil Theme</a>
 </footer>
 
 <script>prettyPrint();</script>
