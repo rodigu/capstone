@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "gendoc": "jsdoc lib/network.js lib/node.js lib/edge.js -d doc/ -t node_modules/jsdoc-skyceil"
+    "gendoc": "jsdoc lib/network.js lib/node.js lib/edge.js -d docs/ -t node_modules/jsdoc-skyceil"
   },
   "repository": {
     "type": "git",
