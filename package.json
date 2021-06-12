@@ -23,7 +23,7 @@
   "homepage": "https://github.com/rodigu/capstone#readme",
   "dependencies": {},
   "devDependencies": {
-    "clean-jsdoc-theme": "^3.0.7",
+    "clean-jsdoc-theme": "^3.2.7",
     "fuse.js": "^6.4.6",
     "jaguarjs-jsdoc": "^1.1.0",
     "jsdoc-skyceil": "^2.0.0"
