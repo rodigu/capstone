@@ -1,59 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Class: Network</title>
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <script src="scripts/nav.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.3/fuse.min.js"></script>
-    
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link type="text/css" rel="stylesheet" href="styles/skyceil.css">
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-</head>
-
-<body>
-
-<nav class="navbar">
-    <div class="utilities">
-        <div id="search">
-            <input type="text" id="search-box" placeholder="Search"><br>
-            <div id="search-results" style="display: none;"></div>
-        </div>
-        <button class="theme" data-theme="light"><i class="fas fa-moon"></i></button>
-    </div>
-    <hr>
-    <h4><a href="index.html">Home</a></h4><h5 class="no-bottom must-underline">Classes</h5><ul><li><span class="small-icon C">C</span><b><a href="Edge.html">Edge</a></b><ul class="has-class-methods"><li><span class="small-icon M">M</span><a href="Edge.html#nodes">nodes</a></li></ul></li><li><span class="small-icon C">C</span><b><a href="Network.html">Network</a></b><ul class="has-class-methods"><li><span class="small-icon F">F</span><a href="Network.html#addEdge">addEdge</a></li><li><span class="small-icon F">F</span><a href="Network.html#addNode">addNode</a></li><li><span class="small-icon F">F</span><a href="Network.html#removeEdge">removeEdge</a></li><li><span class="small-icon F">F</span><a href="Network.html#removeNode">removeNode</a></li></ul></li><li><span class="small-icon C">C</span><a href="Node.html">Node</a></li></ul>
-</nav>
-
-<div id="main">
-    <div class="burger">
-        <div class="burger-line-1"></div>
-        <div class="burger-line-2"></div>
-        <div class="burger-line-3"></div>
-    </div>
-
-    <h1 class="page-title">Class: Network</h1>
-
+    <!-- Adding meta -->
     
+
+    <!-- Adding external script-->
+    
+
+    <!-- Adding external style-->
+    
+
+    <!-- Adding scripts-->
+    
+
+    <!-- Adding style-->
+    
+
+    <!-- Adding overlay script-->
+    
+
+    <!-- Adding overlay style-->
+    
+
+
+    <title>
+      Network
+    </title>
+
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/third-party/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/third-party/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/reset.css">
+    <link type="text/css" rel="stylesheet" href="styles/heading.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-base.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-dark.css">
+    
+    <svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    style="display:none">
+    <defs>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path
+                    d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z" />
+                <path
+                    d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z" />
+            </g>
+        </symbol>
+        <symbol id='search-icon' viewBox="0 0 512 512">
+            <g>
+                <g>
+                    <path
+                        d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z" />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <path
+                        d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z" />
+                </g>
+            </g>
+        </symbol>
+        <symbol id="down-icon" viewBox="0 0 16 16">
+            <path 
+                fill-rule="evenodd" 
+                clip-rule="evenodd" 
+                d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"
+            >
+            </path>
+        </symbol>
+    </defs>
+</svg>
+  </head>
+
+  <body>
+
+    <nav class="navbar" id="navbar">
+      <div class="navbar-heading" id="navbar-heading"><a href="index.html"><h2 class="navbar-heading-text">Home</h2></a></div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><div class="accordion collapsed" id="6658938" > <h3 class="accordion-heading">Classes<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="Edge.html">Edge</a></li><li class="accordion collapsed child" id=3898404><div class="accordion-heading child"><a href="Network.html">Network</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Network.html#addEdge">addEdge</a></li><li data-type='method'><a href="Network.html#addNode">addNode</a></li><li data-type='method'><a href="Network.html#removeEdge">removeEdge</a></li><li data-type='method'><a href="Network.html#removeNode">removeNode</a></li></ul></li><li class="accordion-list" id=""><a href="Node.html">Node</a></li></ul> </div></div>
+      
+
+    </nav>
+    <div class="navbar-ham" id="navbar-ham">
+      <div>
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+      </div>
+    </div>
+
+    <div id="main" class="main-content">
+      
+      <h1 id='page-title' class="page-title">
+        Network
+      </h1>
+      
+
+      
 
 
 
 
 <section>
+
+
 <header>
-    <hr>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Network<span class="signature">(obj)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Network class</div>
+        <h2>
+        
+        Network
+        
+        </h2>
+        
+        
+            <div class="class-description"><p>Network class</p></div>
         
     
 </header>
+
 
 <article>
     <div class="container-overview">
@@ -61,20 +130,21 @@
         
 
     
-    <h2>Constructor</h2>
+        <h2>Constructor</h2>
     
 
-    
-    <h4 class="name" id="Network"><span class="type-signature"></span>new Network<span class="signature">(obj)</span><span class="type-signature"></span></h4>
-    
+    <h4 class="name" id="Network">
+        <a href="#Network">#</a>
+        <span class="type-signature"></span>new Network<span class="signature">(obj)</span><span class="type-signature"></span>
+    </h4>
 
     
 
 
 
-<div class="description">
-    Network class constructor
-</div>
+    <div class="description">
+        <p>Network class constructor</p>
+    </div>
 
 
 
@@ -84,421 +154,420 @@
 
 
 
-    <h5>Parameters:</h5>
-    
-
-<div class="table-box">
-    <table class="params">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
         
 
-            <tr>
-                
-                    <td class="name"><code>obj</code></td>
-                
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-                <td class="type">
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
                 
-                    
 <span class="param-type">Object</span>
 
 
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
                 
-                </td>
 
-                
-
-                
-
-                <td class="description last">
-                    <h6>Properties</h6>
-                    
-
-<div class="table-box">
-    <table class="params">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-            <th>Attributes</th>
-            
-
-            
-            <th>Default</th>
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-            <tr>
-                
-                    <td class="name"><code>isDirected</code></td>
-                
+        <th>Type</th>
 
-                <td class="type">
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>isDirected</code></td>
+            
+
+            <td class="type">
+            
                 
-                    
 <span class="param-type">boolean</span>
 
 
+            
+            </td>
+
+            
+                <td class="attributes">
                 
-                </td>
-
-                
-                    <td class="attributes">
-                    
-                        &lt;optional><br>
-                    
-
-                    
-
-                    
-                    </td>
+                    &lt;optional><br>
                 
 
                 
-                    <td class="default">
-                    
-                        false
-                    
-                    </td>
-                
-
-                <td class="description last">if true, edges are directed A -> B</td>
-            </tr>
-
-        
-
-            <tr>
-                
-                    <td class="name"><code>edgeLimit</code></td>
-                
-
-                <td class="type">
-                
-                    
-<span class="param-type">number</span>
-
 
                 
                 </td>
+            
 
+            
+                <td class="default">
                 
-                    <td class="attributes">
-                    
-                        &lt;optional><br>
-                    
-
-                    
-
-                    
-                    </td>
-                
-
-                
-                    <td class="default">
-                    
-                        500
-                    
-                    </td>
-                
-
-                <td class="description last">limit for number of edges in the network</td>
-            </tr>
-
-        
-
-            <tr>
-                
-                    <td class="name"><code>nodeLimit</code></td>
-                
-
-                <td class="type">
-                
-                    
-<span class="param-type">number</span>
-
-
+                    false
                 
                 </td>
+            
 
-                
-                    <td class="attributes">
-                    
-                        &lt;optional><br>
-                    
-
-                    
-
-                    
-                    </td>
-                
-
-                
-                    <td class="default">
-                    
-                        500
-                    
-                    </td>
-                
-
-                <td class="description last">limit for number of nodes in the network</td>
-            </tr>
-
-        
-        </tbody>
-    </table>
-</div>
-
-                </td>
-            </tr>
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
+            <td class="description last"><p>if true, edges are directed A -&gt; B</p></td>
+        </tr>
 
     
 
-<div class="table-box">
-    <table class="props">
-        <thead>
         <tr>
             
-            <th>Name</th>
+                <td class="name"><code>edgeLimit</code></td>
             
 
-            <th>Type</th>
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
 
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
 
-            <th class="last">Description</th>
+            <td class="description last"><p>limit for number of edges in the network</p></td>
         </tr>
-        </thead>
 
-        <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodeLimit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    500
+                
+                </td>
+            
+
+            <td class="description last"><p>limit for number of nodes in the network</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties</h5>
+
+    
+<div class="allow-overflow">
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-            <tr>
-                
-                    <td class="name"><code>_nodes</code></td>
-                
+        <th>Type</th>
 
-                <td class="type">
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_nodes</code></td>
+            
+
+            <td class="type">
+            
                 
-                    
 <span class="param-type">Map.&lt;(string|number), <a href="Node.html">Node</a>></span>
 
 
-                
-                </td>
+            
+            </td>
 
-                
+            
 
-                
+            
 
-                <td class="description last">Map with Network's nodes</td>
-            </tr>
+            <td class="description last"><p>Map with Network's nodes</p></td>
+        </tr>
 
-        
+    
 
-            <tr>
-                
-                    <td class="name"><code>_edges</code></td>
-                
+        <tr>
+            
+                <td class="name"><code>_edges</code></td>
+            
 
-                <td class="type">
+            <td class="type">
+            
                 
-                    
 <span class="param-type">Map.&lt;(string|number), <a href="Edge.html">Edge</a>></span>
 
 
-                
-                </td>
+            
+            </td>
 
-                
+            
 
-                
+            
 
-                <td class="description last">Map with Network's edges</td>
-            </tr>
+            <td class="description last"><p>Map with Network's edges</p></td>
+        </tr>
 
-        
+    
 
-            <tr>
-                
-                    <td class="name"><code>isDirected</code></td>
-                
+        <tr>
+            
+                <td class="name"><code>isDirected</code></td>
+            
 
-                <td class="type">
+            <td class="type">
+            
                 
-                    
 <span class="param-type">boolean</span>
 
 
-                
-                </td>
+            
+            </td>
 
-                
+            
 
-                
+            
 
-                <td class="description last">If true, edges are directed A -> B</td>
-            </tr>
+            <td class="description last"><p>If true, edges are directed A -&gt; B</p></td>
+        </tr>
 
-        
+    
 
-            <tr>
-                
-                    <td class="name"><code>_edgeLimit</code></td>
-                
+        <tr>
+            
+                <td class="name"><code>_edgeLimit</code></td>
+            
 
-                <td class="type">
+            <td class="type">
+            
                 
-                    
 <span class="param-type">number</span>
 
 
-                
-                </td>
+            
+            </td>
 
-                
+            
 
-                
+            
 
-                <td class="description last">Limit for number of edges in the network</td>
-            </tr>
+            <td class="description last"><p>Limit for number of edges in the network</p></td>
+        </tr>
 
-        
+    
 
-            <tr>
-                
-                    <td class="name"><code>_nodeLimit</code></td>
-                
+        <tr>
+            
+                <td class="name"><code>_nodeLimit</code></td>
+            
 
-                <td class="type">
+            <td class="type">
+            
                 
-                    
 <span class="param-type">number</span>
 
 
-                
-                </td>
+            
+            </td>
 
-                
+            
 
-                
+            
 
-                <td class="description last">Limit for number of nodes in the network</td>
-            </tr>
+            <td class="description last"><p>Limit for number of nodes in the network</p></td>
+        </tr>
 
-        
+    
 
-            <tr>
-                
-                    <td class="name"><code>_freeNID</code></td>
-                
+        <tr>
+            
+                <td class="name"><code>_freeNID</code></td>
+            
 
-                <td class="type">
+            <td class="type">
+            
                 
-                    
 <span class="param-type">number</span>
 
 
-                
-                </td>
+            
+            </td>
 
-                
+            
 
-                
+            
 
-                <td class="description last">Last known free Node ID, used when creating unassigned IDs, and when an Node is deleted</td>
-            </tr>
+            <td class="description last"><p>Last known free Node ID, used when creating unassigned IDs, and when an Node is deleted</p></td>
+        </tr>
 
-        
+    
 
-            <tr>
-                
-                    <td class="name"><code>_freeEID</code></td>
-                
+        <tr>
+            
+                <td class="name"><code>_freeEID</code></td>
+            
 
-                <td class="type">
+            <td class="type">
+            
                 
-                    
 <span class="param-type">number</span>
 
 
-                
-                </td>
+            
+            </td>
 
-                
+            
 
-                
+            
 
-                <td class="description last">Last known free Edge ID, used when creating unassigned IDs, and when an Edge is deleted</td>
-            </tr>
+            <td class="description last"><p>Last known free Edge ID, used when creating unassigned IDs, and when an Edge is deleted</p></td>
+        </tr>
 
-        
+    
 
-            <tr>
-                
-                    <td class="name"><code>_isMultigraph</code></td>
-                
+        <tr>
+            
+                <td class="name"><code>_isMultigraph</code></td>
+            
 
-                <td class="type">
+            <td class="type">
+            
                 
-                    
 <span class="param-type">boolean</span>
 
 
-                
-                </td>
+            
+            </td>
 
-                
+            
 
-                
+            
 
-                <td class="description last">True if network is a multigraph (more than one edge between two nodes)</td>
-            </tr>
+            <td class="description last"><p>True if network is a multigraph (more than one edge between two nodes)</p></td>
+        </tr>
 
-        
-        </tbody>
-    </table>
+    
+    </tbody>
+</table>
 </div>
+
 
 
 
@@ -530,10 +599,12 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="network.js.html">network.js</a>, <a href="network.js.html#line6">line 6</a>
-    </li></ul></dd>
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="network.js.html">network.js</a>, <a href="network.js.html#line6">line 6</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -560,9 +631,6 @@
 
 
 
-
-
-<hr>
     
     </div>
 
@@ -579,9 +647,7 @@
         </dl>
     
 
-    
-
-    
+     
 
     
 
@@ -595,17 +661,18 @@
 
     
 
-    
-    <h4 class="name" id="addEdge"><span class="type-signature"></span>addEdge<span class="signature">(obj)</span><span class="type-signature"></span></h4>
-    
+    <h4 class="name" id="addEdge">
+        <a href="#addEdge">#</a>
+        <span class="type-signature"></span>addEdge<span class="signature">(obj)</span><span class="type-signature"></span>
+    </h4>
 
     
 
 
 
-<div class="description">
-    Adds a new edge to the newtwork
-</div>
+    <div class="description">
+        <p>Adds a new edge to the newtwork</p>
+    </div>
 
 
 
@@ -615,281 +682,280 @@
 
 
 
-    <h5>Parameters:</h5>
-    
-
-<div class="table-box">
-    <table class="params">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
         
 
-            <tr>
-                
-                    <td class="name"><code>obj</code></td>
-                
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-                <td class="type">
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
                 
-                    
 <span class="param-type">Object</span>
 
 
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
                 
-                </td>
 
-                
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-                
+        <th>Type</th>
 
-                <td class="description last">
-                    <h6>Properties</h6>
-                    
+        
+        <th>Attributes</th>
+        
 
-<div class="table-box">
-    <table class="params">
-        <thead>
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
         <tr>
             
-            <th>Name</th>
+                <td class="name"><code>id</code></td>
             
 
-            <th>Type</th>
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
 
             
-            <th>Attributes</th>
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
             
 
             
-            <th>Default</th>
+                <td class="default">
+                
+                </td>
             
 
-            <th class="last">Description</th>
+            <td class="description last"><p>Edge's unique ID. If not given, an automatic ID will be generated</p></td>
         </tr>
-        </thead>
 
-        <tbody>
-        
+    
 
-            <tr>
-                
-                    <td class="name"><code>id</code></td>
-                
+        <tr>
+            
+                <td class="name"><code>nodeA</code></td>
+            
 
-                <td class="type">
+            <td class="type">
+            
                 
-                    
 <span class="param-type">string</span>
 |
 
 <span class="param-type">number</span>
 
 
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
                 
                 </td>
+            
 
+            
+                <td class="default">
                 
-                    <td class="attributes">
-                    
-                        &lt;optional><br>
-                    
+                </td>
+            
 
-                    
+            <td class="description last"><p>NodeA's ID</p></td>
+        </tr>
 
-                    
-                    </td>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodeB</code></td>
+            
+
+            <td class="type">
+            
                 
-
-                
-                    <td class="default">
-                    
-                    </td>
-                
-
-                <td class="description last">Edge's unique ID. If not given, an automatic ID will be generated</td>
-            </tr>
-
-        
-
-            <tr>
-                
-                    <td class="name"><code>nodeA</code></td>
-                
-
-                <td class="type">
-                
-                    
 <span class="param-type">string</span>
 |
 
 <span class="param-type">number</span>
 
 
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
                 
                 </td>
+            
 
+            <td class="description last"><p>NodeB's ID</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>weight</code></td>
+            
+
+            <td class="type">
+            
                 
-                    <td class="attributes">
-                    
-
-                    
-
-                    
-                    </td>
-                
-
-                
-                    <td class="default">
-                    
-                    </td>
-                
-
-                <td class="description last">NodeA's ID</td>
-            </tr>
-
-        
-
-            <tr>
-                
-                    <td class="name"><code>nodeB</code></td>
-                
-
-                <td class="type">
-                
-                    
-<span class="param-type">string</span>
-|
-
 <span class="param-type">number</span>
 
 
+            
+            </td>
+
+            
+                <td class="attributes">
                 
-                </td>
-
-                
-                    <td class="attributes">
-                    
-
-                    
-
-                    
-                    </td>
+                    &lt;optional><br>
                 
 
                 
-                    <td class="default">
-                    
-                    </td>
-                
-
-                <td class="description last">NodeB's ID</td>
-            </tr>
-
-        
-
-            <tr>
-                
-                    <td class="name"><code>weight</code></td>
-                
-
-                <td class="type">
-                
-                    
-<span class="param-type">number</span>
-
 
                 
                 </td>
+            
 
+            
+                <td class="default">
                 
-                    <td class="attributes">
-                    
-                        &lt;optional><br>
-                    
-
-                    
-
-                    
-                    </td>
+                    1
                 
+                </td>
+            
 
-                
-                    <td class="default">
-                    
-                        1
-                    
-                    </td>
-                
+            <td class="description last"><p>Edge's weight</p></td>
+        </tr>
 
-                <td class="description last">Edge's weight</td>
-            </tr>
+    
 
-        
+        <tr>
+            
+                <td class="name"><code>doForce</code></td>
+            
 
-            <tr>
+            <td class="type">
+            
                 
-                    <td class="name"><code>doForce</code></td>
-                
-
-                <td class="type">
-                
-                    
 <span class="param-type">boolean</span>
 
 
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
                 
                 </td>
+            
 
-                
-                    <td class="attributes">
-                    
-                        &lt;optional><br>
-                    
+            <td class="description last"><p>If true, if either any of the nodes does not exist</p></td>
+        </tr>
 
-                    
+    
+    </tbody>
+</table>
 
-                    
-                    </td>
-                
+            </td>
+        </tr>
 
-                
-                    <td class="default">
-                    
-                        false
-                    
-                    </td>
-                
+    
+    </tbody>
+</table>
 
-                <td class="description last">If true, if either any of the nodes does not exist</td>
-            </tr>
-
-        
-        </tbody>
-    </table>
-</div>
-
-                </td>
-            </tr>
-
-        
-        </tbody>
-    </table>
-</div>
+    </div>
 
 
 
@@ -924,10 +990,12 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="network.js.html">network.js</a>, <a href="network.js.html#line70">line 70</a>
-    </li></ul></dd>
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="network.js.html">network.js</a>, <a href="network.js.html#line70">line 70</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -949,69 +1017,80 @@
 
 
 
-<h5>Throws:</h5>
-<ul>
-        <li>
+    <div class="method-member-container mt-20">
+    <strong>Throws:</strong>
+    
+        <ul>
+            
+                <li>
 
     <div class="param-desc">
     
-        Error when trying to add existing edge
+        <p>Error when trying to add existing edge</p>
     
     </div>
 
 </li>
-    
-        <li>
+            
+                <li>
 
     <div class="param-desc">
     
-        Error when trying to add edge over allowed limit
+        <p>Error when trying to add edge over allowed limit</p>
     
     </div>
 
 </li>
-    
-        <li>
+            
+                <li>
 
     <div class="param-desc">
     
-        Error when trying to add edge on inexistent node (if not forcing edge)
+        <p>Error when trying to add edge on inexistent node (if not forcing edge)</p>
     
     </div>
 
 </li>
-    </ul>
-
-
-
-
-
-
-    <h5>Example</h5>
+            
+        </ul>
     
+    </div>
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Example</strong>
+        
         <p class="code-caption">Creating a network, and adding 2 nodes and an edge between them</p>
     
-    <pre class="prettyprint example linenums"><code>import { Network } from './network.js'const net = new Network();// Adding nodesnet.addNode({ id: 'A' });net.addNode({ id: 'B' });// Adding edgenet.addEdge({ id: 'coolEdge', nodeA: 'A', nodeB: 'B' })</code></pre>
+    <div class="rel">
+    <pre class="prettyprint"><code>import { Network } from './network.js'const net = new Network();// Adding nodesnet.addNode({ id: 'A' });net.addNode({ id: 'B' });// Adding edgenet.addEdge({ id: 'coolEdge', nodeA: 'A', nodeB: 'B' })</code></pre>
+    
+    
+    </div>
+
+    </div>
 
 
-
-<hr>
         
             
 
     
 
-    
-    <h4 class="name" id="addNode"><span class="type-signature"></span>addNode<span class="signature">(obj)</span><span class="type-signature"></span></h4>
-    
+    <h4 class="name" id="addNode">
+        <a href="#addNode">#</a>
+        <span class="type-signature"></span>addNode<span class="signature">(obj)</span><span class="type-signature"></span>
+    </h4>
 
     
 
 
 
-<div class="description">
-    Adds a new node to the newtwork
-</div>
+    <div class="description">
+        <p>Adds a new node to the newtwork</p>
+    </div>
 
 
 
@@ -1021,164 +1100,163 @@
 
 
 
-    <h5>Parameters:</h5>
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
 
-<div class="table-box">
-    <table class="params">
-        <thead>
         <tr>
             
-            <th>Name</th>
+                <td class="name"><code>obj</code></td>
             
 
-            <th>Type</th>
-
+            <td class="type">
             
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            <tr>
                 
-                    <td class="name"><code>obj</code></td>
-                
-
-                <td class="type">
-                
-                    
 <span class="param-type">Object</span>
 
 
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
                 
-                </td>
 
-                
-
-                
-
-                <td class="description last">
-                    <h6>Properties</h6>
-                    
-
-<div class="table-box">
-    <table class="params">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-            <th>Attributes</th>
-            
-
-            
-            <th>Default</th>
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-            <tr>
-                
-                    <td class="name"><code>id</code></td>
-                
+        <th>Type</th>
 
-                <td class="type">
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
                 
-                    
 <span class="param-type">number</span>
 |
 
 <span class="param-type">string</span>
 
 
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
                 
                 </td>
+            
 
+            
+                <td class="default">
                 
-                    <td class="attributes">
-                    
+                </td>
+            
 
-                    
+            <td class="description last"><p>New node's ID</p></td>
+        </tr>
 
-                    
-                    </td>
+    
+
+        <tr>
+            
+                <td class="name"><code>weight</code></td>
+            
+
+            <td class="type">
+            
                 
-
-                
-                    <td class="default">
-                    
-                    </td>
-                
-
-                <td class="description last">New node's ID</td>
-            </tr>
-
-        
-
-            <tr>
-                
-                    <td class="name"><code>weight</code></td>
-                
-
-                <td class="type">
-                
-                    
 <span class="param-type">number</span>
 
 
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
                 
                 </td>
+            
 
-                
-                    <td class="attributes">
-                    
-                        &lt;optional><br>
-                    
+            <td class="description last"><p>Node's weight</p></td>
+        </tr>
 
-                    
+    
+    </tbody>
+</table>
 
-                    
-                    </td>
-                
+            </td>
+        </tr>
 
-                
-                    <td class="default">
-                    
-                        1
-                    
-                    </td>
-                
+    
+    </tbody>
+</table>
 
-                <td class="description last">Node's weight</td>
-            </tr>
-
-        
-        </tbody>
-    </table>
-</div>
-
-                </td>
-            </tr>
-
-        
-        </tbody>
-    </table>
-</div>
+    </div>
 
 
 
@@ -1213,10 +1291,12 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="network.js.html">network.js</a>, <a href="network.js.html#line107">line 107</a>
-    </li></ul></dd>
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="network.js.html">network.js</a>, <a href="network.js.html#line107">line 107</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -1243,25 +1323,23 @@
 
 
 
-
-
-<hr>
         
             
 
     
 
-    
-    <h4 class="name" id="removeEdge"><span class="type-signature"></span>removeEdge<span class="signature">(obj, nodeA, nodeB, weight<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-    
+    <h4 class="name" id="removeEdge">
+        <a href="#removeEdge">#</a>
+        <span class="type-signature"></span>removeEdge<span class="signature">(obj, nodeA, nodeB, weight<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    </h4>
 
     
 
 
 
-<div class="description">
-    Removes Edge with specified nodes. If the network is a multigraph
-</div>
+    <div class="description">
+        <p>Removes Edge with specified nodes. If the network is a multigraph</p>
+    </div>
 
 
 
@@ -1271,180 +1349,181 @@
 
 
 
-    <h5>Parameters:</h5>
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
 
-<div class="table-box">
-    <table class="params">
-        <thead>
         <tr>
             
-            <th>Name</th>
+                <td class="name"><code>obj</code></td>
             
 
-            <th>Type</th>
-
+            <td class="type">
             
-            <th>Attributes</th>
-            
-
-            
-            <th>Default</th>
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            <tr>
                 
-                    <td class="name"><code>obj</code></td>
-                
-
-                <td class="type">
-                
-                    
 <span class="param-type">Object</span>
 
 
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
                 
                 </td>
+            
 
+            
+                <td class="default">
                 
-                    <td class="attributes">
-                    
+                </td>
+            
 
-                    
+            <td class="description last"></td>
+        </tr>
 
-                    
-                    </td>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodeA</code></td>
+            
+
+            <td class="type">
+            
                 
-
-                
-                    <td class="default">
-                    
-                    </td>
-                
-
-                <td class="description last"></td>
-            </tr>
-
-        
-
-            <tr>
-                
-                    <td class="name"><code>nodeA</code></td>
-                
-
-                <td class="type">
-                
-                    
 <span class="param-type">string</span>
 
 
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
                 
                 </td>
+            
 
+            
+                <td class="default">
                 
-                    <td class="attributes">
-                    
+                </td>
+            
 
-                    
+            <td class="description last"><p>Node A's ID</p></td>
+        </tr>
 
-                    
-                    </td>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodeB</code></td>
+            
+
+            <td class="type">
+            
                 
-
-                
-                    <td class="default">
-                    
-                    </td>
-                
-
-                <td class="description last">Node A's ID</td>
-            </tr>
-
-        
-
-            <tr>
-                
-                    <td class="name"><code>nodeB</code></td>
-                
-
-                <td class="type">
-                
-                    
 <span class="param-type">string</span>
 
 
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
                 
                 </td>
+            
 
+            
+                <td class="default">
                 
-                    <td class="attributes">
-                    
+                </td>
+            
 
-                    
+            <td class="description last"><p>Node B's ID</p></td>
+        </tr>
 
-                    
-                    </td>
+    
+
+        <tr>
+            
+                <td class="name"><code>weight</code></td>
+            
+
+            <td class="type">
+            
                 
-
-                
-                    <td class="default">
-                    
-                    </td>
-                
-
-                <td class="description last">Node B's ID</td>
-            </tr>
-
-        
-
-            <tr>
-                
-                    <td class="name"><code>weight</code></td>
-                
-
-                <td class="type">
-                
-                    
 <span class="param-type">number</span>
 
 
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
                 
                 </td>
+            
 
-                
-                    <td class="attributes">
-                    
-                        &lt;optional><br>
-                    
+            <td class="description last"><p>Weight is mandatory if the network is a multigraph (more than one edge between two nodes)</p></td>
+        </tr>
 
-                    
+    
+    </tbody>
+</table>
 
-                    
-                    </td>
-                
-
-                
-                    <td class="default">
-                    
-                        1
-                    
-                    </td>
-                
-
-                <td class="description last">Weight is mandatory if the network is a multigraph (more than one edge between two nodes)</td>
-            </tr>
-
-        
-        </tbody>
-    </table>
-</div>
+    </div>
 
 
 
@@ -1479,10 +1558,12 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="network.js.html">network.js</a>, <a href="network.js.html#line139">line 139</a>
-    </li></ul></dd>
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="network.js.html">network.js</a>, <a href="network.js.html#line139">line 139</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -1509,25 +1590,23 @@
 
 
 
-
-
-<hr>
         
             
 
     
 
-    
-    <h4 class="name" id="removeNode"><span class="type-signature"></span>removeNode<span class="signature">(obj)</span><span class="type-signature"></span></h4>
-    
+    <h4 class="name" id="removeNode">
+        <a href="#removeNode">#</a>
+        <span class="type-signature"></span>removeNode<span class="signature">(obj)</span><span class="type-signature"></span>
+    </h4>
 
     
 
 
 
-<div class="description">
-    Removes node with specified ID
-</div>
+    <div class="description">
+        <p>Removes node with specified ID</p>
+    </div>
 
 
 
@@ -1537,109 +1616,108 @@
 
 
 
-    <h5>Parameters:</h5>
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
 
-<div class="table-box">
-    <table class="params">
-        <thead>
         <tr>
             
-            <th>Name</th>
+                <td class="name"><code>obj</code></td>
             
 
-            <th>Type</th>
-
+            <td class="type">
             
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            <tr>
                 
-                    <td class="name"><code>obj</code></td>
-                
-
-                <td class="type">
-                
-                    
 <span class="param-type">Object</span>
 
 
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
                 
-                </td>
 
-                
-
-                
-
-                <td class="description last">
-                    <h6>Properties</h6>
-                    
-
-<div class="table-box">
-    <table class="params">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-            <tr>
-                
-                    <td class="name"><code>id</code></td>
-                
+        <th>Type</th>
 
-                <td class="type">
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
                 
-                    
 <span class="param-type">string</span>
 |
 
 <span class="param-type">number</span>
 
 
-                
-                </td>
+            
+            </td>
 
-                
+            
 
-                
+            
 
-                <td class="description last">ID for node to be deleted</td>
-            </tr>
+            <td class="description last"><p>ID for node to be deleted</p></td>
+        </tr>
 
-        
-        </tbody>
-    </table>
-</div>
+    
+    </tbody>
+</table>
 
-                </td>
-            </tr>
+            </td>
+        </tr>
 
-        
-        </tbody>
-    </table>
-</div>
+    
+    </tbody>
+</table>
+
+    </div>
 
 
 
@@ -1674,10 +1752,12 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="network.js.html">network.js</a>, <a href="network.js.html#line124">line 124</a>
-    </li></ul></dd>
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="network.js.html">network.js</a>, <a href="network.js.html#line124">line 124</a>
+            </li></ul></dd>
+        </div>
     
 
     
@@ -1704,9 +1784,6 @@
 
 
 
-
-
-<hr>
         
     
 
@@ -1720,17 +1797,39 @@
 
 
 
+    </div>
 
-</div>
+    <footer class="footer" id="footer">
+      
+    </footer>
 
-<br class="clear">
+    <script src="scripts/third-party/prettify.js"></script>
+    <script src="scripts/third-party/lang-css.js"></script>
+    <script type="text/javascript" src="scripts/misc.js"></script>
 
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Jun 11 2021 22:18:11 GMT-0300 (Hora oficial do Brasil) using <a href="https://github.com/devsnowflake/jsdoc-skyceil">Skyceil Theme</a>
-</footer>
+    <script>prettyPrint();</script>
+    <script src="scripts/linenumber.js"></script>
+    <script src="scripts/fix-code-block.js"></script>
+    <script src="scripts/fix-navbar.js"></script>
+    
+      <script src="scripts/search.js"></script>
+      <script src="scripts/third-party/fuse.js"></script>
+      <script>
+        var list = [{"title":"Edge","link":"<a href=\"Edge.html\">Edge</a>"},{"title":"Network","link":"<a href=\"Network.html\">Network</a>"},{"title":"Network#addEdge","link":"<a href=\"Network.html#addEdge\">Network &rtrif; addEdge</a>"},{"title":"Network#addNode","link":"<a href=\"Network.html#addNode\">Network &rtrif; addNode</a>"},{"title":"Network#removeEdge","link":"<a href=\"Network.html#removeEdge\">Network &rtrif; removeEdge</a>"},{"title":"Network#removeNode","link":"<a href=\"Network.html#removeNode\">Network &rtrif; removeNode</a>"},{"title":"Node","link":"<a href=\"Node.html\">Node</a>"}];
+        var options = 
+          setupSearch(list, options)
+      </script>
+    
 
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
+    
 
-</body>
+    
+
+    
+
+    
+
+
+  </body>
+
 </html>

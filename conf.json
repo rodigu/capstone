@@ -1,9 +1,21 @@
 {
-  "source": {
-    "include": ["lib", "package.json", "README.md"],
-    "includePattern": ".js$",
-    "excludePattern": "(node_modules/|docs)"
-  },
+    "source": {
+        "include": ["lib"],
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|docs)"
+    },
 
-  "plugins": ["plugins/markdown"]
+    "plugins": ["plugins/markdown"],
+
+    "opts": {
+        "encoding": "utf8",
+        "readme": "./lib/README.md",
+        "destination": "docs/",
+        "recurse": true,
+        "verbose": true,
+        "template": "./node_modules/clean-jsdoc-theme",
+        "theme_opts": {
+            "theme": "dark"
+        }
+    }
 }
