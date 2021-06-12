@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "gendoc": "jsdoc lib/ -d docs/ -t node_modules/jsdoc-skyceil --readme lib/README.md"
+    "gendoc": "jsdoc -c conf.json"
   },
   "repository": {
     "type": "git",
