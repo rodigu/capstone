@@ -81,7 +81,7 @@
   <body>
 
     <nav class="navbar" id="navbar">
-      <div class="navbar-heading" id="navbar-heading"><a href="index.html"><h2 class="navbar-heading-text">Home</h2></a></div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><div class="accordion collapsed" id="6658938" > <h3 class="accordion-heading">Classes<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="Edge.html">Edge</a></li><li class="accordion collapsed child" id=3898404><div class="accordion-heading child"><a href="Network.html">Network</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Network.html#addEdge">addEdge</a></li><li data-type='method'><a href="Network.html#addNode">addNode</a></li><li data-type='method'><a href="Network.html#removeEdge">removeEdge</a></li><li data-type='method'><a href="Network.html#removeNode">removeNode</a></li></ul></li><li class="accordion-list" id=""><a href="Node.html">Node</a></li></ul> </div></div>
+      <div class="navbar-heading" id="navbar-heading"><a href="index.html"><h2 class="navbar-heading-text">Home</h2></a></div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><div class="accordion collapsed" id="7767341" > <h3 class="accordion-heading">Classes<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="Edge.html">Edge</a></li><li class="accordion collapsed child" id=313283><div class="accordion-heading child"><a href="Network.html">Network</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Network.html#addEdge">addEdge</a></li><li data-type='method'><a href="Network.html#addNode">addNode</a></li><li data-type='method'><a href="Network.html#getEdgesBetween">getEdgesBetween</a></li><li data-type='method'><a href="Network.html#hasEdge">hasEdge</a></li><li data-type='method'><a href="Network.html#removeEdge">removeEdge</a></li><li data-type='method'><a href="Network.html#removeNode">removeNode</a></li></ul></li><li class="accordion-list" id=""><a href="Node.html">Node</a></li></ul> </div></div>
       
 
     </nav>
@@ -116,29 +116,28 @@ export class Network {
   /**
    * Network class constructor
    *
-   * @param    {Object}   obj
-   * @param    {boolean}  [obj.isDirected=false]   if true, edges are directed A -> B
-   * @param    {number}   [obj.edgeLimit=500]      limit for number of edges in the network
-   * @param    {number}   [obj.nodeLimit=500]      limit for number of nodes in the network
+   * @param    {boolean}  [is_directed=false]   if true, edges are directed A -> B
+   * @param    {number}   [edge_limit=500]      limit for number of edges in the network
+   * @param    {number}   [node_limit=500]      limit for number of nodes in the network
    *
-   * @property  {Map&lt;string|number, Node>}  _nodes       Map with Network's nodes
-   * @property  {Map&lt;string|number, Edge>}  _edges       Map with Network's edges
-   * @property  {boolean} isDirected    If true, edges are directed A -> B
-   * @property  {number}  _edgeLimit    Limit for number of edges in the network
-   * @property  {number}  _nodeLimit    Limit for number of nodes in the network
+   * @property  {Map&lt;string|number, Node>}  nodes       Map with Network's nodes
+   * @property  {Map&lt;string|number, Edge>}  edges       Map with Network's edges
+   * @property  {boolean} is_directed    If true, edges are directed A -> B
+   * @property  {number}  _edge_limit    Limit for number of edges in the network
+   * @property  {number}  _node_limit    Limit for number of nodes in the network
    * @property  {number}  _freeNID      Last known free Node ID, used when creating unassigned IDs, and when an Node is deleted
    * @property  {number}  _freeEID      Last known free Edge ID, used when creating unassigned IDs, and when an Edge is deleted
-   * @property  {boolean} _isMultigraph True if network is a multigraph (more than one edge between two nodes)
+   * @property  {boolean} is_multigraph True if network is a multigraph (more than one edge between two nodes)
    */
-  constructor({ isDirected = false, edgeLimit = 500, nodeLimit = 500 } = {}) {
+  constructor(is_directed = false, is_multigraph = false, edge_limit = 500, node_limit = 500) {
     this._edges = new Map();
     this._nodes = new Map();
-    this.isDirected = isDirected;
-    this._edgeLimit = edgeLimit;
-    this._nodeLimit = nodeLimit;
+    this.is_directed = is_directed;
+    this._edge_limit = edge_limit;
+    this._node_limit = node_limit;
     this._freeEID = 0;
     this._freeNID = 0;
-    this._isMultigraph = false;
+    this.is_multigraph = is_multigraph;
   }
 
   get edges() {
@@ -149,113 +148,169 @@ export class Network {
     return this._nodes;
   }
 
-  get isMultigraph() {
-    return this.isMultigraph;
+  get is_multigraph() {
+    return this.is_multigraph;
   }
 
   /**
    * Adds a new edge to the newtwork
    *
-   * @param  {Object} obj
-   * @param  {string|number}  [obj.id]      Edge's unique ID. If not given, an automatic ID will be generated
-   * @param  {string|number}  obj.nodeA     NodeA's ID
-   * @param  {string|number}  obj.nodeB     NodeB's ID
-   * @param  {number}  [obj.weight=1]       Edge's weight
-   * @param  {boolean} [obj.doForce=false]  If true, if either any of the nodes does not exist
+   * @param  {string|number}  [id]      Edge's unique ID. If not given, an automatic ID will be generated
+   * @param  {string|number}  nodeA     NodeA's ID
+   * @param  {string|number}  nodeB     NodeB's ID
+   * @param  {number}  [weight=1]       Edge's weight
+   * @param  {boolean} [doForce=false]  If true, if either any of the nodes does not exist
    *
    * @example &lt;caption>Creating a network, and adding 2 nodes and an edge between them&lt;/caption>
    * import { Network } from './network.js'
    * const net = new Network();
    * // Adding nodes
-   * net.addNode({ id: 'A' });
-   * net.addNode({ id: 'B' });
+   * net.addNode('A');
+   * net.addNode('B');
    * // Adding edge
-   * net.addEdge({ id: 'coolEdge', nodeA: 'A', nodeB: 'B' })
+   * net.addEdge('coolEdge', 'A', 'B')
    *
    * @throws Error when trying to add existing edge
    * @throws Error when trying to add edge over allowed limit
    * @throws Error when trying to add edge on inexistent node (if not forcing edge)
    */
-  addEdge({ id, nodeA, nodeB, weight = 1, doForce = false } = {}) {
-    if (this._edges.has(id)) throw { message: Network.ERROR.EXISTING_EDGE };
+  addEdge(nodeA, nodeB, id = this._newEID(), doForce = false, weight = 1) {
+    try {
+      if (this._edges.has(id)) throw { message: Network.ERROR.EXISTING_EDGE };
 
-    if (this._edges.size >= this._edgeLimit)
-      throw { message: Network.ERROR.EDGE_LIMIT };
+      if (this._edges.size >= this._edge_limit)
+        throw { message: Network.ERROR.EDGE_LIMIT };
 
-    if (!doForce) {
-      if (!this._nodes.has(nodeA))
-        throw { message: Network.ERROR.INEXISTENT_NODE, node: nodeA };
+      if (!doForce) {
+        if (!this._nodes.has(nodeA))
+          throw { message: Network.ERROR.INEXISTENT_NODE, node: nodeA };
+        if (!this._nodes.has(nodeB))
+          throw { message: Network.ERROR.INEXISTENT_NODE, node: nodeB };
+      } else {
+        if (!this._nodes.has(nodeA)) this.addNode({ id: nodeA });
+        if (!this._nodes.has(nodeB)) this.addNode({ id: nodeB });
+      }
 
-      if (!this._nodes.has(nodeB))
-        throw { message: Network.ERROR.INEXISTENT_NODE, node: nodeB };
-    } else {
-      if (!this._nodes.has(nodeA)) this.addNode({ id: nodeA });
-      if (!this._nodes.has(nodeB)) this.addNode({ id: nodeB });
+      if (!this.is_multigraph &amp;&amp; this.hasEdge(nodeA, nodeB))
+        throw { message: Network.ERROR.NOT_MULTIGRAPH };
+
+    } catch (e) {
+      this._showError(e);
     }
 
     id = id ?? this._newEID();
 
-    // FIXME: Change the way a network is checked for being multigraph
-    // For now, everytime an edge is added to a non-multigraph, it will check
-    // if an edge between the given nodes already exists
-    // The hasEdgeFunction is quite inneficient
-    if (!this._isMultigraph)
-      if (this.hasEdge({ nodeA, nodeB })) this._isMultigraph = true;
-    // TODO: make multigraph a parameter to be given in constructor
 
-    this._edges.set(id, new Edge({ nodeA, nodeB, weight }));
+    this._edges.set(id, new Edge(nodeA, nodeB, weight));
   }
 
   /**
    * Adds a new node to the newtwork
    *
-   * @param  {Object} obj
-   * @param  {number|string} obj.id   New node's ID
-   * @param  {number} [obj.weight=1]  Node's weight
+   * @param  {number|string} id   New node's ID
+   * @param  {number} [weight=1]  Node's weight
+   *
+   * @throws Error when trying to add node over the limit
+   * @throws Error when trying to add existing node
    */
-  addNode({ id, weight = 1 } = {}) {
-    if (this._nodes.size >= this._nodeLimit)
-      throw { message: Network.ERROR.NODE_LIMIT };
-
-    if (this._nodes.has(id)) throw { message: Network.ERROR.EXISTING_NODE };
+  addNode(id, weight = 1) {
+    try {
+      if (this._nodes.size >= this._node_limit)
+        throw { message: Network.ERROR.NODE_LIMIT };
+      if (this._nodes.has(id))
+        throw { message: Network.ERROR.EXISTING_NODE };
+    } catch (e) {
+      this._showError(e);
+    }
 
     id = id ?? this._newNID();
 
-    this._nodes.set(id, new Node({ id, weight }));
+    this._nodes.set(id, new Node(id, weight));
   }
 
   /**
    * Removes node with specified ID
    *
-   * @param  {Object} obj
-   * @param  {string|number}  obj.id  ID for node to be deleted
+   * @param  {string|number}  id  ID for node to be deleted
    */
-  removeNode({ id }) {
-    if (!this._nodes.has(id))
-      throw { message: Network.ERROR.INEXISTENT_NODE, node: id };
+  removeNode(id) {
+    try {
+      if (!this._nodes.has(id))
+        throw { message: Network.ERROR.INEXISTENT_NODE, node: id };
+    } catch (e) {
+      this._showError(e);
+    }
 
     this._nodes.delete(id);
   }
 
   /**
-   * Removes Edge with specified nodes. If the network is a multigraph
+   * Removes Edge with specified nodes
    *
-   * @param  {Object} obj
-   * @param  {string} nodeA       Node A's ID
-   * @param  {string} nodeB       Node B's ID
-   * @param  {number} [weight=1]  Weight is mandatory if the network is a multigraph (more than one edge between two nodes)
+   * @param  {string|number} nodeA       Node A's ID
+   * @param  {string|number} nodeB       Node B's ID
+   * @param  {string|number} [id]        Edge's ID, only necessary if the graph is a multigraph
    */
-  removeEdge({ nodeA, nodeB, weight = 1 }) {
+  removeEdge(nodeA, nodeB, id) {
+    if (this.is_multigraph) {
+      this._removeMultigraphEdge(id);
+      return;
+    }
     for ([edgeID, edge] of this._edges.entries()) {
       const { A, B } = edge.nodes;
-      if (A === nodeA &amp;&amp; B === nodeB) {
+      if ((A === nodeA &amp;&amp; B === nodeB) || (B === nodeA &amp;&amp; A === nodeB)) {
         this._edges.delete(edgeID);
         break;
       }
     }
   }
 
-  // TODO: hasEdge() function
+
+  /**
+   * Returns a list with the IDs of all edges between nodeA and nodeB. If the network is not a multigraph, only one ID will be returned
+   *
+   * @param  {string|number} nodeA       Node A's ID
+   * @param  {string|number} nodeB       Node B's ID
+   *
+   * @return {Array&lt;string>}  IDs for edges between A and B
+   */
+  getEdgesBetween (nodeA, nodeB) {
+   let edge_list = [];
+   for ([edgeID, edge] of this._edges.entries()) {
+     const { A, B } = edge.nodes;
+     if ((A === nodeA &amp;&amp; B === nodeB) || (B === nodeA &amp;&amp; A === nodeB)) {
+       edge_list.push(edgeID);
+     }
+   }
+   return edge_list;
+  }
+
+
+  /**
+   * Returns true if there exists an edge between A and B
+   *
+   * @param {string|number} nodeA      Node A's ID
+   * @param {string|number} nodeB      Node B's ID
+   *
+   * @return {boolean} Whether there exists an edge between A and B
+   */
+  hasEdge (nodeA, nodeB) {
+    let has_edge = false;
+    this.edges.forEach(({ nodes }, id) => {
+      const { A, B } = nodes;
+      if ((A === nodeA &amp;&amp; B === nodeB) || (B === nodeA &amp;&amp; A === nodeB))
+        has_edge = true;
+    });
+    return has_edge;
+  }
+
+  /**
+   * Removes multigraph edge
+   * @private
+   */
+  _removeMultigraphEdge (id) {
+    this.edges.delete(id);
+  }
 
   /**
    * Generates new Edge ID
@@ -265,7 +320,7 @@ export class Network {
   _newEID() {
     const id = this._freeEID++;
     while (this._edges.has(id)) {
-      id = Math.floor(Math.random(this._edgeLimit));
+      id = Math.floor(Math.random(this._edge_limit));
     }
     return id;
   }
@@ -278,19 +333,28 @@ export class Network {
   _newNID() {
     const id = this._freeNID++;
     while (this._node.has(id)) {
-      id = Math.floor(Math.random(this._nodeLimit));
+      id = Math.floor(Math.random(this._node_limit));
     }
     return id;
+  }
+
+  /**
+   * Logs caught errors
+   * @private
+   */
+  _showError (error) {
+    console.log(`${error.message}${(error.node === undefined ? '' : ' : ' + error.node)}`);
   }
 }
 
 Network.ERROR = {
   UNDEFINED_VALUES: "Undefined values being given as arguments!",
-  EDGE_LIMIT: `Can't add new edge. Limit of Edges exceeded`,
-  NODE_LIMIT: `Can't add new node. Limit of Nodes exceeded`,
+  EDGE_LIMIT: "Can't add new edge. Limit of Edges exceeded",
+  NODE_LIMIT: "Can't add new node. Limit of Nodes exceeded",
   EXISTING_EDGE: "Trying to add an edge with already existing ID",
   EXISTING_NODE: "Trying to add a node with already existing ID",
-  INEXISTENT_NODE: `Node doesn't exist`,
+  INEXISTENT_NODE: "Node doesn't exist",
+  NOT_MULTIGRAPH: "Trying to add multiple edges between two nodes. Graph is not a multigraph!",
 };
 </code></pre>
         </article>
@@ -317,7 +381,7 @@ Network.ERROR = {
       <script src="scripts/search.js"></script>
       <script src="scripts/third-party/fuse.js"></script>
       <script>
-        var list = [{"title":"Edge","link":"<a href=\"Edge.html\">Edge</a>"},{"title":"Network","link":"<a href=\"Network.html\">Network</a>"},{"title":"Network#addEdge","link":"<a href=\"Network.html#addEdge\">Network &rtrif; addEdge</a>"},{"title":"Network#addNode","link":"<a href=\"Network.html#addNode\">Network &rtrif; addNode</a>"},{"title":"Network#removeEdge","link":"<a href=\"Network.html#removeEdge\">Network &rtrif; removeEdge</a>"},{"title":"Network#removeNode","link":"<a href=\"Network.html#removeNode\">Network &rtrif; removeNode</a>"},{"title":"Node","link":"<a href=\"Node.html\">Node</a>"}];
+        var list = [{"title":"Edge","link":"<a href=\"Edge.html\">Edge</a>"},{"title":"Network","link":"<a href=\"Network.html\">Network</a>"},{"title":"Network#addEdge","link":"<a href=\"Network.html#addEdge\">Network &rtrif; addEdge</a>"},{"title":"Network#addNode","link":"<a href=\"Network.html#addNode\">Network &rtrif; addNode</a>"},{"title":"Network#getEdgesBetween","link":"<a href=\"Network.html#getEdgesBetween\">Network &rtrif; getEdgesBetween</a>"},{"title":"Network#hasEdge","link":"<a href=\"Network.html#hasEdge\">Network &rtrif; hasEdge</a>"},{"title":"Network#removeEdge","link":"<a href=\"Network.html#removeEdge\">Network &rtrif; removeEdge</a>"},{"title":"Network#removeNode","link":"<a href=\"Network.html#removeNode\">Network &rtrif; removeNode</a>"},{"title":"Node","link":"<a href=\"Node.html\">Node</a>"}];
         var options = 
           setupSearch(list, options)
       </script>

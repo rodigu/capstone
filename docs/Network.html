@@ -81,7 +81,7 @@
   <body>
 
     <nav class="navbar" id="navbar">
-      <div class="navbar-heading" id="navbar-heading"><a href="index.html"><h2 class="navbar-heading-text">Home</h2></a></div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><div class="accordion collapsed" id="6658938" > <h3 class="accordion-heading">Classes<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="Edge.html">Edge</a></li><li class="accordion collapsed child" id=3898404><div class="accordion-heading child"><a href="Network.html">Network</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Network.html#addEdge">addEdge</a></li><li data-type='method'><a href="Network.html#addNode">addNode</a></li><li data-type='method'><a href="Network.html#removeEdge">removeEdge</a></li><li data-type='method'><a href="Network.html#removeNode">removeNode</a></li></ul></li><li class="accordion-list" id=""><a href="Node.html">Node</a></li></ul> </div></div>
+      <div class="navbar-heading" id="navbar-heading"><a href="index.html"><h2 class="navbar-heading-text">Home</h2></a></div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><div class="accordion collapsed" id="7767341" > <h3 class="accordion-heading">Classes<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="Edge.html">Edge</a></li><li class="accordion collapsed child" id=313283><div class="accordion-heading child"><a href="Network.html">Network</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="Network.html#addEdge">addEdge</a></li><li data-type='method'><a href="Network.html#addNode">addNode</a></li><li data-type='method'><a href="Network.html#getEdgesBetween">getEdgesBetween</a></li><li data-type='method'><a href="Network.html#hasEdge">hasEdge</a></li><li data-type='method'><a href="Network.html#removeEdge">removeEdge</a></li><li data-type='method'><a href="Network.html#removeNode">removeNode</a></li></ul></li><li class="accordion-list" id=""><a href="Node.html">Node</a></li></ul> </div></div>
       
 
     </nav>
@@ -135,7 +135,7 @@
 
     <h4 class="name" id="Network">
         <a href="#Network">#</a>
-        <span class="type-signature"></span>new Network<span class="signature">(obj)</span><span class="type-signature"></span>
+        <span class="type-signature"></span>new Network<span class="signature">(is_directed<span class="signature-attributes">opt</span>, edge_limit<span class="signature-attributes">opt</span>, node_limit<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
     </h4>
 
     
@@ -168,48 +168,6 @@
         <th>Type</th>
 
         
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>obj</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
         <th>Attributes</th>
         
 
@@ -226,7 +184,7 @@
 
         <tr>
             
-                <td class="name"><code>isDirected</code></td>
+                <td class="name"><code>is_directed</code></td>
             
 
             <td class="type">
@@ -265,7 +223,7 @@
 
         <tr>
             
-                <td class="name"><code>edgeLimit</code></td>
+                <td class="name"><code>edge_limit</code></td>
             
 
             <td class="type">
@@ -304,7 +262,7 @@
 
         <tr>
             
-                <td class="name"><code>nodeLimit</code></td>
+                <td class="name"><code>node_limit</code></td>
             
 
             <td class="type">
@@ -337,13 +295,6 @@
             
 
             <td class="description last"><p>limit for number of nodes in the network</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
         </tr>
 
     
@@ -383,7 +334,7 @@
 
         <tr>
             
-                <td class="name"><code>_nodes</code></td>
+                <td class="name"><code>nodes</code></td>
             
 
             <td class="type">
@@ -406,7 +357,7 @@
 
         <tr>
             
-                <td class="name"><code>_edges</code></td>
+                <td class="name"><code>edges</code></td>
             
 
             <td class="type">
@@ -429,7 +380,7 @@
 
         <tr>
             
-                <td class="name"><code>isDirected</code></td>
+                <td class="name"><code>is_directed</code></td>
             
 
             <td class="type">
@@ -452,7 +403,7 @@
 
         <tr>
             
-                <td class="name"><code>_edgeLimit</code></td>
+                <td class="name"><code>_edge_limit</code></td>
             
 
             <td class="type">
@@ -475,7 +426,7 @@
 
         <tr>
             
-                <td class="name"><code>_nodeLimit</code></td>
+                <td class="name"><code>_node_limit</code></td>
             
 
             <td class="type">
@@ -544,7 +495,7 @@
 
         <tr>
             
-                <td class="name"><code>_isMultigraph</code></td>
+                <td class="name"><code>is_multigraph</code></td>
             
 
             <td class="type">
@@ -663,7 +614,7 @@
 
     <h4 class="name" id="addEdge">
         <a href="#addEdge">#</a>
-        <span class="type-signature"></span>addEdge<span class="signature">(obj)</span><span class="type-signature"></span>
+        <span class="type-signature"></span>addEdge<span class="signature">(id<span class="signature-attributes">opt</span>, nodeA, nodeB, weight<span class="signature-attributes">opt</span>, doForce<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
     </h4>
 
     
@@ -685,48 +636,6 @@
     <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
         <strong>Parameters:</strong>
         
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>obj</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <h6>Properties</h6>
-                
 
 <table class="params">
     <thead>
@@ -948,13 +857,6 @@
     </tbody>
 </table>
 
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
     </div>
 
 
@@ -993,7 +895,7 @@
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="network.js.html">network.js</a>, <a href="network.js.html#line70">line 70</a>
+                <a href="network.js.html">network.js</a>, <a href="network.js.html#line68">line 68</a>
             </li></ul></dd>
         </div>
     
@@ -1066,7 +968,7 @@
         <p class="code-caption">Creating a network, and adding 2 nodes and an edge between them</p>
     
     <div class="rel">
-    <pre class="prettyprint"><code>import { Network } from './network.js'const net = new Network();// Adding nodesnet.addNode({ id: 'A' });net.addNode({ id: 'B' });// Adding edgenet.addEdge({ id: 'coolEdge', nodeA: 'A', nodeB: 'B' })</code></pre>
+    <pre class="prettyprint"><code>import { Network } from './network.js'const net = new Network();// Adding nodesnet.addNode('A');net.addNode('B');// Adding edgenet.addEdge('coolEdge', 'A', 'B')</code></pre>
     
     
     </div>
@@ -1081,7 +983,7 @@
 
     <h4 class="name" id="addNode">
         <a href="#addNode">#</a>
-        <span class="type-signature"></span>addNode<span class="signature">(obj)</span><span class="type-signature"></span>
+        <span class="type-signature"></span>addNode<span class="signature">(id, weight<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
     </h4>
 
     
@@ -1103,48 +1005,6 @@
     <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
         <strong>Parameters:</strong>
         
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>obj</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <h6>Properties</h6>
-                
 
 <table class="params">
     <thead>
@@ -1249,13 +1109,6 @@
     </tbody>
 </table>
 
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
     </div>
 
 
@@ -1318,6 +1171,35 @@
 
 
 
+    <div class="method-member-container mt-20">
+    <strong>Throws:</strong>
+    
+        <ul>
+            
+                <li>
+
+    <div class="param-desc">
+    
+        <p>Error when trying to add node over the limit</p>
+    
+    </div>
+
+</li>
+            
+                <li>
+
+    <div class="param-desc">
+    
+        <p>Error when trying to add existing node</p>
+    
+    </div>
+
+</li>
+            
+        </ul>
+    
+    </div>
+
 
 
 
@@ -1328,9 +1210,9 @@
 
     
 
-    <h4 class="name" id="removeEdge">
-        <a href="#removeEdge">#</a>
-        <span class="type-signature"></span>removeEdge<span class="signature">(obj, nodeA, nodeB, weight<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    <h4 class="name" id="getEdgesBetween">
+        <a href="#getEdgesBetween">#</a>
+        <span class="type-signature"></span>getEdgesBetween<span class="signature">(nodeA, nodeB)</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span>
     </h4>
 
     
@@ -1338,7 +1220,7 @@
 
 
     <div class="description">
-        <p>Removes Edge with specified nodes. If the network is a multigraph</p>
+        <p>Returns a list with the IDs of all edges between nodeA and nodeB. If the network is not a multigraph, only one ID will be returned</p>
     </div>
 
 
@@ -1363,11 +1245,7 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1379,41 +1257,6 @@
 
         <tr>
             
-                <td class="name"><code>obj</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>nodeA</code></td>
             
 
@@ -1421,25 +1264,16 @@
             
                 
 <span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
 
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
             
 
             <td class="description last"><p>Node A's ID</p></td>
@@ -1456,40 +1290,8 @@
             
                 
 <span class="param-type">string</span>
+|
 
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>Node B's ID</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>weight</code></td>
-            
-
-            <td class="type">
-            
-                
 <span class="param-type">number</span>
 
 
@@ -1497,26 +1299,10 @@
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                    1
-                
-                </td>
-            
 
-            <td class="description last"><p>Weight is mandatory if the network is a multigraph (more than one edge between two nodes)</p></td>
+            <td class="description last"><p>Node B's ID</p></td>
         </tr>
 
     
@@ -1561,7 +1347,7 @@
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="network.js.html">network.js</a>, <a href="network.js.html#line139">line 139</a>
+                <a href="network.js.html">network.js</a>, <a href="network.js.html#line168">line 168</a>
             </li></ul></dd>
         </div>
     
@@ -1587,6 +1373,31 @@
 
 
 
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+<div class="param-desc">
+    <p>IDs for edges between A and B</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
 
 
 
@@ -1595,9 +1406,9 @@
 
     
 
-    <h4 class="name" id="removeNode">
-        <a href="#removeNode">#</a>
-        <span class="type-signature"></span>removeNode<span class="signature">(obj)</span><span class="type-signature"></span>
+    <h4 class="name" id="hasEdge">
+        <a href="#hasEdge">#</a>
+        <span class="type-signature"></span>hasEdge<span class="signature">(nodeA, nodeB)</span><span class="type-signature"> &rarr; {boolean}</span>
     </h4>
 
     
@@ -1605,7 +1416,7 @@
 
 
     <div class="description">
-        <p>Removes node with specified ID</p>
+        <p>Returns true if there exists an edge between A and B</p>
     </div>
 
 
@@ -1642,13 +1453,16 @@
 
         <tr>
             
-                <td class="name"><code>obj</code></td>
+                <td class="name"><code>nodeA</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
 
 
             
@@ -1658,9 +1472,385 @@
 
             
 
-            <td class="description last">
-                <h6>Properties</h6>
+            <td class="description last"><p>Node A's ID</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nodeB</code></td>
+            
+
+            <td class="type">
+            
                 
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Node B's ID</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="network.js.html">network.js</a>, <a href="network.js.html#line188">line 188</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+<div class="param-desc">
+    <p>Whether there exists an edge between A and B</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="removeEdge">
+        <a href="#removeEdge">#</a>
+        <span class="type-signature"></span>removeEdge<span class="signature">(nodeA, nodeB, id<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Removes Edge with specified nodes</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodeA</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Node A's ID</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nodeB</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Node B's ID</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Edge's ID, only necessary if the graph is a multigraph</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="network.js.html">network.js</a>, <a href="network.js.html#line145">line 145</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="removeNode">
+        <a href="#removeNode">#</a>
+        <span class="type-signature"></span>removeNode<span class="signature">(id)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Removes node with specified ID</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
 
 <table class="params">
     <thead>
@@ -1710,13 +1900,6 @@
     </tbody>
 </table>
 
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
     </div>
 
 
@@ -1755,7 +1938,7 @@
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="network.js.html">network.js</a>, <a href="network.js.html#line124">line 124</a>
+                <a href="network.js.html">network.js</a>, <a href="network.js.html#line127">line 127</a>
             </li></ul></dd>
         </div>
     
@@ -1815,7 +1998,7 @@
       <script src="scripts/search.js"></script>
       <script src="scripts/third-party/fuse.js"></script>
       <script>
-        var list = [{"title":"Edge","link":"<a href=\"Edge.html\">Edge</a>"},{"title":"Network","link":"<a href=\"Network.html\">Network</a>"},{"title":"Network#addEdge","link":"<a href=\"Network.html#addEdge\">Network &rtrif; addEdge</a>"},{"title":"Network#addNode","link":"<a href=\"Network.html#addNode\">Network &rtrif; addNode</a>"},{"title":"Network#removeEdge","link":"<a href=\"Network.html#removeEdge\">Network &rtrif; removeEdge</a>"},{"title":"Network#removeNode","link":"<a href=\"Network.html#removeNode\">Network &rtrif; removeNode</a>"},{"title":"Node","link":"<a href=\"Node.html\">Node</a>"}];
+        var list = [{"title":"Edge","link":"<a href=\"Edge.html\">Edge</a>"},{"title":"Network","link":"<a href=\"Network.html\">Network</a>"},{"title":"Network#addEdge","link":"<a href=\"Network.html#addEdge\">Network &rtrif; addEdge</a>"},{"title":"Network#addNode","link":"<a href=\"Network.html#addNode\">Network &rtrif; addNode</a>"},{"title":"Network#getEdgesBetween","link":"<a href=\"Network.html#getEdgesBetween\">Network &rtrif; getEdgesBetween</a>"},{"title":"Network#hasEdge","link":"<a href=\"Network.html#hasEdge\">Network &rtrif; hasEdge</a>"},{"title":"Network#removeEdge","link":"<a href=\"Network.html#removeEdge\">Network &rtrif; removeEdge</a>"},{"title":"Network#removeNode","link":"<a href=\"Network.html#removeNode\">Network &rtrif; removeNode</a>"},{"title":"Node","link":"<a href=\"Node.html\">Node</a>"}];
         var options = 
           setupSearch(list, options)
       </script>
