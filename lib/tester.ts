@@ -2,9 +2,10 @@ import { Network } from './network.js'
 
 const net:Network = new Network();
 // Adding Nodes
-net.addNode({ id: 'A' });
-net.addNode({ id: 'B' });
+net.addNode('A');
+net.addNode('B');
 // Adding Edges
-net.addEdge({ id: 'coolEdge', nodeA: 'A', nodeB: 'B' })
-// Checking ou net
-console.log(net)
+net.addEdge('A', 'B', 'coolEdge');
+
+
+net.addEdge('B','A');
