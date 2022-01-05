@@ -14,3 +14,4 @@ The Network science library is a rewrite of my previous code, [network2020](gith
 - 🔗Changes to the core classes
 - 🪒Changes to functions
 - 🎈Non-significant changes (change in private variable name, newline change)
+- 🐛Bugfix
