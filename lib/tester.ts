@@ -1,11 +1,21 @@
 import { Network } from './network.js'
 
-const net:Network = new Network();
-// Adding Nodes
-net.addNode('A');
-net.addNode('B');
-// Adding Edges
-net.addEdge('A', 'B', 'coolEdge');
+function randomNetworkGen (number_nodes:number, number_edges:number) : Network {
+  const net = new Network();
+  for (let node = 0; node < number_nodes; node++)
+    net.addNode(node);
+  while (net.edges.size < number_edges) {
+    const nodeA = Math.floor(Math.random() * number_nodes);
+    const nodeB = Math.floor(Math.random() * number_nodes);
+    net.addEdge(nodeA, nodeB);
+  }
 
+  return net;
+}
 
-net.addEdge('B','A');
+const number_nodes = 10;
+const number_edges = 11;
+
+const net:Network = randomNetworkGen(number_nodes, number_edges);
+
+console.log(net);
