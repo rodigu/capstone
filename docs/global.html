@@ -28,7 +28,7 @@
 
 
     <title>
-      Node
+      Global
     </title>
 
     <!--[if lt IE 9]>
@@ -96,7 +96,7 @@
     <div id="main" class="main-content">
       
       <h1 id='page-title' class="page-title">
-        Node
+        Global
       </h1>
       
 
@@ -108,34 +108,46 @@
 <section>
 
 
-<header>
-    
-        
-        <h2>
-        
-        Node
-        
-        </h2>
-        
-        
-            <div class="class-description"><p>Node class</p></div>
-        
-    
-</header>
-
 
 <article>
     <div class="container-overview">
     
         
 
+        
+
+
+
+
+
+
+        
     
-        <h2>Constructor</h2>
+    </div>
+
     
 
-    <h4 class="name" id="Node">
-        <a href="#Node">#</a>
-        <span class="type-signature"></span>new Node<span class="signature">(weight<span class="signature-attributes">opt</span>, id)</span><span class="type-signature"></span>
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="genus">
+        <a href="#genus">#</a>
+        <span class="type-signature"></span>genus<span class="signature">(network)</span><span class="type-signature"> &rarr; {number}</span>
     </h4>
 
     
@@ -143,7 +155,8 @@
 
 
     <div class="description">
-        <p>Node class</p>
+        <h3>Get network genus</h3>
+<p>Genus is the number of edges minus the number of nodes plus one.</p>
     </div>
 
 
@@ -168,11 +181,7 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -184,77 +193,23 @@
 
         <tr>
             
-                <td class="name"><code>weight</code></td>
+                <td class="name"><code>network</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type"><a href="Network.html">Network</a></span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                    1
-                
-                </td>
-            
 
-            <td class="description last"><p>node's weight</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>node's id</p></td>
+            <td class="description last"><p>Network</p></td>
         </tr>
 
     
@@ -264,85 +219,6 @@
     </div>
 
 
-
-
-
-
-    <h5 class="subsection-title">Properties</h5>
-
-    
-<div class="allow-overflow">
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-|
-
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>node's id</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>weight</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>node's weight</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-</div>
 
 
 
@@ -378,7 +254,7 @@
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="node.js.html">node.js</a>, <a href="node.js.html#line3">line 3</a>
+                <a href="algorithms.js.html">algorithms.js</a>, <a href="algorithms.js.html#line32">line 32</a>
             </li></ul></dd>
         </div>
     
@@ -404,31 +280,639 @@
 
 
 
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+<div class="param-desc">
+    <p>Network's genus</p>
+</div>
 
 
 
-    
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+            
     </div>
 
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="networkWeight">
+        <a href="#networkWeight">#</a>
+        <span class="type-signature"></span>networkWeight<span class="signature">(network)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <h3>Get network weight</h3>
+<p>A network's weight is the sum of its nodes' weights.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>network</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Network.html">Network</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Network</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
     
 
     
 
     
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="Node.html">Node</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-     
 
     
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="algorithms.js.html">algorithms.js</a>, <a href="algorithms.js.html#line12">line 12</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+<div class="param-desc">
+    <p>Network's weight</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="outNeighbors">
+        <a href="#outNeighbors">#</a>
+        <span class="type-signature"></span>outNeighbors<span class="signature">(network, id)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="Node.html">Node</a>>}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <h3>Out neighbors of a node</h3>
+<p>In a directed network, an out neighbor of a node A is any node B such that a directed edge A to B exists</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>network</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Network.html">Network</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Network</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Node's ID</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="algorithms.js.html">algorithms.js</a>, <a href="algorithms.js.html#line46">line 46</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+<div class="param-desc">
+    <p>List with node's out neighbors</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;<a href="Node.html">Node</a>></span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="randomNetworkGen">
+        <a href="#randomNetworkGen">#</a>
+        <span class="type-signature"></span>randomNetworkGen<span class="signature">(network, id, is_directed<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="Network.html">Network</a>}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <h3>Generate random network</h3>
+<p>Generates a random network with given number of nodes and edges</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>network</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Network</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Node's ID</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>is_directed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Node's ID</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="algorithms.js.html">algorithms.js</a>, <a href="algorithms.js.html#line69">line 69</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+<div class="param-desc">
+    <p>Random network</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Network.html">Network</a></span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
     
 
     

@@ -1,21 +1,24 @@
-import { Network } from './network.js'
+import { Network } from './network.js';
 
-function randomNetworkGen (number_nodes:number, number_edges:number) : Network {
-  const net = new Network();
-  for (let node = 0; node < number_nodes; node++)
-    net.addNode(node);
-  while (net.edges.size < number_edges) {
-    const nodeA = Math.floor(Math.random() * number_nodes);
-    const nodeB = Math.floor(Math.random() * number_nodes);
-    net.addEdge(nodeA, nodeB);
-  }
+import * as algo from './algorithms.js';
 
-  return net;
+function testNet (network:Network, title:string) {
+  console.log(`--- ${title} ---`);
+
+  console.log('Network:','\n  nodes:', network.nodes, '\n  edges:', network.edges);
+
+  console.log(`Network genus: ${algo.genus(network)}`);
+
+  console.log(`Network weight: ${algo.networkWeight(network)}`);
+
+  console.log(`Out-neighbors for node 1:`, algo.outNeighbors(network, 1) ?? 'network is undirected');
 }
 
 const number_nodes = 10;
 const number_edges = 11;
 
-const net:Network = randomNetworkGen(number_nodes, number_edges);
+const net_undirected:Network = algo.randomNetworkGen(number_nodes, number_edges);
+testNet(net_undirected, 'Undirected Network');
 
-console.log(net);
+const net_directed:Network = algo.randomNetworkGen(number_nodes, number_edges, true);
+testNet(net_directed, 'Directed Network');
