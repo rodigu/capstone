@@ -1,41 +1,45 @@
-import { Network } from "./network.ts";
+import { Network, base_id } from "./network.ts";
 
-export function networkWeight (network) {
+
+export function networkWeight (network:Network) : number {
     let weight = 0;
-    const { nodes } = network;
+    const { vertices } = network;
 
-    nodes.forEach(node => {
-      weight += node.weight;
+    vertices.forEach(vertice => {
+      weight += vertice.weight;
     });
 
     return weight;
 }
 
-export function genus (network) {
-  return network.edges.size - network.nodes.size + 1;
+export function genus (network:Network) : number {
+  return network.edges.size - network.vertices.size + 1;
 }
 
 
-export function outNeighbors (network, id){
+export function outNeighbors (network:Network, id:base_id) : base_id[] | null{
   if (!network.is_directed) return null;
 
-  const { nodes } = network;
-  const out_neighbors = [];
-  nodes.forEach(node => {
-    if (network.hasEdge(id, node.id)) out_neighbors.push(node);
+  const { vertices } = network;
+  const out_neighbors:base_id[] = [];
+  vertices.forEach(vertice => {
+    if (network.hasEdge(id, vertice.id)) out_neighbors.push(vertice.id);
   });
 
   return out_neighbors;
 }
 
-export function randomNetworkGen (number_nodes, number_edges, is_directed = false) {
-  const net = new Network(is_directed);
-  for (let node = 0; node < number_nodes; node++)
-    net.addNode(node);
+export function randomNetworkGen (args: { number_vertices:number, number_edges:number, is_directed?:boolean }) : Network {
+  let { number_vertices, number_edges, is_directed } = args;
+  is_directed ??= false;
+  const net = new Network({ is_directed });
+
+  for (let vertice = 0; vertice < number_vertices; vertice++)
+    net.addVertice({ id: vertice });
   while (net.edges.size < number_edges) {
-    const nodeA = Math.floor(Math.random() * number_nodes);
-    const nodeB = Math.floor(Math.random() * number_nodes);
-    net.addEdge(nodeA, nodeB);
+    const vertice_a = Math.floor(Math.random() * number_vertices);
+    const vertice_b = Math.floor(Math.random() * number_vertices);
+    net.addEdge({ vertice_a, vertice_b });
   }
 
   return net;
