@@ -1,7 +1,7 @@
 import { Vertice } from "./vertice.ts";
 import { Edge } from "./edge.ts";
 
-type base_id = number | string;
+export type base_id = number | string;
 
 export class Network {
   readonly edges: Map<base_id, Edge>;
@@ -49,7 +49,7 @@ export class Network {
       if (!this.vertices.has(args.vertice_b)) this.addVertice({ id: args.vertice_b });
     }
 
-    if (!this.is_multigraph && this.hasEdge({ vertice_a: args.vertice_a, vertice_b: args.vertice_b }))
+    if (!this.is_multigraph && this.hasEdge(args.vertice_a, args.vertice_b ))
       throw { message: ERROR.NOT_MULTIGRAPH };
 
     this.edges.set(args.id, new Edge({ vertice_a: args.vertice_a, vertice_b: args.vertice_b, weight: args.id }));
@@ -92,9 +92,8 @@ export class Network {
     });
   }
 
-  getEdgesBetween (args: { vertice_a: base_id, vertice_b: base_id }) : Array<base_id> {
-    let edge_list:Array<base_id> = [];
-    const { vertice_a, vertice_b } = args;
+  getEdgesBetween (vertice_a:base_id, vertice_b:base_id) : base_id[] {
+    let edge_list:base_id[] = [];
 
     this.edges.forEach((edge, id) => {
       const { a, b } = edge.vertices;
@@ -106,9 +105,8 @@ export class Network {
     return edge_list;
   }
 
-  hasEdge (args: { vertice_a: base_id, vertice_b: base_id }) : boolean {
+  hasEdge (vertice_a:base_id, vertice_b:base_id) : boolean {
     let has_edge:boolean = false;
-    const { vertice_a, vertice_b } = args;
 
     this.edges.forEach(({ vertices }, id) => {
       const { a, b } = vertices;
