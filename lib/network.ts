@@ -93,7 +93,7 @@ export class Network {
   }
 
   getEdgesBetween (vertice_a:base_id, vertice_b:base_id) : base_id[] {
-    let edge_list:base_id[] = [];
+    const edge_list:base_id[] = [];
 
     this.edges.forEach((edge, id) => {
       const { a, b } = edge.vertices;
@@ -106,9 +106,9 @@ export class Network {
   }
 
   hasEdge (vertice_a:base_id, vertice_b:base_id) : boolean {
-    let has_edge:boolean = false;
+    let has_edge = false;
 
-    this.edges.forEach(({ vertices }, id) => {
+    this.edges.forEach(({ vertices }) => {
       const { a, b } = vertices;
       if ((a === vertice_a && b === vertice_b)){
         if (this.is_directed || (b === vertice_a && a === vertice_b)) {
