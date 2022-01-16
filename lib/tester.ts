@@ -1,7 +1,7 @@
 import * as nets from './ne.ts';
 
-const net = new nets.Network();
-
-net.addEdge({vertice_a:1,vertice_b:2});
+const number_edges = 10;
+const number_vertices = 10;
+const net = nets.randomNetworkGen({ number_vertices, number_edges });
 
 console.log(net);
