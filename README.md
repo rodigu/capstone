@@ -19,3 +19,4 @@ This library is a rewrite of my previous code, [network2020](github.com/rodigu/n
 - 🚧Changes/Updates to the core classes
 - 🪒Changes/Updates to functions
 - 👩‍💻New code
+- 🐛Bugfix
