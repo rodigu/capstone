@@ -1,5 +1,5 @@
-import { Vertice } from "./vertice";
-import { Edge } from "./edge";
+import { Vertice } from "./vertice.ts";
+import { Edge } from "./edge.ts";
 
 type base_id = number | string;
 
