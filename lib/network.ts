@@ -127,7 +127,7 @@ export class Network {
     this.edges.delete(id);
   }
 
-  newEID () {
+  private newEID () {
     let id = this.free_eid++;
     while (this.edges.has(id)) {
       id = Math.floor(Math.random() * this.edge_limit);
