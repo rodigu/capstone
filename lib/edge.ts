@@ -1,30 +1,27 @@
 import { base_id, EdgeArgs } from './enums.ts';
 
 export class Edge {
-  private vertice_b:base_id;
-  private vertice_a:base_id;
+  private to:base_id;
+  private from:base_id;
   weight:number;
 
   /**
-   * ### Edge constructor
-   * Create an edge between `vertice_a` and `vertice_b`.
-   * Weight is set to 1 by default (i.e. unweighted).
+   * Create an edge between `from` and `to`.
    * 
+   * Weight is set to 1 by default (i.e. unweighted).
    * @param  {EdgeArgs} args
    */
   constructor (args:EdgeArgs) {
-    this.vertice_a = args.vertice_a;
-    this.vertice_b = args.vertice_b;
+    this.from = args.from;
+    this.to = args.to;
     this.weight ??= 1;
   }
 
   /**
-   * ### Vertices getter
    * Returns an object with the two vertices in the egde.
-   * 
-   * @returns {{ a:base_id, b:base_id }}
+   * @returns {{ from:base_id, to:base_id }}
    */
-  get vertices () : { a:base_id, b:base_id } {
-    return { a: this.vertice_a, b: this.vertice_b };
+  get vertices () : { from:base_id, to:base_id } {
+    return { from: this.from, to: this.to };
   }
 }
