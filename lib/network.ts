@@ -1,6 +1,6 @@
 import { Vertice } from "./vertice.ts";
 import { Edge } from "./edge.ts";
-import { base_id, VerticeArgs, EdgeArgs, NetworkArgs } from './enums.ts'
+import { base_id, VerticeArgs, EdgeArgs, NetworkArgs, ERROR } from './enums.ts'
 
 export class Network {
   readonly edges:Map<base_id, Edge>;
@@ -14,6 +14,10 @@ export class Network {
   private free_eid:number;
   private free_vid:number;
 
+
+  /**
+   * @param  {NetworkArgs} [args={}]
+   */
   constructor (args:NetworkArgs = {}) {
     this.edges = new Map();
     this.vertices = new Map();
@@ -24,7 +28,10 @@ export class Network {
     this.free_vid = 0;
     this.is_multigraph = args.is_multigraph ?? false;
   }
-
+  
+  /**
+   * @param  {EdgeArgs} args
+   */
   addEdge (args:EdgeArgs) {
 
     args.do_force ??= true;
@@ -54,7 +61,10 @@ export class Network {
 
     this.edges.set(args.id, new Edge(args));
   }
-
+  
+  /**
+   * @param  {VerticeArgs} args
+   */
   addVertice (args:VerticeArgs) {
     if (this.vertices.size >= this.vertice_limit)
       throw { message: ERROR.VERTICE_LIMIT };
@@ -64,6 +74,10 @@ export class Network {
     this.vertices.set(args.id, new Vertice(args));
   }
 
+  /**
+   * Removes vertice with given id
+   * @param  {base_id} id
+   */
   removeVertice (id:base_id) {
     if (!this.vertices.has(id))
       throw { message: ERROR.INEXISTENT_VERTICE, vertice: id };
@@ -71,13 +85,21 @@ export class Network {
     this.vertices.delete(id);
   }
 
+  /**
+   * Removes an edge between the two vertices.
+   * If the network is a multigraph, an ID is needed to remove a specific edge.
+   * @param  {Object} args
+   * @param  {base_id} args.vertice_a
+   * @param  {base_id} args.vertice_b
+   * @param  {base_id} [args.id]
+   */
   removeEdge (args: { vertice_a:base_id, vertice_b:base_id, id?:base_id }) {
-    if (this.is_multigraph) {
-      if (args.id === undefined)
-        throw { message: ERROR.UNDEFINED_ID, id: args.id };
-      else
+    if (args.id !== undefined) {
         this.removeMultigraphEdge(args.id);
-      return;
+        return;
+    }
+    else if (this.is_multigraph) {
+      throw { message: ERROR.UNDEFINED_ID, id: args.id };
     }
 
     const { vertice_a, vertice_b } = args;
@@ -90,6 +112,13 @@ export class Network {
     });
   }
 
+  /**
+   * Returns a list of edges between two given nodes.
+   * If the network is not a multigraph, the list will always be either empty or have only one item.
+   * @param  {base_id} vertice_a
+   * @param  {base_id} vertice_b
+   * @returns base_id[]
+   */
   getEdgesBetween (vertice_a:base_id, vertice_b:base_id) : base_id[] {
     const edge_list:base_id[] = [];
 
@@ -103,6 +132,13 @@ export class Network {
     return edge_list;
   }
 
+  
+  /**
+   * Returns true if an edge between vertice_a and vertice_b exists.
+   * @param  {base_id} vertice_a
+   * @param  {base_id} vertice_b
+   * @returns boolean
+   */
   hasEdge (vertice_a:base_id, vertice_b:base_id) : boolean {
     let has_edge = false;
 
@@ -119,8 +155,25 @@ export class Network {
     return has_edge;
   }
 
+  /**
+   * Returns true if an edge with the given id exists
+   * @param  {base_id} id
+   * @returns boolean
+   */
   hasVertice (id:base_id) : boolean {
     return this.vertices.has(id);
+  }
+  
+  /**
+   * Generates a random ID that has not yet been used in the network
+   * @returns base_id
+   */
+  newVID () : base_id {
+    let id = this.free_vid++;
+    while (this.vertices.has(id)) {
+      id = Math.floor(Math.random() * this.vertice_limit);
+    }
+    return id;
   }
 
   private removeMultigraphEdge (id:base_id) {
@@ -134,24 +187,5 @@ export class Network {
     }
     return id;
   }
-
-  newVID () {
-    let id = this.free_vid++;
-    while (this.vertices.has(id)) {
-      id = Math.floor(Math.random() * this.vertice_limit);
-    }
-    return id;
-  }
 }
 
-
-const ERROR = {
-  UNDEFINED_VALUES: "Undefined values being given as arguments!",
-  EDGE_LIMIT: "Can't add new edge. Limit of Edges exceeded",
-  VERTICE_LIMIT: "Can't add new vertice. Limit of Vertices exceeded",
-  EXISTING_EDGE: "Trying to add an edge with already existing ID",
-  EXISTING_VERTICE: "Trying to add a vertice with already existing ID",
-  INEXISTENT_VERTICE: "Vertice doesn't exist",
-  NOT_MULTIGRAPH: "Trying to add multiple edges between two vertices. Graph is not a multigraph!",
-  UNDEFINED_ID: "Tried to use undefined id as input"
-};
