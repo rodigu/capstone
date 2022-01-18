@@ -5,9 +5,7 @@ export class Vertice {
   weight:number;
 
   /**
-   * ### Vertice constructor
-   * 
-   * 
+   * Vertice constructor
    * @param  {VerticeArgs} args
    */
   constructor (args:VerticeArgs) {
