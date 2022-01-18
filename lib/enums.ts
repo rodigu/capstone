@@ -6,8 +6,8 @@ export interface VerticeArgs {
 }
 
 export interface EdgeArgs {
-    vertice_a:base_id;
-    vertice_b:base_id;
+    from:base_id;
+    to:base_id;
     id?:base_id;
     weight?:number;
     do_force?:boolean;
