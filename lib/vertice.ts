@@ -1,8 +1,16 @@
-export class Vertice {
-  readonly id: string | number;
-  weight: number;
+import { base_id, VerticeArgs } from './enums.ts';
 
-  constructor (args : { id: string | number, weight?: number }) {
+export class Vertice {
+  readonly id:base_id;
+  weight:number;
+
+  /**
+   * ### Vertice constructor
+   * 
+   * 
+   * @param  {VerticeArgs} args
+   */
+  constructor (args:VerticeArgs) {
     this.id = args.id;
     this.weight ??= 1;
   }
