@@ -1,21 +1,20 @@
 import { Vertice } from "./vertice.ts";
 import { Edge } from "./edge.ts";
-
-export type base_id = number | string;
+import { base_id, VerticeArgs, EdgeArgs, NetworkArgs } from './enums.ts'
 
 export class Network {
-  readonly edges: Map<base_id, Edge>;
-  readonly vertices: Map<base_id, Vertice>;
+  readonly edges:Map<base_id, Edge>;
+  readonly vertices:Map<base_id, Vertice>;
 
-  readonly is_directed: boolean;
-  readonly is_multigraph: boolean;
+  readonly is_directed:boolean;
+  readonly is_multigraph:boolean;
 
-  private edge_limit: number;
-  private vertice_limit: number;
-  private free_eid: number;
-  private free_vid: number;
+  private edge_limit:number;
+  private vertice_limit:number;
+  private free_eid:number;
+  private free_vid:number;
 
-  constructor (args: { is_directed?: boolean, is_multigraph?: boolean, edge_limit?: number, vertice_limit?: number } = {}) {
+  constructor (args:NetworkArgs = {}) {
     this.edges = new Map();
     this.vertices = new Map();
     this.is_directed = args.is_directed ?? false;
@@ -26,12 +25,12 @@ export class Network {
     this.is_multigraph = args.is_multigraph ?? false;
   }
 
-  addEdge (args: { vertice_a: base_id, vertice_b: base_id,
-                  weight?: number, do_force?: boolean, id?: number }) {
+  addEdge (args:EdgeArgs) {
 
     args.do_force ??= true;
-    args.id ??= this.newEID();
     args.weight ??= 1;
+    
+    args.id ??= this.newEID();
 
     if (this.edges.has(args.id))
       throw { message: ERROR.EXISTING_EDGE };
@@ -52,28 +51,27 @@ export class Network {
     if (!this.is_multigraph && this.hasEdge(args.vertice_a, args.vertice_b ))
       throw { message: ERROR.NOT_MULTIGRAPH };
 
-    this.edges.set(args.id, new Edge({ vertice_a: args.vertice_a, vertice_b: args.vertice_b, weight: args.id }));
+
+    this.edges.set(args.id, new Edge(args));
   }
 
-  addVertice (args: { id?: base_id, weight?: number } = {}) {
+  addVertice (args:VerticeArgs) {
     if (this.vertices.size >= this.vertice_limit)
       throw { message: ERROR.VERTICE_LIMIT };
     if (args.id !== undefined && this.vertices.has(args.id))
       throw { message: ERROR.EXISTING_VERTICE };
 
-    args.id ??= this.newVID();
-
-    this.vertices.set(args.id, new Vertice({ id: args.id, weight: args.weight }));
+    this.vertices.set(args.id, new Vertice(args));
   }
 
-  removeVertice (id: base_id) {
+  removeVertice (id:base_id) {
     if (!this.vertices.has(id))
       throw { message: ERROR.INEXISTENT_VERTICE, vertice: id };
 
     this.vertices.delete(id);
   }
 
-  removeEdge (args: { vertice_a: base_id, vertice_b: base_id, id?: base_id }) {
+  removeEdge (args: { vertice_a:base_id, vertice_b:base_id, id?:base_id }) {
     if (this.is_multigraph) {
       if (args.id === undefined)
         throw { message: ERROR.UNDEFINED_ID, id: args.id };
@@ -129,7 +127,7 @@ export class Network {
     this.edges.delete(id);
   }
 
-  private newEID () {
+  newEID () {
     let id = this.free_eid++;
     while (this.edges.has(id)) {
       id = Math.floor(Math.random() * this.edge_limit);
@@ -137,7 +135,7 @@ export class Network {
     return id;
   }
 
-  private newVID () {
+  newVID () {
     let id = this.free_vid++;
     while (this.vertices.has(id)) {
       id = Math.floor(Math.random() * this.vertice_limit);
