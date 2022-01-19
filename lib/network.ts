@@ -25,7 +25,8 @@ export class Network {
     this.vertice_limit = args.vertice_limit ?? 500;
     this.free_eid = 0;
     this.free_vid = 0;
-    this.is_multigraph = args.is_multigraph ?? false;
+    // TODO: handle multigraphs
+    this.is_multigraph = false;
   }
   
   /**
@@ -129,6 +130,7 @@ export class Network {
       throw { message: ERROR.INEXISTENT_VERTICE, vertice: id };
 
     this.vertices.delete(id);
+    // TODO: removeVertice also should remove all edges with the vertice
   }
 
   /**
@@ -372,7 +374,52 @@ export class Network {
     return vertice_assortativity / this.degree(id);
   }
 
-  // TODO: complement function
+  /**
+   * Creates a [complement](https://www.wikiwand.com/en/Complement_graph) network.
+   * @returns Network
+   */
+  complement () : Network {
+    const complement_network = new Network({ is_directed: this.is_directed });
+    
+    this.vertices.forEach((vertice_a) => {
+      const { id: id_a } = vertice_a;
+      this.vertices.forEach((vertice_b) => {
+        const { id: id_b } = vertice_b;
+        if (id_a !== id_b) {
+          if (!this.hasEdge(id_a, id_b))
+            complement_network.addEdge({ from: id_a, to: id_b });
+          if (complement_network.is_directed && !this.hasEdge(id_b, id_a))
+            complement_network.addEdge({ from: id_b, to: id_a });
+        }
+      });
+    });
+
+    return complement_network;
+  }
+
+  /**
+   * Creates an [ego network](https://transportgeography.org/contents/methods/graph-theory-definition-properties/ego-network-graph/) of the vertice with the given id.
+   * @param  {base_id} id
+   * @returns Network
+   */
+  ego (id:base_id) : Network {
+    const ego_network = new Network({ is_directed: this.is_directed });
+
+    this.edges.forEach(edge => {
+      const { from, to } = edge.vertices
+      if (from === id || to === id) {
+        ego_network.addEdge({ from, to });
+      }
+    });
+
+    this.edges.forEach(({ vertices }) => {
+      const { from, to } = vertices;
+      if (ego_network.vertices.has(from) && ego_network.vertices.has(to))
+        ego_network.addEdge({ from, to });
+    });
+
+    return ego_network;
+  }
 
   /**
    * Generates a random ID that has not yet been used in the network
