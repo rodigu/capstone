@@ -1,5 +1,4 @@
 import { Network } from "./network.ts";
-import { base_id } from "./enums.ts";
 
 /**
  * Tries to generate a network with the given number of nodes and edges.
