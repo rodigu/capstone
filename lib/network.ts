@@ -255,7 +255,7 @@ export class Network {
    * @returns base_id
    */
   neighbors (id:base_id) : base_id[] {
-    let neighborhood:base_id[] = [];
+    const neighborhood:base_id[] = [];
 
     this.edges.forEach(({ vertices }) => {
       const { from, to } = vertices;
