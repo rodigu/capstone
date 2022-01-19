@@ -53,10 +53,33 @@ export class Network {
   }
 
   /**
+   * Get the values of the vertices.
+   * @returns base_id[]
+   */
+  get vertice_list () : Vertice[] {
+    return [...this.vertices.values()];
+  }
+
+  /**
+   * Size of the [maximum clique possible](https://www.wikiwand.com/en/Clique_(graph_theory)) with the network's number of verices.
+   * @returns number
+   */
+  get clique_size () : number {
+    return this.vertices.size * (this.vertices.size - 1) / 2;
+  }
+
+  /**
+   * Returns the network's [density](https://www.baeldung.com/cs/graph-density)
+   * @returns number
+   */
+  get density () : number {
+    return this.edges.size / this.clique_size;
+  }
+
+  /**
    * @param  {EdgeArgs} args
    */
   addEdge (args:EdgeArgs) {
-
     args.do_force ??= true;
     args.weight ??= 1;
     
@@ -296,6 +319,60 @@ export class Network {
 
     return out_degree;
   }
+
+  /**
+   * List of vertices with negative weight.
+   * @returns Vertice[]
+   */
+  negativeVertices () : Vertice[] {
+    const { vertice_list } = this;
+    return vertice_list.filter(vertice => {
+      return vertice.weight < 0;
+    });
+  }
+
+  /**
+   * List of vertices with positive weight.
+   * @returns Vertice[]
+   */
+  positiveVertices () : Vertice[] {
+    const { vertice_list } = this;
+    return vertice_list.filter(vertice => {
+      return vertice.weight > 0;
+    });
+  }
+
+  /**
+   * List of vertices with zero weight.
+   * @returns Vertice[]
+   */
+  zeroVertices () : Vertice[] {
+    const { vertice_list } = this;
+    return vertice_list.filter(vertice => {
+      return vertice.weight == 0;
+    });
+  }
+
+  /**
+   * [Assortativity](https://www.wikiwand.com/en/Assortativity) of a given vertice.
+   * @param  {base_id} id
+   * @returns number
+   */
+  assortativity (id:base_id) : number {
+    let vertice_assortativity = 0;
+    
+    this.edges.forEach(({ vertices }) => {
+      const { from, to } = vertices;
+      if (from === id) 
+        vertice_assortativity += this.degree(to);
+      else if (to === id)
+        vertice_assortativity += this.degree(from);
+    });
+
+    return vertice_assortativity / this.degree(id);
+  }
+
+  // TODO: complement function
 
   /**
    * Generates a random ID that has not yet been used in the network
