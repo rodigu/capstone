@@ -130,7 +130,17 @@ export class Network {
       throw { message: ERROR.INEXISTENT_VERTICE, vertice: id };
 
     this.vertices.delete(id);
-    // TODO: removeVertice also should remove all edges with the vertice
+
+    const edge_removal:base_id[] = [];
+
+    this.edges.forEach(({ vertices }, key) => {
+      const { from, to } = vertices;
+      if (from === id || to === id) {
+        edge_removal.push(key);
+      }
+    });
+    
+    edge_removal.forEach(edge_key => this.edges.delete(edge_key));
   }
 
   /**
