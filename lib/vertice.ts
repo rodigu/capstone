@@ -10,6 +10,6 @@ export class Vertice {
    */
   constructor (args:VerticeArgs) {
     this.id = args.id;
-    this.weight ??= 1;
+    this.weight = args.weight ?? 1;
   }
 }

@@ -14,7 +14,7 @@ export class Edge {
   constructor (args:EdgeArgs) {
     this.from = args.from;
     this.to = args.to;
-    this.weight ??= 1;
+    this.weight = args.weight ?? 1;
   }
 
   /**
