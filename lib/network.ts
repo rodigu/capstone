@@ -29,6 +29,15 @@ export class Network {
     this.is_multigraph = false;
   }
   
+  get args () : NetworkArgs {
+    return {
+      is_directed:this.is_directed,
+      is_multigraph:this.is_multigraph,
+      edge_limit:this.edge_limit,
+      vertex_limit:this.edge_limit
+    }
+  }
+
   /**
    * Get network's weight.
    * 
@@ -114,6 +123,87 @@ export class Network {
   }
   
   /**
+   * Add multiple edges from a map of edges.
+   * @param  {Map<base_id, Edge>} edge_map
+   */
+  addEdgeMap (edge_map:Map<base_id, Edge>) {
+    edge_map.forEach((edge, id) => this.edges.set(id, edge));
+  }
+
+  /**
+   * Add multiple edges from a map of edges.
+   * @param  {Map<base_id, Edge>} edge_map
+   */
+  addEdgeList (edge_list:EdgeArgs[]) {
+    edge_list.forEach((edge_args, id) => this.edges.set(id, new Edge(edge_args)));
+  }
+  
+  /**
+   * Removes an edge between the two given vertices.
+   * 
+   * If the network is a multigraph, an ID is needed to remove a specific edge.
+   * @param  {Object} args
+   * @param  {base_id} args.from
+   * @param  {base_id} args.to
+   * @param  {base_id} [args.id]
+   */
+  removeEdge (args: { from:base_id, to:base_id, id?:base_id }) {
+    if (args.id !== undefined) {
+        this.removeMultigraphEdge(args.id);
+        return;
+    }
+    else if (this.is_multigraph) {
+      throw { message: ERROR.UNDEFINED_ID, id: args.id };
+    }
+
+    this.edges.forEach(({ vertices }, id) => {
+        if (this.checkEdgeIsSame(vertices, args)) {
+          this.edges.delete(id);
+          return;
+        }
+    });
+  }
+  
+  /**
+   * Returns true if an edge (undirected) between from and to exists.
+   * @param  {base_id} from
+   * @param  {base_id} to
+   * @returns boolean
+   */
+  hasEdge (from:base_id, to:base_id) : boolean {
+    let has_edge = false;
+
+    this.edges.forEach(({ vertices }) => {
+      if (this.checkEdgeIsSame(vertices, { from, to }, false)) {
+        has_edge = true;
+        return;
+      }
+    });
+
+    return has_edge;
+  }
+  
+  /**
+   * Returns a list of edges between two given nodes.
+   * 
+   * If the network is not a multigraph, the list will always be either empty or have only one item.
+   * @param  {base_id} from
+   * @param  {base_id} to
+   * @returns base_id[]
+   */
+  getEdgesBetween (from:base_id, to:base_id) : base_id[] {
+    const edge_list:base_id[] = [];
+
+    this.edges.forEach(({ vertices }, id) => {
+      if (this.checkEdgeIsSame(vertices, { from, to })) {
+        edge_list.push(id);
+      }
+    });
+
+    return edge_list;
+  }
+
+  /**
    * @param  {VertexArgs} args
    */
   addVertex (args:VertexArgs) {
@@ -145,71 +235,6 @@ export class Network {
     });
 
     edge_removal.forEach(edge_key => this.edges.delete(edge_key));
-  }
-
-  /**
-   * Removes an edge between the two given vertices.
-   * 
-   * If the network is a multigraph, an ID is needed to remove a specific edge.
-   * @param  {Object} args
-   * @param  {base_id} args.from
-   * @param  {base_id} args.to
-   * @param  {base_id} [args.id]
-   */
-  removeEdge (args: { from:base_id, to:base_id, id?:base_id }) {
-    if (args.id !== undefined) {
-        this.removeMultigraphEdge(args.id);
-        return;
-    }
-    else if (this.is_multigraph) {
-      throw { message: ERROR.UNDEFINED_ID, id: args.id };
-    }
-
-    this.edges.forEach(({ vertices }, id) => {
-        if (this.checkEdgeIsSame(vertices, args)) {
-          this.edges.delete(id);
-          return;
-        }
-    });
-  }
-
-  /**
-   * Returns a list of edges between two given nodes.
-   * 
-   * If the network is not a multigraph, the list will always be either empty or have only one item.
-   * @param  {base_id} from
-   * @param  {base_id} to
-   * @returns base_id[]
-   */
-  getEdgesBetween (from:base_id, to:base_id) : base_id[] {
-    const edge_list:base_id[] = [];
-
-    this.edges.forEach(({ vertices }, id) => {
-      if (this.checkEdgeIsSame(vertices, { from, to })) {
-        edge_list.push(id);
-      }
-    });
-
-    return edge_list;
-  }
-
-  /**
-   * Returns true if an edge (undirected) between from and to exists.
-   * @param  {base_id} from
-   * @param  {base_id} to
-   * @returns boolean
-   */
-  hasEdge (from:base_id, to:base_id) : boolean {
-    let has_edge = false;
-
-    this.edges.forEach(({ vertices }) => {
-      if (this.checkEdgeIsSame(vertices, { from, to }, false)) {
-        has_edge = true;
-        return;
-      }
-    });
-
-    return has_edge;
   }
 
   /**
@@ -429,7 +454,7 @@ export class Network {
     return ego_network;
   }
 
-  // TODO: duplicate
+  // TODO: copy
 
   /**
    * Generates a random ID that has not yet been used in the network
