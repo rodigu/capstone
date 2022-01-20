@@ -1,6 +1,6 @@
 export type base_id = string|number;
 
-export interface VerticeArgs {
+export interface VertexArgs {
     id:base_id;
     weight?:number;
 }
@@ -17,16 +17,16 @@ export interface NetworkArgs {
     is_directed?:boolean;
     is_multigraph?:boolean;
     edge_limit?:number;
-    vertice_limit?:number;
+    vertex_limit?:number;
 }
 
 export const ERROR = {
   UNDEFINED_VALUES: "Undefined values being given as arguments!",
   EDGE_LIMIT: "Can't add new edge. Limit of Edges exceeded",
-  VERTICE_LIMIT: "Can't add new vertice. Limit of Vertices exceeded",
+  VERTICE_LIMIT: "Can't add new vertex. Limit of Vertices exceeded",
   EXISTING_EDGE: "Trying to add an edge with already existing ID",
-  EXISTING_VERTICE: "Trying to add a vertice with already existing ID",
-  INEXISTENT_VERTICE: "Vertice doesn't exist",
+  EXISTING_VERTICE: "Trying to add a vertex with already existing ID",
+  INEXISTENT_VERTICE: "Vertex doesn't exist",
   NOT_MULTIGRAPH: "Trying to add multiple edges between two vertices. Graph is not a multigraph!",
   UNDEFINED_ID: "Tried to use undefined id as input",
 };
