@@ -1,16 +1,16 @@
-import { Vertice } from "./vertice.ts";
+import { Vertex } from "./vertex.ts";
 import { Edge } from "./edge.ts";
-import { base_id, VerticeArgs, EdgeArgs, NetworkArgs, ERROR } from './enums.ts'
+import { base_id, VertexArgs, EdgeArgs, NetworkArgs, ERROR } from './enums.ts'
 
 export class Network {
   readonly edges:Map<base_id, Edge>;
-  readonly vertices:Map<base_id, Vertice>;
+  readonly vertices:Map<base_id, Vertex>;
 
   readonly is_directed:boolean;
   readonly is_multigraph:boolean;
 
   private edge_limit:number;
-  private vertice_limit:number;
+  private vertex_limit:number;
   private free_eid:number;
   private free_vid:number;
 
@@ -22,7 +22,7 @@ export class Network {
     this.vertices = new Map();
     this.is_directed = args.is_directed ?? false;
     this.edge_limit = args.edge_limit ?? 500;
-    this.vertice_limit = args.vertice_limit ?? 500;
+    this.vertex_limit = args.vertex_limit ?? 500;
     this.free_eid = 0;
     this.free_vid = 0;
     // TODO: handle multigraphs
@@ -38,8 +38,8 @@ export class Network {
   get weight () : number {
       let network_weight = 0;
 
-      this.vertices.forEach(vertice => {
-        network_weight += vertice.weight;
+      this.vertices.forEach(vertex => {
+        network_weight += vertex.weight;
       });
 
       return network_weight;
@@ -57,8 +57,12 @@ export class Network {
    * Get the values of the vertices.
    * @returns base_id[]
    */
-  get vertice_list () : Vertice[] {
+  get vertex_list () : Vertex[] {
     return [...this.vertices.values()];
+  }
+
+  get edge_list () : Edge[] {
+    return [...this.edges.values()];
   }
 
   /**
@@ -94,12 +98,12 @@ export class Network {
 
     if (!args.do_force) {
       if (!this.vertices.has(args.from))
-        throw { message: ERROR.INEXISTENT_VERTICE, vertice: args.from };
+        throw { message: ERROR.INEXISTENT_VERTICE, vertex: args.from };
       if (!this.vertices.has(args.to))
-        throw { message: ERROR.INEXISTENT_VERTICE, vertice: args.to };
+        throw { message: ERROR.INEXISTENT_VERTICE, vertex: args.to };
     } else {
-      if (!this.vertices.has(args.from)) this.addVertice({ id: args.from });
-      if (!this.vertices.has(args.to)) this.addVertice({ id: args.to });
+      if (!this.vertices.has(args.from)) this.addVertex({ id: args.from });
+      if (!this.vertices.has(args.to)) this.addVertex({ id: args.to });
     }
 
     if (!this.is_multigraph && this.hasEdge(args.from, args.to ))
@@ -110,24 +114,24 @@ export class Network {
   }
   
   /**
-   * @param  {VerticeArgs} args
+   * @param  {VertexArgs} args
    */
-  addVertice (args:VerticeArgs) {
-    if (this.vertices.size >= this.vertice_limit)
+  addVertex (args:VertexArgs) {
+    if (this.vertices.size >= this.vertex_limit)
       throw { message: ERROR.VERTICE_LIMIT };
     if (args.id !== undefined && this.vertices.has(args.id))
       throw { message: ERROR.EXISTING_VERTICE };
 
-    this.vertices.set(args.id, new Vertice(args));
+    this.vertices.set(args.id, new Vertex(args));
   }
 
   /**
-   * Removes vertice with given id
+   * Removes vertex with given id.
    * @param  {base_id} id
    */
-  removeVertice (id:base_id) {
+  removeVertex (id:base_id) {
     if (!this.vertices.has(id))
-      throw { message: ERROR.INEXISTENT_VERTICE, vertice: id };
+      throw { message: ERROR.INEXISTENT_VERTICE, vertex: id };
 
     this.vertices.delete(id);
 
@@ -139,12 +143,12 @@ export class Network {
         edge_removal.push(key);
       }
     });
-    
+
     edge_removal.forEach(edge_key => this.edges.delete(edge_key));
   }
 
   /**
-   * Removes an edge between the two vertices.
+   * Removes an edge between the two given vertices.
    * 
    * If the network is a multigraph, an ID is needed to remove a specific edge.
    * @param  {Object} args
@@ -161,10 +165,8 @@ export class Network {
       throw { message: ERROR.UNDEFINED_ID, id: args.id };
     }
 
-    const { from, to } = args;
-    this.edges.forEach((edge, id) => {
-      const { from: a, to: b } = edge.vertices;
-        if ((a === from && b === to) || (b === from && a === to)) {
+    this.edges.forEach(({ vertices }, id) => {
+        if (this.checkEdgeIsSame(vertices, args)) {
           this.edges.delete(id);
           return;
         }
@@ -182,9 +184,8 @@ export class Network {
   getEdgesBetween (from:base_id, to:base_id) : base_id[] {
     const edge_list:base_id[] = [];
 
-    this.edges.forEach((edge, id) => {
-      const { from: a, to: b } = edge.vertices;
-      if ((a === from && b === to) || (b === from && a === to)) {
+    this.edges.forEach(({ vertices }, id) => {
+      if (this.checkEdgeIsSame(vertices, { from, to })) {
         edge_list.push(id);
       }
     });
@@ -202,12 +203,9 @@ export class Network {
     let has_edge = false;
 
     this.edges.forEach(({ vertices }) => {
-      const { from: a, to: b } = vertices;
-      if ((a === from && b === to)){
-        if (this.is_directed || (b === from && a === to)) {
-          has_edge = true;
-          return;
-        }
+      if (this.checkEdgeIsSame(vertices, { from, to }, false)) {
+        has_edge = true;
+        return;
       }
     });
 
@@ -219,12 +217,12 @@ export class Network {
    * @param  {base_id} id
    * @returns boolean
    */
-  hasVertice (id:base_id) : boolean {
+  hasVertex (id:base_id) : boolean {
     return this.vertices.has(id);
   }
 
   /**
-   * Get in-neighbors of a given vertice.
+   * Get in-neighbors of a given vertex.
    * 
    * Returns [] if network is undirected.
    * @param  {base_id} id
@@ -243,7 +241,7 @@ export class Network {
   }
 
   /**
-   * Get out-neighbors of a given vertice.
+   * Get out-neighbors of a given vertex.
    * 
    * Returns [] if network is undirected.
    * @param  {base_id} id
@@ -262,7 +260,7 @@ export class Network {
   }
 
   /**
-   * Get list of neighbors to a vertice.
+   * Get list of neighbors to a vertex.
    * @param  {base_id} id
    * @returns base_id
    */
@@ -279,25 +277,25 @@ export class Network {
   }
 
   /**
-   * Return the degree of a vertice with the given ID.
+   * Return the degree of a vertex with the given ID.
    * @param  {base_id} id
    * @returns number
    */
   degree (id:base_id) : number {
-    let vertice_degree = 0;
+    let vertex_degree = 0;
 
     this.edges.forEach(({ vertices }) => {
-      const { from: a, to: b } = vertices;
-      if (a === id || b === id) vertice_degree++;
+      const { from, to } = vertices;
+      if (from === id || to === id) vertex_degree++;
     });
 
-    return vertice_degree;
+    return vertex_degree;
   }
 
   /**
-   * Return the in-degree of a vertice.
+   * Return the in-degree of a vertex.
    * 
-   * The in-degree of a vertice is the sum of the dregrees of the edges that are directed to it.
+   * The in-degree of a vertex is the sum of the dregrees of the edges that are directed to it.
    * @param  {base_id} id
    * @returns number
    */
@@ -314,9 +312,9 @@ export class Network {
   }
 
   /**
-   * Return the out-degree of a vertice.
+   * Return the out-degree of a vertex.
    * 
-   * The out-degree of a vertice is the sum of the dregrees of the edges that are directed away from it.
+   * The out-degree of a vertex is the sum of the dregrees of the edges that are directed away from it.
    * @param  {base_id} id
    * @returns number
    */
@@ -334,54 +332,54 @@ export class Network {
 
   /**
    * List of vertices with negative weight.
-   * @returns Vertice[]
+   * @returns Vertex[]
    */
-  negativeVertices () : Vertice[] {
-    const { vertice_list } = this;
-    return vertice_list.filter(vertice => {
-      return vertice.weight < 0;
+  negativeVertexs () : Vertex[] {
+    const { vertex_list } = this;
+    return vertex_list.filter(vertex => {
+      return vertex.weight < 0;
     });
   }
 
   /**
    * List of vertices with positive weight.
-   * @returns Vertice[]
+   * @returns Vertex[]
    */
-  positiveVertices () : Vertice[] {
-    const { vertice_list } = this;
-    return vertice_list.filter(vertice => {
-      return vertice.weight > 0;
+  positiveVertexs () : Vertex[] {
+    const { vertex_list } = this;
+    return vertex_list.filter(vertex => {
+      return vertex.weight > 0;
     });
   }
 
   /**
    * List of vertices with zero weight.
-   * @returns Vertice[]
+   * @returns Vertex[]
    */
-  zeroVertices () : Vertice[] {
-    const { vertice_list } = this;
-    return vertice_list.filter(vertice => {
-      return vertice.weight == 0;
+  zeroVertexs () : Vertex[] {
+    const { vertex_list } = this;
+    return vertex_list.filter(vertex => {
+      return vertex.weight == 0;
     });
   }
 
   /**
-   * [Assortativity](https://www.wikiwand.com/en/Assortativity) of a given vertice.
+   * [Assortativity](https://www.wikiwand.com/en/Assortativity) of a given vertex.
    * @param  {base_id} id
    * @returns number
    */
   assortativity (id:base_id) : number {
-    let vertice_assortativity = 0;
+    let vertex_assortativity = 0;
     
     this.edges.forEach(({ vertices }) => {
       const { from, to } = vertices;
       if (from === id) 
-        vertice_assortativity += this.degree(to);
+        vertex_assortativity += this.degree(to);
       else if (to === id)
-        vertice_assortativity += this.degree(from);
+        vertex_assortativity += this.degree(from);
     });
 
-    return vertice_assortativity / this.degree(id);
+    return vertex_assortativity / this.degree(id);
   }
 
   /**
@@ -391,10 +389,10 @@ export class Network {
   complement () : Network {
     const complement_network = new Network({ is_directed: this.is_directed });
     
-    this.vertices.forEach((vertice_a) => {
-      const { id: id_a } = vertice_a;
-      this.vertices.forEach((vertice_b) => {
-        const { id: id_b } = vertice_b;
+    this.vertices.forEach((vertex_a) => {
+      const { id: id_a } = vertex_a;
+      this.vertices.forEach((vertex_b) => {
+        const { id: id_b } = vertex_b;
         if (id_a !== id_b) {
           if (!this.hasEdge(id_a, id_b))
             complement_network.addEdge({ from: id_a, to: id_b });
@@ -408,7 +406,7 @@ export class Network {
   }
 
   /**
-   * Creates an [ego network](https://transportgeography.org/contents/methods/graph-theory-definition-properties/ego-network-graph/) of the vertice with the given id.
+   * Creates an [ego network](https://transportgeography.org/contents/methods/graph-theory-definition-properties/ego-network-graph/) of the vertex with the given id.
    * @param  {base_id} id
    * @returns Network
    */
@@ -431,6 +429,8 @@ export class Network {
     return ego_network;
   }
 
+  // TODO: duplicate
+
   /**
    * Generates a random ID that has not yet been used in the network
    * @returns base_id
@@ -438,7 +438,7 @@ export class Network {
   newVID () : base_id {
     let id = this.free_vid++;
     while (this.vertices.has(id)) {
-      id = Math.floor(Math.random() * this.vertice_limit);
+      id = Math.floor(Math.random() * this.vertex_limit);
     }
     return id;
   }
@@ -453,6 +453,15 @@ export class Network {
       id = Math.floor(Math.random() * this.edge_limit);
     }
     return id;
+  }
+
+  private checkEdgeIsSame (edge_a:EdgeArgs, edge_b:EdgeArgs, is_directed = this.is_directed) : boolean {
+    // TODO: multigraph -> edge needs to have the same id
+    if (edge_a.from === edge_b.from && edge_a.to === edge_b.to)
+      return true;
+    else if (edge_a.to === edge_b.from && edge_a.from === edge_b.to && !is_directed)
+      return true;
+    return false;
   }
 }
 
