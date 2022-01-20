@@ -334,7 +334,7 @@ export class Network {
    * List of vertices with negative weight.
    * @returns Vertex[]
    */
-  negativeVertexs () : Vertex[] {
+  negativeVertex () : Vertex[] {
     const { vertex_list } = this;
     return vertex_list.filter(vertex => {
       return vertex.weight < 0;
@@ -345,7 +345,7 @@ export class Network {
    * List of vertices with positive weight.
    * @returns Vertex[]
    */
-  positiveVertexs () : Vertex[] {
+  positiveVertex () : Vertex[] {
     const { vertex_list } = this;
     return vertex_list.filter(vertex => {
       return vertex.weight > 0;
@@ -356,7 +356,7 @@ export class Network {
    * List of vertices with zero weight.
    * @returns Vertex[]
    */
-  zeroVertexs () : Vertex[] {
+  zeroVertex () : Vertex[] {
     const { vertex_list } = this;
     return vertex_list.filter(vertex => {
       return vertex.weight == 0;
