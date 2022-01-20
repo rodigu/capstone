@@ -13,8 +13,8 @@ export function randomNetworkGen (args: { number_vertices:number, number_edges:n
   is_directed ??= false;
   const net = new Network({ is_directed });
 
-  for (let vertice = 0; vertice < number_vertices; vertice++)
-    net.addVertice({ id: vertice });
+  for (let vertex = 0; vertex < number_vertices; vertex++)
+    net.addVertex({ id: vertex });
   while (net.edges.size < number_edges) {
     const from = Math.floor(Math.random() * number_vertices);
     const to = Math.floor(Math.random() * number_vertices);
@@ -23,3 +23,9 @@ export function randomNetworkGen (args: { number_vertices:number, number_edges:n
 
   return net;
 }
+
+/*
+TODO:
+- [] write to csv
+- [] read from csv
+*/
