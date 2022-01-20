@@ -470,7 +470,12 @@ export class Network {
     return ego_network;
   }
 
-  // TODO: copy
+  copy () : Network {
+    const network_copy = new Network(this.args);
+    network_copy.addEdgeMap(this.edges);
+    network_copy.addVertexMap(this.vertices);
+    return network_copy;
+  }
 
   /**
    * Generates a random ID that has not yet been used in the network
