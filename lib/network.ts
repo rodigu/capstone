@@ -470,11 +470,38 @@ export class Network {
     return ego_network;
   }
 
+  /**
+   * Returns a copy of the network.
+   * @returns Network
+   */
   copy () : Network {
     const network_copy = new Network(this.args);
     network_copy.addEdgeMap(this.edges);
     network_copy.addVertexMap(this.vertices);
     return network_copy;
+  }
+
+  /**
+   * Calculates the [clustering coefficient](https://www.wikiwand.com/en/Clustering_coefficient) of a given vertex.
+   * @param  {base_id} id
+   * @returns number
+   */
+  clusteringCoefficient (id:base_id) : number {
+    const ego_net = this.ego(id);
+
+    if (ego_net.vertices.size <= 2) return 0;
+    
+    const max_edges = (ego_net.vertices.size - 1) * (ego_net.vertices.size - 2) / 2;
+    let existing_edges = 0;
+    
+    ego_net.vertices.forEach(vertex => {
+      if (vertex.id != id)
+        ego_net.vertices.forEach(vertex_neighbor => {
+          if (vertex_neighbor.id != id && ego_net.hasEdge(vertex_neighbor.id, vertex.id)) existing_edges++;
+        });
+    });
+    
+    return existing_edges / (2 * max_edges);
   }
 
   /**
