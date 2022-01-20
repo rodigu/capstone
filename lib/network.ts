@@ -131,8 +131,8 @@ export class Network {
   }
 
   /**
-   * Add multiple edges from a map of edges.
-   * @param  {Map<base_id, Edge>} edge_map
+   * Add multiple edges from a list of EdgeArgs.
+   * @param  {EdgeArgs[]} edge_list
    */
   addEdgeList (edge_list:EdgeArgs[]) {
     edge_list.forEach((edge_args, id) => this.edges.set(id, new Edge(edge_args)));
@@ -214,7 +214,23 @@ export class Network {
 
     this.vertices.set(args.id, new Vertex(args));
   }
+  
+  /**
+   * Add multiple vertices from a map of vertices.
+   * @param  {Map<base_id, Vertex>} vertex_map
+   */
+  addVertexMap (vertex_map:Map<base_id, Vertex>) {
+    vertex_map.forEach((vertex, id) => this.vertices.set(id, vertex));
+  }
 
+  /**
+   * Add multiple vertices from a list of VertexArgs.
+   * @param  {VertexArgs[]} vertex_list
+   */
+  addVertexList (vertex_list:VertexArgs[]) {
+    vertex_list.forEach((vertex_args, id) => this.vertices.set(id, new Vertex(vertex_args)));
+  }
+  
   /**
    * Removes vertex with given id.
    * @param  {base_id} id
