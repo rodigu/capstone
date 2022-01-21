@@ -20,6 +20,8 @@ export interface NetworkArgs {
     vertex_limit?:number;
 }
 
+export type ParsedCSV = string[][]; 
+
 export const ERROR = {
   UNDEFINED_VALUES: "Undefined values being given as arguments!",
   EDGE_LIMIT: "Can't add new edge. Limit of Edges exceeded",
