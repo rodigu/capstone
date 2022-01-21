@@ -75,7 +75,7 @@ export class Network {
   }
 
   /**
-   * Size of the [maximum clique possible](https://www.wikiwand.com/en/Clique_(graph_theory)) with the network's number of verices.
+   * Number of edges in the [maximum clique possible](https://www.wikiwand.com/en/Clique_(graph_theory)) with the network's number of verices.
    * @returns number
    */
   get clique_size () : number {
@@ -491,6 +491,7 @@ export class Network {
 
     if (ego_net.vertices.size <= 2) return 0;
     
+    // Max edges in a network without the given vertix
     const max_edges = (ego_net.vertices.size - 1) * (ego_net.vertices.size - 2) / 2;
     let existing_edges = 0;
     
@@ -503,6 +504,8 @@ export class Network {
     
     return existing_edges / (2 * max_edges);
   }
+
+  // TODO: averageClustering
 
   /**
    * Generates a random ID that has not yet been used in the network
