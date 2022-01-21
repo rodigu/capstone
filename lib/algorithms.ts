@@ -61,9 +61,7 @@ export async function loadAdjacencyMatrix (file_name:string, is_directed = false
         if (weight) {
           const from = parsed_csv[line_number][0];
           const to = parsed_csv[0][column_number];
-          try{
-            csv_network.addEdge({ from, to, weight });
-          } catch (e) {e}
+          csv_network.addEdge({ from, to, weight });
         }
       })
     });
