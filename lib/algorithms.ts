@@ -1,5 +1,5 @@
 import { Network } from "./network.ts";
-import { NetworkArgs, ParsedCSV } from "./enums.ts";
+import { ParsedCSV } from "./enums.ts";
 
 /**
  * Tries to generate a network with the given number of nodes and edges.
