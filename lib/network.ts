@@ -31,10 +31,10 @@ export class Network {
   
   get args () : NetworkArgs {
     return {
-      is_directed:this.is_directed,
-      is_multigraph:this.is_multigraph,
-      edge_limit:this.edge_limit,
-      vertex_limit:this.edge_limit
+      is_directed: this.is_directed,
+      is_multigraph: this.is_multigraph,
+      edge_limit: this.edge_limit,
+      vertex_limit: this.vertex_limit
     }
   }
 
@@ -78,7 +78,7 @@ export class Network {
    * Number of edges in the [maximum clique possible](https://www.wikiwand.com/en/Clique_(graph_theory)) with the network's number of verices.
    * @returns number
    */
-  get clique_size () : number {
+  get max_edges () : number {
     return this.vertices.size * (this.vertices.size - 1) / 2;
   }
 
@@ -87,7 +87,7 @@ export class Network {
    * @returns number
    */
   get density () : number {
-    return this.edges.size / this.clique_size;
+    return this.edges.size / this.max_edges;
   }
 
   /**
@@ -116,7 +116,8 @@ export class Network {
     }
 
     if (!this.is_multigraph && this.hasEdge(args.from, args.to ))
-      throw { message: ERROR.NOT_MULTIGRAPH };
+      return;
+      // throw { message: ERROR.NOT_MULTIGRAPH };
 
 
     this.edges.set(args.id, new Edge(args));
@@ -452,7 +453,7 @@ export class Network {
    * @returns Network
    */
   ego (id:base_id) : Network {
-    const ego_network = new Network({ is_directed: this.is_directed });
+    const ego_network = new Network(this.args);
 
     this.edges.forEach(edge => {
       const { from, to } = edge.vertices
@@ -489,20 +490,19 @@ export class Network {
   clusteringCoefficient (id:base_id) : number {
     const ego_net = this.ego(id);
 
-    if (ego_net.vertices.size <= 2) return 0;
+    if (ego_net.vertices.size <= 1) return 0;
     
-    // Max edges in a network without the given vertix
-    const max_edges = (ego_net.vertices.size - 1) * (ego_net.vertices.size - 2) / 2;
-    let existing_edges = 0;
+    const centerless_ego = ego_net;
+
+    // Max edges in a network without the given vertex.
+    centerless_ego.removeVertex(id);
+    const { max_edges } = centerless_ego;
+    const existing_edges = centerless_ego.edges.size;
     
-    ego_net.vertices.forEach(vertex => {
-      if (vertex.id != id)
-        ego_net.vertices.forEach(vertex_neighbor => {
-          if (vertex_neighbor.id != id && ego_net.hasEdge(vertex_neighbor.id, vertex.id)) existing_edges++;
-        });
-    });
+    // If graph is directed, multiply result by 2.
+    const directed_const = this.is_directed ? 2 : 1;
     
-    return existing_edges / (2 * max_edges);
+    return directed_const * (existing_edges / max_edges);
   }
 
   // TODO: averageClustering
