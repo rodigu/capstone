@@ -20,4 +20,4 @@ function valuesTest (network:nets.Network) {
 const net_csv = await nets.loadAdjacencyMatrix('./data/networkMatrix.csv');
 console.log('CSV loaded');
 valuesTest(net_csv);
-console.log(net_csv);
+logNetwork(net_csv);
