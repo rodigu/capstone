@@ -487,7 +487,7 @@ export class Network {
    * @param  {base_id} id
    * @returns number
    */
-  clusteringCoefficient (id:base_id) : number {
+  clustering (id:base_id) : number {
     const ego_net = this.ego(id);
 
     if (ego_net.vertices.size <= 1) return 0;

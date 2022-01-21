@@ -29,7 +29,7 @@ function valuesTest (network:nets.Network) {
                 `Genus:                 ${network.genus}\n` +
                 `Clique Size:           ${network.max_edges}\n` +
                 `Density:               ${network.density}\n` +
-                `Clustering for ETH:    ${network.clusteringCoefficient('ETH')}\n`);
+                `Clustering for ETH:    ${network.clustering('ETH')}\n`);
 }
 
 // basicTest(net);
