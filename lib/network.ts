@@ -45,13 +45,7 @@ export class Network {
    * @returns number
    */
   get weight () : number {
-      let network_weight = 0;
-
-      this.vertices.forEach(vertex => {
-        network_weight += vertex.weight;
-      });
-
-      return network_weight;
+      return this.vertex_list.map(vertex => vertex.weight).reduce((prev, curr) => prev + curr);
   }
 
   /**
@@ -506,6 +500,17 @@ export class Network {
   }
 
   // TODO: averageClustering
+  averageClustering () : number {
+    let average_clustering = 0;
+    
+    if (this.vertices.size <= 1) return average_clustering;
+    
+    const clustering_sum = this.vertex_list.map(vertex => this.clustering(vertex.id)).reduce((prev, curr) => prev + curr);
+
+    average_clustering = clustering_sum / this.vertices.size
+
+    return average_clustering;
+  }
 
   /**
    * Generates a random ID that has not yet been used in the network
