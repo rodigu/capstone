@@ -9,7 +9,12 @@ import { ParsedCSV } from "./enums.ts";
  * @param  {boolean} [args.is_directed]
  * @returns Network
  */
-export function randomNetworkGen (args: { number_vertices:number, number_edges:number, is_directed?:boolean, edge_tries?:number }) : Network {
+export function randomNetworkGen(args: {
+  number_vertices: number;
+  number_edges: number;
+  is_directed?: boolean;
+  edge_tries?: number;
+}): Network {
   let { number_vertices, number_edges, is_directed } = args;
   is_directed ??= false;
   const net = new Network({ is_directed });
@@ -37,13 +42,16 @@ export function randomNetworkGen (args: { number_vertices:number, number_edges:n
  * @param  {string} file_name
  * @returns Network
  */
-export async function loadAdjacencyMatrix (file_name:string, is_directed = false) : Promise<Network> {
+export async function loadAdjacencyMatrix(
+  file_name: string,
+  is_directed = false
+): Promise<Network> {
   const csv_file = await Deno.readTextFile(file_name);
 
   const parsed_csv = parseCSV([...csv_file]);
 
   const vertex_limit = parsed_csv[0].length;
-  const edge_limit = parsed_csv[0].length * (parsed_csv[0].length - 1) / 2;
+  const edge_limit = (parsed_csv[0].length * (parsed_csv[0].length - 1)) / 2;
 
   const csv_network = new Network({ is_directed, vertex_limit, edge_limit });
 
@@ -63,7 +71,7 @@ export async function loadAdjacencyMatrix (file_name:string, is_directed = false
           const to = parsed_csv[0][column_number];
           csv_network.addEdge({ from, to, weight });
         }
-      })
+      });
     });
   }
 
@@ -75,20 +83,20 @@ export async function loadAdjacencyMatrix (file_name:string, is_directed = false
  * @param  {string[]} csv_file
  * @returns ParsedCSV
  */
-function parseCSV (csv_file:string[]) : ParsedCSV {
-  const parsed_csv:ParsedCSV = [[]];
+function parseCSV(csv_file: string[]): ParsedCSV {
+  const parsed_csv: ParsedCSV = [[]];
 
   let current_line = parsed_csv.length - 1;
-  let current_char = '';
-  csv_file.forEach(char => {
-    if (char === '\n') {
+  let current_char = "";
+  csv_file.forEach((char) => {
+    if (char === "\n") {
       parsed_csv.push([]);
       current_line = parsed_csv.length - 1;
-      current_char = '';
+      current_char = "";
       return;
-    } else if (char === ',') {
+    } else if (char === ",") {
       parsed_csv[current_line].push(current_char);
-      current_char = '';
+      current_char = "";
       return;
     }
     current_char += char;
