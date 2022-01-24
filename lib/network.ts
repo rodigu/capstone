@@ -498,8 +498,11 @@ export class Network {
     
     return directed_const * (existing_edges / max_edges);
   }
-
-  // TODO: averageClustering
+  
+  /**
+   * Calculates the newtork's average [clustering](https://www.wikiwand.com/en/Clustering_coefficient).
+   * @returns number
+   */
   averageClustering () : number {
     let average_clustering = 0;
     
@@ -512,8 +515,36 @@ export class Network {
     return average_clustering;
   }
 
+  // TODO:
+  // - [] closenessCentrality
+
   /**
-   * Generates a random ID that has not yet been used in the network
+   * Creates a k-core decomposition of a network.
+   * @param  {number} k
+   * @returns Network
+   */
+  core (k:number) : Network {
+    const k_decomposition = this.copy();
+
+    while (k > 0 && k_decomposition.vertices.size > 0) {
+      let { vertex_list } = k_decomposition;
+      let vertex_counter;
+      for (vertex_counter = 0; vertex_counter < vertex_list.length; vertex_counter ++) {
+        const current_vertex = k_decomposition.vertex_list[vertex_counter];
+        if (k_decomposition.degree(current_vertex.id) < k) {
+          k_decomposition.removeVertex(current_vertex.id);
+          vertex_list = k_decomposition.vertex_list;
+          vertex_counter = 0;
+        }
+      }
+      k--;
+    }
+
+    return k_decomposition;
+  }
+
+  /**
+   * Generates a random ID that has not yet been used in the network.
    * @returns base_id
    */
   newVID () : base_id {
