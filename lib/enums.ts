@@ -1,5 +1,7 @@
 export type base_id = string | number;
 
+export type Triplet = base_id[];
+
 export interface VertexArgs {
   id: base_id;
   weight?: number;
