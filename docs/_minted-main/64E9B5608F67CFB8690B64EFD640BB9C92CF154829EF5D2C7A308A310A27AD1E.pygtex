@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{export} \PYG{k+kd}{type} \PYG{n+nx}{base\PYGZus{}id} \PYG{o}{=} \PYG{k+kt}{string} \PYG{o}{|} \PYG{k+kt}{number}\PYG{p}{;}
-\end{Verbatim}

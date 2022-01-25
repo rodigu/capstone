@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-  \PYG{n+nx}{get} \PYG{n+nx}{max\PYGZus{}edges}\PYG{p}{()}\PYG{o}{:} \PYG{k+kt}{number} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{size} \PYG{o}{*} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{size} \PYG{o}{\PYGZhy{}} \PYG{l+m+mf}{1}\PYG{p}{))} \PYG{o}{/} \PYG{l+m+mf}{2}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
-\end{Verbatim}

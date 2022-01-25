@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-  \PYG{n+nx}{hasVertex}\PYG{p}{(}\PYG{n+nx}{id}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{)}\PYG{o}{:} \PYG{k+kr}{boolean} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{id}\PYG{p}{);}
-  \PYG{p}{\PYGZcb{}}
-\end{Verbatim}
