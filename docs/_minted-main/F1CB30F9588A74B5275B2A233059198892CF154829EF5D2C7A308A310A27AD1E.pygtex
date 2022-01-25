@@ -1,4 +1,5 @@
 \begin{Verbatim}[commandchars=\\\{\}]
+
 \PYG{k}{import} \PYG{p}{\PYGZob{}} \PYG{n+nx}{base\PYGZus{}id}\PYG{p}{,} \PYG{n+nx}{VertexArgs} \PYG{p}{\PYGZcb{}} \PYG{n+nx}{from} \PYG{l+s+s2}{\PYGZdq{}./enums.ts\PYGZdq{}}\PYG{p}{;}
 
 \PYG{k}{export} \PYG{k+kd}{class} \PYG{n+nx}{Vertex} \PYG{p}{\PYGZob{}}
@@ -13,4 +14,5 @@
     \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{id} \PYG{o}{=} \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{id}\PYG{p}{;}
     \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{weight} \PYG{o}{=} \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{weight} \PYG{o}{??} \PYG{l+m+mf}{1}\PYG{p}{;}
   \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
 \end{Verbatim}

@@ -1,0 +1,234 @@
+\chapter{Functions}
+
+Functions can be separated into two types: utility, and algorithm.
+The former serves specific purposes in the class. Adding edges and vertices, removing them etc.
+The latter implements algorithms, such as returning a network's assortativity or its coplement.
+
+\subsection{Utility Functions}
+The functions for removing edges and vertices are self-explanatory in their name.
+
+\begin{minted}[bgcolor=bg]{ts}
+    removeEdge(args: { from: base_id; to: base_id; id?: base_id }) {
+    if (args.id !== undefined) {
+      this.removeMultigraphEdge(args.id);
+      return;
+    } else if (this.is_multigraph) {
+      throw { message: ERROR.UNDEFINED_ID, id: args.id };
+    }
+
+    this.edges.forEach(({ vertices }, id) => {
+      if (this.checkEdgeIsSame(vertices, args)) {
+        this.edges.delete(id);
+        return;
+      }
+    });
+  }
+\end{minted}
+
+The 'removeVertice' function differs itself from 'removeEdge'.
+When a vertex is removed, all of the edges associated with it also have to be removed.
+
+\begin{minted}[bgcolor=bg]{ts}
+  removeVertex(id: base_id) {
+    if (!this.vertices.has(id))
+      throw { message: ERROR.INEXISTENT_VERTICE, vertex: id };
+
+    this.vertices.delete(id);
+
+    this.edges.forEach(({ vertices }, key) => {
+      const { from, to } = vertices;
+      if (from === id || to === id)
+        this.edges.delete(key)
+    });
+  }
+\end{minted}
+
+An advantage of using Maps to store the network's vertices and edges is that it is easier to get them by ID:
+
+\begin{minted}[bgcolor=bg]{ts}
+  hasVertex(id: base_id): boolean {
+    return this.vertices.has(id);
+  }
+\end{minted}
+
+Other utility functions are:
+
+\begin{minted}[bgcolor=bg]{ts}
+  /**
+   * @param  {EdgeArgs} args
+   */
+   addEdge(args: EdgeArgs) {
+    args.do_force ??= true;
+    args.weight ??= 1;
+
+    args.id ??= this.newEID();
+
+    if (this.edges.has(args.id)) throw { message: ERROR.EXISTING_EDGE };
+
+    if (this.edges.size >= this.edge_limit) throw { message: ERROR.EDGE_LIMIT };
+
+    if (!args.do_force) {
+      if (!this.vertices.has(args.from))
+        throw { message: ERROR.INEXISTENT_VERTICE, vertex: args.from };
+      if (!this.vertices.has(args.to))
+        throw { message: ERROR.INEXISTENT_VERTICE, vertex: args.to };
+    } else {
+      if (!this.vertices.has(args.from)) this.addVertex({ id: args.from });
+      if (!this.vertices.has(args.to)) this.addVertex({ id: args.to });
+    }
+
+    if (!this.is_multigraph && this.hasEdge(args.from, args.to)) return;
+    // throw { message: ERROR.NOT_MULTIGRAPH };
+
+    this.edges.set(args.id, new Edge(args));
+  }
+
+  /**
+   * Add multiple edges from a map of edges.
+   * @param  {Map<base_id, Edge>} edge_map
+   */
+  addEdgeMap(edge_map: Map<base_id, Edge>) {
+    edge_map.forEach((edge, id) => this.edges.set(id, edge));
+  }
+
+  /**
+   * Add multiple edges from a list of EdgeArgs.
+   * @param  {EdgeArgs[]} edge_list
+   */
+  addEdgeList(edge_list: EdgeArgs[]) {
+    edge_list.forEach((edge_args, id) =>
+      this.edges.set(id, new Edge(edge_args))
+    );
+  }
+
+  /**
+   * Returns true if an edge (undirected) between from and to exists.
+   * @param  {base_id} from
+   * @param  {base_id} to
+   * @returns boolean
+   */
+  hasEdge(from: base_id, to: base_id, is_directed = false): boolean {
+    return this.edge_list.some(({ vertices }) =>
+      this.checkEdgeIsSame(vertices, { from, to }, is_directed)
+    );
+  }
+
+  /**
+   * Returns a list of edges between two given nodes.
+   *
+   * If the network is not a multigraph, the list will always be either empty or have only one item.
+   * @param  {base_id} from
+   * @param  {base_id} to
+   * @returns base_id[]
+   */
+  getEdgesBetween(
+    from: base_id,
+    to: base_id,
+    is_directed = this.is_directed
+  ): base_id[] | base_id {
+    let edge_list: base_id[] = [];
+
+    this.edges.forEach(({ vertices }, id) => {
+      if (this.checkEdgeIsSame(vertices, { from, to }, is_directed)) {
+        edge_list.push(id);
+      }
+    });
+
+    return this.is_multigraph ? edge_list : edge_list[0];
+  }
+
+  /**
+   * Returns the edge between two nodes.
+   * @param  {base_id} from
+   * @param  {base_id} to
+   * @returns base_id[]
+   */
+  edgeBetween(
+    from: base_id,
+    to: base_id,
+    is_directed = this.is_directed
+  ): Edge | undefined {
+    return this.edge_list.find(({ vertices }) =>
+      this.checkEdgeIsSame(vertices, { from, to }, is_directed)
+    );
+  }
+
+  /**
+   * @param  {VertexArgs} args
+   */
+  addVertex(args: VertexArgs) {
+    if (this.vertices.size >= this.vertex_limit)
+      throw { message: ERROR.VERTICE_LIMIT };
+    if (args.id !== undefined && this.vertices.has(args.id))
+      throw { message: ERROR.EXISTING_VERTICE };
+
+    this.vertices.set(args.id, new Vertex(args));
+  }
+
+  /**
+   * Add multiple vertices from a map of vertices.
+   * @param  {Map<base_id, Vertex>} vertex_map
+   */
+  addVertexMap(vertex_map: Map<base_id, Vertex>) {
+    vertex_map.forEach((vertex, id) => this.vertices.set(id, vertex));
+  }
+
+  /**
+   * Add multiple vertices from a list of VertexArgs.
+   * @param  {VertexArgs[]} vertex_list
+   */
+  addVertexList(vertex_list: VertexArgs[]) {
+    vertex_list.forEach((vertex_args, id) =>
+      this.vertices.set(id, new Vertex(vertex_args))
+    );
+  }
+
+\end{minted}
+
+There are also some private utility functions.
+
+\begin{minted}[bgcolor=bg]{ts}
+   newVID(): base_id {
+    let id = this.free_vid++;
+    while (this.vertices.has(id)) {
+      id = Math.floor(Math.random() * this.vertex_limit);
+    }
+    return id;
+  }
+
+  listHasTriplet(triplet_arr: Triplet[], triplet: Triplet): boolean {
+    return !!triplet_arr.find((trip) => this.isSameTriplet(triplet, trip));
+  }
+
+  isSameTriplet(arr1: Triplet, arr2: Triplet): boolean {
+    if (arr1.length !== arr2.length) return false;
+    return arr1.every((element, index) => element === arr2[index]);
+  }
+
+  removeMultigraphEdge(id: base_id) {
+    this.edges.delete(id);
+  }
+
+  newEID() {
+    let id = this.free_eid++;
+    while (this.edges.has(id)) {
+      id = Math.floor(Math.random() * this.edge_limit);
+    }
+    return id;
+  }
+
+  checkEdgeIsSame(
+    edge_a: EdgeArgs,
+    edge_b: EdgeArgs,
+    is_directed = this.is_directed
+  ): boolean {
+    if (edge_a.from === edge_b.from && edge_a.to === edge_b.to) return true;
+    else if (
+      edge_a.to === edge_b.from &&
+      edge_a.from === edge_b.to &&
+      !is_directed
+    )
+      return true;
+    return false;
+  }
+\end{minted}

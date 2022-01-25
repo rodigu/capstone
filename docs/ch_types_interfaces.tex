@@ -56,23 +56,14 @@ const directed_net = new Network({ is_directed })
 \begin{minted}[bgcolor=bg]{typescript}
 export type ParsedCSV = string[][];
 
-export const ERROR = {
-  UNDEFINED_VALUES: "Undefined values being given as arguments!",
-  EDGE_LIMIT: "Can't add new edge. Limit of Edges exceeded",
-  VERTICE_LIMIT: "Can't add new vertex. Limit of Vertices exceeded",
-  EXISTING_EDGE: "Trying to add an edge with already existing ID",
-  EXISTING_VERTICE: "Trying to add a vertex with already existing ID",
-  INEXISTENT_VERTICE: "Vertex doesn't exist",
-  NOT_MULTIGRAPH:
-    "Trying to add multiple edges between two vertices. Graph is not a multigraph!",
-  UNDEFINED_ID: "Tried to use undefined id as input",
-};
+export const ERROR = {...};
 \end{minted}
 
 \section{Vertex and Edge Classes}
 The vertex class receives an object with the interface of 'VertexArgs'. The weight is optional and, if not given, set to one.
 
 \begin{minted}[bgcolor=bg]{typescript}
+
 import { base_id, VertexArgs } from "./enums.ts";
 
 export class Vertex {
@@ -87,6 +78,7 @@ export class Vertex {
     this.id = args.id;
     this.weight = args.weight ?? 1;
   }
+}
 \end{minted}
 
 The '??' operator is a "Nullish coalescing operator" introduced in ES2021. If 'args.weight' is undefined, the instruction on the right is chosen. This operator is used instead of the ternary 'a ? b : c' operator because if 'args.weight=0', it would still select 'args.weight', whereas the ternary operator would consider '0' a Falsy value.

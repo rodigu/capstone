@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.25)  25 JAN 2022 18:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.25)  25 JAN 2022 20:44
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -186,23 +186,23 @@ runsystem(del main.aex)...executed.
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count291
 \l__pdf_internal_box=\box59
-) (main.aux (ch_intro.aux) (ch_types_interfaces.aux) (ch_values.aux) (ch_testing.aux))
+) (main.aux (ch_intro.aux) (ch_types_interfaces.aux) (ch_values.aux) (ch_functions.aux) (ch_testing.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
  (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count292
@@ -218,11 +218,11 @@ LaTeX Font Info:    ... okay on input line 15.
 \everyMPtoPDFconversion=\toks24
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 17.
+(Font)              <12> on input line 16.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 17.
+(Font)              <8> on input line 16.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 17.
+(Font)              <6> on input line 16.
  [1
 
 {C:/Users/rmora/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (main.toc
@@ -276,19 +276,19 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
  (_minted-main/35F6141B2AC5C03ECE8C980217DF6FE892CF154829EF5D2C7A308A310A27AD1E.pygtex)
 \openout3 = `main.pyg'.
 
- (_minted-main/65CE8D0A8E6BAE465EA212AE1414752592CF154829EF5D2C7A308A310A27AD1E.pygtex)
+ (_minted-main/3FB83418BC2F79DE01C8574BCA28E57392CF154829EF5D2C7A308A310A27AD1E.pygtex)
 \openout3 = `main.pyg'.
 
- (_minted-main/87F1A197A08CB1D3FB2FE5B6ABBB0F2692CF154829EF5D2C7A308A310A27AD1E.pygtex) [4]
+ (_minted-main/F1CB30F9588A74B5275B2A233059198892CF154829EF5D2C7A308A310A27AD1E.pygtex) [4]
 \openout3 = `main.pyg'.
 
  (_minted-main/71086F665FB67BA4C6DAB3AA97042D4692CF154829EF5D2C7A308A310A27AD1E.pygtex) [5]
 \openout3 = `main.pyg'.
 
- (_minted-main/E63FB70D53E2C48AAF1A22B4BE5695F092CF154829EF5D2C7A308A310A27AD1E.pygtex) [6]
+ (_minted-main/E63FB70D53E2C48AAF1A22B4BE5695F092CF154829EF5D2C7A308A310A27AD1E.pygtex)
 \openout3 = `main.pyg'.
 
- (_minted-main/2C84721C74816A58324784527BA63BA092CF154829EF5D2C7A308A310A27AD1E.pygtex)) [7]
+ (_minted-main/2C84721C74816A58324784527BA63BA092CF154829EF5D2C7A308A310A27AD1E.pygtex)) [6]
 \openout2 = `ch_values.aux'.
 
  (ch_values.tex
@@ -304,7 +304,7 @@ Chapter 3.
  (_minted-main/8E16A74274D589F108A9FE9FD88DAEAD92CF154829EF5D2C7A308A310A27AD1E.pygtex)
 \openout3 = `main.pyg'.
 
- [8
+ [7
 
 
 
@@ -313,43 +313,87 @@ Chapter 3.
 \openout3 = `main.pyg'.
 
  (_minted-main/60A17AAB8F6772E087E238191D33A2C694FCD9D31EE402428B3268164B661369.pygtex)
-Overfull \hbox (1.72284pt too wide) in paragraph at lines 65--66
+Overfull \hbox (1.72284pt too wide) in paragraph at lines 65--67
 []\OT1/cmr/m/n/10 The get-ter uses the 'Ar-ray.prototype.map' and 'Ar-ray.prototype.reduce' func-
  []
 
 \openout3 = `main.pyg'.
 
-[9] (_minted-main/38E456D265CE5D24050C2D624BB7471194FCD9D31EE402428B3268164B661369.pygtex)
+[8] (_minted-main/38E456D265CE5D24050C2D624BB7471194FCD9D31EE402428B3268164B661369.pygtex)
 \openout3 = `main.pyg'.
 
- (_minted-main/668F1215FD7CEB19729E30F700BC724292CF154829EF5D2C7A308A310A27AD1E.pygtex)) [10]
-\openout2 = `ch_testing.aux'.
+ (_minted-main/668F1215FD7CEB19729E30F700BC724292CF154829EF5D2C7A308A310A27AD1E.pygtex)) [9]
+\openout2 = `ch_functions.aux'.
 
- (ch_testing.tex
+ (ch_functions.tex
 Chapter 4.
 \openout3 = `main.pyg'.
 
-(_minted-main/0C308D818215EB6429DF3268598332AD82CA0C42AFE0759A4F1491A6B69BC02A.pygtex)) [11
+(_minted-main/3B4522F6B1FB47192A2F50E8DD8C727B94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/EBC8C7A2CFA2AFB553A1D2D27425844694FCD9D31EE402428B3268164B661369.pygtex) [10
 
 
 
 
-] (main.aux (ch_intro.aux) (ch_types_interfaces.aux) (ch_values.aux) (ch_testing.aux))
+]
+\openout3 = `main.pyg'.
+
+ (_minted-main/D54EA8346F95B8722EE0422539B3644794FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/ED1AB9EE271C67E496BA9A5BC71A66CB94FCD9D31EE402428B3268164B661369.pygtex) [11]
+Underfull \vbox (badness 10000) detected at line 186
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 186
+ []
+
+[12]
+Underfull \vbox (badness 10000) detected at line 186
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 186
+ []
+
+[13]
+\openout3 = `main.pyg'.
+
+ (_minted-main/72BAC04C3FD462C2AC51700B241938DA94FCD9D31EE402428B3268164B661369.pygtex)
+Overfull \vbox (0.9111pt too high) detected at line 234
+ []
+
+[14]) [15]
+\openout2 = `ch_testing.aux'.
+
+ (ch_testing.tex
+Chapter 5.
+\openout3 = `main.pyg'.
+
+(_minted-main/0C308D818215EB6429DF3268598332AD82CA0C42AFE0759A4F1491A6B69BC02A.pygtex)) [16
+
+
+
+
+] (main.aux (ch_intro.aux) (ch_types_interfaces.aux) (ch_values.aux) (ch_functions.aux) (ch_testing.aux))
 runsystem(del main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 5645 strings out of 478593
- 117925 string characters out of 2844604
- 444646 words of memory out of 3000000
- 23679 multiletter control sequences out of 15000+600000
+ 5703 strings out of 478593
+ 121617 string characters out of 2844604
+ 460273 words of memory out of 3000000
+ 23715 multiletter control sequences out of 15000+600000
  475062 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,6n,77p,535b,562s stack positions out of 5000i,500n,10000p,200000b,80000s
 <C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (12 pages, 171959 bytes).
+Output written on main.pdf (17 pages, 182718 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
+ 112 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
