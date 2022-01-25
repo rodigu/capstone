@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{n+nx}{get} \PYG{n+nx}{density}\PYG{p}{()}\PYG{o}{:} \PYG{k+kt}{number} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{size} \PYG{o}{/} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{max\PYGZus{}edges}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

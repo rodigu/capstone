@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  deno run \PYGZhy{}\PYGZhy{}allow\PYGZhy{}write \PYGZhy{}\PYGZhy{}allow\PYGZhy{}read tester.ts
+\end{Verbatim}

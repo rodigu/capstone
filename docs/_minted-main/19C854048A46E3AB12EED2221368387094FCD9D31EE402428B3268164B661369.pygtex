@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{get} \PYG{n+nx}{getter\PYGZus{}name}\PYG{p}{()}\PYG{o}{:} \PYG{n+nx}{PropertyType} \PYG{p}{\PYGZob{}}
+  \PYG{k}{return} \PYG{n+nx}{property}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

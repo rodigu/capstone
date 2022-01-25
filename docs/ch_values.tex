@@ -1,0 +1,87 @@
+\chapter{Network Values}
+There are several network properties that, instead of being stored in a variable, have getters to them. These either have to be calculated on the fly or don't really serve an internal purpose that would justify storing them inside a variable property.
+
+Getters have the basic format:
+
+\begin{minted}[bgcolor=bg]{ts}
+get getter_name(): PropertyType {
+  return property;
+}
+\end{minted}
+
+And, different from functions, can be accessed without the brackets:
+
+\begin{minted}[bgcolor=bg]{ts}
+net.getter_name
+\end{minted}
+
+\section{Functional Getters}
+These getters exist mostly to provide functionality to the network class. For example, the args getter returns the properties of the network necessary to make a copy of it:
+
+\begin{minted}[bgcolor=bg]{typescript}
+  get args(): NetworkArgs {
+    return {
+      is_directed: this.is_directed,
+      is_multigraph: this.is_multigraph,
+      edge_limit: this.edge_limit,
+      vertex_limit: this.vertex_limit,
+    };
+  }
+\end{minted}
+
+The list getters return a list with the values inside the vertices and edges Maps. This is particularly useful for efficiency as it makes it possible to use standard Array functions.
+
+\begin{minted}[bgcolor=bg]{ts}
+  get vertex_list(): Vertex[] {
+    return [...this.vertices.values()];
+  }
+
+  get edge_list(): Edge[] {
+    return [...this.edges.values()];
+  }
+\end{minted}
+
+The '...' destructuring operator was also introduced in ES2021. It takes the iterable return of the 'values()' function and destructures it into its individual elements. The elements are then put inside an array, which is returned by the getter.
+
+\section{Calculations}
+
+These getters involve calculations that make use of the network's vertices and edges. That is why they are not permanently stored inside a property, seeing as they could change any time a new edge or vertex is added to the graph.
+
+The calculations are also not turned into their own functions because they do not require more complex algorithms.
+
+\subsection{Weight}
+
+\begin{minted}[bgcolor=bg]{ts}
+  get weight(): number {
+    return this.vertex_list
+      .map((vertex) => vertex.weight)
+      .reduce((prev, curr) => prev + curr);
+  }
+\end{minted}
+
+Say $w(x)$ is the weight of the vertex $x$ in the network $G=(V,E)$. A network's weight is given by:
+$$\sum{w(x)}, \forall x \in G$$
+
+The getter uses the 'Array.prototype.map' and 'Array.prototype.reduce' functions. It first maps the 'vertex\_list' into a list with just the weights of the vertex, and then reduces it by summing all of the new list's values.
+
+\subsection{Maximum Number of Edges}
+The highest number of edges $M_E$ a graph with $|V|$ vertices can have is:
+$$M_E=\frac{|V|*(|V|-1)}{2}$$
+
+\begin{minted}[bgcolor=bg]{ts}
+  get max_edges(): number {
+    return (this.vertices.size * (this.vertices.size - 1)) / 2;
+  }
+\end{minted}
+
+\subsection{Density}
+
+A graph's density $D$ is defined by:
+$$D=\frac{|E|}{M_E}$$
+The number of edges a graph has, divided by the maximum number of edges it could have with the number of nodes it currently has.
+
+\begin{minted}[bgcolor=bg]{typescript}
+  get density(): number {
+    return this.edges.size / this.max_edges;
+  }
+\end{minted}

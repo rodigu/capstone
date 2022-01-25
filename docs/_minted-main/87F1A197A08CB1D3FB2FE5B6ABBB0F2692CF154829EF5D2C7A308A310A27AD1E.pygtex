@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{import} \PYG{p}{\PYGZob{}} \PYG{n+nx}{base\PYGZus{}id}\PYG{p}{,} \PYG{n+nx}{VertexArgs} \PYG{p}{\PYGZcb{}} \PYG{n+nx}{from} \PYG{l+s+s2}{\PYGZdq{}./enums.ts\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k}{export} \PYG{k+kd}{class} \PYG{n+nx}{Vertex} \PYG{p}{\PYGZob{}}
+  \PYG{k}{readonly} \PYG{n+nx}{id}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{;}
+  \PYG{n+nx}{weight}: \PYG{k+kt}{number}\PYG{p}{;}
+
+  \PYG{c+cm}{/**}
+\PYG{c+cm}{   * Vertex constructor}
+\PYG{c+cm}{   * @param  \PYGZob{}VertexArgs\PYGZcb{} args}
+\PYG{c+cm}{   */}
+  \PYG{k+kr}{constructor}\PYG{p}{(}\PYG{n+nx}{args}: \PYG{k+kt}{VertexArgs}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{id} \PYG{o}{=} \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{id}\PYG{p}{;}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{weight} \PYG{o}{=} \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{weight} \PYG{o}{??} \PYG{l+m+mf}{1}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

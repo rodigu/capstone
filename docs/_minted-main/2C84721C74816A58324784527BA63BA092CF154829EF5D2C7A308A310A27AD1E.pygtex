@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{const} \PYG{n+nx}{edge\PYGZus{}limit} \PYG{o}{=} \PYG{l+m+mf}{10}\PYG{n+nx}{\PYGZus{}000}
+\PYG{k+kd}{const} \PYG{n+nx}{vertex\PYGZus{}limit} \PYG{o}{=} \PYG{l+m+mf}{10}\PYG{n+nx}{\PYGZus{}000}
+
+\PYG{k+kd}{const} \PYG{n+nx}{net} \PYG{o}{=} \PYG{k}{new} \PYG{n+nx}{Network}\PYG{p}{(\PYGZob{}} \PYG{n+nx}{edge\PYGZus{}limit}\PYG{p}{,} \PYG{n+nx}{vertex\PYGZus{}limit} \PYG{p}{\PYGZcb{})}
+\end{Verbatim}

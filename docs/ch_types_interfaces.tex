@@ -1,0 +1,171 @@
+\chapter{Types and Interfaces}
+These type definitions are the foundation of the library. They are stored inside 'enums.ts'.
+The base\_id type is used throughout in the library. It signifies that the identification variable for a vertex can be either a string of characters or a number.
+
+\begin{minted}[bgcolor=bg]{typescript}
+export type base_id = string | number;
+\end{minted}
+
+An ID of 'vertex\_a' is as valid as an ID of42, for instance.
+The args interfaces are used by function inputs. For example, when creating an edge, the library will be expecting an object with the format of EdgeArgs.
+
+\begin{minted}[bgcolor=bg]{typescript}
+export interface VertexArgs {
+  id: base_id;
+  weight?: number;
+}
+
+export interface EdgeArgs {
+  from: base_id;
+  to: base_id;
+  id?: base_id;
+  weight?: number;
+  do_force?: boolean;
+}
+
+export interface NetworkArgs {
+  is_directed?: boolean;
+  is_multigraph?: boolean;
+  edge_limit?: number;
+  vertex_limit?: number;
+}
+\end{minted}
+
+The question-mark indicates a property is optional. It is possible to create a network without any parameters. Weights are optional parameters, and (as previously mentioned) set to one by default.
+
+The following is an example of code that creates a network 'net', then adds the vertices '1' and ''b'' and an edge between them:
+
+\begin{minted}[bgcolor=bg]{typescript}
+const net = new Network()
+
+net.addVertex({ id: 1 })
+net.addVertex({ id: 'b' })
+
+net.addEdge(1, 'b')
+\end{minted}
+
+The networks are by default undirected. A directed network has to be explicitly declared:
+
+\begin{minted}[bgcolor=bg]{typescript}
+const is_directed = true
+const directed_net = new Network({ is_directed })
+\end{minted}
+
+'ParsedCSV' and 'ERROR' are types used internally by the library to load CSV files and manage error messages, respectively:
+
+\begin{minted}[bgcolor=bg]{typescript}
+export type ParsedCSV = string[][];
+
+export const ERROR = {
+  UNDEFINED_VALUES: "Undefined values being given as arguments!",
+  EDGE_LIMIT: "Can't add new edge. Limit of Edges exceeded",
+  VERTICE_LIMIT: "Can't add new vertex. Limit of Vertices exceeded",
+  EXISTING_EDGE: "Trying to add an edge with already existing ID",
+  EXISTING_VERTICE: "Trying to add a vertex with already existing ID",
+  INEXISTENT_VERTICE: "Vertex doesn't exist",
+  NOT_MULTIGRAPH:
+    "Trying to add multiple edges between two vertices. Graph is not a multigraph!",
+  UNDEFINED_ID: "Tried to use undefined id as input",
+};
+\end{minted}
+
+\section{Vertex and Edge Classes}
+The vertex class receives an object with the interface of 'VertexArgs'. The weight is optional and, if not given, set to one.
+
+\begin{minted}[bgcolor=bg]{typescript}
+import { base_id, VertexArgs } from "./enums.ts";
+
+export class Vertex {
+  readonly id: base_id;
+  weight: number;
+
+  /**
+   * Vertex constructor
+   * @param  {VertexArgs} args
+   */
+  constructor(args: VertexArgs) {
+    this.id = args.id;
+    this.weight = args.weight ?? 1;
+  }
+\end{minted}
+
+The '??' operator is a "Nullish coalescing operator" introduced in ES2021. If 'args.weight' is undefined, the instruction on the right is chosen. This operator is used instead of the ternary 'a ? b : c' operator because if 'args.weight=0', it would still select 'args.weight', whereas the ternary operator would consider '0' a Falsy value.
+
+A Falsy value is something with the same Boolean value as false. '0', for example, although a number, it is still considered false in Typescript. In other languages, such as Ruby, '0' actually has a Truthy value, meaning that if you feed it into a logical operation, it considers it to be true.
+
+The edge class has 'from' and 'to' properties that hold the ID of a vertex in a network, and a weight that behaves in the same way as the vertex class. The IDs of the vertices in an edge are private, meaning they cannot be read or overwritten.
+When an edge is added to a network, only its weight can change. Changing its vertices would fundamentally change what the edge is and is thus not allowed. The vertices can be accessed and read through the 'vertices' getter, which returns the edge's 'from' and 'to' properties:
+
+\begin{minted}[bgcolor=bg]{typescript}
+import { base_id, EdgeArgs } from "./enums.ts";
+
+export class Edge {
+  private to: base_id;
+  private from: base_id;
+  weight: number;
+
+  /**
+   * Create an edge between 'from' and 'to'.
+   *
+   * Weight is set to 1 by default (i.e. unweighted).
+   * @param  {EdgeArgs} args
+   */
+  constructor(args: EdgeArgs) {
+    this.from = args.from;
+    this.to = args.to;
+    this.weight = args.weight ?? 1;
+  }
+
+  /**
+   * Returns an object with the two vertices in the edge.
+   * @returns {{ from:base_id, to:base_id }}
+   */
+  get vertices(): { from: base_id; to: base_id } {
+    return { from: this.from, to: this.to };
+  }
+}
+\end{minted}
+
+\section{Network Constructor}
+
+The network class has 4 'readonly' properties. The edges and vertices are stored in Maps that use 'base\_id' as their keys and the values store the actual vertex or edge instance. The two other 'readonly' are Booleans that store fundamental graph properties: the directionality and complexity of the network.
+
+The 'private' properties have to do with hidden functionality and performance limitations. There are limits to the number of edges and vertices a network can have, and they can only be set in the creation of a network.
+
+\begin{minted}[bgcolor=bg]{typescript}
+class Network {
+  readonly edges: Map<base_id, Edge>;
+  readonly vertices: Map<base_id, Vertex>;
+
+  readonly is_directed: boolean;
+  readonly is_multigraph: boolean;
+
+  private edge_limit: number;
+  private vertex_limit: number;
+  private free_eid: number;
+  private free_vid: number;
+
+  /**
+   * @param  {NetworkArgs} [args={}]
+   */
+  constructor(args: NetworkArgs = {}) {
+    this.edges = new Map();
+    this.vertices = new Map();
+    this.is_directed = args.is_directed ?? false;
+    this.edge_limit = args.edge_limit ?? 500;
+    this.vertex_limit = args.vertex_limit ?? 500;
+    this.free_eid = 0;
+    this.free_vid = 0;
+    this.is_multigraph = false;
+  }
+}
+\end{minted}
+
+The 'free\_eid' and 'free\_vid' properties will be further explained later. A network with a larger number of maximum edges and vertices could be created as such:
+
+\begin{minted}[bgcolor=bg]{typescript}
+const edge_limit = 10_000
+const vertex_limit = 10_000
+
+const net = new Network({ edge_limit, vertex_limit })
+\end{minted}

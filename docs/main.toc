@@ -1,0 +1,14 @@
+\contentsline {chapter}{\numberline {1}Introduction}{2}{}%
+\contentsline {section}{\numberline {1.1}Technical Aspects}{2}{}%
+\contentsline {section}{\numberline {1.2}Basic Graph Theory}{2}{}%
+\contentsline {chapter}{\numberline {2}Types and Interfaces}{3}{}%
+\contentsline {section}{\numberline {2.1}Vertex and Edge Classes}{4}{}%
+\contentsline {section}{\numberline {2.2}Network Constructor}{6}{}%
+\contentsline {chapter}{\numberline {3}Network Values}{8}{}%
+\contentsline {section}{\numberline {3.1}Functional Getters}{8}{}%
+\contentsline {section}{\numberline {3.2}Calculations}{9}{}%
+\contentsline {subsection}{\numberline {3.2.1}Weight}{9}{}%
+\contentsline {subsection}{\numberline {3.2.2}Maximum Number of Edges}{9}{}%
+\contentsline {subsection}{\numberline {3.2.3}Density}{10}{}%
+\contentsline {chapter}{\numberline {4}Testing Process}{11}{}%
+\contentsline {section}{\numberline {4.1}Test Output}{11}{}%
