@@ -20,42 +20,46 @@ This library is a rewrite of my previous code, [network2020](github.com/rodigu/n
 
 ## Timeline
 
-|Deadline|Task||
-|-|-|-|
-|01/18|timeline and outline|👍|
-|01/18|convert to typescript||
-|01/21|code - adapt code from previous library||
-|02/04|code - additional algorithms and functions||
-|02/11|document - background||
-|02/18|document - implementations and applications||
-|02/25|document - first draft||
-|03/04|code - review||
-|03/11|document - code showcase||
+| Deadline | Task                                        |     |
+| -------- | ------------------------------------------- | --- |
+| 01/18    | timeline and outline                        | 👍  |
+| 01/18    | convert to typescript                       |     |
+| 01/21    | code - adapt code from previous library     |     |
+| 02/04    | code - additional algorithms and functions  |     |
+| 02/11    | document - background                       |     |
+| 02/18    | document - implementations and applications |     |
+| 02/25    | document - first draft                      |     |
+| 03/04    | code - review                               |     |
+| 03/11    | document - code showcase                    |     |
 
 ## Outline
 
 ### Introduction
+
 - background
-	- basic intro to network science
-	- basic intro to javascript
+  - basic intro to network science
+  - basic intro to javascript
 - reasoning behind doing it
-	- learning principles of library making
-	- deeper understanding of network science by creating its algorithms from scratch
+  - learning principles of library making
+  - deeper understanding of network science by creating its algorithms from scratch
 
 ### Code showcase
+
 - explain some of the algorithms: how they work and what they do
-	- BFS
+  - BFS
 - demonstrate use
 
 ### Applications
+
 - show implementations (game, parik?)
 - applications
-	- boris research
-	- social media networks
+  - boris research
+  - social media networks
 
 ### Demonstration
+
 - Use real world data
-	- take example from textbook and recreate it using the library?
+  - take example from textbook and recreate it using the library?
 
 ## Commits
 
@@ -65,3 +69,27 @@ This library is a rewrite of my previous code, [network2020](github.com/rodigu/n
 - 🪒Changes/Updates to functions
 - 👩‍💻New code
 - 🐛Bugfix
+
+Python testing
+
+```python
+import pandas as pd
+import networkx as nx
+import matplotlib.pyplot as plt
+import csv
+
+
+def make_label_dict(labels):
+    l = {}
+    for i, label in enumerate(labels):
+        l[i] = label
+    return l
+
+file_name = 'networkMatrix.csv'
+input_data = pd.read_csv(file_name, index_col=0)
+G = nx.Graph(input_data.values)
+
+with open(file_name, 'r') as f:
+    d_reader = csv.DictReader(f)
+    headers = d_reader.fieldnames
+```
