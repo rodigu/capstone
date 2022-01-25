@@ -24,4 +24,9 @@ export class Edge {
   get vertices(): { from: base_id; to: base_id } {
     return { from: this.from, to: this.to };
   }
+
+  hasVertex(vertex_id: base_id): boolean {
+    if (this.from === vertex_id || this.to === vertex_id) return true;
+    return false;
+  }
 }
