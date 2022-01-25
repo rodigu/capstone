@@ -1,6 +1,13 @@
 import { Vertex } from "./vertex.ts";
 import { Edge } from "./edge.ts";
-import { base_id, VertexArgs, EdgeArgs, NetworkArgs, ERROR } from "./enums.ts";
+import {
+  base_id,
+  VertexArgs,
+  EdgeArgs,
+  NetworkArgs,
+  ERROR,
+  Triplet,
+} from "./enums.ts";
 
 export class Network {
   readonly edges: Map<base_id, Edge>;
@@ -164,17 +171,10 @@ export class Network {
    * @param  {base_id} to
    * @returns boolean
    */
-  hasEdge(from: base_id, to: base_id): boolean {
-    let has_edge = false;
-
-    this.edges.forEach(({ vertices }) => {
-      if (this.checkEdgeIsSame(vertices, { from, to }, false)) {
-        has_edge = true;
-        return;
-      }
-    });
-
-    return has_edge;
+  hasEdge(from: base_id, to: base_id, is_directed = false): boolean {
+    return this.edge_list.some(({ vertices }) =>
+      this.checkEdgeIsSame(vertices, { from, to }, is_directed)
+    );
   }
 
   /**
@@ -185,16 +185,36 @@ export class Network {
    * @param  {base_id} to
    * @returns base_id[]
    */
-  getEdgesBetween(from: base_id, to: base_id): base_id[] {
-    const edge_list: base_id[] = [];
+  getEdgesBetween(
+    from: base_id,
+    to: base_id,
+    is_directed = this.is_directed
+  ): base_id[] | base_id {
+    let edge_list: base_id[] = [];
 
     this.edges.forEach(({ vertices }, id) => {
-      if (this.checkEdgeIsSame(vertices, { from, to })) {
+      if (this.checkEdgeIsSame(vertices, { from, to }, is_directed)) {
         edge_list.push(id);
       }
     });
 
-    return edge_list;
+    return this.is_multigraph ? edge_list : edge_list[0];
+  }
+
+  /**
+   * Returns the edge between two nodes.
+   * @param  {base_id} from
+   * @param  {base_id} to
+   * @returns base_id[]
+   */
+  edgeBetween(
+    from: base_id,
+    to: base_id,
+    is_directed = this.is_directed
+  ): Edge | undefined {
+    return this.edge_list.find(({ vertices }) =>
+      this.checkEdgeIsSame(vertices, { from, to }, is_directed)
+    );
   }
 
   /**
@@ -237,16 +257,10 @@ export class Network {
 
     this.vertices.delete(id);
 
-    const edge_removal: base_id[] = [];
-
     this.edges.forEach(({ vertices }, key) => {
       const { from, to } = vertices;
-      if (from === id || to === id) {
-        edge_removal.push(key);
-      }
+      if (from === id || to === id) this.edges.delete(key);
     });
-
-    edge_removal.forEach((edge_key) => this.edges.delete(edge_key));
   }
 
   /**
@@ -516,11 +530,55 @@ export class Network {
     return average_clustering;
   }
 
+  /**
+   * Returns a new network with all weighted paths between id and other vertices in the network.
+   * @param  {base_id} id
+   * @returns Network
+   */
+  weightedPaths(id: base_id): Network {
+    const weighted_net = this.copy();
+    const { vertices } = weighted_net;
+    vertices.forEach((vertex) => {
+      vertex.weight = vertex.id === id ? 0 : -1;
+    });
+    const get_path = (initial_vertex_id: base_id) => {
+      const vertex_neighbors = weighted_net.neighbors(initial_vertex_id);
+      const initial_vertex =
+        weighted_net.vertices.get(initial_vertex_id) ??
+        new Vertex({ id: initial_vertex_id });
+      vertex_neighbors.forEach((vertex_id) => {
+        const has_edge = weighted_net.hasEdge(
+          initial_vertex_id,
+          vertex_id,
+          weighted_net.is_directed
+        );
+        const vertex =
+          weighted_net.vertices.get(vertex_id) ?? new Vertex({ id: vertex_id });
+        const edge =
+          weighted_net.edgeBetween(initial_vertex_id, vertex_id) ??
+          new Edge({ from: initial_vertex_id, to: vertex_id });
+        if (
+          has_edge &&
+          (vertex?.weight === -1 ||
+            initial_vertex.weight + edge.weight < vertex.weight)
+        ) {
+          vertex.weight = edge.weight + initial_vertex.weight;
+          vertex.previous_vertex = initial_vertex_id;
+          get_path(vertex_id);
+        }
+      });
+    };
+    get_path(id);
+    return weighted_net;
+  }
+
+  // TODO: BFS
+
   // TODO:
   // - [] closenessCentrality
 
   /**
-   * Creates a k-core decomposition of a network.
+   * Creates a [k-core](https://www.wikiwand.com/en/Degeneracy_(graph_theory)) decomposition of a network.
    * @param  {number} k
    * @returns Network
    */
@@ -549,6 +607,32 @@ export class Network {
   }
 
   /**
+   * Returns a list with all triplets in the network.
+   * @returns Triplet[]
+   */
+  triplets(): Triplet[] {
+    const triplet_list: Triplet[] = [];
+
+    const k2 = this.core(2);
+
+    const { vertices, edges } = k2;
+
+    edges.forEach((edge, key) => {
+      const { from, to } = edge.vertices;
+      vertices.forEach((vertex) => {
+        const { id } = vertex;
+        if (edge.hasVertex(id)) return;
+        const triplet: Triplet = [id, from, to];
+        if (k2.isSameTriplet(triplet, triplet.sort()))
+          if (k2.hasEdge(id, from, false) && k2.hasEdge(id, to, false))
+            triplet_list.push(triplet);
+      });
+    });
+
+    return triplet_list;
+  }
+
+  /**
    * Generates a random ID that has not yet been used in the network.
    * @returns base_id
    */
@@ -558,6 +642,15 @@ export class Network {
       id = Math.floor(Math.random() * this.vertex_limit);
     }
     return id;
+  }
+
+  private listHasTriplet(triplet_arr: Triplet[], triplet: Triplet): boolean {
+    return !!triplet_arr.find((trip) => this.isSameTriplet(triplet, trip));
+  }
+
+  private isSameTriplet(arr1: Triplet, arr2: Triplet): boolean {
+    if (arr1.length !== arr2.length) return false;
+    return arr1.every((element, index) => element === arr2[index]);
   }
 
   private removeMultigraphEdge(id: base_id) {
