@@ -11,6 +11,6 @@
 \contentsline {subsection}{\numberline {3.2.2}Maximum Number of Edges}{8}{}%
 \contentsline {subsection}{\numberline {3.2.3}Density}{9}{}%
 \contentsline {chapter}{\numberline {4}Functions}{10}{}%
-\contentsline {subsection}{\numberline {4.0.1}Utility Functions}{10}{}%
-\contentsline {chapter}{\numberline {5}Testing Process}{16}{}%
-\contentsline {section}{\numberline {5.1}Test Output}{16}{}%
+\contentsline {chapter}{\numberline {5}Algorithms}{16}{}%
+\contentsline {chapter}{\numberline {6}Testing Process}{17}{}%
+\contentsline {section}{\numberline {6.1}Test Output}{17}{}%

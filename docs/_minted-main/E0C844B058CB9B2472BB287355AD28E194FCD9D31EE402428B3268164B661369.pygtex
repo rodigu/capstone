@@ -1,0 +1,125 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{addEdge}\PYG{p}{(}\PYG{n+nx}{args}: \PYG{k+kt}{EdgeArgs}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{do\PYGZus{}force} \PYG{o}{??=} \PYG{k+kc}{true}\PYG{p}{;}
+  \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{weight} \PYG{o}{??=} \PYG{l+m+mf}{1}\PYG{p}{;}
+
+  \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{id} \PYG{o}{??=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{newEID}\PYG{p}{();}
+
+  \PYG{k}{if} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{id}\PYG{p}{))}
+    \PYG{k}{throw} \PYG{p}{\PYGZob{}} \PYG{n+nx}{message}: \PYG{k+kt}{ERROR.EXISTING\PYGZus{}EDGE} \PYG{p}{\PYGZcb{};}
+
+  \PYG{k}{if} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{size} \PYG{o}{\PYGZgt{}=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edge\PYGZus{}limit}\PYG{p}{)}
+    \PYG{k}{throw} \PYG{p}{\PYGZob{}} \PYG{n+nx}{message}: \PYG{k+kt}{ERROR.EDGE\PYGZus{}LIMIT} \PYG{p}{\PYGZcb{};}
+
+  \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{do\PYGZus{}force}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{from}\PYG{p}{))}
+      \PYG{k}{throw} \PYG{p}{\PYGZob{}}
+        \PYG{n+nx}{message}: \PYG{k+kt}{ERROR.INEXISTENT\PYGZus{}VERTICE}\PYG{p}{,}
+        \PYG{n+nx}{vertex}: \PYG{k+kt}{args.from}
+      \PYG{p}{\PYGZcb{};}
+    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{to}\PYG{p}{))}
+      \PYG{k}{throw} \PYG{p}{\PYGZob{}}
+        \PYG{n+nx}{message}: \PYG{k+kt}{ERROR.INEXISTENT\PYGZus{}VERTICE}\PYG{p}{,}
+        \PYG{n+nx}{vertex}: \PYG{k+kt}{args.to}
+      \PYG{p}{\PYGZcb{};}
+  \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{from}\PYG{p}{))}
+      \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{addVertex}\PYG{p}{(\PYGZob{}} \PYG{n+nx}{id}: \PYG{k+kt}{args.from} \PYG{p}{\PYGZcb{});}
+    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{to}\PYG{p}{))}
+      \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{addVertex}\PYG{p}{(\PYGZob{}} \PYG{n+nx}{id}: \PYG{k+kt}{args.to} \PYG{p}{\PYGZcb{});}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{is\PYGZus{}multigraph} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{hasEdge}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{to}\PYG{p}{))}
+    \PYG{k}{return}\PYG{p}{;}
+
+  \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{id}\PYG{p}{,} \PYG{k}{new} \PYG{n+nx}{Edge}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Add multiple edges from a map of edges.}
+\PYG{c+cm}{ * @param  \PYGZob{}Map\PYGZlt{}base\PYGZus{}id, Edge\PYGZgt{}\PYGZcb{} edge\PYGZus{}map}
+\PYG{c+cm}{ */}
+\PYG{n+nx}{addEdgeMap}\PYG{p}{(}\PYG{n+nx}{edge\PYGZus{}map}: \PYG{k+kt}{Map}\PYG{o}{\PYGZlt{}}\PYG{n+nx}{base\PYGZus{}id}\PYG{p}{,} \PYG{n+nx}{Edge}\PYG{o}{\PYGZgt{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n+nx}{edge\PYGZus{}map}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((}\PYG{n+nx}{edge}\PYG{p}{,} \PYG{n+nx}{id}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{id}\PYG{p}{,} \PYG{n+nx}{edge}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Add multiple edges from a list of EdgeArgs.}
+\PYG{c+cm}{ * @param  \PYGZob{}EdgeArgs[]\PYGZcb{} edge\PYGZus{}list}
+\PYG{c+cm}{ */}
+\PYG{n+nx}{addEdgeList}\PYG{p}{(}\PYG{n+nx}{edge\PYGZus{}list}: \PYG{k+kt}{EdgeArgs}\PYG{p}{[])} \PYG{p}{\PYGZob{}}
+  \PYG{n+nx}{edge\PYGZus{}list}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((}\PYG{n+nx}{edge\PYGZus{}args}\PYG{p}{,} \PYG{n+nx}{id}\PYG{p}{)} \PYG{o}{=\PYGZgt{}}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{id}\PYG{p}{,} \PYG{k}{new} \PYG{n+nx}{Edge}\PYG{p}{(}\PYG{n+nx}{edge\PYGZus{}args}\PYG{p}{))}
+  \PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Returns true if an edge (undirected)}
+\PYG{c+cm}{ * between from and to exists.}
+\PYG{c+cm}{ * @param  \PYGZob{}base\PYGZus{}id\PYGZcb{} from}
+\PYG{c+cm}{ * @param  \PYGZob{}base\PYGZus{}id\PYGZcb{} to}
+\PYG{c+cm}{ * @returns boolean}
+\PYG{c+cm}{ */}
+\PYG{n+nx}{hasEdge}\PYG{p}{(}\PYG{n+nx}{from}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{,}
+        \PYG{n+nx}{to}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{,}
+        \PYG{n+nx}{is\PYGZus{}directed} \PYG{o}{=} \PYG{k+kc}{false}\PYG{p}{)}\PYG{o}{:} \PYG{k+kr}{boolean} \PYG{p}{\PYGZob{}}
+  \PYG{k}{return} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edge\PYGZus{}list}\PYG{p}{.}\PYG{n+nx}{some}\PYG{p}{((\PYGZob{}} \PYG{n+nx}{vertices} \PYG{p}{\PYGZcb{})} \PYG{o}{=\PYGZgt{}}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{checkEdgeIsSame}\PYG{p}{(}\PYG{n+nx}{vertices}\PYG{p}{,} \PYG{p}{\PYGZob{}} \PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{},} \PYG{n+nx}{is\PYGZus{}directed}\PYG{p}{)}
+  \PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Returns a list of edges between two given nodes.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * @param  \PYGZob{}base\PYGZus{}id\PYGZcb{} from}
+\PYG{c+cm}{ * @param  \PYGZob{}base\PYGZus{}id\PYGZcb{} to}
+\PYG{c+cm}{ * @returns base\PYGZus{}id[]}
+\PYG{c+cm}{ */}
+\PYG{n+nx}{getEdgesBetween}\PYG{p}{(}
+  \PYG{n+nx}{from}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{,}
+  \PYG{n+nx}{to}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{,}
+  \PYG{n+nx}{is\PYGZus{}directed} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{is\PYGZus{}directed}
+\PYG{p}{)}\PYG{o}{:} \PYG{n+nx}{base\PYGZus{}id}\PYG{p}{[]} \PYG{o}{|} \PYG{n+nx}{base\PYGZus{}id} \PYG{p}{\PYGZob{}}
+  \PYG{k+kd}{let} \PYG{n+nx}{edge\PYGZus{}list}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{[];}
+
+  \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((\PYGZob{}} \PYG{n+nx}{vertices} \PYG{p}{\PYGZcb{},} \PYG{n+nx}{id}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{checkEdgeIsSame}\PYG{p}{(}
+                              \PYG{n+nx}{vertices}\PYG{p}{,}
+                              \PYG{p}{\PYGZob{}} \PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{},}
+                              \PYG{n+nx}{is\PYGZus{}directed}
+                            \PYG{p}{))} \PYG{p}{\PYGZob{}}
+      \PYG{n+nx}{edge\PYGZus{}list}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{id}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{});}
+
+  \PYG{k}{return} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{is\PYGZus{}multigraph} \PYG{o}{?} \PYG{n+nx}{edge\PYGZus{}list} : \PYG{k+kt}{edge\PYGZus{}list}\PYG{p}{[}\PYG{l+m+mf}{0}\PYG{p}{];}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n+nx}{addVertex}\PYG{p}{(}\PYG{n+nx}{args}: \PYG{k+kt}{VertexArgs}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k}{if} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{size} \PYG{o}{\PYGZgt{}=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertex\PYGZus{}limit}\PYG{p}{)}
+    \PYG{k}{throw} \PYG{p}{\PYGZob{}} \PYG{n+nx}{message}: \PYG{k+kt}{ERROR.VERTICE\PYGZus{}LIMIT} \PYG{p}{\PYGZcb{};}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{id} \PYG{o}{!==} \PYG{k+kc}{undefined} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{id}\PYG{p}{))}
+    \PYG{k}{throw} \PYG{p}{\PYGZob{}} \PYG{n+nx}{message}: \PYG{k+kt}{ERROR.EXISTING\PYGZus{}VERTICE} \PYG{p}{\PYGZcb{};}
+
+  \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{id}\PYG{p}{,} \PYG{k}{new} \PYG{n+nx}{Vertex}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Add multiple vertices from a map of vertices.}
+\PYG{c+cm}{ * @param  \PYGZob{}Map\PYGZlt{}base\PYGZus{}id, Vertex\PYGZgt{}\PYGZcb{} vertex\PYGZus{}map}
+\PYG{c+cm}{ */}
+\PYG{n+nx}{addVertexMap}\PYG{p}{(}\PYG{n+nx}{vertex\PYGZus{}map}: \PYG{k+kt}{Map}\PYG{o}{\PYGZlt{}}\PYG{n+nx}{base\PYGZus{}id}\PYG{p}{,} \PYG{n+nx}{Vertex}\PYG{o}{\PYGZgt{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n+nx}{vertex\PYGZus{}map}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((}\PYG{n+nx}{vertex}\PYG{p}{,} \PYG{n+nx}{id}\PYG{p}{)} \PYG{o}{=\PYGZgt{}}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{id}\PYG{p}{,} \PYG{n+nx}{vertex}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Add multiple vertices from a list of VertexArgs.}
+\PYG{c+cm}{ * @param  \PYGZob{}VertexArgs[]\PYGZcb{} vertex\PYGZus{}list}
+\PYG{c+cm}{ */}
+\PYG{n+nx}{addVertexList}\PYG{p}{(}\PYG{n+nx}{vertex\PYGZus{}list}: \PYG{k+kt}{VertexArgs}\PYG{p}{[])} \PYG{p}{\PYGZob{}}
+  \PYG{n+nx}{vertex\PYGZus{}list}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((}\PYG{n+nx}{vertex\PYGZus{}args}\PYG{p}{,} \PYG{n+nx}{id}\PYG{p}{)} \PYG{o}{=\PYGZgt{}}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{id}\PYG{p}{,} \PYG{k}{new} \PYG{n+nx}{Vertex}\PYG{p}{(}\PYG{n+nx}{vertex\PYGZus{}args}\PYG{p}{))}
+  \PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
