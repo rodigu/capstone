@@ -124,7 +124,86 @@ However, since the network uses Maps, when an edge is created, it needs to have
 an ID assigned to it.
 The 'newEID()' function generates a valid ID to be used internally.
 
+There are four special ways to add edges and vertices to a network.
+
+\begin{minted}[bgcolor=bg]{ts}
+ addEdgeMap(edge_map: Map<base_id, Edge>) {
+  edge_map.forEach((edge, id) => this.edges.set(id, edge));
+}
+
+addEdgeList(edge_list: EdgeArgs[]) {
+  edge_list.forEach((edge_args, id) =>
+    this.edges.set(id, new Edge(edge_args))
+  );
+}
+
+ addVertexMap(vertex_map: Map<base_id, Vertex>) {
+  vertex_map.forEach((vertex, id) =>
+    this.vertices.set(id, vertex));
+}
+
+addVertexList(vertex_list: VertexArgs[]) {
+  vertex_list.forEach((vertex_args, id) =>
+    this.vertices.set(id, new Vertex(vertex_args))
+  );
+}
+\end{minted}
+
+An array of vertex information could be added as such:
+
+\begin{minted}[bgcolor=bg]{ts}
+const vertex_list = [
+  {id: 'node_1', weight:3},
+  {id: 'node_2', weight:1.2}
+]
+
+net.addVertexList(vertex_list)
+\end{minted}
+
 Other utility functions are:
+
+\begin{minted}[bgcolor=bg]{ts}
+hasEdge(from: base_id,
+        to: base_id,
+        is_directed = false): boolean {
+  return this.edge_list.some(({ vertices }) =>
+    this.checkEdgeIsSame(vertices, { from, to }, is_directed)
+  );
+}
+
+getEdgesBetween(
+  from: base_id,
+  to: base_id,
+  is_directed = this.is_directed
+): base_id[] | base_id {
+  let edge_list: base_id[] = [];
+
+  this.edges.forEach(({ vertices }, id) => {
+    if (this.checkEdgeIsSame(
+                              vertices,
+                              { from, to },
+                              is_directed
+                            )) {
+      edge_list.push(id);
+    }
+  });
+
+  return this.is_multigraph ? edge_list : edge_list[0];
+}
+
+addVertex(args: VertexArgs) {
+  if (this.vertices.size >= this.vertex_limit)
+    throw { message: ERROR.VERTICE_LIMIT };
+  if (args.id !== undefined && this.vertices.has(args.id))
+    throw { message: ERROR.EXISTING_VERTICE };
+
+  this.vertices.set(args.id, new Vertex(args));
+}
+\end{minted}
+
+
+The 'addEdge' function looks different from the 'addVertex' function because it has to deal with many exceptions.
+
 
 \begin{minted}[bgcolor=bg]{ts}
 addEdge(args: EdgeArgs) {
@@ -162,97 +241,31 @@ addEdge(args: EdgeArgs) {
 
   this.edges.set(args.id, new Edge(args));
 }
-
-/**
- * Add multiple edges from a map of edges.
- * @param  {Map<base_id, Edge>} edge_map
- */
-addEdgeMap(edge_map: Map<base_id, Edge>) {
-  edge_map.forEach((edge, id) => this.edges.set(id, edge));
-}
-
-/**
- * Add multiple edges from a list of EdgeArgs.
- * @param  {EdgeArgs[]} edge_list
- */
-addEdgeList(edge_list: EdgeArgs[]) {
-  edge_list.forEach((edge_args, id) =>
-    this.edges.set(id, new Edge(edge_args))
-  );
-}
-
-/**
- * Returns true if an edge (undirected)
- * between from and to exists.
- * @param  {base_id} from
- * @param  {base_id} to
- * @returns boolean
- */
-hasEdge(from: base_id,
-        to: base_id,
-        is_directed = false): boolean {
-  return this.edge_list.some(({ vertices }) =>
-    this.checkEdgeIsSame(vertices, { from, to }, is_directed)
-  );
-}
-
-/**
- * Returns a list of edges between two given nodes.
- *
- * @param  {base_id} from
- * @param  {base_id} to
- * @returns base_id[]
- */
-getEdgesBetween(
-  from: base_id,
-  to: base_id,
-  is_directed = this.is_directed
-): base_id[] | base_id {
-  let edge_list: base_id[] = [];
-
-  this.edges.forEach(({ vertices }, id) => {
-    if (this.checkEdgeIsSame(
-                              vertices,
-                              { from, to },
-                              is_directed
-                            )) {
-      edge_list.push(id);
-    }
-  });
-
-  return this.is_multigraph ? edge_list : edge_list[0];
-}
-
-addVertex(args: VertexArgs) {
-  if (this.vertices.size >= this.vertex_limit)
-    throw { message: ERROR.VERTICE_LIMIT };
-  if (args.id !== undefined && this.vertices.has(args.id))
-    throw { message: ERROR.EXISTING_VERTICE };
-
-  this.vertices.set(args.id, new Vertex(args));
-}
-
-/**
- * Add multiple vertices from a map of vertices.
- * @param  {Map<base_id, Vertex>} vertex_map
- */
-addVertexMap(vertex_map: Map<base_id, Vertex>) {
-  vertex_map.forEach((vertex, id) =>
-    this.vertices.set(id, vertex));
-}
-
-/**
- * Add multiple vertices from a list of VertexArgs.
- * @param  {VertexArgs[]} vertex_list
- */
-addVertexList(vertex_list: VertexArgs[]) {
-  vertex_list.forEach((vertex_args, id) =>
-    this.vertices.set(id, new Vertex(vertex_args))
-  );
-}
 \end{minted}
 
-There are also some private utility functions that are used in algorithms
+The main addition to 'addEdge' is the 'do\_force' argument.
+It is set to true by default.
+When 'addEdge' is called, it first checks if the vertices you are trying to connect exists.
+If they don't and 'do\_force=true', the function will add the vertices to the network automatically.
+
+In the following code, vertices '1' and '2' are created by 'addEdge' before it adds an edge to net.
+
+\begin{minted}[bgcolor=bg]{ts}
+const net = new Network()
+net.addEdge({ from: 1, to: 2 })
+\end{minted}
+
+If the edge should only be added if the network already has the given vertices, do\_force can be set to false:
+
+\begin{minted}[bgcolor=bg]{ts}
+const net = new Network()
+net.addEdge({ from: 1, to: 2, do_force: false })
+\end{minted}
+
+The previous code will throw an error, since 'addEdge' will not try to force the creation of the edge by
+adding vertices '1' and '2' to net.
+
+There are also some private utility functions used in algorithms
 that will be explained in the next chapter.
 
 \begin{minted}[bgcolor=bg]{ts}

@@ -1,1 +1,110 @@
 \chapter{Algorithms}
+
+\section{Neighborhood}
+A vertex's neighborhood is defined as the vertices that are connected to that vertex by an edge.
+The 'Network.neighbors(id)' function returns a list with the IDs of the given vertex's neighbors. 
+
+\begin{minted}[bgcolor=bg]{ts}
+ neighbors(id: base_id): base_id[] {
+  const neighborhood: base_id[] = [];
+
+  this.edges.forEach(({ vertices }) => {
+    const { from, to } = vertices;
+    if (from === id) neighborhood.push(to);
+    else if (to === id) neighborhood.push(from);
+  });
+
+  return neighborhood;
+}
+\end{minted}
+
+It goes through the Map of edges, and finds any edge that has one of its vertices match the ID given.
+
+When a network is directed, an edge can have two distinct types of neighbors.
+In-neighbors are vertices that connect to a vertex $a$ with an edge that ends on $a$.
+In other words, for a vertex $a$ in an edge from $b$ to $a$, $b$ is an in-neighbor of $a$.
+Out-neighbors are the opposite.
+
+\begin{minted}[bgcolor=bg]{ts}
+  inNeighbors(id: base_id): base_id[] {
+  const in_neighbors: base_id[] = [];
+  if (!this.is_directed) return in_neighbors;
+
+  this.edges.forEach(({ vertices }) => {
+    const { from, to } = vertices;
+    if (to === id) in_neighbors.push(from);
+  });
+
+  return in_neighbors;
+}
+
+outNeighbors(id: base_id): base_id[] {
+  const out_neighbors: base_id[] = [];
+  if (!this.is_directed) return out_neighbors;
+
+  this.edges.forEach(({ vertices }) => {
+    const { from, to } = vertices;
+    if (from === id) out_neighbors.push(to);
+  });
+
+  return out_neighbors;
+}
+\end{minted}
+
+\section{Degree}
+
+A vertex's degree can be defined as the number of edges that contain said vertex.
+
+$$E_x=\{k \mid k \in E, x \in k\}$$
+$$D_x=|E_x|$$
+
+In the library:
+
+\begin{minted}[bgcolor=bg]{ts}
+/**
+ * Return the degree of a vertex with the given ID.
+ * @param  {base_id} id
+ * @returns number
+ */
+degree(id: base_id): number {
+  let vertex_degree = 0;
+
+  this.edges.forEach(({ vertices }) => {
+    const { from, to } = vertices;
+    if (from === id || to === id) vertex_degree++;
+  });
+
+  return vertex_degree;
+}
+\end{minted}
+
+The two other degree functions are related to in and out-neighbors,
+and are only defined when a network is directed.
+'inDegree' returns the number of edges that end on the given edge.
+'outDegree' does the opposite, returning the number of edges that start on the given vertex.
+
+\begin{minted}[bgcolor=bg]{ts}
+inDegree(id: base_id): number {
+  let in_degree = 0;
+  if (!this.is_directed) return in_degree;
+
+  this.edges.forEach(({ vertices }) => {
+    const { to } = vertices;
+    if (to === id) in_degree++;
+  });
+
+  return in_degree;
+}
+
+outDegree(id: base_id): number {
+  let out_degree = 0;
+  if (!this.is_directed) return out_degree;
+
+  this.edges.forEach(({ vertices }) => {
+    const { from } = vertices;
+    if (from === id) out_degree++;
+  });
+
+  return out_degree;
+}
+\end{minted}

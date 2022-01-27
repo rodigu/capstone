@@ -65,6 +65,37 @@ $$\sum{w(x)}, \forall x \in G$$
 The getter uses the 'Array.prototype.map' and 'Array.prototype.reduce' functions.
 It first maps the 'vertex\_list' into a list with just the weights of the vertex, and then reduces it by summing all of the new list's values.
 
+There are three other functions related to vertex weight.
+
+\begin{minted}[bgcolor=bg]{ts}
+/**
+ * List of vertices with negative weight.
+ * @returns Vertex[]
+ */
+  get negative_vertices(): Vertex[] {
+  const { vertex_list } = this;
+  return vertex_list.filter((vertex) => vertex.weight < 0);
+}
+
+/**
+ * List of vertices with positive weight.
+ * @returns Vertex[]
+ */
+get positive_vertices(): Vertex[] {
+  const { vertex_list } = this;
+  return vertex_list.filter((vertex) => vertex.weight > 0);
+}
+
+/**
+ * List of vertices with zero weight.
+ * @returns Vertex[]
+ */
+get zero_vertices(): Vertex[] {
+  const { vertex_list } = this;
+  return vertex_list.filter((vertex) => vertex.weight == 0);
+}
+\end{minted}
+
 \subsection{Maximum Number of Edges}
 The highest number of edges $M_E$ a graph with $|V|$ vertices can have is:
 $$M_E=\frac{|V|*(|V|-1)}{2}$$

@@ -8,9 +8,11 @@
 \contentsline {section}{\numberline {3.1}Functional Getters}{7}{}%
 \contentsline {section}{\numberline {3.2}Calculations}{8}{}%
 \contentsline {subsection}{\numberline {3.2.1}Weight}{8}{}%
-\contentsline {subsection}{\numberline {3.2.2}Maximum Number of Edges}{8}{}%
+\contentsline {subsection}{\numberline {3.2.2}Maximum Number of Edges}{9}{}%
 \contentsline {subsection}{\numberline {3.2.3}Density}{9}{}%
-\contentsline {chapter}{\numberline {4}Functions}{10}{}%
-\contentsline {chapter}{\numberline {5}Algorithms}{16}{}%
-\contentsline {chapter}{\numberline {6}Testing Process}{17}{}%
-\contentsline {section}{\numberline {6.1}Test Output}{17}{}%
+\contentsline {chapter}{\numberline {4}Functions}{11}{}%
+\contentsline {chapter}{\numberline {5}Algorithms}{17}{}%
+\contentsline {section}{\numberline {5.1}Neighborhood}{17}{}%
+\contentsline {section}{\numberline {5.2}Degree}{18}{}%
+\contentsline {chapter}{\numberline {6}Testing Process}{20}{}%
+\contentsline {section}{\numberline {6.1}Test Output}{20}{}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.25)  25 JAN 2022 21:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.25)  26 JAN 2022 21:49
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -186,7 +186,7 @@ runsystem(del main.aex)...executed.
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count291
 \l__pdf_internal_box=\box59
-) (main.aux (ch_intro.aux) (ch_types_interfaces.aux) (ch_values.aux) (ch_functions.aux) (ch_testing.aux))
+) (main.aux (ch_intro.aux) (ch_types_interfaces.aux) (ch_values.aux) (ch_functions.aux) (ch_algorithms.aux) (ch_testing.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
@@ -285,7 +285,7 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
  (_minted-main/71086F665FB67BA4C6DAB3AA97042D4692CF154829EF5D2C7A308A310A27AD1E.pygtex) [5]
 \openout3 = `main.pyg'.
 
- (_minted-main/E63FB70D53E2C48AAF1A22B4BE5695F092CF154829EF5D2C7A308A310A27AD1E.pygtex)
+ (_minted-main/673B4550FA7F6AE547AB13E294933C0292CF154829EF5D2C7A308A310A27AD1E.pygtex)
 \openout3 = `main.pyg'.
 
  (_minted-main/2C84721C74816A58324784527BA63BA092CF154829EF5D2C7A308A310A27AD1E.pygtex)) [6]
@@ -319,10 +319,13 @@ Overfull \hbox (1.72284pt too wide) in paragraph at lines 65--67
 
 \openout3 = `main.pyg'.
 
-[8] (_minted-main/38E456D265CE5D24050C2D624BB7471194FCD9D31EE402428B3268164B661369.pygtex)
+(_minted-main/D5FEC2472B76F1467A453226866F032C94FCD9D31EE402428B3268164B661369.pygtex) [8]
 \openout3 = `main.pyg'.
 
- (_minted-main/668F1215FD7CEB19729E30F700BC724292CF154829EF5D2C7A308A310A27AD1E.pygtex)) [9]
+ (_minted-main/38E456D265CE5D24050C2D624BB7471194FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/668F1215FD7CEB19729E30F700BC724292CF154829EF5D2C7A308A310A27AD1E.pygtex) [9]) [10]
 \openout2 = `ch_functions.aux'.
 
  (ch_functions.tex
@@ -332,7 +335,7 @@ Chapter 4.
 (_minted-main/D13064C789478BC00FC2AF7226C6668C94FCD9D31EE402428B3268164B661369.pygtex)
 \openout3 = `main.pyg'.
 
- (_minted-main/EBC8C7A2CFA2AFB553A1D2D27425844694FCD9D31EE402428B3268164B661369.pygtex) [10
+ (_minted-main/EBC8C7A2CFA2AFB553A1D2D27425844694FCD9D31EE402428B3268164B661369.pygtex) [11
 
 
 
@@ -346,66 +349,88 @@ Chapter 4.
  (_minted-main/73BA2326CABFC1677A763B21C0756BA094FCD9D31EE402428B3268164B661369.pygtex)
 \openout3 = `main.pyg'.
 
- (_minted-main/3B336BF42FD1E441BC2FD4CAAC5191B794FCD9D31EE402428B3268164B661369.pygtex) [11]
+ (_minted-main/3B336BF42FD1E441BC2FD4CAAC5191B794FCD9D31EE402428B3268164B661369.pygtex) [12]
 \openout3 = `main.pyg'.
 
  (_minted-main/B723A6EC96FC7929F36E422217A5086394FCD9D31EE402428B3268164B661369.pygtex)
 \openout3 = `main.pyg'.
 
- (_minted-main/E0C844B058CB9B2472BB287355AD28E194FCD9D31EE402428B3268164B661369.pygtex) [12] [13]
-Underfull \vbox (badness 10000) detected at line 253
- []
-
-
-Underfull \vbox (badness 10000) detected at line 253
- []
-
-[14]
+ (_minted-main/D8E3C411BE8A35AF4F44669A8051282E94FCD9D31EE402428B3268164B661369.pygtex) [13]
 \openout3 = `main.pyg'.
 
-runsystem(pygmentize -l ts -f latex -P commandprefix=PYG -F tokenmerge -P stripnl=False -o _minted-main/AC787E2E50FF352A58D99720F522F03294FCD9D31EE402428B3268164B661369.pygtex main.pyg)...executed.
+ (_minted-main/6AFE5128A7BF899285CAB9D975E00A4094FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
 
- (_minted-main/AC787E2E50FF352A58D99720F522F03294FCD9D31EE402428B3268164B661369.pygtex)) [15]
+ (_minted-main/E379A3D5D545F2DA8EDBA8A1436111AD94FCD9D31EE402428B3268164B661369.pygtex) [14]
+\openout3 = `main.pyg'.
+
+ (_minted-main/1FD6A2DC17CFA54E500DDADB8350EDC394FCD9D31EE402428B3268164B661369.pygtex)
+Overfull \vbox (1.7444pt too high) detected at line 244
+ []
+
+[15]
+\openout3 = `main.pyg'.
+
+ (_minted-main/E704C4C4062303A7508EB7CE48A5477894FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/84DC16D6344E5276660D28EEDC93896B94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/AC787E2E50FF352A58D99720F522F03294FCD9D31EE402428B3268164B661369.pygtex)) [16]
 \openout2 = `ch_algorithms.aux'.
 
  (ch_algorithms.tex
 Chapter 5.
-) [16
+\openout3 = `main.pyg'.
+
+(_minted-main/B2880537B5D2DC363E925C1921B076E594FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/C138237C5E71F72411FA014EB0B9DABC94FCD9D31EE402428B3268164B661369.pygtex) [17
 
 
 
 
 ]
+\openout3 = `main.pyg'.
+
+runsystem(pygmentize -l ts -f latex -P commandprefix=PYG -F tokenmerge -P stripnl=False -o _minted-main/2B05939C4F5C30D0A722290032E5B1BA94FCD9D31EE402428B3268164B661369.pygtex main.pyg)...executed.
+
+ (_minted-main/2B05939C4F5C30D0A722290032E5B1BA94FCD9D31EE402428B3268164B661369.pygtex) [18]
+\openout3 = `main.pyg'.
+
+ (_minted-main/1DEA4734683CD3FB33400AC63BFEDDB394FCD9D31EE402428B3268164B661369.pygtex)) [19]
 \openout2 = `ch_testing.aux'.
 
  (ch_testing.tex
 Chapter 6.
 \openout3 = `main.pyg'.
 
-(_minted-main/0C308D818215EB6429DF3268598332AD82CA0C42AFE0759A4F1491A6B69BC02A.pygtex)) [17
+(_minted-main/0C308D818215EB6429DF3268598332AD82CA0C42AFE0759A4F1491A6B69BC02A.pygtex)) [20
 
 
 
 
 ]
-runsystem(del _minted-main\795F96B52B80C018F55B12F2704E3C8E94FCD9D31EE402428B3268164B661369.pygtex)...executed.
+runsystem(del _minted-main\95DFD1314062A17E898EC831F5E702A994FCD9D31EE402428B3268164B661369.pygtex)...executed.
 
  (main.aux (ch_intro.aux) (ch_types_interfaces.aux) (ch_values.aux) (ch_functions.aux) (ch_algorithms.aux) (ch_testing.aux))
 runsystem(del main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 5751 strings out of 478593
- 124420 string characters out of 2844604
- 460427 words of memory out of 3000000
- 23747 multiletter control sequences out of 15000+600000
+ 5814 strings out of 478593
+ 129946 string characters out of 2844604
+ 448900 words of memory out of 3000000
+ 23778 multiletter control sequences out of 15000+600000
  475408 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,6n,77p,535b,562s stack positions out of 5000i,500n,10000p,200000b,80000s
 <C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (18 pages, 193804 bytes).
+Output written on main.pdf (21 pages, 200683 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
+ 130 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
