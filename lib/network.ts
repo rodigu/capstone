@@ -58,6 +58,33 @@ export class Network {
   }
 
   /**
+   * List of vertices with negative weight.
+   * @returns Vertex[]
+   */
+  get negative_vertices(): Vertex[] {
+    const { vertex_list } = this;
+    return vertex_list.filter((vertex) => vertex.weight < 0);
+  }
+
+  /**
+   * List of vertices with positive weight.
+   * @returns Vertex[]
+   */
+  get positive_vertices(): Vertex[] {
+    const { vertex_list } = this;
+    return vertex_list.filter((vertex) => vertex.weight > 0);
+  }
+
+  /**
+   * List of vertices with zero weight.
+   * @returns Vertex[]
+   */
+  get zero_vertices(): Vertex[] {
+    const { vertex_list } = this;
+    return vertex_list.filter((vertex) => vertex.weight == 0);
+  }
+
+  /**
    * Get network's [genus](https://en.wikipedia.org/wiki/Genus_%28mathematics%29).
    * @returns number
    */
@@ -190,7 +217,7 @@ export class Network {
     to: base_id,
     is_directed = this.is_directed
   ): base_id[] | base_id {
-    let edge_list: base_id[] = [];
+    const edge_list: base_id[] = [];
 
     this.edges.forEach(({ vertices }, id) => {
       if (this.checkEdgeIsSame(vertices, { from, to }, is_directed)) {
@@ -379,39 +406,6 @@ export class Network {
     });
 
     return out_degree;
-  }
-
-  /**
-   * List of vertices with negative weight.
-   * @returns Vertex[]
-   */
-  negativeVertex(): Vertex[] {
-    const { vertex_list } = this;
-    return vertex_list.filter((vertex) => {
-      return vertex.weight < 0;
-    });
-  }
-
-  /**
-   * List of vertices with positive weight.
-   * @returns Vertex[]
-   */
-  positiveVertex(): Vertex[] {
-    const { vertex_list } = this;
-    return vertex_list.filter((vertex) => {
-      return vertex.weight > 0;
-    });
-  }
-
-  /**
-   * List of vertices with zero weight.
-   * @returns Vertex[]
-   */
-  zeroVertex(): Vertex[] {
-    const { vertex_list } = this;
-    return vertex_list.filter((vertex) => {
-      return vertex.weight == 0;
-    });
   }
 
   /**
