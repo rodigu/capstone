@@ -1,18 +1,19 @@
-\contentsline {chapter}{\numberline {1}Introduction}{2}{}%
-\contentsline {section}{\numberline {1.1}Technical Aspects}{2}{}%
-\contentsline {section}{\numberline {1.2}Basic Graph Theory}{2}{}%
-\contentsline {chapter}{\numberline {2}Types and Interfaces}{3}{}%
-\contentsline {section}{\numberline {2.1}Vertex and Edge Classes}{4}{}%
-\contentsline {section}{\numberline {2.2}Network Constructor}{6}{}%
-\contentsline {chapter}{\numberline {3}Network Values}{7}{}%
-\contentsline {section}{\numberline {3.1}Functional Getters}{7}{}%
-\contentsline {section}{\numberline {3.2}Calculations}{8}{}%
-\contentsline {subsection}{\numberline {3.2.1}Weight}{8}{}%
-\contentsline {subsection}{\numberline {3.2.2}Maximum Number of Edges}{9}{}%
-\contentsline {subsection}{\numberline {3.2.3}Density}{9}{}%
-\contentsline {chapter}{\numberline {4}Functions}{11}{}%
-\contentsline {chapter}{\numberline {5}Algorithms}{17}{}%
-\contentsline {section}{\numberline {5.1}Neighborhood}{17}{}%
-\contentsline {section}{\numberline {5.2}Degree}{18}{}%
-\contentsline {chapter}{\numberline {6}Testing Process}{20}{}%
-\contentsline {section}{\numberline {6.1}Test Output}{20}{}%
+\contentsline {chapter}{Introduction}{2}{}%
+\contentsline {section}{Technical Aspects}{2}{}%
+\contentsline {section}{Basic Graph Theory}{2}{}%
+\contentsline {chapter}{Types and Interfaces}{3}{}%
+\contentsline {section}{Vertex and Edge Classes}{4}{}%
+\contentsline {section}{Network Constructor}{6}{}%
+\contentsline {chapter}{Network Values}{7}{}%
+\contentsline {section}{Functional Getters}{7}{}%
+\contentsline {section}{Calculations}{8}{}%
+\contentsline {subsection}{Weight}{8}{}%
+\contentsline {subsection}{Maximum Number of Edges}{9}{}%
+\contentsline {subsection}{Density}{9}{}%
+\contentsline {chapter}{Functions}{10}{}%
+\contentsline {chapter}{Algorithms}{16}{}%
+\contentsline {section}{Neighborhood}{16}{}%
+\contentsline {section}{Degree}{17}{}%
+\contentsline {section}{Assortativity}{18}{}%
+\contentsline {chapter}{Testing Process}{20}{}%
+\contentsline {section}{Test Output}{20}{}%

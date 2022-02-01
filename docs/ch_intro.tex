@@ -2,15 +2,23 @@
 
 \section{Technical Aspects}
 
-JavaScript (JS) is a multi-paradigm programming language. It is the most-used language in the web. ECMAScript (ES) is standardized specification of JS. ES is updated almost every year, and brings many different functionalities to the language, some of which are used in the library. The latest version of ES is ES2021, and is already implemented in most modern browsers.
+JavaScript (JS) is a multi-paradigm programming language.
+It is the most-used language in the web.
+ECMAScript (ES) is the standardized specification of JS.
+ES is updated almost every year, and brings many different functionalities to the language, some of which are used in the library.
+The latest version of ES is ES2021, and is already implemented in most modern browsers.
 
-Typescript is a strongly typed programming language that builds on JavaScript. The library is made specifically for dealing with a special kind of mathematical object with very well defined properties. Thus, TS's type functionality serves it very well.
+Typescript is a strongly typed programming language that builds on JavaScript.
+The library is made specifically for dealing with a special kind of mathematical object with very well defined properties.
+Thus, TS's type functionality serves it very well.
 
-This library is created following the one I had originally coded for the Spring 2020 Network Science class. That original library (Net20) had many flaws and inefficiencies which are addressed with this library in part due to TS.
+This library is created following the one I had originally coded for the Spring 2020 Network Science class.
+That original library (Net20) had many flaws and inefficiencies which are addressed with this library in part due to TS.
 
 \section{Basic Graph Theory}
 
-Graph theory is a field of mathematics that studies graphs. A graph, or network, essentially consists of two sets:
+Graph theory is a field of mathematics that studies graphs.
+A graph, or network, essentially consists of two sets:
 
 1. $V$, a set of vertices (also called nodes), and
 
@@ -19,4 +27,8 @@ Graph theory is a field of mathematics that studies graphs. A graph, or network,
 Thus, a graph $G$ can be represented as $G=(V,E)$ such that:
 $$E\subseteq \{\{x,y\}\mid x,y\in V, x\ne y\}\forall a,b \in E, a\ne b$$
 
-The library only deals with directed or undirected simple graphs with no self-loops. In other words, a graph cannot have more than one edge between any two vertices, and it also cannot connect a vertex to itself. The library considers all networks to be weighted on a technical level. When created, all edges and vertices have their weight set to one. An unweighted network is thus just a network with all weights set to the default of one.
+The library only deals with directed or undirected simple graphs with no self-loops.
+In other words, a graph cannot have more than one edge between any two vertices, and it also cannot connect a vertex to itself.
+The library considers all networks to be weighted on a technical level.
+When created, all edges and vertices have their weight set to one.
+An unweighted network is thus just a network with all weights set to the default of one.

@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{inNeighbors}\PYG{p}{(}\PYG{n+nx}{id}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{)}\PYG{o}{:} \PYG{n+nx}{base\PYGZus{}id}\PYG{p}{[]} \PYG{p}{\PYGZob{}}
+  \PYG{k+kd}{const} \PYG{n+nx}{in\PYGZus{}neighbors}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{[];}
+  \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{is\PYGZus{}directed}\PYG{p}{)} \PYG{k}{return} \PYG{n+nx}{in\PYGZus{}neighbors}\PYG{p}{;}
+
+  \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((\PYGZob{}} \PYG{n+nx}{vertices} \PYG{p}{\PYGZcb{})} \PYG{o}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+    \PYG{k+kd}{const} \PYG{p}{\PYGZob{}} \PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{}} \PYG{o}{=} \PYG{n+nx}{vertices}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{to} \PYG{o}{===} \PYG{n+nx}{id}\PYG{p}{)} \PYG{n+nx}{in\PYGZus{}neighbors}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{from}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{});}
+
+  \PYG{k}{return} \PYG{n+nx}{in\PYGZus{}neighbors}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n+nx}{outNeighbors}\PYG{p}{(}\PYG{n+nx}{id}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{)}\PYG{o}{:} \PYG{n+nx}{base\PYGZus{}id}\PYG{p}{[]} \PYG{p}{\PYGZob{}}
+  \PYG{k+kd}{const} \PYG{n+nx}{out\PYGZus{}neighbors}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{[];}
+  \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{is\PYGZus{}directed}\PYG{p}{)} \PYG{k}{return} \PYG{n+nx}{out\PYGZus{}neighbors}\PYG{p}{;}
+
+  \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((\PYGZob{}} \PYG{n+nx}{vertices} \PYG{p}{\PYGZcb{})} \PYG{o}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+    \PYG{k+kd}{const} \PYG{p}{\PYGZob{}} \PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{}} \PYG{o}{=} \PYG{n+nx}{vertices}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{from} \PYG{o}{===} \PYG{n+nx}{id}\PYG{p}{)} \PYG{n+nx}{out\PYGZus{}neighbors}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{to}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{});}
+
+  \PYG{k}{return} \PYG{n+nx}{out\PYGZus{}neighbors}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

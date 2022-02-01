@@ -1,0 +1,37 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{addEdge}\PYG{p}{(}\PYG{n+nx}{args}: \PYG{k+kt}{EdgeArgs}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{do\PYGZus{}force} \PYG{o}{??=} \PYG{k+kc}{true}\PYG{p}{;}
+  \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{weight} \PYG{o}{??=} \PYG{l+m+mf}{1}\PYG{p}{;}
+
+  \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{id} \PYG{o}{??=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{newEID}\PYG{p}{();}
+
+  \PYG{k}{if} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{id}\PYG{p}{))}
+    \PYG{k}{throw} \PYG{p}{\PYGZob{}} \PYG{n+nx}{message}: \PYG{k+kt}{ERROR.EXISTING\PYGZus{}EDGE} \PYG{p}{\PYGZcb{};}
+
+  \PYG{k}{if} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{size} \PYG{o}{\PYGZgt{}=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edge\PYGZus{}limit}\PYG{p}{)}
+    \PYG{k}{throw} \PYG{p}{\PYGZob{}} \PYG{n+nx}{message}: \PYG{k+kt}{ERROR.EDGE\PYGZus{}LIMIT} \PYG{p}{\PYGZcb{};}
+
+  \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{do\PYGZus{}force}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{from}\PYG{p}{))}
+      \PYG{k}{throw} \PYG{p}{\PYGZob{}}
+        \PYG{n+nx}{message}: \PYG{k+kt}{ERROR.INEXISTENT\PYGZus{}VERTICE}\PYG{p}{,}
+        \PYG{n+nx}{vertex}: \PYG{k+kt}{args.from}
+      \PYG{p}{\PYGZcb{};}
+    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{to}\PYG{p}{))}
+      \PYG{k}{throw} \PYG{p}{\PYGZob{}}
+        \PYG{n+nx}{message}: \PYG{k+kt}{ERROR.INEXISTENT\PYGZus{}VERTICE}\PYG{p}{,}
+        \PYG{n+nx}{vertex}: \PYG{k+kt}{args.to}
+      \PYG{p}{\PYGZcb{};}
+  \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{from}\PYG{p}{))}
+      \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{addVertex}\PYG{p}{(\PYGZob{}} \PYG{n+nx}{id}: \PYG{k+kt}{args.from} \PYG{p}{\PYGZcb{});}
+    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{to}\PYG{p}{))}
+      \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{addVertex}\PYG{p}{(\PYGZob{}} \PYG{n+nx}{id}: \PYG{k+kt}{args.to} \PYG{p}{\PYGZcb{});}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{is\PYGZus{}multigraph} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{hasEdge}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{to}\PYG{p}{))}
+    \PYG{k}{return}\PYG{p}{;}
+
+  \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{id}\PYG{p}{,} \PYG{k}{new} \PYG{n+nx}{Edge}\PYG{p}{(}\PYG{n+nx}{args}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

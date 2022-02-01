@@ -26,7 +26,7 @@ In other words, for a vertex $a$ in an edge from $b$ to $a$, $b$ is an in-neighb
 Out-neighbors are the opposite.
 
 \begin{minted}[bgcolor=bg]{ts}
-  inNeighbors(id: base_id): base_id[] {
+inNeighbors(id: base_id): base_id[] {
   const in_neighbors: base_id[] = [];
   if (!this.is_directed) return in_neighbors;
 
@@ -108,3 +108,55 @@ outDegree(id: base_id): number {
   return out_degree;
 }
 \end{minted}
+
+\section{Assortativity}
+
+Assortativity relates to a vertex's propensity to connect to other vertices that have similar properties.
+In this algorithm, the property used as reference is a vertex's degree.
+
+Assortativiry of a vertex $i$ is usually written as:
+
+$$k_{nn}(i)=\frac{\sum{a_{ij}k_{j}}}{j_i}$$
+
+Where $a_{ij}$ is positive if there is and edge between vertices $i$ and $j$,
+and $k_j$ is the degree of vertex $j$.
+And this is what this would look like when literally transcribed into code:
+
+\begin{minted}[bgcolor=bg]{ts}
+assortativity(id: base_id): number {
+  let vertex_assortativity = 0;
+
+  this.edges.forEach(({ vertices }) => {
+    const { from, to } = vertices;
+    if (from === id) vertex_assortativity += this.degree(to);
+    else if (to === id) vertex_assortativity += this.degree(from);
+  });
+
+  return vertex_assortativity / this.degree(id);
+}
+\end{minted}
+
+However, as previously mentioned, we already have a function for getting the neighbors of a specific vertex.
+Thus, we could write our assortativity $A_x$ of vertex $x$ as:
+
+$$A_x=\frac{\sum{D_n(x)}}{D_x}$$
+
+In code:
+
+\begin{minted}[bgcolor=bg]{ts}
+assortativity(id: base_id): number {
+  let vertex_assortativity = 0;
+
+  this.neighbors(id).forEach((neighbor_id) => {
+    vertex_assortativity += this.degree(neighbor_id)
+  });
+
+  return vertex_assortativity / this.degree(id);
+}
+\end{minted}
+
+This helps us avoid repetition and makes things more clear.
+If someone who doesn't know what assortativity is were to look at this
+they would have an easier time figuring out what it means.
+
+Saved 10 seconds from triplets by only using directed edges

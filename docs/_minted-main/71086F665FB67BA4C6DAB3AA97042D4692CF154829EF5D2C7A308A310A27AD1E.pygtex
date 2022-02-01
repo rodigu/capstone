@@ -1,0 +1,29 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{import} \PYG{p}{\PYGZob{}} \PYG{n+nx}{base\PYGZus{}id}\PYG{p}{,} \PYG{n+nx}{EdgeArgs} \PYG{p}{\PYGZcb{}} \PYG{n+nx}{from} \PYG{l+s+s2}{\PYGZdq{}./enums.ts\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k}{export} \PYG{k+kd}{class} \PYG{n+nx}{Edge} \PYG{p}{\PYGZob{}}
+  \PYG{k}{private} \PYG{n+nx}{to}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{;}
+  \PYG{k}{private} \PYG{n+nx}{from}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{;}
+  \PYG{n+nx}{weight}: \PYG{k+kt}{number}\PYG{p}{;}
+
+  \PYG{c+cm}{/**}
+\PYG{c+cm}{   * Create an edge between \PYGZsq{}from\PYGZsq{} and \PYGZsq{}to\PYGZsq{}.}
+\PYG{c+cm}{   *}
+\PYG{c+cm}{   * Weight is set to 1 by default (i.e. unweighted).}
+\PYG{c+cm}{   * @param  \PYGZob{}EdgeArgs\PYGZcb{} args}
+\PYG{c+cm}{   */}
+  \PYG{k+kr}{constructor}\PYG{p}{(}\PYG{n+nx}{args}: \PYG{k+kt}{EdgeArgs}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{from} \PYG{o}{=} \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{from}\PYG{p}{;}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{to} \PYG{o}{=} \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{to}\PYG{p}{;}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{weight} \PYG{o}{=} \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{weight} \PYG{o}{??} \PYG{l+m+mf}{1}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{c+cm}{/**}
+\PYG{c+cm}{   * Returns an object with the two vertices in the edge.}
+\PYG{c+cm}{   * @returns \PYGZob{}\PYGZob{} from:base\PYGZus{}id, to:base\PYGZus{}id \PYGZcb{}\PYGZcb{}}
+\PYG{c+cm}{   */}
+  \PYG{n+nx}{get} \PYG{n+nx}{vertices}\PYG{p}{()}\PYG{o}{:} \PYG{p}{\PYGZob{}} \PYG{n+nx}{from}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{;} \PYG{n+nx}{to}: \PYG{k+kt}{base\PYGZus{}id} \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{p}{\PYGZob{}} \PYG{n+nx}{from}: \PYG{k+kt}{this.from}\PYG{p}{,} \PYG{n+nx}{to}: \PYG{k+kt}{this.to} \PYG{p}{\PYGZcb{};}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

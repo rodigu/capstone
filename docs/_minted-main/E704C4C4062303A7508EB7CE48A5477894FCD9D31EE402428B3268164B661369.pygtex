@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{const} \PYG{n+nx}{net} \PYG{o}{=} \PYG{k}{new} \PYG{n+nx}{Network}\PYG{p}{()}
+\PYG{n+nx}{net}\PYG{p}{.}\PYG{n+nx}{addEdge}\PYG{p}{(\PYGZob{}} \PYG{n+nx}{from}: \PYG{k+kt}{1}\PYG{p}{,} \PYG{n+nx}{to}: \PYG{k+kt}{2} \PYG{p}{\PYGZcb{})}
+\end{Verbatim}

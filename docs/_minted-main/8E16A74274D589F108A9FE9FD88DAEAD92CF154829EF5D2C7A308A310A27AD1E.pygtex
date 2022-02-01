@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{n+nx}{get} \PYG{n+nx}{args}\PYG{p}{()}\PYG{o}{:} \PYG{n+nx}{NetworkArgs} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{p}{\PYGZob{}}
+      \PYG{n+nx}{is\PYGZus{}directed}: \PYG{k+kt}{this.is\PYGZus{}directed}\PYG{p}{,}
+      \PYG{n+nx}{is\PYGZus{}multigraph}: \PYG{k+kt}{this.is\PYGZus{}multigraph}\PYG{p}{,}
+      \PYG{n+nx}{edge\PYGZus{}limit}: \PYG{k+kt}{this.edge\PYGZus{}limit}\PYG{p}{,}
+      \PYG{n+nx}{vertex\PYGZus{}limit}: \PYG{k+kt}{this.vertex\PYGZus{}limit}\PYG{p}{,}
+    \PYG{p}{\PYGZcb{};}
+  \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
