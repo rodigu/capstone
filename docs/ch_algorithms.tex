@@ -1,8 +1,10 @@
 \chapter{Algorithms}
 
 \section{Neighborhood}
-A vertex's neighborhood is defined as the vertices that are connected to that vertex by an edge.
-The 'Network.neighbors(id)' function returns a list with the IDs of the given vertex's neighbors. 
+A vertex $x$'s neighborhood $H_x$ is defined as the vertices that are connected to that vertex by an edge.
+The 'Network.neighbors(id)' function returns a list with the IDs of the given vertex's neighbors.
+
+$$H_x\subset V$$
 
 \begin{minted}[bgcolor=bg]{ts}
  neighbors(id: base_id): base_id[] {
@@ -109,12 +111,8 @@ outDegree(id: base_id): number {
 }
 \end{minted}
 
-\section{Assortativity}
-
-Assortativity relates to a vertex's propensity to connect to other vertices that have similar properties.
-In this algorithm, the property used as reference is a vertex's degree.
-
-Assortativiry of a vertex $i$ is usually written as:
+The average degree of a vertex is defined as the sum all its neighbor's degrees over its own degree.
+For a vertex $i$, it is usually written as:
 
 $$k_{nn}(i)=\frac{\sum{a_{ij}k_{j}}}{j_i}$$
 
@@ -123,40 +121,269 @@ and $k_j$ is the degree of vertex $j$.
 And this is what this would look like when literally transcribed into code:
 
 \begin{minted}[bgcolor=bg]{ts}
-assortativity(id: base_id): number {
-  let vertex_assortativity = 0;
+averageDegree(id: base_id): number {
+  let neighbor_degree_sum = 0;
 
   this.edges.forEach(({ vertices }) => {
     const { from, to } = vertices;
-    if (from === id) vertex_assortativity += this.degree(to);
-    else if (to === id) vertex_assortativity += this.degree(from);
+    if (from === id) neighbor_degree_sum += this.degree(to);
+    else if (to === id) neighbor_degree_sum += this.degree(from);
   });
 
-  return vertex_assortativity / this.degree(id);
+  return neighbor_degree_sum / this.degree(id);
 }
 \end{minted}
 
 However, as previously mentioned, we already have a function for getting the neighbors of a specific vertex.
-Thus, we could write our assortativity $A_x$ of vertex $x$ as:
+Thus, we could write the averageDegree $A_x$ of vertex $x$ as:
 
 $$A_x=\frac{\sum{D_n(x)}}{D_x}$$
 
 In code:
 
 \begin{minted}[bgcolor=bg]{ts}
-assortativity(id: base_id): number {
-  let vertex_assortativity = 0;
+averageDegree(id: base_id): number {
+  let neighbor_degree_sum = 0;
 
   this.neighbors(id).forEach((neighbor_id) => {
-    vertex_assortativity += this.degree(neighbor_id)
+    neighbor_degree_sum += this.degree(neighbor_id);
   });
 
-  return vertex_assortativity / this.degree(id);
+  return neighbor_degree_sum / this.degree(id);
 }
 \end{minted}
 
 This helps us avoid repetition and makes things more clear.
-If someone who doesn't know what assortativity is were to look at this
+If someone who doesn't know what an average degree is were to look at this,
 they would have an easier time figuring out what it means.
+
+\section{Assortativity}
+
+Assortativity is a fairly complex algorithm.
+In this library, an auxiliary function was created to help calculate it:
+
+\begin{minted}[bgcolor=bg]{ts}
+edgeAverageOperationList(
+    operations: ((vertices: EdgeArgs) => number)[]
+  ) {
+  let totals = new Array(operations.length).fill(0);
+  this.edges.forEach(
+    ({ vertices }) =>
+      (totals = totals.map(
+        (total, index) => (total += operations[index](vertices))
+      ))
+  );
+
+  return totals.map((total) => total / this.edges.size);
+}
+\end{minted}
+
+This function borrows an important idea of functional programming.
+The parameter it takes in is an array of functions.
+The functions have the format:
+
+\begin{minted}[bgcolor=bg]{ts}
+(vertices: EdgeArgs) => number
+\end{minted}
+
+They take in EdgeArgs and output a number.
+For example, an input function could be:
+
+\begin{minted}[bgcolor=bg]{ts}
+const in_function =
+  ({ from, to }) =>
+    this.vertices.get(from).weight +
+    this.vertices.get(to).weight;
+\end{minted}
+
+In essence, this function takes in two vertex IDs that belong to an edge and sums their weights.
+Although the function tecnically expects EdgeArgs,
+the two properties of this type that we are really interested in are 'from' and 'to' (the two vertices in an edge).
+
+Assortativity makes use of edgeAverageOperationList.
+
+\begin{minted}[bgcolor=bg]{ts}
+assortativity(): number {
+  const [edge_multi, edge_sum, edge_sqr_sum] =
+    this.edgeAverageOperationList([
+      ({ from, to }) => this.degree(from) * this.degree(to),
+      ({ from, to }) => this.degree(from) + this.degree(to),
+      ({ from, to }) => this.degree(from) ** 2 +
+                        this.degree(to) ** 2,
+    ]);
+
+  return (
+    (4 * edge_multi - edge_sum ** 2) /
+    (2 * edge_sqr_sum - edge_sum ** 2)
+  );
+}
+\end{minted}
+
+I adopted the formula offered by Barrenas et al:
+
+$$r=\frac{(4\langle k_a k_b\rangle-\langle k_a+k_b\rangle^2)}{2\langle k_a^2+k_b^2\rangle-\langle k_a+k_b\rangle}$$
+
+$\langle ... \rangle$ represents an operation performed over all edges,
+where $k_a$ and $k_b$ are its vertices.
+
+There is another function in the Network class called edgeAverageOperation.
+It works almost exactly like its 'List' version, except it only takes in one operation.
+The list version makes assortativity $O(c)$, where $c$ is a constant.
+That is because the operations are done one after the other in a single loop through all edges.
+If edgeAverageOperation was used instead, it would make an algorithm like assortativity $O(n)$ (linear complexity).
+$n$ being the number of operations necessary, since each operation would need an entire loop through the network's edges.
+
+\section{Complement}
+
+The complement of a network $N$ is a network $N_c$ with the same number of vertices,
+but with all the edges $N$ doesn't have.
+That is to say, for $N=(V,E)$ and $N_c=(V,E_c)$, the edge $e$:
+
+$$e\in E_c\iff e \notin E$$
+
+The complement function has no inputs, and returns a Network object.
+\begin{minted}[bgcolor=bg]{ts}
+complement(): Network {
+  const complement_network =
+    new Network({ is_directed: this.is_directed });
+
+  this.vertices.forEach((vertex_a) => {
+    const { id: id_a } = vertex_a;
+    this.vertices.forEach((vertex_b) => {
+      const { id: id_b } = vertex_b;
+      if (id_a !== id_b) {
+        if (!this.hasEdge(id_a, id_b))
+          complement_network.addEdge({
+            from: id_a, to: id_b
+          });
+        if (complement_network.is_directed &&
+            !this.hasEdge(id_b, id_a))
+          complement_network.addEdge({
+            from: id_b, to: id_a
+          });
+      }
+    });
+  });
+
+  return complement_network;
+}
+\end{minted}
+
+It goes through every vertex and if it finds two vertices that don't have an edge in the network, it adds it to the complement.
+
+\section{Ego}
+
+The ego $G_x$ of a vertex $x$ from a network $N=(V,E)$ is the set $V_g$ of all vertices that have an edge with it, as well as all the edges with vertices in $V_g$.
+
+$$G_x=(V_g,E_g), V_g \subset V \and E_g \subset E$$
+
+$$\forall e \in E_g, v\and u \in e : v\and u \in H_x$$
+
+In the library, the algorithm takes in a vertex's ID, and returns a Network instance.
+\begin{minted}[bgcolor=bg]{ts}
+ego(id: base_id): Network {
+  const ego_network = new Network(this.args);
+
+  this.edges.forEach((edge) => {
+    const { from, to } = edge.vertices;
+    if (from === id || to === id) {
+      ego_network.addEdge({ from, to });
+    }
+  });
+
+  this.edges.forEach(({ vertices }) => {
+    const { from, to } = vertices;
+    if (ego_network.vertices.has(from) &&
+        ego_network.vertices.has(to))
+      ego_network.addEdge({ from, to });
+  });
+
+  return ego_network;
+}
+\end{minted}
+
+First, the algorithm goes through all edges, and add to the ego\_network the ones that contain the given vertex.
+Then, it goes through the edges of the network again, this time adding edges that don't connect to the ego vertex,
+but connect to vertices already in the ego network.
+
+\section{Copy}
+
+Because of the way JS works, making a copy of a class' instance is not as simple as:
+\begin{minted}[bgcolor=bg]{ts}
+const net_copy = net;
+\end{minted}
+
+This method works more like a reference to the original object.
+If a property of net changes, net\_copy will also change.
+
+Nevertheless, there are many other ways of making copies of objects with JS.
+Here are som of the most common:
+\begin{minted}[bgcolor=bg]{ts}
+// Destructuring:
+const copy_destructure = { ...net }
+
+// Assign:
+const copy_assign = Object.assign({}, net)
+
+// JSON:
+const copy_json = JSON.parse(JSON.stringify(net))
+\end{minted}
+
+However, none of these suit our need for a completely independent copy.
+For destructuring, although simple properties such as the maximum number of edges of the Network would be properly copied,
+objects (which are most of the network) would still become references.
+Assigning has the same issue.
+The edges property, for instance, would become a reference because it is a Map.
+So if an edge is added to the original, the copy would also receive it.
+
+The JSON method solves this problem.
+It transforms the network into a JSON string, and then transforms it back into an object with JSON.parse().
+The big problem with this is that the copy is no longer a network instance, just an object with many of the properties a network would have.
+This is an issue we would want to avoid even more when we consider typing and interfaces are precisely why TS was chosen.
+
+Thus, the copy algorithm works differently, and is specific to the Network class:
+
+\begin{minted}[bgcolor=bg]{ts}
+copy(): Network {
+  const network_copy = new Network(this.args);
+  network_copy.addEdgeMap(this.edges);
+  network_copy.addVertexMap(this.vertices);
+  return network_copy;
+}
+\end{minted}
+
+\section{Clustering}
+
+The clustering coefficient measures how connected the neighbors of a vertex are to each other.
+It is the number of edges that exists in between the vertex's neighbors in relation to the maximum number of edges that could exist there.
+
+$$C_x=H_x-{x}$$
+$$\frac{|{e:v,u\in e \and v,u\in C_x}|}{|C_x|(|C_x|-1)}$$
+
+\begin{minted}[bgcolor=bg]{ts}
+clustering(id: base_id): number {
+  const ego_net = this.ego(id);
+
+  if (ego_net.vertices.size <= 1) return 0;
+
+  const centerless_ego = ego_net;
+
+  // Max edges in a network without the given vertex.
+  centerless_ego.removeVertex(id);
+  const { max_edges } = centerless_ego;
+  const existing_edges = centerless_ego.edges.size;
+
+  // If graph is directed, multiply result by 2.
+  const directed_const = this.is_directed ? 2 : 1;
+
+  return directed_const * (existing_edges / max_edges);
+}
+\end{minted}
+
+The algorithm makes use of the ego() function, removing the ID vertex after.
+It also uses a tenary operator because the only difference between the clustering from a directed network to an undirected one is
+that the former has its clustering multiplied by 2.
+
+
 
 Saved 10 seconds from triplets by only using directed edges

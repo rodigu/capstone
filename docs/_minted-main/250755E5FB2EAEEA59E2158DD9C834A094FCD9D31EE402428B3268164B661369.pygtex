@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Destructuring:}
+\PYG{k+kd}{const} \PYG{n+nx}{copy\PYGZus{}destructure} \PYG{o}{=} \PYG{p}{\PYGZob{}} \PYG{p}{...}\PYG{n+nx}{net} \PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Assign:}
+\PYG{k+kd}{const} \PYG{n+nx}{copy\PYGZus{}assign} \PYG{o}{=} \PYG{n+nb}{Object}\PYG{p}{.}\PYG{n+nx}{assign}\PYG{p}{(\PYGZob{}\PYGZcb{},} \PYG{n+nx}{net}\PYG{p}{)}
+
+\PYG{c+c1}{// JSON:}
+\PYG{k+kd}{const} \PYG{n+nx}{copy\PYGZus{}json} \PYG{o}{=} \PYG{n+nx}{JSON}\PYG{p}{.}\PYG{n+nx}{parse}\PYG{p}{(}\PYG{n+nx}{JSON}\PYG{p}{.}\PYG{n+nx}{stringify}\PYG{p}{(}\PYG{n+nx}{net}\PYG{p}{))}
+\end{Verbatim}

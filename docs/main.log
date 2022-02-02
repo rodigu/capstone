@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.25)  31 JAN 2022 22:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.25)  2 FEB 2022 16:26
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -385,22 +385,52 @@ Overfull \hbox (1.72284pt too wide) in paragraph at lines 65--67
 ]
 \openout3 = `main.pyg'.
 
- (_minted-main/2B05939C4F5C30D0A722290032E5B1BA94FCD9D31EE402428B3268164B661369.pygtex)
+ (_minted-main/2B05939C4F5C30D0A722290032E5B1BA94FCD9D31EE402428B3268164B661369.pygtex) [17]
 \openout3 = `main.pyg'.
 
- [17] (_minted-main/1DEA4734683CD3FB33400AC63BFEDDB394FCD9D31EE402428B3268164B661369.pygtex)
+ (_minted-main/1DEA4734683CD3FB33400AC63BFEDDB394FCD9D31EE402428B3268164B661369.pygtex)
 \openout3 = `main.pyg'.
 
- (_minted-main/ABC5F15824D6D47562CDF5ECCCF2895694FCD9D31EE402428B3268164B661369.pygtex) [18]
+ (_minted-main/36568C89486E43E2B78C96D15B1BE0AF94FCD9D31EE402428B3268164B661369.pygtex) [18]
 \openout3 = `main.pyg'.
 
- (_minted-main/500157E1A6394BCE14B9539B4EE9CB2494FCD9D31EE402428B3268164B661369.pygtex)) [19]
+ (_minted-main/D86C61F3F78536B9AC15A76C778E1BFC94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/F9FE9FFF057F8BF31A5C78C3F7561D9394FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ [19] (_minted-main/34D9362C2E6257B856EC6F76266F381F94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/2E458AF243E5117C6FF12C490F94E06294FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/8B7109363D47704E271572880DBAF9A894FCD9D31EE402428B3268164B661369.pygtex) [20]
+\openout3 = `main.pyg'.
+
+ (_minted-main/6611ED75ACE4AC45432BF0B3513592CC94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ [21] (_minted-main/17D8F30E1B393FB3338FC101A508C8A294FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/E5CC08378185381D1EB919F79C0E265994FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/250755E5FB2EAEEA59E2158DD9C834A094FCD9D31EE402428B3268164B661369.pygtex) [22]
+\openout3 = `main.pyg'.
+
+ (_minted-main/0CB2818E13858C077247886C2260C10E94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/A85427228AE3C10F674AE76B243582B894FCD9D31EE402428B3268164B661369.pygtex) [23]) [24]
 \openout2 = `ch_testing.aux'.
 
  (ch_testing.tex
 \openout3 = `main.pyg'.
 
- (_minted-main/0C308D818215EB6429DF3268598332AD82CA0C42AFE0759A4F1491A6B69BC02A.pygtex)) [20
+ (_minted-main/0C308D818215EB6429DF3268598332AD82CA0C42AFE0759A4F1491A6B69BC02A.pygtex)) [25
 
 
 
@@ -410,17 +440,17 @@ runsystem(del main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 5820 strings out of 478593
- 130741 string characters out of 2844604
- 448296 words of memory out of 3000000
- 23779 multiletter control sequences out of 15000+600000
+ 5880 strings out of 478593
+ 136171 string characters out of 2844604
+ 451272 words of memory out of 3000000
+ 23809 multiletter control sequences out of 15000+600000
  474802 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,6n,77p,445b,562s stack positions out of 5000i,500n,10000p,200000b,80000s
-<C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (21 pages, 201690 bytes).
+ 74i,7n,77p,445b,562s stack positions out of 5000i,500n,10000p,200000b,80000s
+<C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (26 pages, 226875 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
+ 151 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

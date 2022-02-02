@@ -14,6 +14,10 @@
 \contentsline {chapter}{Algorithms}{16}{}%
 \contentsline {section}{Neighborhood}{16}{}%
 \contentsline {section}{Degree}{17}{}%
-\contentsline {section}{Assortativity}{18}{}%
-\contentsline {chapter}{Testing Process}{20}{}%
-\contentsline {section}{Test Output}{20}{}%
+\contentsline {section}{Assortativity}{19}{}%
+\contentsline {section}{Complement}{21}{}%
+\contentsline {section}{Ego}{21}{}%
+\contentsline {section}{Copy}{22}{}%
+\contentsline {section}{Clustering}{23}{}%
+\contentsline {chapter}{Testing Process}{25}{}%
+\contentsline {section}{Test Output}{25}{}%

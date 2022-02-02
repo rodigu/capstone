@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{complement}\PYG{p}{()}\PYG{o}{:} \PYG{n+nx}{Network} \PYG{p}{\PYGZob{}}
+  \PYG{k+kd}{const} \PYG{n+nx}{complement\PYGZus{}network} \PYG{o}{=}
+    \PYG{k}{new} \PYG{n+nx}{Network}\PYG{p}{(\PYGZob{}} \PYG{n+nx}{is\PYGZus{}directed}: \PYG{k+kt}{this.is\PYGZus{}directed} \PYG{p}{\PYGZcb{});}
+
+  \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((}\PYG{n+nx}{vertex\PYGZus{}a}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+    \PYG{k+kd}{const} \PYG{p}{\PYGZob{}} \PYG{n+nx}{id}: \PYG{k+kt}{id\PYGZus{}a} \PYG{p}{\PYGZcb{}} \PYG{o}{=} \PYG{n+nx}{vertex\PYGZus{}a}\PYG{p}{;}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((}\PYG{n+nx}{vertex\PYGZus{}b}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+      \PYG{k+kd}{const} \PYG{p}{\PYGZob{}} \PYG{n+nx}{id}: \PYG{k+kt}{id\PYGZus{}b} \PYG{p}{\PYGZcb{}} \PYG{o}{=} \PYG{n+nx}{vertex\PYGZus{}b}\PYG{p}{;}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{id\PYGZus{}a} \PYG{o}{!==} \PYG{n+nx}{id\PYGZus{}b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{hasEdge}\PYG{p}{(}\PYG{n+nx}{id\PYGZus{}a}\PYG{p}{,} \PYG{n+nx}{id\PYGZus{}b}\PYG{p}{))}
+          \PYG{n+nx}{complement\PYGZus{}network}\PYG{p}{.}\PYG{n+nx}{addEdge}\PYG{p}{(\PYGZob{}}
+            \PYG{n+nx}{from}: \PYG{k+kt}{id\PYGZus{}a}\PYG{p}{,} \PYG{n+nx}{to}: \PYG{k+kt}{id\PYGZus{}b}
+          \PYG{p}{\PYGZcb{});}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{complement\PYGZus{}network}\PYG{p}{.}\PYG{n+nx}{is\PYGZus{}directed} \PYG{o}{\PYGZam{}\PYGZam{}}
+            \PYG{o}{!}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{hasEdge}\PYG{p}{(}\PYG{n+nx}{id\PYGZus{}b}\PYG{p}{,} \PYG{n+nx}{id\PYGZus{}a}\PYG{p}{))}
+          \PYG{n+nx}{complement\PYGZus{}network}\PYG{p}{.}\PYG{n+nx}{addEdge}\PYG{p}{(\PYGZob{}}
+            \PYG{n+nx}{from}: \PYG{k+kt}{id\PYGZus{}b}\PYG{p}{,} \PYG{n+nx}{to}: \PYG{k+kt}{id\PYGZus{}a}
+          \PYG{p}{\PYGZcb{});}
+      \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{});}
+  \PYG{p}{\PYGZcb{});}
+
+  \PYG{k}{return} \PYG{n+nx}{complement\PYGZus{}network}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

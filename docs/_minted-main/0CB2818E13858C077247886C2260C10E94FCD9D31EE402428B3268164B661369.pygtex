@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{copy}\PYG{p}{()}\PYG{o}{:} \PYG{n+nx}{Network} \PYG{p}{\PYGZob{}}
+  \PYG{k+kd}{const} \PYG{n+nx}{network\PYGZus{}copy} \PYG{o}{=} \PYG{k}{new} \PYG{n+nx}{Network}\PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{args}\PYG{p}{);}
+  \PYG{n+nx}{network\PYGZus{}copy}\PYG{p}{.}\PYG{n+nx}{addEdgeMap}\PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{);}
+  \PYG{n+nx}{network\PYGZus{}copy}\PYG{p}{.}\PYG{n+nx}{addVertexMap}\PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{);}
+  \PYG{k}{return} \PYG{n+nx}{network\PYGZus{}copy}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

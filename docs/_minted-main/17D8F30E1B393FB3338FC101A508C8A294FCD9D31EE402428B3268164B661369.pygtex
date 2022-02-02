@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{ego}\PYG{p}{(}\PYG{n+nx}{id}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{)}\PYG{o}{:} \PYG{n+nx}{Network} \PYG{p}{\PYGZob{}}
+  \PYG{k+kd}{const} \PYG{n+nx}{ego\PYGZus{}network} \PYG{o}{=} \PYG{k}{new} \PYG{n+nx}{Network}\PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{args}\PYG{p}{);}
+
+  \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((}\PYG{n+nx}{edge}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+    \PYG{k+kd}{const} \PYG{p}{\PYGZob{}} \PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{}} \PYG{o}{=} \PYG{n+nx}{edge}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{from} \PYG{o}{===} \PYG{n+nx}{id} \PYG{o}{||} \PYG{n+nx}{to} \PYG{o}{===} \PYG{n+nx}{id}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n+nx}{ego\PYGZus{}network}\PYG{p}{.}\PYG{n+nx}{addEdge}\PYG{p}{(\PYGZob{}} \PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{});}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{});}
+
+  \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((\PYGZob{}} \PYG{n+nx}{vertices} \PYG{p}{\PYGZcb{})} \PYG{o}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+    \PYG{k+kd}{const} \PYG{p}{\PYGZob{}} \PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{}} \PYG{o}{=} \PYG{n+nx}{vertices}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{ego\PYGZus{}network}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{from}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}}
+        \PYG{n+nx}{ego\PYGZus{}network}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{has}\PYG{p}{(}\PYG{n+nx}{to}\PYG{p}{))}
+      \PYG{n+nx}{ego\PYGZus{}network}\PYG{p}{.}\PYG{n+nx}{addEdge}\PYG{p}{(\PYGZob{}} \PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{});}
+  \PYG{p}{\PYGZcb{});}
+
+  \PYG{k}{return} \PYG{n+nx}{ego\PYGZus{}network}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

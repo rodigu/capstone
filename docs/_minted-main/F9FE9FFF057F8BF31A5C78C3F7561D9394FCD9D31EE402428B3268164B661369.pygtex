@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{edgeAverageOperationList}\PYG{p}{(}
+    \PYG{n+nx}{operations}\PYG{o}{:} \PYG{p}{((}\PYG{n+nx}{vertices}: \PYG{k+kt}{EdgeArgs}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{k+kt}{number}\PYG{p}{)[]}
+  \PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k+kd}{let} \PYG{n+nx}{totals} \PYG{o}{=} \PYG{k}{new} \PYG{n+nb}{Array}\PYG{p}{(}\PYG{n+nx}{operations}\PYG{p}{.}\PYG{n+nx}{length}\PYG{p}{).}\PYG{n+nx}{fill}\PYG{p}{(}\PYG{l+m+mf}{0}\PYG{p}{);}
+  \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{(}
+    \PYG{p}{(\PYGZob{}} \PYG{n+nx}{vertices} \PYG{p}{\PYGZcb{})} \PYG{o}{=\PYGZgt{}}
+      \PYG{p}{(}\PYG{n+nx}{totals} \PYG{o}{=} \PYG{n+nx}{totals}\PYG{p}{.}\PYG{n+nx}{map}\PYG{p}{(}
+        \PYG{p}{(}\PYG{n+nx}{total}\PYG{p}{,} \PYG{n+nx}{index}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{p}{(}\PYG{n+nx}{total} \PYG{o}{+=} \PYG{n+nx}{operations}\PYG{p}{[}\PYG{n+nx}{index}\PYG{p}{](}\PYG{n+nx}{vertices}\PYG{p}{))}
+      \PYG{p}{))}
+  \PYG{p}{);}
+
+  \PYG{k}{return} \PYG{n+nx}{totals}\PYG{p}{.}\PYG{n+nx}{map}\PYG{p}{((}\PYG{n+nx}{total}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{n+nx}{total} \PYG{o}{/} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{size}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

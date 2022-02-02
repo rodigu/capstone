@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{const} \PYG{n+nx}{in\PYGZus{}function} \PYG{o}{=}
+  \PYG{p}{(\PYGZob{}} \PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{})} \PYG{o}{=\PYGZgt{}}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{get}\PYG{p}{(}\PYG{n+nx}{from}\PYG{p}{).}\PYG{n+nx}{weight} \PYG{o}{+}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{get}\PYG{p}{(}\PYG{n+nx}{to}\PYG{p}{).}\PYG{n+nx}{weight}\PYG{p}{;}
+\end{Verbatim}
