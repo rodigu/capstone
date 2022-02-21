@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.25)  21 FEB 2022 19:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.25)  21 FEB 2022 19:29
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -205,7 +205,7 @@ LaTeX Warning: Label `fig:core_ex' multiply defined.
 
 LaTeX Warning: Label `fig:core_ex' multiply defined.
 
-) (ch_testing.aux))
+))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -648,11 +648,7 @@ Overfull \vbox (1.7444pt too high) detected at line 249
  (_minted-main/3CB6FBCBD253D92414FDFA96C4EDEA5B94FCD9D31EE402428B3268164B661369.pygtex)
 \openout3 = `main.pyg'.
 
- (_minted-main/8B7109363D47704E271572880DBAF9A894FCD9D31EE402428B3268164B661369.pygtex)
-
-LaTeX Warning: Citation `ref:barrenas' on page 27 undefined on input line 223.
-
-[27]
+ (_minted-main/8B7109363D47704E271572880DBAF9A894FCD9D31EE402428B3268164B661369.pygtex) [27]
 \openout3 = `main.pyg'.
 
  (_minted-main/6611ED75ACE4AC45432BF0B3513592CC94FCD9D31EE402428B3268164B661369.pygtex)
@@ -709,12 +705,7 @@ Package pdftex.def Info: img/triplets.png  used on input line 470.
 
  (_minted-main/9DD1444BBDE6A45311CA750468D6C58794FCD9D31EE402428B3268164B661369.pygtex)) [35]
 No file main.bbl.
-runsystem(del _minted-main\0C308D818215EB6429DF3268598332AD82CA0C42AFE0759A4F1491A6B69BC02A.pygtex)...executed.
-
 (main.aux (ch_intro.aux) (ch_types_interfaces.aux) (ch_values.aux) (ch_functions.aux) (ch_algorithms.aux))
-
-LaTeX Warning: There were undefined references.
-
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -722,15 +713,15 @@ runsystem(del main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 6599 strings out of 478593
- 172597 string characters out of 2844604
- 477801 words of memory out of 3000000
- 24325 multiletter control sequences out of 15000+600000
+ 6590 strings out of 478593
+ 172216 string characters out of 2844604
+ 477153 words of memory out of 3000000
+ 24320 multiletter control sequences out of 15000+600000
  474802 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,7n,77p,418b,522s stack positions out of 5000i,500n,10000p,200000b,80000s
 <C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (36 pages, 511378 bytes).
+Output written on main.pdf (36 pages, 510866 bytes).
 PDF statistics:
  201 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
