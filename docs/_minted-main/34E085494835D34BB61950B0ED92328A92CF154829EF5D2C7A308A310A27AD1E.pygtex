@@ -6,12 +6,6 @@
   \PYG{k}{private} \PYG{n+nx}{from}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{;}
   \PYG{n+nx}{weight}: \PYG{k+kt}{number}\PYG{p}{;}
 
-  \PYG{c+cm}{/**}
-\PYG{c+cm}{   * Create an edge between \PYGZsq{}from\PYGZsq{} and \PYGZsq{}to\PYGZsq{}.}
-\PYG{c+cm}{   *}
-\PYG{c+cm}{   * Weight is set to 1 by default (i.e. unweighted).}
-\PYG{c+cm}{   * @param  \PYGZob{}EdgeArgs\PYGZcb{} args}
-\PYG{c+cm}{   */}
   \PYG{k+kr}{constructor}\PYG{p}{(}\PYG{n+nx}{args}: \PYG{k+kt}{EdgeArgs}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{from} \PYG{o}{=} \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{from}\PYG{p}{;}
     \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{to} \PYG{o}{=} \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{to}\PYG{p}{;}

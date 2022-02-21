@@ -14,7 +14,6 @@
 
 \PYG{k}{export} \PYG{k+kd}{interface} \PYG{n+nx}{NetworkArgs} \PYG{p}{\PYGZob{}}
   \PYG{n+nx}{is\PYGZus{}directed?}: \PYG{k+kt}{boolean}\PYG{p}{;}
-  \PYG{n+nx}{is\PYGZus{}multigraph?}: \PYG{k+kt}{boolean}\PYG{p}{;}
   \PYG{n+nx}{edge\PYGZus{}limit?}: \PYG{k+kt}{number}\PYG{p}{;}
   \PYG{n+nx}{vertex\PYGZus{}limit?}: \PYG{k+kt}{number}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}

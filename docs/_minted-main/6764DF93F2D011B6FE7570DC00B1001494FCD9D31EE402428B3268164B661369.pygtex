@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{listHasTriplet}\PYG{p}{(}\PYG{n+nx}{triplet\PYGZus{}arr}: \PYG{k+kt}{Triplet}\PYG{p}{[],}
+                \PYG{n+nx}{triplet}: \PYG{k+kt}{Triplet}\PYG{p}{)}\PYG{o}{:} \PYG{k+kr}{boolean} \PYG{p}{\PYGZob{}}
+  \PYG{k}{return} \PYG{o}{!!}\PYG{n+nx}{triplet\PYGZus{}arr}\PYG{p}{.}\PYG{n+nx}{find}\PYG{p}{((}\PYG{n+nx}{trip}\PYG{p}{)} \PYG{o}{=\PYGZgt{}}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{isSameTriplet}\PYG{p}{(}\PYG{n+nx}{triplet}\PYG{p}{,} \PYG{n+nx}{trip}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n+nx}{isSameTriplet}\PYG{p}{(}\PYG{n+nx}{arr1}: \PYG{k+kt}{Triplet}\PYG{p}{,} \PYG{n+nx}{arr2}: \PYG{k+kt}{Triplet}\PYG{p}{)}\PYG{o}{:} \PYG{k+kr}{boolean} \PYG{p}{\PYGZob{}}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{arr1}\PYG{p}{.}\PYG{n+nx}{length} \PYG{o}{!==} \PYG{n+nx}{arr2}\PYG{p}{.}\PYG{n+nx}{length}\PYG{p}{)} \PYG{k}{return} \PYG{k+kc}{false}\PYG{p}{;}
+  \PYG{k}{return} \PYG{n+nx}{arr1}\PYG{p}{.}\PYG{n+nx}{every}\PYG{p}{((}\PYG{n+nx}{element}\PYG{p}{,} \PYG{n+nx}{index}\PYG{p}{)} \PYG{o}{=\PYGZgt{}}
+    \PYG{n+nx}{element} \PYG{o}{===} \PYG{n+nx}{arr2}\PYG{p}{[}\PYG{n+nx}{index}\PYG{p}{]);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

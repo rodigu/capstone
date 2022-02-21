@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kd}{const} \PYG{n+nx}{vertex\PYGZus{}list} \PYG{o}{=} \PYG{p}{[}
-  \PYG{p}{\PYGZob{}}\PYG{n+nx}{id}\PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}node\PYGZus{}1\PYGZsq{}}\PYG{p}{,} \PYG{n+nx}{weight}:\PYG{k+kt}{3}\PYG{p}{\PYGZcb{},}
-  \PYG{p}{\PYGZob{}}\PYG{n+nx}{id}\PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}node\PYGZus{}2\PYGZsq{}}\PYG{p}{,} \PYG{n+nx}{weight}:\PYG{k+kt}{1.2}\PYG{p}{\PYGZcb{}}
-\PYG{p}{]}
-
-\PYG{n+nx}{net}\PYG{p}{.}\PYG{n+nx}{addVertexList}\PYG{p}{(}\PYG{n+nx}{vertex\PYGZus{}list}\PYG{p}{)}
-\end{Verbatim}

@@ -1,4 +1,5 @@
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k+kd}{const} \PYG{n+nx}{is\PYGZus{}directed} \PYG{o}{=} \PYG{k+kc}{true}
 \PYG{k+kd}{const} \PYG{n+nx}{directed\PYGZus{}net} \PYG{o}{=} \PYG{k}{new} \PYG{n+nx}{Network}\PYG{p}{(\PYGZob{}} \PYG{n+nx}{is\PYGZus{}directed} \PYG{p}{\PYGZcb{})}
+\PYG{n+nx}{net}\PYG{p}{.}\PYG{n+nx}{addEdge}\PYG{p}{(}\PYG{l+m+mf}{1}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{)}
 \end{Verbatim}

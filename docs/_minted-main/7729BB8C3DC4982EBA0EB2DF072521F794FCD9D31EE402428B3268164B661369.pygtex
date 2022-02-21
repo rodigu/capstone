@@ -1,9 +1,4 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/**}
-\PYG{c+cm}{ * Return the degree of a vertex with the given ID.}
-\PYG{c+cm}{ * @param  \PYGZob{}base\PYGZus{}id\PYGZcb{} id}
-\PYG{c+cm}{ * @returns number}
-\PYG{c+cm}{ */}
 \PYG{n+nx}{degree}\PYG{p}{(}\PYG{n+nx}{id}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{)}\PYG{o}{:} \PYG{k+kt}{number} \PYG{p}{\PYGZob{}}
   \PYG{k+kd}{let} \PYG{n+nx}{vertex\PYGZus{}degree} \PYG{o}{=} \PYG{l+m+mf}{0}\PYG{p}{;}
 

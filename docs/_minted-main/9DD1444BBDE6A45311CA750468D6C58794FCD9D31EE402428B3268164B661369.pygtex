@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{triplets}\PYG{p}{()}\PYG{o}{:} \PYG{n+nx}{Triplet}\PYG{p}{[]} \PYG{p}{\PYGZob{}}
+  \PYG{k+kd}{const} \PYG{n+nx}{triplet\PYGZus{}list}: \PYG{k+kt}{Triplet}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{[];}
+
+  \PYG{k+kd}{const} \PYG{n+nx}{k2} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{core}\PYG{p}{(}\PYG{l+m+mf}{2}\PYG{p}{);}
+
+  \PYG{k+kd}{const} \PYG{p}{\PYGZob{}} \PYG{n+nx}{vertices}\PYG{p}{,} \PYG{n+nx}{edges} \PYG{p}{\PYGZcb{}} \PYG{o}{=} \PYG{n+nx}{k2}\PYG{p}{;}
+
+  \PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{((}\PYG{n+nx}{edge}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+    \PYG{k+kd}{const} \PYG{p}{\PYGZob{}} \PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{}} \PYG{o}{=} \PYG{n+nx}{edge}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{;}
+    \PYG{n+nx}{k2}\PYG{p}{.}\PYG{n+nx}{neighbors}\PYG{p}{(}\PYG{n+nx}{from}\PYG{p}{).}\PYG{n+nx}{forEach}\PYG{p}{((}\PYG{n+nx}{id}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{p}{\PYGZob{}}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{edge}\PYG{p}{.}\PYG{n+nx}{hasVertex}\PYG{p}{(}\PYG{n+nx}{id}\PYG{p}{))} \PYG{k}{return}\PYG{p}{;}
+      \PYG{k+kd}{const} \PYG{n+nx}{triplet}: \PYG{k+kt}{Triplet} \PYG{o}{=} \PYG{p}{[}\PYG{n+nx}{id}\PYG{p}{,} \PYG{p}{...[}\PYG{n+nx}{from}\PYG{p}{,} \PYG{n+nx}{to}\PYG{p}{].}\PYG{n+nx}{sort}\PYG{p}{()];}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{k2}\PYG{p}{.}\PYG{n+nx}{isSameTriplet}\PYG{p}{(}\PYG{n+nx}{triplet}\PYG{p}{,} \PYG{n+nx}{triplet}\PYG{p}{.}\PYG{n+nx}{sort}\PYG{p}{()))}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{k2}\PYG{p}{.}\PYG{n+nx}{hasEdge}\PYG{p}{(}\PYG{n+nx}{id}\PYG{p}{,} \PYG{n+nx}{to}\PYG{p}{,} \PYG{k+kc}{true}\PYG{p}{))}
+          \PYG{n+nx}{triplet\PYGZus{}list}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{triplet}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{});}
+  \PYG{p}{\PYGZcb{});}
+
+  \PYG{k}{return} \PYG{n+nx}{triplet\PYGZus{}list}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

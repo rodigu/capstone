@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{n+nx}{averageClustering}\PYG{p}{()}\PYG{o}{:} \PYG{k+kt}{number} \PYG{p}{\PYGZob{}}
+  \PYG{k+kd}{let} \PYG{n+nx}{average\PYGZus{}clustering} \PYG{o}{=} \PYG{l+m+mf}{0}\PYG{p}{;}
+
+  \PYG{k}{if} \PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{size} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mf}{1}\PYG{p}{)} \PYG{k}{return} \PYG{n+nx}{average\PYGZus{}clustering}\PYG{p}{;}
+
+  \PYG{k+kd}{const} \PYG{n+nx}{clustering\PYGZus{}sum} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertex\PYGZus{}list}
+    \PYG{p}{.}\PYG{n+nx}{map}\PYG{p}{((}\PYG{n+nx}{vertex}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{clustering}\PYG{p}{(}\PYG{n+nx}{vertex}\PYG{p}{.}\PYG{n+nx}{id}\PYG{p}{))}
+    \PYG{p}{.}\PYG{n+nx}{reduce}\PYG{p}{((}\PYG{n+nx}{prev}\PYG{p}{,} \PYG{n+nx}{curr}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{n+nx}{prev} \PYG{o}{+} \PYG{n+nx}{curr}\PYG{p}{);}
+
+  \PYG{n+nx}{average\PYGZus{}clustering} \PYG{o}{=} \PYG{n+nx}{clustering\PYGZus{}sum} \PYG{o}{/} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{size}\PYG{p}{;}
+
+  \PYG{k}{return} \PYG{n+nx}{average\PYGZus{}clustering}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

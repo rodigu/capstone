@@ -1,6 +1,6 @@
 \chapter{Functions}
 
-The functions for removing edges and vertices are self-explanatory in their name.
+The functions for removing edges and vertices remove said elements of the network.
 
 \begin{minted}[bgcolor=bg]{ts}
   removeEdge(args:
@@ -21,7 +21,7 @@ The functions for removing edges and vertices are self-explanatory in their name
   }
 \end{minted}
 
-The 'removeVertice' function differs itself from 'removeEdge'.
+The \mintinline{ts}{removeVertice()} function differs itself from \mintinline{ts}{removeEdge()}.
 When a vertex is removed, all of the edges associated with it also have to be removed.
 
 \begin{minted}[bgcolor=bg]{ts}
@@ -39,7 +39,8 @@ When a vertex is removed, all of the edges associated with it also have to be re
   }
 \end{minted}
 
-An advantage of using Maps to store the network's vertices and edges is that it is easier to get them by ID:
+An advantage of using Maps to store the network's vertices and edges is that it is easier to get
+them by ID:
 
 \begin{minted}[bgcolor=bg]{ts}
   hasVertex(id: base_id): boolean {
@@ -47,8 +48,10 @@ An advantage of using Maps to store the network's vertices and edges is that it 
   }
 \end{minted}
 
-To get an edge between two vertices, 'Array.prototype.find' is used in the 'edge\_list' array.
-The 'find()' function returns the first element in the list that fulfills the given property.
+To get an edge between two vertices, \mintinline{ts}{Array.prototype.find()}
+is used in the \mintinline{ts}{edge_list} array.
+The \mintinline{ts}{find()}
+function returns the first element in the list that fulfills the given property.
 
 \begin{minted}[bgcolor=bg]{ts}
   /**
@@ -68,9 +71,11 @@ The 'find()' function returns the first element in the list that fulfills the gi
   }
 \end{minted}
 
-The property fed into the function checks if the vertices given to 'edgeBetween()' form an edge
-that is the same as an edge that actually exists in the network. To check if two edges are the same
-(if they have the same 'from' and 'to') the private function 'checkEdgeIsSame()' is used.
+The property fed into the function checks if the vertices given to \mintinline{ts}{edgeBetween()}
+form an edge that is the same as an edge that actually exists in the network.
+To check if two edges are the same
+(if they have the same \mintinline{ts}{from} and \mintinline{ts}{to})
+the private function \mintinline{ts}{checkEdgeIsSame()} is used.
 
 A private function can only be accessed inside the class declaration.
 
@@ -92,13 +97,19 @@ checkEdgeIsSame(
   }
 \end{minted}
 
-The way an edge check works depends on whether a network is directed or not.
-
+The way an edge check works depends on whether or not a network is directed.
 Nevertheless, it is also possible to force an undirected check.
-This is useful when it is only necessary to know if an edge between $A$ and $B$ exists at all, 
+
+A forced undirected check is useful when it is only necessary to know
+if an edge between $A$ and $B$ exists at all, 
 instead of whether a \textit{directed} edge from $A$ to $B$ exists.
 
-There are also two functions that serve mostly as a convenience.
+There are two functions that serve mostly as a convenience.
+They are ID functions which help create new IDs that can be assigned to new edges or vertices.
+On the user level, there is seldom any reason to assign IDs to edges.
+However, because the network uses \mintinline{ts}{Maps}, every edge needs to have
+an ID assigned to it.
+The \mintinline{ts}{newEID()} function generates a valid ID to be used internally.
 
 \begin{minted}[bgcolor=bg]{ts}
   newVID(): base_id {
@@ -117,12 +128,6 @@ There are also two functions that serve mostly as a convenience.
    return id;
  }
 \end{minted}
-
-These ID functions help create new IDs to be assigned to new edges or vertices.
-On the user level, there rarelly is any reason to assign IDs to edges.
-However, since the network uses Maps, when an edge is created, it needs to have
-an ID assigned to it.
-The 'newEID()' function generates a valid ID to be used internally.
 
 There are four special ways to add edges and vertices to a network.
 
@@ -149,16 +154,22 @@ addVertexList(vertex_list: VertexArgs[]) {
 }
 \end{minted}
 
-An array of vertex information could be added as such:
+An array of edges could be added as such:
 
 \begin{minted}[bgcolor=bg]{ts}
-const vertex_list = [
-  {id: 'node_1', weight:3},
-  {id: 'node_2', weight:1.2}
+const edge_list = [
+  [2,3],
+  ['b',3]
 ]
 
-net.addVertexList(vertex_list)
+net.addEdgeList(edge_list)
 \end{minted}
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{img/net_1b_edge_list.png}
+  \caption{Our previous `net', now with the list of edges added.}
+  \label{fig:net_edge_list}
+\end{figure}
 
 Other utility functions are:
 
@@ -201,23 +212,18 @@ addVertex(args: VertexArgs) {
 }
 \end{minted}
 
-
-The 'addEdge' function looks different from the 'addVertex' function because it has to deal with many exceptions.
-
+The \mintinline{ts}{addEdge()} function looks different from the
+\mintinline{ts}{addVertex} function because it has to deal with many exceptions.
 
 \begin{minted}[bgcolor=bg]{ts}
 addEdge(args: EdgeArgs) {
   args.do_force ??= true;
   args.weight ??= 1;
-
   args.id ??= this.newEID();
-
   if (this.edges.has(args.id))
     throw { message: ERROR.EXISTING_EDGE };
-
   if (this.edges.size >= this.edge_limit)
     throw { message: ERROR.EDGE_LIMIT };
-
   if (!args.do_force) {
     if (!this.vertices.has(args.from))
       throw {
@@ -235,49 +241,53 @@ addEdge(args: EdgeArgs) {
     if (!this.vertices.has(args.to))
       this.addVertex({ id: args.to });
   }
-
-  if (!this.is_multigraph && this.hasEdge(args.from, args.to))
+  if (!this.is_multigraph &&
+      this.hasEdge(args.from, args.to))
     return;
-
   this.edges.set(args.id, new Edge(args));
 }
 \end{minted}
 
-The main addition to 'addEdge' is the 'do\_force' argument.
+The main addition to \mintinline{ts}{addEdge()} is the \mintinline{ts}{do_force} argument.
 It is set to true by default.
-When 'addEdge' is called, it first checks if the vertices you are trying to connect exists.
-If they don't and 'do\_force=true', the function will add the vertices to the network automatically.
+When \mintinline{ts}{addEdge()} is called,
+it first checks if the vertices you are trying to connect exists.
+If they don't and \mintinline{ts}{do_force=true},
+the function will add the vertices to the network automatically.
 
-In the following code, vertices '1' and '2' are created by 'addEdge' before it adds an edge to net.
+In the following code, vertices `1' and `2' are created by \mintinline{ts}{addEdge()}
+before it adds an edge to net.
 
 \begin{minted}[bgcolor=bg]{ts}
 const net = new Network()
 net.addEdge({ from: 1, to: 2 })
 \end{minted}
 
-If the edge should only be added if the network already has the given vertices, do\_force can be set to false:
+If the edge should only be added if the network already has the given vertices,
+\mintinline{ts}{do_force} can be set to false:
 
 \begin{minted}[bgcolor=bg]{ts}
 const net = new Network()
 net.addEdge({ from: 1, to: 2, do_force: false })
 \end{minted}
 
-The previous code will throw an error, since 'addEdge' will not try to force the creation of the edge by
-adding vertices '1' and '2' to net.
+The previous code will throw an error, since \mintinline{ts}{addEdge()}
+will not try to force the creation of the edge by
+adding vertices `1' and `2' to net.
 
 There are also some private utility functions used in algorithms
 that will be explained in the next chapter.
 
 \begin{minted}[bgcolor=bg]{ts}
-  listHasTriplet(triplet_arr: Triplet[],
-                 triplet: Triplet): boolean {
-    return !!triplet_arr.find((trip) =>
-      this.isSameTriplet(triplet, trip));
-  }
+listHasTriplet(triplet_arr: Triplet[],
+                triplet: Triplet): boolean {
+  return !!triplet_arr.find((trip) =>
+    this.isSameTriplet(triplet, trip));
+}
 
-  isSameTriplet(arr1: Triplet, arr2: Triplet): boolean {
-    if (arr1.length !== arr2.length) return false;
-    return arr1.every((element, index) =>
-      element === arr2[index]);
-  }
+isSameTriplet(arr1: Triplet, arr2: Triplet): boolean {
+  if (arr1.length !== arr2.length) return false;
+  return arr1.every((element, index) =>
+    element === arr2[index]);
+}
 \end{minted}

@@ -16,7 +16,9 @@ net.getter_name
 \end{minted}
 
 \section{Functional Getters}
-These getters exist mostly to provide functionality to the network class. For example, the args getter returns the properties of the network necessary to make a copy of it:
+These getters exist mostly to provide functionality to the network class.
+For example,
+the \mintinline{ts}{args} getter returns some of the properties of the network necessary to make a copy of it:
 
 \begin{minted}[bgcolor=bg]{typescript}
   get args(): NetworkArgs {
@@ -29,7 +31,8 @@ These getters exist mostly to provide functionality to the network class. For ex
   }
 \end{minted}
 
-The list getters return a list with the values inside the vertices and edges Maps. This is particularly useful for efficiency as it makes it possible to use standard Array functions.
+The list getters return a list with the values inside the vertices and edges \mintinline{ts}{Maps}.
+This is particularly useful for efficiency as it makes it possible to use standard \mintinline{ts}{Array} functions.
 
 \begin{minted}[bgcolor=bg]{ts}
   get vertex_list(): Vertex[] {
@@ -41,13 +44,18 @@ The list getters return a list with the values inside the vertices and edges Map
   }
 \end{minted}
 
-The '...' destructuring operator was also introduced in ES2021. It takes the iterable return of the 'values()' function and destructures it into its individual elements. The elements are then put inside an array, which is returned by the getter.
+The \mintinline{ts}{...} destructuring operator was also introduced in ES2021.
+It takes the iterable return of the \mintinline{ts}{values()}
+function and destructures it into its individual elements.
+The elements are then put inside an array, which is finally returned by the getter.
 
 \section{Calculations}
+These next getters involve calculations that make use of the network's vertices and edges.
+That is why they are not permanently stored inside a property,
+seeing as they could change any time a new edge or vertex is added to the graph.
 
-These getters involve calculations that make use of the network's vertices and edges. That is why they are not permanently stored inside a property, seeing as they could change any time a new edge or vertex is added to the graph.
-
-The calculations are also not turned into their own functions because they do not require more complex algorithms.
+The calculations are also not turned into their own functions because they do not
+require algorithms that are too elaborate.
 
 \subsection{Weight}
 
@@ -97,8 +105,9 @@ get zero_vertices(): Vertex[] {
 \end{minted}
 
 \subsection{Maximum Number of Edges}
-The highest number of edges $M_E$ a graph with $|V|$ vertices can have is:
+The largest number of edges $M_E$ a graph with $|V|$ vertices can have is:
 $$M_E=\frac{|V|*(|V|-1)}{2}$$
+Where $|V|$ represents the size of the vertex set $V$.
 
 \begin{minted}[bgcolor=bg]{ts}
   get max_edges(): number {
@@ -110,7 +119,9 @@ $$M_E=\frac{|V|*(|V|-1)}{2}$$
 
 A graph's density $D$ is defined by:
 $$D=\frac{|E|}{M_E}$$
-The number of edges a graph has, divided by the maximum number of edges it could have with the number of nodes it currently has.
+Where $|E|$ is the size of the edge set $|E|$
+The number of edges a graph has,
+divided by the maximum number of edges it could have with the number of nodes it currently has.
 
 \begin{minted}[bgcolor=bg]{typescript}
   get density(): number {

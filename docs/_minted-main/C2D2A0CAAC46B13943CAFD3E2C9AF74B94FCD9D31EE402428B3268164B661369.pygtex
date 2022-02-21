@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{const} \PYG{n+nx}{edge\PYGZus{}list} \PYG{o}{=} \PYG{p}{[}
+  \PYG{p}{[}\PYG{l+m+mf}{2}\PYG{p}{,}\PYG{l+m+mf}{3}\PYG{p}{],}
+  \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{,}\PYG{l+m+mf}{3}\PYG{p}{]}
+\PYG{p}{]}
+
+\PYG{n+nx}{net}\PYG{p}{.}\PYG{n+nx}{addEdgeList}\PYG{p}{(}\PYG{n+nx}{edge\PYGZus{}list}\PYG{p}{)}
+\end{Verbatim}

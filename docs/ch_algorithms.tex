@@ -1,10 +1,12 @@
 \chapter{Algorithms}
 
 \section{Neighborhood}
-A vertex $x$'s neighborhood $H_x$ is defined as the vertices that are connected to that vertex by an edge.
-The 'Network.neighbors(id)' function returns a list with the IDs of the given vertex's neighbors.
+A vertex $x$'s neighborhood $H(x)$ is defined as the vertices that are connected to that vertex
+by an edge. Note also that $H_x\subset V$.
+$H[x]$ is used to define the set with neighbors of $x$ as well as $x$ itself: $H[x]=H(x)+x$.
+The \mintinline{ts}{Network.neighbors(id)}
+function returns a list with the IDs of the neighbors of the vertex given.
 
-$$H_x\subset V$$
 
 \begin{minted}[bgcolor=bg]{ts}
  neighbors(id: base_id): base_id[] {
@@ -20,7 +22,8 @@ $$H_x\subset V$$
 }
 \end{minted}
 
-It goes through the Map of edges, and finds any edge that has one of its vertices match the ID given.
+It goes through the Map of edges,
+and finds any edge that has one of its vertices match the parameter ID.
 
 When a network is directed, an edge can have two distinct types of neighbors.
 In-neighbors are vertices that connect to a vertex $a$ with an edge that ends on $a$.
@@ -55,7 +58,7 @@ outNeighbors(id: base_id): base_id[] {
 
 \section{Degree}
 
-A vertex's degree can be defined as the number of edges that contain said vertex.
+The degree of a vertex can be defined as the number of edges that contain said vertex.
 
 $$E_x=\{k \mid k \in E, x \in k\}$$
 $$D_x=|E_x|$$
@@ -63,11 +66,6 @@ $$D_x=|E_x|$$
 In the library:
 
 \begin{minted}[bgcolor=bg]{ts}
-/**
- * Return the degree of a vertex with the given ID.
- * @param  {base_id} id
- * @returns number
- */
 degree(id: base_id): number {
   let vertex_degree = 0;
 
@@ -82,8 +80,9 @@ degree(id: base_id): number {
 
 The two other degree functions are related to in and out-neighbors,
 and are only defined when a network is directed.
-'inDegree' returns the number of edges that end on the given edge.
-'outDegree' does the opposite, returning the number of edges that start on the given vertex.
+\mintinline{ts}{inDegree} returns the number of edges that end on the given edge.
+\mintinline{ts}{outDegree} does the opposite,
+returning the number of edges that start on the given vertex.
 
 \begin{minted}[bgcolor=bg]{ts}
 inDegree(id: base_id): number {
@@ -114,10 +113,10 @@ outDegree(id: base_id): number {
 The average degree of a vertex is defined as the sum all its neighbor's degrees over its own degree.
 For a vertex $i$, it is usually written as:
 
-$$k_{nn}(i)=\frac{\sum{a_{ij}k_{j}}}{j_i}$$
+$$k_{nn}(i)=\frac{\sum{a_{ij}D(j)}}{j_i}$$
 
 Where $a_{ij}$ is positive if there is and edge between vertices $i$ and $j$,
-and $k_j$ is the degree of vertex $j$.
+and $D(j)$ is the degree of vertex $j$.
 And this is what this would look like when literally transcribed into code:
 
 \begin{minted}[bgcolor=bg]{ts}
@@ -134,10 +133,11 @@ averageDegree(id: base_id): number {
 }
 \end{minted}
 
-However, as previously mentioned, we already have a function for getting the neighbors of a specific vertex.
+However, as previously mentioned, we already have a function for getting the neighbors of
+a specific vertex.
 Thus, we could write the averageDegree $A_x$ of vertex $x$ as:
 
-$$A_x=\frac{\sum{D_n(x)}}{D_x}$$
+$$A_x=\frac{\sum{D(i)}}{D(x)}, i\in H(x)$$
 
 In code:
 
@@ -186,7 +186,7 @@ The functions have the format:
 (vertices: EdgeArgs) => number
 \end{minted}
 
-They take in EdgeArgs and output a number.
+They take in \mintinline{ts}{EdgeArgs} and output a number.
 For example, an input function could be:
 
 \begin{minted}[bgcolor=bg]{ts}
@@ -197,10 +197,11 @@ const in_function =
 \end{minted}
 
 In essence, this function takes in two vertex IDs that belong to an edge and sums their weights.
-Although the function tecnically expects EdgeArgs,
-the two properties of this type that we are really interested in are 'from' and 'to' (the two vertices in an edge).
+Although the function tecnically expects \mintinline{ts}{EdgeArgs},
+the two properties of this type that we are really interested in are \mintinline{ts}{from}
+and \mintinline{ts}{to} (the two vertices in an edge).
 
-Assortativity makes use of edgeAverageOperationList.
+Assortativity makes use of \mintinline{ts}{edgeAverageOperationList()}.
 
 \begin{minted}[bgcolor=bg]{ts}
 assortativity(): number {
@@ -219,7 +220,7 @@ assortativity(): number {
 }
 \end{minted}
 
-I adopted the formula offered by Barrenas et al:
+I adopted the formula offered by \cite{ref:barrenas}:
 
 $$r=\frac{(4\langle k_a k_b\rangle-\langle k_a+k_b\rangle^2)}{2\langle k_a^2+k_b^2\rangle-\langle k_a+k_b\rangle}$$
 
@@ -237,9 +238,10 @@ $n$ being the number of operations necessary, since each operation would need an
 
 The complement of a network $N$ is a network $N_c$ with the same number of vertices,
 but with all the edges $N$ doesn't have.
-That is to say, for $N=(V,E)$ and $N_c=(V,E_c)$, the edge $e$:
+That is to say, let $E(N)$ be the set of edges in $N$,
+and $E(N_c)$ the set of edges in $N_c$, the edge $e$:
 
-$$e\in E_c\iff e \notin E$$
+$$e\in E(N_c)\iff e \notin E(N)$$
 
 The complement function has no inputs, and returns a Network object.
 \begin{minted}[bgcolor=bg]{ts}
@@ -269,15 +271,20 @@ complement(): Network {
 }
 \end{minted}
 
-It goes through every vertex and if it finds two vertices that don't have an edge in the network, it adds it to the complement.
+It goes through every vertex and if it finds two vertices that don't have an edge in the network,
+it adds it to the complement.
 
 \section{Ego}
 
-The ego $G_x$ of a vertex $x$ from a network $N=(V,E)$ is the set $V_g$ of all vertices that have an edge with it, as well as all the edges with vertices in $V_g$.
+The ego is the subgraph induced in the set $H[x]$.
 
-$$G_x=(V_g,E_g), V_g \subset V \and E_g \subset E$$
+The ego $G_x$ of a vertex $x$ from a network $N=(V,E)$ is the set $V(G_x)$ (vertices of the $G_x$)
+of all vertices that have an edge with it, as well as all the edges with vertices in $V(G_x)$.
 
-$$\forall e \in E_g, v\and u \in e : v\and u \in H_x$$
+Formally:
+$$V(G_x) \subset V, E(G_x) \subset E$$
+
+$$E(G_x)=\{e : v_e,u_e \in H_x\}$$
 
 In the library, the algorithm takes in a vertex's ID, and returns a Network instance.
 \begin{minted}[bgcolor=bg]{ts}
@@ -302,8 +309,17 @@ ego(id: base_id): Network {
 }
 \end{minted}
 
-First, the algorithm goes through all edges, and add to the ego\_network the ones that contain the given vertex.
-Then, it goes through the edges of the network again, this time adding edges that don't connect to the ego vertex,
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{img/ego_3.png}
+  \caption{3's ego includes $0,1,3,4,7,8,9$.}
+  \label{fig:core_ex}
+\end{figure}
+
+First, the algorithm goes through all edges, and add to the \mintinline{ts}{ego_network}
+the ones that contain the given vertex.
+Then, it goes through the edges of the network again,
+this time adding edges that don't connect to the ego vertex,
 but connect to vertices already in the ego network.
 
 \section{Copy}
@@ -314,7 +330,7 @@ const net_copy = net;
 \end{minted}
 
 This method works more like a reference to the original object.
-If a property of net changes, net\_copy will also change.
+If a property of net changes, \mintinline{ts}{net_copy} will also change.
 
 Nevertheless, there are many other ways of making copies of objects with JS.
 Here are som of the most common:
@@ -355,10 +371,10 @@ copy(): Network {
 \section{Clustering}
 
 The clustering coefficient measures how connected the neighbors of a vertex are to each other.
-It is the number of edges that exists in between the vertex's neighbors in relation to the maximum number of edges that could exist there.
+It is the number of edges that exists in between the vertex's neighbors in relation to the
+maximum number of edges that could exist there.
 
-$$C_x=H_x-{x}$$
-$$\frac{|{e:v,u\in e \and v,u\in C_x}|}{|C_x|(|C_x|-1)}$$
+$$\frac{|{e:v,u\in e \and v,u\in H[x]}|}{|H[x]|(|H[x]|-1)}$$
 
 \begin{minted}[bgcolor=bg]{ts}
 clustering(id: base_id): number {
@@ -380,10 +396,124 @@ clustering(id: base_id): number {
 }
 \end{minted}
 
-The algorithm makes use of the ego() function, removing the ID vertex after.
-It also uses a tenary operator because the only difference between the clustering from a directed network to an undirected one is
+The algorithm makes use of the \mintinline{ts}{ego()} function, removing the ID vertex after.
+It also uses a tenary operator because the only difference between the clustering
+from a directed network to an undirected one is
 that the former has its clustering multiplied by 2.
 
+\section{Average Clustering}
 
+This function calculates the average clustering of the network.
+If calculates the clustering of all vertices, inserting its values into an array.
+It then reduces the array, summing all of its values.
+Finally, it returns the average, which devides the sum by the number of vertices in the network.
+\begin{minted}[bgcolor=bg]{ts}
+  averageClustering(): number {
+  let average_clustering = 0;
 
-Saved 10 seconds from triplets by only using directed edges
+  if (this.vertices.size <= 1) return average_clustering;
+
+  const clustering_sum = this.vertex_list
+    .map((vertex) => this.clustering(vertex.id))
+    .reduce((prev, curr) => prev + curr);
+
+  average_clustering = clustering_sum / this.vertices.size;
+
+  return average_clustering;
+}
+\end{minted}
+
+\section{Core}
+
+A k-core decomposition of a network $N$ is a subgraph $C_k$ with any
+$v\in V(N)$ with $D_v<k$ removed.
+$$C_k={v,e:v\in V(N), D_v\geq k,e\in E(N)}$$
+It is a function that only ends after all vertices with degree less than $k$ are removed.
+
+\begin{minted}[bgcolor=bg]{ts}
+  core(k: number): Network {
+  const k_decomposition = this.copy();
+
+  while (k > 0 && k_decomposition.vertices.size > 0) {
+    let { vertex_list } = k_decomposition;
+    let vertex_counter;
+    for (
+      vertex_counter = 0;
+      vertex_counter < vertex_list.length;
+      vertex_counter++
+    ) {
+      const current_vertex =
+        k_decomposition.vertex_list[vertex_counter];
+      if (k_decomposition.degree(current_vertex.id) < k) {
+        k_decomposition.removeVertex(current_vertex.id);
+        vertex_list = k_decomposition.vertex_list;
+        vertex_counter = 0;
+      }
+    }
+    k--;
+  }
+
+  return k_decomposition;
+}
+\end{minted}
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{img/core_ex.png}
+  \caption{A 2-core decomposition would remove nodes $1,9,7,8$. $8$ would be removed in the second iteration of the function.}
+  \label{fig:core_ex}
+\end{figure}
+
+\section{Triplets}
+
+A triplet is a set of 3 vertices and 3 edges connecting said vertices.
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{img/triplets.png}
+  \caption{This network has two triplets: $\{5,7,8\}$ and $\{2,8,9\}$.}
+  \label{fig:core_ex}
+\end{figure}
+This algorithm in the network went through many iterations that improved its performance.
+The first algorithm looked through all edges, and, while in each edge,
+looked through all nodes and checked for any that had edges with the two nodes in the edge.
+The most glaring problem with this is that it ends up each triplet three times:
+once for each edge.
+
+The solution was to order the triplets so that, internally, the algorithm
+sees $5,8,7$ as different from $5,7,8$, for example.
+This was initially done by comparing the triplet that could be created
+with the sorted version of that triplet.
+The current improved version only needs to check if the current vertices are already sorted:
+\begin{minted}[bgcolor=bg]{ts}
+k2.isSameTriplet(triplet, triplet.sort())
+\end{minted}
+
+The current iteration of this algorithm also does not go through all vertices in the network.
+It only looks through the neighbors of one of the vertices in the edge being analysed.
+This also saves us from having to check if both vertices have edges to the vertice beeing looked at.
+
+\begin{minted}[bgcolor=bg]{ts}
+triplets(): Triplet[] {
+  const triplet_list: Triplet[] = [];
+
+  const k2 = this.core(2);
+
+  const { vertices, edges } = k2;
+
+  edges.forEach((edge) => {
+    const { from, to } = edge.vertices;
+    k2.neighbors(from).forEach((id) => {
+      if (edge.hasVertex(id)) return;
+      const triplet: Triplet = [id, ...[from, to].sort()];
+      if (k2.isSameTriplet(triplet, triplet.sort()))
+        if (k2.hasEdge(id, to, true))
+          triplet_list.push(triplet);
+    });
+  });
+
+  return triplet_list;
+}
+\end{minted}
+
+Overall, there was a 27\% reduction in the algorithm's by only using sorted triplets; then we saw around 55\% impovement
+due to only looking through the neighbors; finally, there was a 10\% improvement in performance
+by not having to edge-check one of the vertices.
+All of these were cummulative.
