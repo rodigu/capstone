@@ -24,7 +24,7 @@ The \mintinline{ts}{Network.neighbors(id)}
 function returns a list with the IDs of the neighbors of the vertex given.
 
 \begin{minted}[bgcolor=bg]{ts}
- neighbors(id: base_id): base_id[] {
+neighbors(id: base_id): base_id[] {
   const neighborhood: base_id[] = [];
 
   this.edges.forEach(({ vertices }) => {
@@ -340,6 +340,7 @@ ego(id: base_id): Network {
 \end{minted}
 
 \begin{figure}[H]
+  \centering
   \includegraphics[scale=.25]{img/ego_3.png}
   \caption{3's ego includes $0,1,3,4,7,8,9$ and all edges between them.}
   \label{fig:core_ex}
@@ -411,7 +412,7 @@ $$C_k={v,e:v\in V(N), D_v\geq k,e\in E(N)}$$
 It is a function that only ends after all vertices with degree less than $k$ are removed.
 
 \begin{minted}[bgcolor=bg]{ts}
-  core(k: number): Network {
+core(k: number): Network {
   const k_decomposition = this.copy();
 
   while (k > 0 && k_decomposition.vertices.size > 0) {
@@ -438,6 +439,7 @@ It is a function that only ends after all vertices with degree less than $k$ are
 \end{minted}
 
 \begin{figure}[H]
+  \centering
   \includegraphics[scale=.25]{img/core_ex.png}
   \caption{A 2-core decomposition would remove nodes $1,9,7,8$. $8$ would be removed in the second iteration of the function.}
   \label{fig:core_ex}
@@ -484,7 +486,7 @@ If calculates the clustering of all vertices, inserting its values into an array
 It then reduces the array, summing all of its values.
 Finally, it returns the average, which devides the sum by the number of vertices in the network.
 \begin{minted}[bgcolor=bg]{ts}
-  averageClustering(): number {
+averageClustering(): number {
   let average_clustering = 0;
 
   if (this.vertices.size <= 1) return average_clustering;
@@ -509,6 +511,7 @@ A triplet is a set of 3 vertices and 3 edges connecting said vertices.
 They are also called triples, triangles and $K_3$s, and are the foundation of design theory,
 an entire field of mathematics.
 \begin{figure}[H]
+  \centering
   \includegraphics[scale=.25]{img/triplets.png}
   \caption{This network has two triplets: $\{5,7,8\}$ and $\{2,8,9\}$.}
   \label{fig:core_ex}

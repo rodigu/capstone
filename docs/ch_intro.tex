@@ -85,65 +85,61 @@ Thus, a graph $G$ can be represented as $G=(V,E)$.
 
 Graphs are usually defined by the types of edges it can have.
 Some of the ways in which we can classify graphs are:
+\begin{enumerate}
+  \item Directed or undirected: This means an edge can have a direction associated with it.
+  A directed network contains edges that are directed from one node to another.
+  NeTS deals with both directed and undirected networks.
+  A directed network could be used to represent a road network,
+  where the roads are represented by edges, and intersections are the vertices.
+  An undirected network could be used to represent friendships in a college campus,
+  where the edges reflect whether two people are friends or not,
+  and the nodes represent the students.
+  A common use for network science is the analysis of social networks.
+  With a social network, each user is usually represented as a node in the network.
+  Edges can be used to express connections: follows, interactions, friendships.
+  A specific example of an undirected network is Facebook.
+  Users can either be friends or not.
+  In contrast to that binary relationship of Facebook friendships,
+  we can observe Twitter's system of followers.
+  Twitter's network can be represented as a directed graph.
+  The connections between users are directional:
+  User $A$ can follow user $B$ without the latter following the former.
 
-1. Directed or undirected: This means an edge can have a direction associated with it.
-A directed network contains edges that are directed from one node to another.
-NeTS deals with both directed and undirected networks.
-A directed network could be used to represent a road network,
-where the roads are represented by edges, and intersections are the vertices.
-An undirected network could be used to represent friendships in a college campus,
-where the edges reflect whether two people are friends or not,
-and the nodes represent the students.
-A common use for network science is the analysis of social networks.
-With a social network, each user is usually represented as a node in the network.
-Edges can be used to express connections: follows, interactions, friendships.
-A specific example of an undirected network is Facebook.
-Users can either be friends or not.
-In contrast to that binary relationship of Facebook friendships,
-we can observe Twitter's system of followers.
-Twitter's network can be represented as a directed graph.
-The connections between users are directional:
-User $A$ can follow user $B$ without the latter following the former.
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale=.25]{img/directed_sample.png}
+    \caption{Network in previous example with randomized directed edges.}
+    \label{fig:net_di}
+  \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=.25]{img/directed_sample.png}
-  \caption{Network in previous example with randomized directed edges.}
-  \label{fig:net_di}
-\end{figure}
-
-2. Self-loops: Networks can also have self-loops, meaning for an edge $e=\{x,y\}$, $x=y$.
-Self-loops are used in state-machines.
-
-3. Multigraph: Networks can be classified as multigraphs,
-meaning for $e_1,e_2\in E$, $e_1$ and $e_2$
-have the same nodes, but represent different edges.
-Back to the road network example, a two-way street that connects two
-intersections could be represented as two different edges that connect the same two nodes.
-
-4. Simple graph: simple graphs are undirected graphs with no self-loops, and no multiple edges.
-NeTS only deals simple graphs.
-Nevertheless, there are some functions that are setup with compatibility with
-multigraphs in mind.
-Thus, although multigraphs are beyond the scope of this capstone,
-in the future, NeTS could be adapted to work with multigraphs.
-
-5. Weighted or Unweighted: Traditionally, a weighted network means the edges in the network are weighted.
-However, it is also possible to weight vertices.
-Continuing with the example of social networks,
-we can take a look at Facebook's Messenger.
-An edge between two nodes (users) could represent
-whether they have ever sent messages to each other,
-while the number of messeges exchanged could
-be represented by the edge's weight.
-A vertex's weight, on the other hand,
-could help represent the GDP of countries in a
-network of global trade where an edge between
-two countries represents if they trade.
-The library considers all networks to be weighted on a technical level.
-This means that, when created, any edge or vertex has their weight set to 1.
-An unweighted network is thus just a network with all weights set to the default of 1.
-Visually, the weight of an edge is usually represented as thickness.
+  \item Self-loops: Networks can also have self-loops, meaning for an edge $e=\{x,y\}$, $x=y$.
+  Self-loops are used in state-machines.
+  \item Multigraph: Networks can be classified as multigraphs,
+  meaning for $e_1,e_2\in E$, $e_1$ and $e_2$
+  have the same nodes, but represent different edges. Back to the road network example, a two-way street that connects two
+  intersections could be represented as two different edges that connect the same two nodes.
+  \item Simple graph: simple graphs are undirected graphs with no self-loops, and no multiple edges.
+  NeTS only deals simple graphs.
+  Nevertheless, there are some functions that are setup with compatibility with
+  multigraphs in mind. Thus, although multigraphs are beyond the scope of this capstone,
+  in the future, NeTS could be adapted to work with multigraphs.
+  \item Weighted or Unweighted: Traditionally, a weighted network means the edges in the network are weighted.
+  However, it is also possible to weight vertices.
+  Continuing with the example of social networks,
+  we can take a look at Facebook's Messenger.
+  An edge between two nodes (users) could represent
+  whether they have ever sent messages to each other,
+  while the number of messeges exchanged could
+  be represented by the edge's weight.
+  A vertex's weight, on the other hand,
+  could help represent the GDP of countries in a
+  network of global trade where an edge between
+  two countries represents if they trade.
+  The library considers all networks to be weighted on a technical level.
+  This means that, when created, any edge or vertex has their weight set to 1.
+  An unweighted network is thus just a network with all weights set to the default of 1.
+  Visually, the weight of an edge is usually represented as thickness.
+\end{enumerate}
 
 \begin{figure}[H]
   \centering
