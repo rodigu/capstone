@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Returns the edge between two nodes.}
+\PYG{c+cm}{ * @param  \PYGZob{}base\PYGZus{}id\PYGZcb{} from}
+\PYG{c+cm}{ * @param  \PYGZob{}base\PYGZus{}id\PYGZcb{} to}
+\PYG{c+cm}{ * @returns base\PYGZus{}id[]}
+\PYG{c+cm}{ */}
+\PYG{n+nx}{edgeBetween}\PYG{p}{(}
+  \PYG{n+nx}{from}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{,}
+  \PYG{n+nx}{to}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{,}
+  \PYG{n+nx}{is\PYGZus{}directed} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{is\PYGZus{}directed}
+\PYG{p}{)}\PYG{o}{:} \PYG{n+nx}{Edge} \PYG{o}{|} \PYG{k+kc}{undefined} \PYG{p}{\PYGZob{}}
+  \PYG{k}{return} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edge\PYGZus{}list}\PYG{p}{.}\PYG{n+nx}{find}\PYG{p}{((\PYGZob{}} \PYG{n+nx}{vertices} \PYG{p}{\PYGZcb{})} \PYG{p}{=\PYGZgt{}}
+    \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{checkEdgeIsSame}\PYG{p}{(}\PYG{n+nx}{vertices}\PYG{p}{,} \PYG{p}{\PYGZob{}} \PYG{k+kr}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{},} \PYG{n+nx}{is\PYGZus{}directed}\PYG{p}{)}
+  \PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

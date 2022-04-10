@@ -1,9 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-  \PYG{n+nx}{get} \PYG{n+nx}{vertex\PYGZus{}list}\PYG{p}{()}\PYG{o}{:} \PYG{n+nx}{Vertex}\PYG{p}{[]} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{p}{[...}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{vertices}\PYG{p}{.}\PYG{n+nx}{values}\PYG{p}{()];}
-  \PYG{p}{\PYGZcb{}}
-
-  \PYG{n+nx}{get} \PYG{n+nx}{edge\PYGZus{}list}\PYG{p}{()}\PYG{o}{:} \PYG{n+nx}{Edge}\PYG{p}{[]} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{p}{[...}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edges}\PYG{p}{.}\PYG{n+nx}{values}\PYG{p}{()];}
-  \PYG{p}{\PYGZcb{}}
-\end{Verbatim}

@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{export} \PYG{k+kd}{interface} \PYG{n+nx}{EdgeArgs} \PYG{p}{\PYGZob{}}
+  \PYG{n+nx}{from}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{;}
+  \PYG{n+nx}{to}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{;}
+  \PYG{n+nx}{id?}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{;}
+  \PYG{n+nx}{weight?}: \PYG{k+kt}{number}\PYG{p}{;}
+  \PYG{n+nx}{do\PYGZus{}force?}: \PYG{k+kt}{boolean}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

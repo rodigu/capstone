@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{export} \PYG{k+kd}{interface} \PYG{n+nx}{VertexArgs} \PYG{p}{\PYGZob{}}
+  \PYG{n+nx}{id}: \PYG{k+kt}{base\PYGZus{}id}\PYG{p}{;}
+  \PYG{n+nx}{weight?}: \PYG{k+kt}{number}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{checkEdgeIsSame}\PYG{p}{(}
+  \PYG{n+nx}{edge\PYGZus{}a}: \PYG{k+kt}{EdgeArgs}\PYG{p}{,}
+  \PYG{n+nx}{edge\PYGZus{}b}: \PYG{k+kt}{EdgeArgs}\PYG{p}{,}
+  \PYG{n+nx}{is\PYGZus{}directed} \PYG{o}{=} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{is\PYGZus{}directed}
+\PYG{p}{)}\PYG{o}{:} \PYG{k+kt}{boolean} \PYG{p}{\PYGZob{}}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{edge\PYGZus{}a}\PYG{p}{.}\PYG{k+kr}{from} \PYG{o}{===} \PYG{n+nx}{edge\PYGZus{}b}\PYG{p}{.}\PYG{k+kr}{from} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n+nx}{edge\PYGZus{}a}\PYG{p}{.}\PYG{n+nx}{to} \PYG{o}{===} \PYG{n+nx}{edge\PYGZus{}b}\PYG{p}{.}\PYG{n+nx}{to}\PYG{p}{)}
+    \PYG{k}{return} \PYG{k+kc}{true}\PYG{p}{;}
+  \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}
+    \PYG{n+nx}{edge\PYGZus{}a}\PYG{p}{.}\PYG{n+nx}{to} \PYG{o}{===} \PYG{n+nx}{edge\PYGZus{}b}\PYG{p}{.}\PYG{k+kr}{from} \PYG{o}{\PYGZam{}\PYGZam{}}
+    \PYG{n+nx}{edge\PYGZus{}a}\PYG{p}{.}\PYG{k+kr}{from} \PYG{o}{===} \PYG{n+nx}{edge\PYGZus{}b}\PYG{p}{.}\PYG{n+nx}{to} \PYG{o}{\PYGZam{}\PYGZam{}}
+    \PYG{o}{!}\PYG{n+nx}{is\PYGZus{}directed}
+  \PYG{p}{)}
+    \PYG{k}{return} \PYG{k+kc}{true}\PYG{p}{;}
+  \PYG{k}{return} \PYG{k+kc}{false}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

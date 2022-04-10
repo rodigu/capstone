@@ -1,12 +1,27 @@
 \chapter{Algorithms}
 
+Algorithms are the most important part of NeTS,
+and any other network science library.
+They are useful for demonstrating and understanding
+fundamental aspects of networks.
+As we will see, they can express how connected
+a social network is, or even show a profitable exchange path
+in a given market.
+
 \section{Neighborhood}
 A vertex $x$'s neighborhood $H(x)$ is defined as the vertices that are connected to that vertex
 by an edge. Note also that $H_x\subset V$.
 $H[x]$ is used to define the set with neighbors of $x$ as well as $x$ itself: $H[x]=H(x)+x$.
+
+In a social network, the neighborhood of a vertex represents
+the immediate connections of a user.
+
+In a network that represents the global exchange market for
+commodities, the neighborhood can be used to represent
+the trade partners of a given country.
+
 The \mintinline{ts}{Network.neighbors(id)}
 function returns a list with the IDs of the neighbors of the vertex given.
-
 
 \begin{minted}[bgcolor=bg]{ts}
  neighbors(id: base_id): base_id[] {
@@ -63,6 +78,10 @@ The degree of a vertex can be defined as the number of edges that contain said v
 $$E_x=\{k \mid k \in E, x \in k\}$$
 $$D_x=|E_x|$$
 
+The degree of a vertex is, in other words, the number of neighbors for said vertex.
+In the example of a social network, the degree of a user would
+tells us how many connections that user has in the network.
+
 In the library:
 
 \begin{minted}[bgcolor=bg]{ts}
@@ -83,6 +102,13 @@ and are only defined when a network is directed.
 \mintinline{ts}{inDegree} returns the number of edges that end on the given edge.
 \mintinline{ts}{outDegree} does the opposite,
 returning the number of edges that start on the given vertex.
+
+For a directed network that represents global debt,
+let edges be directed from borrower to lender, and vertices
+represent countries or international organizations.
+We could predict that the IMF, for example, has a high out-degree,
+as it is a money lender for many countries.
+Countries with high in-degree would be those with many debts to pay.
 
 \begin{minted}[bgcolor=bg]{ts}
 inDegree(id: base_id): number {
@@ -160,7 +186,9 @@ they would have an easier time figuring out what it means.
 \section{Assortativity}
 
 Assortativity is a fairly complex algorithm.
-In this library, an auxiliary function was created to help calculate it:
+
+
+In this library, auxiliary functions were created to help calculate it:
 
 \begin{minted}[bgcolor=bg]{ts}
 edgeAverageOperationList(
@@ -178,7 +206,7 @@ edgeAverageOperationList(
 }
 \end{minted}
 
-This function borrows an important idea of functional programming.
+This function borrows an important idea from functional programming.
 The parameter it takes in is an array of functions.
 The functions have the format:
 
@@ -224,14 +252,16 @@ We adopted the formula:
 
 $$r=\frac{(4\langle k_a k_b\rangle-\langle k_a+k_b\rangle^2)}{2\langle k_a^2+k_b^2\rangle-\langle k_a+k_b\rangle}$$
 
-$\langle ... \rangle$ represents an operation performed over all edges,
-where $k_a$ and $k_b$ are its vertices.
+The expressions inside $\langle$$\rangle$ represent
+an operation performed over all edges
+that is then averaged,
+where $k_a$ and $k_b$ are the endpoints of each edge.
 
-There is another function in the Network class called edgeAverageOperation.
+There is another function in the Network class called \mintinline{ts}{edgeAverageOperation()}.
 It works almost exactly like its 'List' version, except it only takes in one operation.
 The list version makes assortativity $O(c)$, where $c$ is a constant.
 That is because the operations are done one after the other in a single loop through all edges.
-If edgeAverageOperation was used instead, it would make an algorithm like assortativity $O(n)$ (linear complexity).
+If \mintinline{ts}{edgeAverageOperation()} was used instead, it would make an algorithm like assortativity $O(n)$ (linear complexity).
 $n$ being the number of operations necessary, since each operation would need an entire loop through the network's edges.
 
 \section{Complement}
@@ -309,10 +339,9 @@ ego(id: base_id): Network {
 }
 \end{minted}
 
-
 \begin{figure}[H]
-  \includegraphics[width=\linewidth]{img/ego_3.png}
-  \caption{3's ego includes $0,1,3,4,7,8,9$.}
+  \includegraphics[scale=.25]{img/ego_3.png}
+  \caption{3's ego includes $0,1,3,4,7,8,9$ and all edges between them.}
   \label{fig:core_ex}
 \end{figure}
 
@@ -324,7 +353,13 @@ but connect to vertices already in the ego network.
 
 \section{Copy}
 
-Because of the way JS works, making a copy of a class' instance is not as simple as:
+It is very useful to have a copy of a network
+when we want another network that derives from it.
+For example, a core-decomposition (as we will see next)
+makes use of the copy function.
+
+Because of the way JS works, making a copy of a class' instance
+is not as simple as:
 \begin{minted}[bgcolor=bg]{ts}
 const net_copy = net;
 \end{minted}
@@ -367,6 +402,47 @@ copy(): Network {
   return network_copy;
 }
 \end{minted}
+
+\section{Core}
+
+A k-core decomposition of a network $N$ is a subgraph $C_k$ with any
+$v\in V(N)$ with $D_v<k$ removed.
+$$C_k={v,e:v\in V(N), D_v\geq k,e\in E(N)}$$
+It is a function that only ends after all vertices with degree less than $k$ are removed.
+
+\begin{minted}[bgcolor=bg]{ts}
+  core(k: number): Network {
+  const k_decomposition = this.copy();
+
+  while (k > 0 && k_decomposition.vertices.size > 0) {
+    let { vertex_list } = k_decomposition;
+    let vertex_counter;
+    for (
+      vertex_counter = 0;
+      vertex_counter < vertex_list.length;
+      vertex_counter++
+    ) {
+      const current_vertex =
+        k_decomposition.vertex_list[vertex_counter];
+      if (k_decomposition.degree(current_vertex.id) < k) {
+        k_decomposition.removeVertex(current_vertex.id);
+        vertex_list = k_decomposition.vertex_list;
+        vertex_counter = 0;
+      }
+    }
+    k--;
+  }
+
+  return k_decomposition;
+}
+\end{minted}
+
+\begin{figure}[H]
+  \includegraphics[scale=.25]{img/core_ex.png}
+  \caption{A 2-core decomposition would remove nodes $1,9,7,8$. $8$ would be removed in the second iteration of the function.}
+  \label{fig:core_ex}
+\end{figure}
+
 
 \section{Clustering}
 
@@ -423,51 +499,17 @@ Finally, it returns the average, which devides the sum by the number of vertices
 }
 \end{minted}
 
-\section{Core}
-
-A k-core decomposition of a network $N$ is a subgraph $C_k$ with any
-$v\in V(N)$ with $D_v<k$ removed.
-$$C_k={v,e:v\in V(N), D_v\geq k,e\in E(N)}$$
-It is a function that only ends after all vertices with degree less than $k$ are removed.
-
-\begin{minted}[bgcolor=bg]{ts}
-  core(k: number): Network {
-  const k_decomposition = this.copy();
-
-  while (k > 0 && k_decomposition.vertices.size > 0) {
-    let { vertex_list } = k_decomposition;
-    let vertex_counter;
-    for (
-      vertex_counter = 0;
-      vertex_counter < vertex_list.length;
-      vertex_counter++
-    ) {
-      const current_vertex =
-        k_decomposition.vertex_list[vertex_counter];
-      if (k_decomposition.degree(current_vertex.id) < k) {
-        k_decomposition.removeVertex(current_vertex.id);
-        vertex_list = k_decomposition.vertex_list;
-        vertex_counter = 0;
-      }
-    }
-    k--;
-  }
-
-  return k_decomposition;
-}
-\end{minted}
-
-\begin{figure}[H]
-  \includegraphics[width=\linewidth]{img/core_ex.png}
-  \caption{A 2-core decomposition would remove nodes $1,9,7,8$. $8$ would be removed in the second iteration of the function.}
-  \label{fig:core_ex}
-\end{figure}
-
 \section{Triplets}
 
+Triplets, also called triangles or triples, are the foundation
+of design theory, an entrire field of mathematics.
+Design theory is concerned with decomposing graphs into triplets.
+
 A triplet is a set of 3 vertices and 3 edges connecting said vertices.
+They are also called triples, triangles and $K_3$s, and are the foundation of design theory,
+an entire field of mathematics.
 \begin{figure}[H]
-  \includegraphics[width=\linewidth]{img/triplets.png}
+  \includegraphics[scale=.25]{img/triplets.png}
   \caption{This network has two triplets: $\{5,7,8\}$ and $\{2,8,9\}$.}
   \label{fig:core_ex}
 \end{figure}
@@ -513,7 +555,9 @@ triplets(): Triplet[] {
 }
 \end{minted}
 
-Overall, there was a 27\% reduction in the algorithm's by only using sorted triplets; then we saw around 55\% impovement
-due to only looking through the neighbors; finally, there was a 10\% improvement in performance
+Overall, there was a 27\% reduction in the algorithm's by only using sorted triplets;
+then we saw around 55\% impovement
+from only looking through the neighbors of an edge's vertex;
+finally, there was a 10\% improvement in performance
 by not having to edge-check one of the vertices.
 All of these were cummulative.

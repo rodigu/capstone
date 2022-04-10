@@ -1,0 +1,50 @@
+\chapter{Further Work}
+
+Currently there are three
+more obvious ways to improve or extend NeTS functionality:
+adding multigraph compatibility; adding IO functionality
+to the library; and adding more algorithms to NeTS.
+
+The one which will probably require most work is adapting
+the library to handle multigraphs.
+Although NeTS does not have such capability,
+some of its functions and error handling was created with the possibility
+of addressing multigraphs in a future update in mind.
+As an example, we can look at the way edges are handled.
+They are stored in a Map data structure, meaning each edge has a unique ID.
+This was done so that in the case multigraphs are addressed,
+their property of multiple edges between two nodes can be
+handled by the already existing edge system.
+
+To handle multigraphs, more work would also have to be done
+in regards to the already existing algorithms detailed in the
+Algorithms chapter.
+While we were creating the functions for triplets, for instance,
+we realized that addressing this algorithm for multigraphs
+could mean not just exceptions, but the creation of an entirely new function
+that is exclusive to multigraphs.
+
+Adding IO options to the library is an important update to NeTS.
+Although only mentioned in passing before, NeTS already has
+the capability to import and export networks to CSV files that
+contain an adjacency matrix.
+Further IO options would include the creation and customization of
+network images. These images could be similar to
+the images taken from Net20 that were
+used in this document. Because of this precedent,
+adapting code and ideas from Net20's image processing
+functions could help with NeTS' update.
+
+Finally, we can extend NeTS' functionality by adding new algorithms to it.
+We already have a list of algorithms we plan to implement in a
+future release of the ilbrary. Two of notice are the quadruplets algorithm,
+and breadth-first-search (BFS).
+BFS is an extremely important algorithm for applied graph theory.
+It is used for path-finding. When a GPS tries to find the shortest path
+from one place to another, it is most likely using BFS or a variation of it.
+It ended up not making into NeTS' first releases, but it was present
+in Net20. Thus, the code from Net20 could be adapted and improved to fit
+into NeTS.
+The quadruplets algorithm refers to a 4-cycle search algorithm. Much like
+the triplets algorithm present here, it searches for vertex cycles. However,
+instead of looking for cycles of 3 nodes, it finds cycles of 4.

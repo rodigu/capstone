@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nx}{get} \PYG{n+nx}{weight}\PYG{p}{()}\PYG{o}{:} \PYG{k+kt}{number} \PYG{p}{\PYGZob{}}
+  \PYG{k}{return} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{edge\PYGZus{}list}
+    \PYG{p}{.}\PYG{n+nx}{map}\PYG{p}{((}\PYG{n+nx}{edge}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{n+nx}{edge}\PYG{p}{.}\PYG{n+nx}{weight}\PYG{p}{)}
+    \PYG{p}{.}\PYG{n+nx}{reduce}\PYG{p}{((}\PYG{n+nx}{prev}\PYG{p}{,} \PYG{n+nx}{curr}\PYG{p}{)} \PYG{o}{=\PYGZgt{}} \PYG{n+nx}{prev} \PYG{o}{+} \PYG{n+nx}{curr}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,5 +1,9 @@
 \chapter{Network Values}
-There are several network properties that, instead of being stored in a variable, have getters to them. These either have to be calculated on the fly or don't really serve an internal purpose that would justify storing them inside a variable property.
+
+There are several network properties that, instead of being stored in a variable,
+have getters to them.
+These either have to be calculated on the fly or don't really serve an internal
+purpose that would justify storing them inside a variable property.
 
 Getters have the basic format:
 
@@ -15,33 +19,40 @@ And, different from functions, can be accessed without the brackets:
 net.getter_name
 \end{minted}
 
+The values and properties discussed in this section are:
+getters for arguments, vertices and edges; weight getters;
+negative and positive weight getters; maximum number of edges; and
+network density.
+
 \section{Functional Getters}
 These getters exist mostly to provide functionality to the network class.
 For example,
-the \mintinline{ts}{args} getter returns some of the properties of the network necessary to make a copy of it:
+the \mintinline{ts}{args} getter returns some of the properties of the network necessary to make a copy of it.
+The \mintinline{ts}{copy} function is discussed in detail in the Algorithms chapter.
 
 \begin{minted}[bgcolor=bg]{typescript}
-  get args(): NetworkArgs {
-    return {
-      is_directed: this.is_directed,
-      is_multigraph: this.is_multigraph,
-      edge_limit: this.edge_limit,
-      vertex_limit: this.vertex_limit,
-    };
-  }
+get args(): NetworkArgs {
+  return {
+    is_directed: this.is_directed,
+    is_multigraph: this.is_multigraph,
+    edge_limit: this.edge_limit,
+    vertex_limit: this.vertex_limit,
+  };
+}
 \end{minted}
 
 The list getters return a list with the values inside the vertices and edges \mintinline{ts}{Maps}.
-This is particularly useful for efficiency as it makes it possible to use standard \mintinline{ts}{Array} functions.
+This is particularly useful for efficiency as it makes it possible to use standard \mintinline{ts}{Array} functions,
+which are quite efficient.
 
 \begin{minted}[bgcolor=bg]{ts}
-  get vertex_list(): Vertex[] {
-    return [...this.vertices.values()];
-  }
+get vertex_list(): Vertex[] {
+  return [...this.vertices.values()];
+}
 
-  get edge_list(): Edge[] {
-    return [...this.edges.values()];
-  }
+get edge_list(): Edge[] {
+  return [...this.edges.values()];
+}
 \end{minted}
 
 The \mintinline{ts}{...} destructuring operator was also introduced in ES2021.
@@ -59,72 +70,118 @@ require algorithms that are too elaborate.
 
 \subsection{Weight}
 
+The weight of a network is the sum of the weight of its edges.
 \begin{minted}[bgcolor=bg]{ts}
-  get weight(): number {
-    return this.vertex_list
-      .map((vertex) => vertex.weight)
-      .reduce((prev, curr) => prev + curr);
-  }
+get weight(): number {
+  return this.edge_list
+    .map((edge) => edge.weight)
+    .reduce((prev, curr) => prev + curr);
+}
+\end{minted}
+Say $w(e)$ is the weight of the edge $e$ in the network $G=(V,E)$. A network's weight is given by:
+$$\sum{w(e)}$$
+
+The getter uses the \mintinline{ts}{Array.prototype.map}
+and \mintinline{ts}{Array.prototype.reduce} functions.
+It first maps the \mintinline{ts}{edege_list}
+into a list with just the weights of the vertex,
+and then reduces it by summing all of the new list's values.
+
+Similarly, we can calculate the \mintinline{ts}{vertex_weight} of a network
+by summing the weights of its vertices.
+\begin{minted}[bgcolor=bg]{ts}
+get weight(): number {
+  return this.edge_list
+    .map((edge) => edge.weight)
+    .reduce((prev, curr) => prev + curr);
+}
 \end{minted}
 
-Say $w(x)$ is the weight of the vertex $x$ in the network $G=(V,E)$. A network's weight is given by:
-$$\sum{w(x)}, \forall x \in G$$
+There are five other functions related to vertex and edge weight.
+For vertices, we have \mintinline{ts}{negative_vertices}, \mintinline{ts}{positive_vertices},
+and \mintinline{ts}{zero_vertices}. They return a list with all the vertices
+in the network that have negative, positive,
+and zero edge weights, respectivelly.
 
-The getter uses the 'Array.prototype.map' and 'Array.prototype.reduce' functions.
-It first maps the 'vertex\_list' into a list with just the weights of the vertex, and then reduces it by summing all of the new list's values.
+For edges, \mintinline{ts}{negative_edges} and \mintinline{ts}{positive_edges}
+return a list with all edges that have negative and positive weights, respectivelly.
 
-There are three other functions related to vertex weight.
+Edges don't have an equivalent to \mintinline{ts}{zero_vertices}
+because by convetion it can be said that two vertices not having
+an edge between them is the same as saying the edge between
+them has a weight of zero.
+
+This can be illustrated with the example of a network that represents global trade.
+Instead of GDP, we could say the weights of each vertex represents their
+GDP growth.
+A 0-GDP growth (thus, 0-weight) country could theoretically exist,
+and should still be represented as it could have trades with other countries.
+However, a 0-edge between two countries would mean that they don't
+trade between each other at all.
+Therefore, it is the same as the edge not being represented.
+
+We don't keep track of zero-weight edges (edges that don't exist)
+because that could mean heavy storage usage complexity for larger networks.
+Nevertheless, one of the most common ways to store networks is the
+adjacency matrix. In it, even edges that don't exist end up being represented.
 
 \begin{minted}[bgcolor=bg]{ts}
-/**
- * List of vertices with negative weight.
- * @returns Vertex[]
- */
-  get negative_vertices(): Vertex[] {
+get negative_vertices(): Vertex[] {
   const { vertex_list } = this;
   return vertex_list.filter((vertex) => vertex.weight < 0);
 }
 
-/**
- * List of vertices with positive weight.
- * @returns Vertex[]
- */
 get positive_vertices(): Vertex[] {
   const { vertex_list } = this;
   return vertex_list.filter((vertex) => vertex.weight > 0);
 }
 
-/**
- * List of vertices with zero weight.
- * @returns Vertex[]
- */
 get zero_vertices(): Vertex[] {
   const { vertex_list } = this;
   return vertex_list.filter((vertex) => vertex.weight == 0);
 }
+
+get negative_edges(): Edge[] {
+  const { edge_list } = this;
+  return edge_list.filter((edge) => edge.weight < 0);
+}
+
+get positive_edges(): Edge[] {
+  const { edge_list } = this;
+  return edge_list.filter((edge) => edge.weight > 0);
+}
 \end{minted}
 
 \subsection{Maximum Number of Edges}
-The largest number of edges $M_E$ a graph with $|V|$ vertices can have is:
-$$M_E=\frac{|V|*(|V|-1)}{2}$$
+
+The largest number of edges $M_n$ a graph $N$ with $n=|V|$ vertices can have is:
+$$M_n=\frac{|V|*(|V|-1)}{2}$$
 Where $|V|$ represents the size of the vertex set $V$.
 
+A complete network $K_n$ is a network with $n$ vertices
+where all edges that could exist, do exist.
+Thus, the maximum number of edges for a network with $n$ vertices
+is $|V(K_n)|$.
+
 \begin{minted}[bgcolor=bg]{ts}
-  get max_edges(): number {
-    return (this.vertices.size * (this.vertices.size - 1)) / 2;
-  }
+get max_edges(): number {
+  return (this.vertices.size * (this.vertices.size - 1)) / 2;
+}
 \end{minted}
 
 \subsection{Density}
 
-A graph's density $D$ is defined by:
-$$D=\frac{|E|}{M_E}$$
-Where $|E|$ is the size of the edge set $|E|$
+The density $D$ of a graph with $n$ nodes and edge set $E$ is defined by:
+$$D=\frac{|E|}{M_n}$$
+Where $|E|$ is the size of the edge set $E$.
 The number of edges a graph has,
 divided by the maximum number of edges it could have with the number of nodes it currently has.
 
 \begin{minted}[bgcolor=bg]{typescript}
-  get density(): number {
-    return this.edges.size / this.max_edges;
-  }
+get density(): number {
+  return this.edges.size / this.max_edges;
+}
 \end{minted}
+
+A graph with low density is called a sparse graph.
+It essentially tells many links exist as compared to how many there could be at most.
