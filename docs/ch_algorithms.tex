@@ -1,5 +1,7 @@
 \chapter{Algorithms}
 
+An algorithm here refers to a process or set of processes and calculations
+or other problem-solving operations that are performed by a computer.
 Algorithms are the most important part of NeTS,
 and any other network science library.
 They are useful for demonstrating and understanding
@@ -7,19 +9,18 @@ fundamental aspects of networks.
 As we will see, they can express how connected
 a social network is, or even show a profitable exchange path
 in a given market.
+In this chapter, we will look at functions that
+perform algorithms to calculate various values
+or to find particular structures in the network.
 
 \section{Neighborhood}
-A vertex $x$'s neighborhood $H(x)$ is defined as the vertices that are connected to that vertex
-by an edge. Note also that $H_x\subset V$.
-$H[x]$ is used to define the set with neighbors of $x$ as well as $x$ itself: $H[x]=H(x)+x$.
-
+A vertex $x$'s neighborhood $H(x)$ is defined as the set of vertices that are connected to that vertex
+by an edge.
 In a social network, the neighborhood of a vertex represents
 the immediate connections of a user.
-
 In a network that represents the global exchange market for
 commodities, the neighborhood can be used to represent
 the trade partners of a given country.
-
 The \mintinline{ts}{Network.neighbors(id)}
 function returns a list with the IDs of the neighbors of the vertex given.
 
@@ -37,13 +38,18 @@ neighbors(id: base_id): base_id[] {
 }
 \end{minted}
 
-It goes through the Map of edges,
+This function goes through the Map of edges,
 and finds any edge that has one of its vertices match the parameter ID.
 
 When a network is directed, an edge can have two distinct types of neighbors.
 In-neighbors are vertices that connect to a vertex $a$ with an edge that ends on $a$.
 In other words, for a vertex $a$ in an edge from $b$ to $a$, $b$ is an in-neighbor of $a$.
 Out-neighbors are the opposite.
+
+The \mintinline{ts}{inNeighbors} and \mintinline{ts}{outNeighbors} functions
+work in a similar fashion to the \mintinline{ts}{neighbors} function.
+The difference being that they return a list with neighbors that fulfill
+particular properties.
 
 \begin{minted}[bgcolor=bg]{ts}
 inNeighbors(id: base_id): base_id[] {
@@ -74,6 +80,8 @@ outNeighbors(id: base_id): base_id[] {
 \section{Degree}
 
 The degree of a vertex can be defined as the number of edges that contain said vertex.
+Let $E_x$ denote the set of edges containing a vertex $x$, and $D_x$ denote
+the degree of $x$. Then,
 
 $$E_x=\{k \mid k \in E, x \in k\}$$
 $$D_x=|E_x|$$
@@ -82,7 +90,10 @@ The degree of a vertex is, in other words, the number of neighbors for said vert
 In the example of a social network, the degree of a user would
 tells us how many connections that user has in the network.
 
-In the library:
+In this section, we explain the functions related to degree and average degree
+for undirected and directed networks.
+
+For an undirected network:
 
 \begin{minted}[bgcolor=bg]{ts}
 degree(id: base_id): number {
@@ -97,15 +108,15 @@ degree(id: base_id): number {
 }
 \end{minted}
 
-The two other degree functions are related to in and out-neighbors,
+The two other degree functions in NeTS are related to in and out-neighbors,
 and are only defined when a network is directed.
-\mintinline{ts}{inDegree} returns the number of edges that end on the given edge.
+The function \mintinline{ts}{inDegree} returns the number of edges that end on the given edge.
 \mintinline{ts}{outDegree} does the opposite,
 returning the number of edges that start on the given vertex.
 
 For a directed network that represents global debt,
-let edges be directed from borrower to lender, and vertices
-represent countries or international organizations.
+let vertices represent countries or international organizations
+and edges be directed from borrower to lender.
 We could predict that the IMF, for example, has a high out-degree,
 as it is a money lender for many countries.
 Countries with high in-degree would be those with many debts to pay.
@@ -137,22 +148,21 @@ outDegree(id: base_id): number {
 \end{minted}
 
 The average degree of a vertex is defined as the sum all its neighbor's degrees over its own degree.
-For a vertex $i$, it is usually written as:
+For a vertex $x$, it is usually written as:
 
-$$k_{nn}(i)=\frac{\sum{a_{ij}D(j)}}{j_i}$$
+$$k_{nn}(x)=\frac{\sum{a_{ix}D(i)}}{D(x)}$$
 
-Where $a_{ij}$ is positive if there is and edge between vertices $i$ and $j$,
-and $D(j)$ is the degree of vertex $j$.
+Where $i$ represents a vertex in the network
+and the sum is performed over all vertices in the network.
+$a_{ix}$ is $1$ if there is and edge between vertices $i$ and $x$ and $0$ oterwise.
 And this is what this would look like when literally transcribed into code:
 
 \begin{minted}[bgcolor=bg]{ts}
 averageDegree(id: base_id): number {
   let neighbor_degree_sum = 0;
 
-  this.edges.forEach(({ vertices }) => {
-    const { from, to } = vertices;
-    if (from === id) neighbor_degree_sum += this.degree(to);
-    else if (to === id) neighbor_degree_sum += this.degree(from);
+  this.vertices.forEach(({ id:check_v }) => {
+    if (this.hasEdge(id,check_v)) neighbor_degree_sum += this.degree(to);
   });
 
   return neighbor_degree_sum / this.degree(id);
@@ -161,9 +171,9 @@ averageDegree(id: base_id): number {
 
 However, as previously mentioned, we already have a function for getting the neighbors of
 a specific vertex.
-Thus, we could write the averageDegree $A_x$ of vertex $x$ as:
+Thus, we could write the average degree $A_x$ of vertex $x$ as:
 
-$$A_x=\frac{\sum{D(i)}}{D(x)}, i\in H(x)$$
+$$A_x=\frac{\sum{D(i)}, i\in H(x)}{D(x)}$$
 
 In code:
 
@@ -179,14 +189,20 @@ averageDegree(id: base_id): number {
 }
 \end{minted}
 
-This helps us avoid repetition and makes things more clear.
+This makes it clearer what the \mintinline{ts}{averageDegree} function is supposed to do.
 If someone who doesn't know what an average degree is were to look at this,
 they would have an easier time figuring out what it means.
+This is also faster to compute, as we don't need to iterate over all edges,
+we only need to go through the neighbors of a vertex.
 
 \section{Assortativity}
 
 Assortativity is a fairly complex algorithm.
-
+It can be defined in broad terms as the tendency of
+vertices in a network to connect to other vertices that
+are similar in some way.
+Here, the similarity we are considering is in respect to
+the degree of the vertices in a network.
 
 In this library, auxiliary functions were created to help calculate it:
 
@@ -229,7 +245,16 @@ Although the function tecnically expects \mintinline{ts}{EdgeArgs},
 the two properties of this type that we are really interested in are \mintinline{ts}{from}
 and \mintinline{ts}{to} (the two vertices in an edge).
 
-Assortativity makes use of \mintinline{ts}{edgeAverageOperationList()}.
+We adopted the formula:
+
+$$r=\frac{(4\langle k_a k_b\rangle-\langle k_a+k_b\rangle^2)}{2\langle k_a^2+k_b^2\rangle-\langle k_a+k_b\rangle}; k_a, k_b \in e, \forall e \in N(E)$$
+
+The expressions inside $\langle$$\rangle$ represent
+an operation performed over all edges
+that is then averaged,
+where $k_a$ and $k_b$ are the endpoints of each edge.
+
+Assortativity makes use of \mintinline{ts}{edgeAverageOperationList}.
 
 \begin{minted}[bgcolor=bg]{ts}
 assortativity(): number {
@@ -248,28 +273,19 @@ assortativity(): number {
 }
 \end{minted}
 
-We adopted the formula:
-
-$$r=\frac{(4\langle k_a k_b\rangle-\langle k_a+k_b\rangle^2)}{2\langle k_a^2+k_b^2\rangle-\langle k_a+k_b\rangle}$$
-
-The expressions inside $\langle$$\rangle$ represent
-an operation performed over all edges
-that is then averaged,
-where $k_a$ and $k_b$ are the endpoints of each edge.
-
 There is another function in the Network class called \mintinline{ts}{edgeAverageOperation()}.
-It works almost exactly like its 'List' version, except it only takes in one operation.
-The list version makes assortativity $O(c)$, where $c$ is a constant.
+It works almost exactly like its `List' version, except it only takes in one operation.
+The list version makes assortativity $O(n)$, where $n$ is the number of edges in the network.
 That is because the operations are done one after the other in a single loop through all edges.
-If \mintinline{ts}{edgeAverageOperation()} was used instead, it would make an algorithm like assortativity $O(n)$ (linear complexity).
-$n$ being the number of operations necessary, since each operation would need an entire loop through the network's edges.
+If \mintinline{ts}{edgeAverageOperation} was used instead, it would make an algorithm like assortativity $O(nk)$ (linear complexity),
+where $k$ is the number of operations necessary, since each operation would need an entire loop through the network's edges.
 
 \section{Complement}
 
 The complement of a network $N$ is a network $N_c$ with the same number of vertices,
-but with all the edges $N$ doesn't have.
+but only with the edges $N$ doesn't have.
 That is to say, let $E(N)$ be the set of edges in $N$,
-and $E(N_c)$ the set of edges in $N_c$, the edge $e$:
+and $E(N_c)$ the set of edges in $N_c$ then for any edge $e$:
 
 $$e\in E(N_c)\iff e \notin E(N)$$
 
@@ -301,18 +317,31 @@ complement(): Network {
 }
 \end{minted}
 
-It goes through every vertex and if it finds two vertices that don't have an edge in the network,
-it adds it to the complement.
+This function goes through every vertex and if
+the function finds two vertices that don't have an edge in the network,
+the function adds the edge to the complement.
 
 \section{Ego}
 
 The ego is the subgraph induced in the set $H[x]$.
+$H[x]$ is used to define the
+set with neighbors of $x$ as well as $x$ itself:
+$H[x] = H(x) + x$.
+\ref{fig:net_1b} illustrate this.
+The ego network of node $3$ is highlighted in green.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=.25]{img/ego_3.png}
+  \caption{3's ego includes $0,1,3,4,7,8,9$ and all edges between them.}
+  \label{fig:core_ex}
+\end{figure}
 
 The ego $G_x$ of a vertex $x$ from a network $N=(V,E)$ is the set $V(G_x)$ (vertices of the $G_x$)
 of all vertices that have an edge with it, as well as all the edges with vertices in $V(G_x)$.
 
-Formally:
-$$V(G_x) \subset V, E(G_x) \subset E$$
+Formally, for
+$V(G_x) \subset V$ and $E(G_x) \subset E$:
 
 $$E(G_x)=\{e : v_e,u_e \in H_x\}$$
 
@@ -339,13 +368,6 @@ ego(id: base_id): Network {
 }
 \end{minted}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=.25]{img/ego_3.png}
-  \caption{3's ego includes $0,1,3,4,7,8,9$ and all edges between them.}
-  \label{fig:core_ex}
-\end{figure}
-
 First, the algorithm goes through all edges, and add to the \mintinline{ts}{ego_network}
 the ones that contain the given vertex.
 Then, it goes through the edges of the network again,
@@ -369,7 +391,7 @@ This method works more like a reference to the original object.
 If a property of net changes, \mintinline{ts}{net_copy} will also change.
 
 Nevertheless, there are many other ways of making copies of objects with JS.
-Here are som of the most common:
+Here are some of the most common:
 \begin{minted}[bgcolor=bg]{ts}
 // Destructuring:
 const copy_destructure = { ...net }
@@ -389,7 +411,7 @@ The edges property, for instance, would become a reference because it is a Map.
 So if an edge is added to the original, the copy would also receive it.
 
 The JSON method solves this problem.
-It transforms the network into a JSON string, and then transforms it back into an object with JSON.parse().
+It transforms the network into a JSON string, and then transforms it back into an object with \mintinline{ts}{JSON.parse}.
 The big problem with this is that the copy is no longer a network instance, just an object with many of the properties a network would have.
 This is an issue we would want to avoid even more when we consider typing and interfaces are precisely why TS was chosen.
 
@@ -407,9 +429,15 @@ copy(): Network {
 \section{Core}
 
 A k-core decomposition of a network $N$ is a subgraph $C_k$ with any
-$v\in V(N)$ with $D_v<k$ removed.
-$$C_k={v,e:v\in V(N), D_v\geq k,e\in E(N)}$$
-It is a function that only ends after all vertices with degree less than $k$ are removed.
+$v\in V(N)$ with $D_v<k$ removed recursively.
+This means, we remove all vertices with degree less than $k$,
+then in the resulting network, we remove all vertices with
+degree less than $k$, and so on until there are no vertices
+where $D_v<k$.
+$$C_k=(V_c,E_c)$$
+$$V_c=\{v:v\in V(N),D_v\geq k\}, E_c=\{e:e\in E(N)\}$$
+The core function only ends after all vertices with degree less than $k$ are removed.
+It returns a network class instance.
 
 \begin{minted}[bgcolor=bg]{ts}
 core(k: number): Network {
@@ -449,10 +477,10 @@ core(k: number): Network {
 \section{Clustering}
 
 The clustering coefficient measures how connected the neighbors of a vertex are to each other.
-It is the number of edges that exists in between the vertex's neighbors in relation to the
+It is the number of edges that exist in between the vertex's neighbors in relation to the
 maximum number of edges that could exist there.
 
-$$\frac{|{e:v,u\in e \and v,u\in H[x]}|}{|H[x]|(|H[x]|-1)}$$
+$$\frac{|\{e:v,u\in e \wedge v,u\in H[x]\}|}{|H[x]|(|H[x]|-1)}$$
 
 \begin{minted}[bgcolor=bg]{ts}
 clustering(id: base_id): number {
@@ -474,7 +502,7 @@ clustering(id: base_id): number {
 }
 \end{minted}
 
-The algorithm makes use of the \mintinline{ts}{ego()} function, removing the ID vertex after.
+The algorithm makes use of the \mintinline{ts}{ego} function, removing the ID vertex after.
 It also uses a tenary operator because the only difference between the clustering
 from a directed network to an undirected one is
 that the former has its clustering multiplied by 2.
@@ -482,7 +510,7 @@ that the former has its clustering multiplied by 2.
 \section{Average Clustering}
 
 This function calculates the average clustering of the network.
-If calculates the clustering of all vertices, inserting its values into an array.
+If calculates the clustering coefficient of all vertices, inserting its values into an array.
 It then reduces the array, summing all of its values.
 Finally, it returns the average, which devides the sum by the number of vertices in the network.
 \begin{minted}[bgcolor=bg]{ts}
@@ -503,37 +531,36 @@ averageClustering(): number {
 
 \section{Triplets}
 
-Triplets, also called triangles or triples, are the foundation
-of design theory, an entrire field of mathematics.
+A triplet is a set of 3 vertices and 3 edges connecting said vertices.
+Triplets, also called triangles, triples or $K_3$s,
+are the foundation of design theory,
+an entrire field of mathematics.
 Design theory is concerned with decomposing graphs into triplets.
 
-A triplet is a set of 3 vertices and 3 edges connecting said vertices.
-They are also called triples, triangles and $K_3$s, and are the foundation of design theory,
-an entire field of mathematics.
 \begin{figure}[H]
   \centering
   \includegraphics[scale=.25]{img/triplets.png}
   \caption{This network has two triplets: $\{5,7,8\}$ and $\{2,8,9\}$.}
   \label{fig:core_ex}
 \end{figure}
-This algorithm in the network went through many iterations that improved its performance.
+The triplets algorithm in NeTS went through many iterations that improved its performance.
 The first algorithm looked through all edges, and, while in each edge,
 looked through all nodes and checked for any that had edges with the two nodes in the edge.
-The most glaring problem with this is that it ends up each triplet three times:
+The most glaring problem with this is that it counts each triplet three times:
 once for each edge.
 
 The solution was to order the triplets so that, internally, the algorithm
 sees $5,8,7$ as different from $5,7,8$, for example.
 This was initially done by comparing the triplet that could be created
 with the sorted version of that triplet.
-The current improved version only needs to check if the current vertices are already sorted:
+The improved version only needs to check if the current vertices are already sorted:
 \begin{minted}[bgcolor=bg]{ts}
 k2.isSameTriplet(triplet, triplet.sort())
 \end{minted}
 
-The current iteration of this algorithm also does not go through all vertices in the network.
+The current iteration of the triplets algorithm also does not go through all vertices in the network.
 It only looks through the neighbors of one of the vertices in the edge being analysed.
-This also saves us from having to check if both vertices have edges to the vertice beeing looked at.
+This also saves us from having to check if both vertices have edges with the vertice beeing looked at.
 
 \begin{minted}[bgcolor=bg]{ts}
 triplets(): Triplet[] {
@@ -557,10 +584,3 @@ triplets(): Triplet[] {
   return triplet_list;
 }
 \end{minted}
-
-Overall, there was a 27\% reduction in the algorithm's by only using sorted triplets;
-then we saw around 55\% impovement
-from only looking through the neighbors of an edge's vertex;
-finally, there was a 10\% improvement in performance
-by not having to edge-check one of the vertices.
-All of these were cummulative.

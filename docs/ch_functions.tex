@@ -9,13 +9,17 @@ In the case of edge removal, the function
 necessary to remove an edge from the network.
 
 Networks are often used to represent real world
-phenomena that are constantly changingç thus,
+phenomena that are constantly changing; thus,
 it is important to be able to dynamically remove
 edges and nodes from a network.
 In the aforementioned example of a social network,
 this could mean someone deleting their account.
 
 The functions for removing edges and vertices remove said elements of the network.
+The function \mintinline{ts}{removeEdge}, in particular,
+is quite straightforward.
+It finds an edge with the given \mintinline{ts}{from} and \mintinline{ts}{to} nodes,
+and then deletes them from the edge Map.
 
 \begin{minted}[bgcolor=bg]{ts}
 removeEdge(args:
@@ -61,6 +65,11 @@ removeVertex(id: base_id) {
 An advantage of using \mintinline{ts}{Maps}
 to store the network's vertices and edges is that it is easier to get
 them by ID.
+Maps are data structures that consist of key-element pairs.
+Keys are unique, while elements can be repeated.
+Both keys and elements can consist of any data (strings, numbers, objects, arrays, etc).
+In respect to the key-elemtn pairs, this data structe resemble a Python dictionary.
+
 The function \mintinline{ts}{hasVertex()} takes advantage of
 a vertex ID to quickly find whether a network contains a
 vertex with the specified ID.
@@ -110,8 +119,8 @@ The \mintinline{ts}{checkEdgeIsSame()} function will take in two edges and compa
 (\mintinline{ts}{from} and \mintinline{ts}{to}).
 If a network is directed, \mintinline{ts}{from} is compared with \mintinline{ts}{from},
 and \mintinline{ts}{to} is compared with \mintinline{ts}{to}.
-If it is undirected the comparison between \mintinline{ts}{to} and \mintinline{ts}{from}
-also need to be performed.
+If it is undirected, the comparison between \mintinline{ts}{to} and \mintinline{ts}{from}
+also needs to be performed.
 Thus, the function also receives an \mintinline{ts}{is_directed} property.
 
 \begin{minted}[bgcolor=bg]{ts}
@@ -132,7 +141,7 @@ checkEdgeIsSame(
 }
 \end{minted}
 
-The way an edge check works depends on whether or not a network is directed.
+The way an edge-check works depends on whether or not a network is directed.
 Nevertheless, it is also possible to force an undirected check.
 
 A forced undirected check is useful when it is only necessary to know
@@ -164,13 +173,20 @@ The \mintinline{ts}{newEID()} function generates a valid ID to be used internall
  }
 \end{minted}
 
-There are four special ways to add edges and vertices to a network.
+There are two special ways to add edges and vertices to a network.
+The first one is with \mintinline{ts}{addEdgeMap}, which
+uses an edge Map to add edges to the network.
+This is useful in the case where we want to use the edge map of
+a different network to add edges.
+The second special way is with \mintinline{ts}{addEdgeList}, which
+takes in a list of \mintinline{ts}{EdgeArgs}, and uses the arguments
+to create new edges.
 These exist as a shorthand to add vertices and edges.
 It is useful to be able to add multiple edges to a network at
 the same time.
 
 \begin{minted}[bgcolor=bg]{ts}
- addEdgeMap(edge_map: Map<base_id, Edge>) {
+addEdgeMap(edge_map: Map<base_id, Edge>) {
   edge_map.forEach((edge, id) => this.edges.set(id, edge));
 }
 
@@ -192,7 +208,7 @@ addVertexList(vertex_list: VertexArgs[]) {
 }
 \end{minted}
 
-An array of edges could be added as such:
+As an example, an array of edges could be added as such:
 
 \begin{minted}[bgcolor=bg]{ts}
 const edge_list = [
@@ -203,22 +219,6 @@ const edge_list = [
 net.addEdgeList(edge_list)
 \end{minted}
 
-This abstracts the complexity of adding multiple edges at the same time
-from the user.
-The code above is much simpler and easier to understand than the
-following example:
-
-\begin{minted}[bgcolor=bg]{ts}
-const edge_list = [
-  [2,3],
-  ['b',3]
-]
-
-edge_list.forEach(edge =>
-    net.addEdge({from: edge[0], to: edge[1]})
-);
-\end{minted}
-
 \begin{figure}[H]
   \centering
   \includegraphics[scale=.25]{img/net_1b_edge_list.png}
@@ -226,7 +226,27 @@ edge_list.forEach(edge =>
   \label{fig:net_edge_list}
 \end{figure}
 
-Other utility functions are:
+This abstracts the complexity of adding multiple edges at the same time
+from the user.
+
+There are three other functions that serve utilitarian purposes
+and are used throughout NeTS.
+The function \mintinline{ts}{hasEdge} returns whether an edge
+with the given nodes exists or not in the network.
+
+The function \mintinline{ts}{getEdgesBetween} serves a similar purpose,
+but instead of returning whether it exists or not, it returns
+a list with the edges between the two given nodes.
+This function is yet another example of the NeTS being
+prepared with the possibility of multigraphs in mind.
+For simple graphs (non-multigraphs), two vertices will always
+have only one edge between them.
+Nevertheless, \mintinline{ts}{getEdgesBetween}
+can return a list with all the edges that exist,
+something that would only happen in a multigraph.
+
+The function \mintinline{ts}{addVertex} adds a
+vertex to the network using the given arguments.
 
 \begin{minted}[bgcolor=bg]{ts}
 hasEdge(from: base_id,
@@ -269,6 +289,9 @@ addVertex(args: VertexArgs) {
 
 The \mintinline{ts}{addEdge()} function looks different from the
 \mintinline{ts}{addVertex()} function because it has to deal with many exceptions.
+For example, it handles what happens when an edge that connects a node to
+a node that doesn't exist in the network.
+It does so with using the \mintinline{ts}{do_force} argument.
 
 The main addition to \mintinline{ts}{addEdge()} is the \mintinline{ts}{do_force} argument.
 It is set to true by default.
@@ -276,6 +299,7 @@ When \mintinline{ts}{addEdge()} is called,
 it first checks if the vertices you are trying to connect exists.
 If they don't and \mintinline{ts}{do_force=true},
 the function will add the vertices to the network automatically.
+Otherwise, if \mintinline{ts}{do_force===false}, it throws an error.
 
 \begin{minted}[bgcolor=bg]{ts}
 addEdge(args: EdgeArgs) {
@@ -330,8 +354,10 @@ The previous code will throw an error, since \mintinline{ts}{addEdge()}
 will not try to force the creation of the edge by
 adding vertices `1' and `2' to net.
 
-There are also some private utility functions used in algorithms
-that will be explained in the next chapter.
+There are also two private utility functions used in algorithms.
+They have a similar purpose to \mintinline{ts}{hasEdge} in the sense
+that it also checks to see if a particular structure exists in the network.
+They will be further explained in the next chapter.
 
 \begin{minted}[bgcolor=bg]{ts}
 listHasTriplet(triplet_arr: Triplet[],

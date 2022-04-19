@@ -5,7 +5,7 @@
       \PYG{p}{(\PYGZob{}} \PYG{k+kr}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{})} \PYG{p}{=\PYGZgt{}} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{degree}\PYG{p}{(}\PYG{k+kr}{from}\PYG{p}{)} \PYG{o}{*} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{degree}\PYG{p}{(}\PYG{n+nx}{to}\PYG{p}{),}
       \PYG{p}{(\PYGZob{}} \PYG{k+kr}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{})} \PYG{p}{=\PYGZgt{}} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{degree}\PYG{p}{(}\PYG{k+kr}{from}\PYG{p}{)} \PYG{o}{+} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{degree}\PYG{p}{(}\PYG{n+nx}{to}\PYG{p}{),}
       \PYG{p}{(\PYGZob{}} \PYG{k+kr}{from}\PYG{p}{,} \PYG{n+nx}{to} \PYG{p}{\PYGZcb{})} \PYG{p}{=\PYGZgt{}} \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{degree}\PYG{p}{(}\PYG{k+kr}{from}\PYG{p}{)} \PYG{o}{**} \PYG{l+m+mf}{2} \PYG{o}{+}
-                        \PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{degree}\PYG{p}{(}\PYG{n+nx}{to}\PYG{p}{)} \PYG{o}{**} \PYG{l+m+mf}{2}\PYG{p}{,}
+              \PYG{n+nx}{s}\PYG{p}{.}\PYG{n+nx}{degree}\PYG{p}{(}\PYG{n+nx}{to}\PYG{p}{)} \PYG{o}{**} \PYG{l+m+mf}{2}\PYG{p}{,}
     \PYG{p}{]);}
 
   \PYG{k}{return} \PYG{p}{(}

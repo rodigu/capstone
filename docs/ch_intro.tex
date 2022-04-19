@@ -10,18 +10,18 @@ NeTS, specifically, can be used for research that relates to network science,
 or be imported into other programs or projects to serve as a base for any
 kind of computation that involves graphs.
 NumPy is an example of an important Python library widely used by programers.
-It assists those who use Python with dealing with more complex data structures,
-and contains may built-in math functions that make may computations simpler.
+It assists those who use Python in dealing with more complex data structures,
+and contains may built-in math functions that make computations simpler.
 
 Graph Theory is an entire field of mathematics dedicated to studying graphs.
-Graphs are a very specific kind of mathematical structure,
-that will be formally explained later on.
-But, on a most fundamental level, graph theory is about connections.
+Graphs are a very specific kind of mathematical structure
+that will be formally explained later in this chapter.
+On a most fundamental level, graph theory is about connections.
 Network Science is a field that applies the many ideas of Graph Theory to the real world
 by giving meaning to the connections it studies.
 Most things that involve conections and links,
 can be analyzed thruogh the lenses of Network science.
-From road networks, to internet architecture, to subway systems, exchange markets, and even organ donations.
+From road networks and subway systems, to exchange markets, or even organ donations.
 
 The second part of this capstone is this document. It is organized as follows:
 
@@ -33,7 +33,7 @@ provided in later chapters as they become relevant.
 In the Types and Interfaces chapter of this document, we give an overview of all the fundamental
 data structures and definitions of the library.
 After that, the chapter for Values and Functions describes simpler algorithms
-of NeTS, and also provides background on these algorithms can be applied through network science.
+of NeTS, and also provides background on how these algorithms can be applied through network science.
 We will then explain the library's more complex algorithms as well as some of the
 decisions that went into writing them the way they currently are.
 
@@ -45,7 +45,7 @@ at Soka University of America.
 Net20 had many flaws and inefficiencies which are addressed by the NeTS library.
 
 NeTS does not have a visualization tool as of the writing of this document.
-All images shown here were created using Net20 unless stated otherwise.
+All images shown here were created using Net20's visualization tools unless stated otherwise.
 
 \section{Technical Aspects}
 
@@ -135,7 +135,7 @@ Some of the ways in which we can classify graphs are:
   could help represent the GDP of countries in a
   network of global trade where an edge between
   two countries represents if they trade.
-  The library considers all networks to be weighted on a technical level.
+  NeTS considers all networks to be weighted on a technical level.
   This means that, when created, any edge or vertex has their weight set to 1.
   An unweighted network is thus just a network with all weights set to the default of 1.
   Visually, the weight of an edge is usually represented as thickness.
@@ -145,7 +145,7 @@ Some of the ways in which we can classify graphs are:
   \centering
   \includegraphics[scale=.25]{img/weighted_sample.png}
   \caption{A network with weighted edges. In the example of Messenger,
-          we could say that $5$ and $4$ have never message each other,
+          we could say that $5$ and $4$ have never messaged each other,
           while $4$ and $9$ have exchanged many messages.}
   \label{fig:net_weight}
 \end{figure}

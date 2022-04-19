@@ -74,9 +74,6 @@ export interface EdgeArgs {
 
 Notice that all properties of \mintinline{ts}{NetworkArgs} are optional.
 Therefore, it is possible to create a network without using any parameters.
-The following is an example of code that creates a network \mintinline{ts}{net},
-adds the vertices `1' and `b' to it, and an edge between them.
-It is visually represented in Figure \ref{fig:net_1b}.
 
 \begin{minted}[bgcolor=bg]{typescript}
 export interface NetworkArgs {
@@ -86,7 +83,9 @@ export interface NetworkArgs {
 }
 \end{minted}
 
-Here is how we could go about creating a network:
+The following is an example of code that creates a network \mintinline{ts}{net},
+adds the vertices `1' and `b' to it, and an edge between them.
+It is visually represented in Figure \ref{fig:net_1b}.
 
 \begin{minted}[bgcolor=bg]{typescript}
 const net = new Network()
@@ -107,7 +106,7 @@ are explained in the Functions section.
   \label{fig:net_1b}
 \end{figure}
 
-Networks are by default undirected.
+In NeTS, networks are by default undirected.
 A directed network has to be explicitly declared.
 In the following code, we create a directed network,
 and add an edge that connects `1' to `b'.
@@ -131,12 +130,12 @@ is further discussed in the Functions section.
 
 \mintinline{ts}{ParsedCSV} and \mintinline{ts}{ERROR} are types used internally
 by the library to load CSV files and manage error messages, respectively.
-NeTS features for reading and writing CSV files are very useful for
+NeTS has features for reading and writing CSV files that are very useful for
 analyzing network data.
 A very common way of storing the information of a network is
 through an adjacency matrix.
 Adjacency matricies are most often written into a CSV file.
-For example because NeTS has the ability to read adjacency matrices,
+Because NeTS has the ability to read adjacency matrices,
 it is possible to import a network that was created elsewhere
 and use it with the library.
 
@@ -232,7 +231,7 @@ NeTS sets those limits to be \mintinline{ts}{edge_limit=500} and \mintinline{ts}
 by default.
 Most of the time when it is necessary to work with a graph data structure,
 the scale of such graphs is already known.
-Therefore, to assist with error handling limits to the number of edges and vertices are set.
+Therefore, to assist with error handling, we set limits to the number of edges and vertices.
 This helps because it prevents users from getting into infinite loops that try to add
 too many edges or vertices.
 
@@ -270,7 +269,7 @@ class Network {
 
 Note that, although there are many properties being set 
 in the \mintinline{ts}{Network} class constructor,
-they are all optional, and have defaults in case the user does not provide them.
+they are all optional and have defaults in case the user does not provide them.
 The \mintinline{ts}{free_eid} and \mintinline{ts}{free_vid} properties will be further explained later.
 A network with a larger number of maximum edges and vertices could be created as such:
 
