@@ -190,7 +190,7 @@ averageDegree(id: base_id): number {
 \end{minted}
 
 This makes it clearer what the \mintinline{ts}{averageDegree} function is supposed to do.
-If someone who doesn't know what an average degree is were to look at this,
+If someone who doesn't know what an average degree is were to look at the assortativity function,
 they would have an easier time figuring out what it means.
 This is also faster to compute, as we don't need to iterate over all edges,
 we only need to go through the neighbors of a vertex.
@@ -252,7 +252,7 @@ $$r=\frac{(4\langle k_a k_b\rangle-\langle k_a+k_b\rangle^2)}{2\langle k_a^2+k_b
 The expressions inside $\langle$$\rangle$ represent
 an operation performed over all edges
 that is then averaged,
-where $k_a$ and $k_b$ are the endpoints of each edge.
+where $k_a$ and $k_b$ are the endpoints of each edge \cite{ref:barrenas}.
 
 Assortativity makes use of \mintinline{ts}{edgeAverageOperationList}.
 
@@ -273,7 +273,7 @@ assortativity(): number {
 }
 \end{minted}
 
-There is another function in the Network class called \mintinline{ts}{edgeAverageOperation()}.
+There is another function in the Network class called \mintinline{ts}{edgeAverageOperation}.
 It works almost exactly like its `List' version, except it only takes in one operation.
 The list version makes assortativity $O(n)$, where $n$ is the number of edges in the network.
 That is because the operations are done one after the other in a single loop through all edges.

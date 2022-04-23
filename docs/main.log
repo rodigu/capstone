@@ -1,0 +1,953 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.25)  23 APR 2022 01:03
+entering extended mode
+ \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**c:/Users/rmora/Documents/GitHub/capstone/docs/main.tex
+(c:/Users/rmora/Documents/GitHub/capstone/docs/main.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-01-21> (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
+(C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@chapter=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen139
+\Gin@req@width=\dimen140
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count194
+\float@exts=\toks19
+\float@box=\box50
+\@float@everytoks=\toks20
+\@floatcapt=\box51
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/minted\minted.sty
+Package: minted 2021/12/24 v2.6 Yet another Pygments shim for LaTeX
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/fvextra\fvextra.sty
+Package: fvextra 2019/02/04 v1.4 fvextra - extensions and patches for fancyvrb
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count195
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fancyvrb.sty
+Package: fancyvrb 2021/12/21 4.1b verbatim text (tvz,hv)
+\FV@CodeLineNo=\count196
+\FV@InFile=\read2
+\FV@TabBox=\box52
+\c@FancyVerbLine=\count197
+\FV@StepNumber=\count198
+\FV@OutFile=\write3
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/lineno\lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count199
+\output=\toks21
+\linenoprevgraf=\count266
+\linenumbersep=\dimen141
+\linenumberwidth=\dimen142
+\c@linenumber=\count267
+\c@pagewiselinenumber=\count268
+\c@LN@truepage=\count269
+\c@internallinenumber=\count270
+\c@internallinenumbers=\count271
+\quotelinenumbersep=\dimen143
+\bframerule=\dimen144
+\bframesep=\dimen145
+\bframebox=\box53
+LaTeX Info: Redefining \\ on input line 3056.
+)
+\c@FV@TrueTabGroupLevel=\count272
+\c@FV@TrueTabCounter=\count273
+\FV@TabBox@Group=\box54
+\FV@TmpLength=\skip49
+\c@FV@HighlightLinesStart=\count274
+\c@FV@HighlightLinesStop=\count275
+\FV@LoopCount=\count276
+\FV@NCharsBox=\box55
+\FV@BreakIndent=\dimen146
+\FV@BreakIndentNChars=\count277
+\FV@BreakSymbolSepLeft=\dimen147
+\FV@BreakSymbolSepLeftNChars=\count278
+\FV@BreakSymbolSepRight=\dimen148
+\FV@BreakSymbolSepRightNChars=\count279
+\FV@BreakSymbolIndentLeft=\dimen149
+\FV@BreakSymbolIndentLeftNChars=\count280
+\FV@BreakSymbolIndentRight=\dimen150
+\FV@BreakSymbolIndentRightNChars=\count281
+\c@FancyVerbLineBreakLast=\count282
+\FV@LineBox=\box56
+\FV@LineIndentBox=\box57
+\FV@LineWidth=\dimen151
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count283
+\calc@Bcount=\count284
+\calc@Adimen=\dimen152
+\calc@Bdimen=\dimen153
+\calc@Askip=\skip50
+\calc@Bskip=\skip51
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count285
+\calc@Cskip=\skip52
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/tools\shellesc.sty
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 75.
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/ifplatform\ifplatform.sty
+Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/generic/catchfile\catchfile.sty
+Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
+\integerpart=\count286
+\decimalpart=\count287
+)
+Package: xstring 2021/07/21 v1.84 String manipulations (CT)
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/framed\framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip53
+\fb@frw=\dimen154
+\fb@frh=\dimen155
+\FrameRule=\dimen156
+\FrameSep=\dimen157
+)
+\minted@appexistsfile=\read3
+\minted@bgbox=\box58
+\minted@code=\write4
+\c@minted@FancyVerbLineTemp=\count288
+\c@minted@pygmentizecounter=\count289
+\@float@every@listing=\toks22
+\c@listing=\count290
+)
+runsystem(if not exist _minted-main mkdir _minted-main)...executed.
+
+runsystem(for ^%i in (pygmentize.exe pygmentize.bat pygmentize.cmd) do set > main.aex <nul: /p x=^%~$PATH:i>> main.aex)...executed.
+
+runsystem(del main.aex)...executed.
+
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count291
+\l__pdf_internal_box=\box59
+) (main.aux (ch_intro.aux) (ch_types_interfaces.aux) (ch_values.aux) (ch_functions.aux) (ch_algorithms.aux
+
+LaTeX Warning: Label `fig:core_ex' multiply defined.
+
+
+LaTeX Warning: Label `fig:core_ex' multiply defined.
+
+) (ch_conclusion.aux))
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count292
+\scratchdimen=\dimen158
+\scratchbox=\box60
+\nofMPsegments=\count293
+\nofMParguments=\count294
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count295
+\MPscratchDim=\dimen159
+\MPnumerator=\count296
+\makeMPintoPDFobject=\count297
+\everyMPtoPDFconversion=\toks24
+) (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 19.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 19.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 19.
+ [1
+
+{C:/Users/rmora/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (main.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 2.
+)
+\tf@toc=\write5
+\openout5 = `main.toc'.
+
+ [1
+
+]
+\openout2 = `ch_intro.aux'.
+
+ (ch_intro.tex [2
+
+
+]
+<img/undirected_sample.png, id=17, 673.01437pt x 536.0025pt>
+File: img/undirected_sample.png Graphic file (type png)
+<use img/undirected_sample.png>
+Package pdftex.def Info: img/undirected_sample.png  used on input line 85.
+(pdftex.def)             Requested size: 168.25317pt x 134.00029pt.
+ [3]
+<img/directed_sample.png, id=24, 614.295pt x 464.4853pt>
+File: img/directed_sample.png Graphic file (type png)
+<use img/directed_sample.png>
+Package pdftex.def Info: img/directed_sample.png  used on input line 114.
+(pdftex.def)             Requested size: 153.57336pt x 116.12103pt.
+ [4 <./img/undirected_sample.png> <./img/directed_sample.png>]
+Overfull \hbox (2.78528pt too wide) in paragraph at lines 121--125
+[]\OT1/cmr/m/n/10 Multigraph: Net-works can be clas-si-fied as multi-graphs, mean-ing for $\OML/cmm/m/it/10 e[]; e[] \OMS/cmsy/m/n/10 2
+ []
+
+<img/weighted_sample.png, id=30, 650.43pt x 472.01344pt>
+File: img/weighted_sample.png Graphic file (type png)
+<use img/weighted_sample.png>
+Package pdftex.def Info: img/weighted_sample.png  used on input line 150.
+(pdftex.def)             Requested size: 162.6071pt x 118.00307pt.
+) [5 <./img/weighted_sample.png>]
+\openout2 = `ch_types_interfaces.aux'.
+
+ (ch_types_interfaces.tex
+\openout4 = `main.pyg'.
+
+ (_minted-main/rainbow_dash.pygstyle) (_minted-main/2473E0BBA2147D0607B4965791A9A9F194FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/429DEF1D172F3307469C247509B8E30B94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/1D943977C9504CF94443C86F46ED47BC94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/3BA6A3B7CB01143AA6AE4AB0F09D2D0B94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/091296A12B8B1D3B8091F7535019EFE994FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/F7EB70DBBB53A07593FFB95CDE52485394FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/962D990905E3704433AFF0A1D22E66F494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/D433AA312BCE39A0B6295E6EC4F69AB094FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/D39F69547126C401CA8AE95475BFDC2594FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/AD136F264AEFBB77ADF218581055A02694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/B8B4CA61EF4FD0CE3932AA76AAA1B3D094FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/3BA6A3B7CB01143AA6AE4AB0F09D2D0B94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/64E9B5608F67CFB8690B64EFD640BB9C92CF154829EF5D2C7A308A310A27AD1E.pygtex
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
+)
+\openout4 = `main.pyg'.
+
+ (_minted-main/68C968E85EB1CF8F5EF0F3DE18C880D594FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/9FC7E9EE69C2A637D916CDFF9A13900394FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/E048B7A168BEE1147BBC3FCF24B4611392CF154829EF5D2C7A308A310A27AD1E.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/43CCC1E7ED23231F0C594D9FDC36964194FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/F7EB70DBBB53A07593FFB95CDE52485394FCD9D31EE402428B3268164B661369.pygtex) [6
+
+
+
+
+]
+\openout3 = `main.pyg'.
+
+ (_minted-main/089E0004798B252DAD93DF2D4BB1FA6E92CF154829EF5D2C7A308A310A27AD1E.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/962D990905E3704433AFF0A1D22E66F494FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/452647380A1135F6E895657AEA3532DA92CF154829EF5D2C7A308A310A27AD1E.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/375225F5E9F9954008D6C85BA89A2E2094FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/06AB4620321AC3C76303B006AB9E606D92CF154829EF5D2C7A308A310A27AD1E.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/0890189F263F34BA889E2B0C7BE4C39C94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/689D15FD94B26DCFEBCFFEC1FF2E2C1294FCD9D31EE402428B3268164B661369.pygtex)
+<img/ex_net_1b.png, id=41, 339.51843pt x 303.38344pt>
+File: img/ex_net_1b.png Graphic file (type png)
+<use img/ex_net_1b.png>
+Package pdftex.def Info: img/ex_net_1b.png  used on input line 104.
+(pdftex.def)             Requested size: 84.8794pt x 75.84567pt.
+\openout3 = `main.pyg'.
+
+ [7 <./img/ex_net_1b.png>] (_minted-main/17B4FB5F583D1B15D08AB7EF7A6A99C392CF154829EF5D2C7A308A310A27AD1E.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/7B6CAAC308D75FEA13327ADF6D77A5F594FCD9D31EE402428B3268164B661369.pygtex)
+<img/ex_net_1b_dir.png, id=46, 370.38374pt x 276.28218pt>
+File: img/ex_net_1b_dir.png Graphic file (type png)
+<use img/ex_net_1b_dir.png>
+Package pdftex.def Info: img/ex_net_1b_dir.png  used on input line 126.
+(pdftex.def)             Requested size: 92.5957pt x 69.07037pt.
+\openout4 = `main.pyg'.
+
+ (_minted-main/0A5950A8D0E6797CB08D61564C81B6E594FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/777073F3CDE34EB0EFEE5F7D1F3919B694FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/3FB83418BC2F79DE01C8574BCA28E57392CF154829EF5D2C7A308A310A27AD1E.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/D433AA312BCE39A0B6295E6EC4F69AB094FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/D39F69547126C401CA8AE95475BFDC2594FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/091296A12B8B1D3B8091F7535019EFE994FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/C6B7148E45FA196C79F9EF5FD3B4FA4592CF154829EF5D2C7A308A310A27AD1E.pygtex) [8 <./img/ex_net_1b_dir.png>]
+\openout4 = `main.pyg'.
+
+ (_minted-main/4CC726548A6ADA01574F517E52AB3C7694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/54D9090EC784E62EA1E39F98BE3D13A494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/0A48DBA5445E4E832F8487CAE793B7C294FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/8A962CA4C4EFE96E74AFA988C459A78794FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/4CC726548A6ADA01574F517E52AB3C7694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/54D9090EC784E62EA1E39F98BE3D13A494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/A0531DB54FA845D213FD40D3A3146D4694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/2492535347E81B38CB7889B5F6AC76D494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/6A2207DAEC15B7803ECE0A20F3C9635194FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/A0531DB54FA845D213FD40D3A3146D4694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/2492535347E81B38CB7889B5F6AC76D494FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/34E085494835D34BB61950B0ED92328A92CF154829EF5D2C7A308A310A27AD1E.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/09093F4E6B33DDD700FFAE27263BB8A294FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/3BA6A3B7CB01143AA6AE4AB0F09D2D0B94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/09093F4E6B33DDD700FFAE27263BB8A294FCD9D31EE402428B3268164B661369.pygtex) [9]
+\openout4 = `main.pyg'.
+
+ (_minted-main/ADEEB367E84A4F6BF21D8635B15F242794FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/0F39DA50482B1E8D642903D865E7F7B194FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/64FC56C65A53EA2D746BF86CEC6F51F894FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/FCA917FDB1BD205C0519CAFEC85AC80594FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/FCA917FDB1BD205C0519CAFEC85AC80594FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/673B4550FA7F6AE547AB13E294933C0292CF154829EF5D2C7A308A310A27AD1E.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/AD136F264AEFBB77ADF218581055A02694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/EF57D915F118735D7446C1DE8140423D94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/4E801B08BECF1B2B35B940FE7A55806B94FCD9D31EE402428B3268164B661369.pygtex) [10]
+\openout3 = `main.pyg'.
+
+ (_minted-main/2C84721C74816A58324784527BA63BA092CF154829EF5D2C7A308A310A27AD1E.pygtex)) [11]
+\openout2 = `ch_values.aux'.
+
+ (ch_values.tex
+\openout3 = `main.pyg'.
+
+ (_minted-main/19C854048A46E3AB12EED2221368387094FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/26157162370CBD2E607FED981AD5BB5E94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/529A5F9E7D7796FDE017811265A133AF94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/C614739F701280CF1C20CC01BEB3BD3A94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/3DCBA94BAB6192CD345E7C4DD84D4AC292CF154829EF5D2C7A308A310A27AD1E.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/A23DF2AACAADBFB42114101DEAAFD8B494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/90978C8EDAD36D5FAAC226D8EDC5022694FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ [12
+
+
+
+
+] (_minted-main/2B4CE03A83701606560A55FF7F819DF594FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/ED20D984B757AD5291963389FC20986494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/B30984AB13B40E4ED9ECD52AFAC9AAE194FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/CBF296B62F6C37972C26C7C90BFA153794FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/037DD8BD102D45D3345DAC4F113E9B5194FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/52992038338BE3D273FCEBAFB106CAC394FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/53D2B235DEF5883501D58931CE04318C94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/845CD226ED605C965F2AD5C1D34F92FA94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/CBF296B62F6C37972C26C7C90BFA153794FCD9D31EE402428B3268164B661369.pygtex) [13]
+\openout4 = `main.pyg'.
+
+ (_minted-main/980C0260D2E804ACD35E2446DB0059EE94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/D37D9F04AEDE5856F4984739DE01F2D594FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/AEA92008467C28DA9BEF20F71BF6249894FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/FBC76E523B150AA103D1561CCCD3E54B94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/F3A5BE025E5F77452A36FA3D6BA4062994FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/AEA92008467C28DA9BEF20F71BF6249894FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/007C5AFBD399BB8A1910862A25903DEF94FCD9D31EE402428B3268164B661369.pygtex)
+Overfull \vbox (0.35547pt too high) detected at line 153
+ []
+
+[14]
+\openout3 = `main.pyg'.
+
+ (_minted-main/467F1C8F30B0B11058205C28D7332C7694FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/BBF80AFE00077E7B3B4F734FB746D97892CF154829EF5D2C7A308A310A27AD1E.pygtex)) [15]
+\openout2 = `ch_functions.aux'.
+
+ (ch_functions.tex
+\openout4 = `main.pyg'.
+
+ (_minted-main/9738A8095BE9FA0B6E568EC313BC6D1694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/9738A8095BE9FA0B6E568EC313BC6D1694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/A0531DB54FA845D213FD40D3A3146D4694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/2492535347E81B38CB7889B5F6AC76D494FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/FB005F070C92A4C7CC9DCE80778A016194FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/1BA7184CCEC62723D32B63D3C4F3414A94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/065DA03BD303CB22CD23CF96B2F4054994FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ [16
+
+
+
+
+] (_minted-main/E42A63400FF5D734B32B6E89C9F85CFC94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/A23DF2AACAADBFB42114101DEAAFD8B494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/747DC9969BF3E0ED2DF454B74C2E2C4C94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/6ED48641F51A4A799153922D34BE8E4994FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/5C83BCA466526ABF4881613939E5362194FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/059BDBB99F1A5189E2077934573DA3E794FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/2C4E2C465448E614ED95B07AEC42E94794FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/8D8AD74DC736CD0352A70E8158813DB094FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/A3690DE1DE9CD74181E4D4779DAF47E394FCD9D31EE402428B3268164B661369.pygtex) [17]
+\openout4 = `main.pyg'.
+
+ (_minted-main/A0531DB54FA845D213FD40D3A3146D4694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/2492535347E81B38CB7889B5F6AC76D494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/9C98377BCA4981C41ADE9FA65519091D94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/9C98377BCA4981C41ADE9FA65519091D94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/A0531DB54FA845D213FD40D3A3146D4694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/2492535347E81B38CB7889B5F6AC76D494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/A0531DB54FA845D213FD40D3A3146D4694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/A0531DB54FA845D213FD40D3A3146D4694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/2492535347E81B38CB7889B5F6AC76D494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/2492535347E81B38CB7889B5F6AC76D494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/2492535347E81B38CB7889B5F6AC76D494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/A0531DB54FA845D213FD40D3A3146D4694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/CEA78C6005F790A5EFF6AF0CB9EB86C294FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/126059E54DA13C9FE8F6375B7AFF6E1994FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/A23DF2AACAADBFB42114101DEAAFD8B494FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/79544DEC1F2081F3D7876990768221D294FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/B723A6EC96FC7929F36E422217A5086394FCD9D31EE402428B3268164B661369.pygtex) [18]
+\openout4 = `main.pyg'.
+
+ (_minted-main/8611F1AA483E91DB2B3B29F2F1BD455294FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/232AB3C7DAB3CE58D4BEB9F05B558F7094FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/F7EB70DBBB53A07593FFB95CDE52485394FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/02EAD8143D2B3BAF7213634C7F69594894FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/C2D2A0CAAC46B13943CAFD3E2C9AF74B94FCD9D31EE402428B3268164B661369.pygtex) [19]
+<img/net_1b_edge_list.png, id=89, 353.82187pt x 317.68687pt>
+File: img/net_1b_edge_list.png Graphic file (type png)
+<use img/net_1b_edge_list.png>
+Package pdftex.def Info: img/net_1b_edge_list.png  used on input line 224.
+(pdftex.def)             Requested size: 88.45525pt x 79.42151pt.
+\openout4 = `main.pyg'.
+
+ (_minted-main/93D22CF8B76965C52D5DA2B28A38461E94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/E1039DD42D27413FEA4C2E532D62529C94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/E1039DD42D27413FEA4C2E532D62529C94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/E4E1CCC6148D59B9F5124F60CB84D28B94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/E379A3D5D545F2DA8EDBA8A1436111AD94FCD9D31EE402428B3268164B661369.pygtex) [20 <./img/net_1b_edge_list.png>]
+\openout4 = `main.pyg'.
+
+ (_minted-main/0890189F263F34BA889E2B0C7BE4C39C94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/689D15FD94B26DCFEBCFFEC1FF2E2C1294FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/7B6CAAC308D75FEA13327ADF6D77A5F594FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/0890189F263F34BA889E2B0C7BE4C39C94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/7B6CAAC308D75FEA13327ADF6D77A5F594FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/0890189F263F34BA889E2B0C7BE4C39C94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/FEA40A282EB62DAD5306E55EB46D31FC94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/66D0C7E1FE0B16D459A023A8450A569794FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/99ECC28DB6507E1060097912C9AAFEC394FCD9D31EE402428B3268164B661369.pygtex) [21]
+\openout4 = `main.pyg'.
+
+ (_minted-main/0890189F263F34BA889E2B0C7BE4C39C94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/E704C4C4062303A7508EB7CE48A5477894FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/7B6CAAC308D75FEA13327ADF6D77A5F594FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/84DC16D6344E5276660D28EEDC93896B94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/0890189F263F34BA889E2B0C7BE4C39C94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/93D22CF8B76965C52D5DA2B28A38461E94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/6764DF93F2D011B6FE7570DC00B1001494FCD9D31EE402428B3268164B661369.pygtex)) [22]
+\openout2 = `ch_algorithms.aux'.
+
+ (ch_algorithms.tex
+\openout4 = `main.pyg'.
+
+ (_minted-main/C08E08A5333BA0A4553DAB5BBBECCD2594FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/69DE304DA79C79B1114C702A925D2FC294FCD9D31EE402428B3268164B661369.pygtex) [23
+
+
+
+
+]
+\openout4 = `main.pyg'.
+
+ (_minted-main/A08707FF46C7B757821FDCF46955176294FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/E4E1BD46D99534DC4C515063DB0C359894FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/57A0B64B4D795159D36363B05F450D6994FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/BF36E583FECB7CF4C88D87BE2E83891194FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ [24] (_minted-main/7729BB8C3DC4982EBA0EB2DF072521F794FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/4681FF84B757C72FE5B32820C383784594FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/AE2D69F54FB0AECE0202B53418F94CC894FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/1DEA4734683CD3FB33400AC63BFEDDB394FCD9D31EE402428B3268164B661369.pygtex) [25]
+\openout3 = `main.pyg'.
+
+ (_minted-main/43C244B0A1427F9B78D0878A675BFF6A94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/D86C61F3F78536B9AC15A76C778E1BFC94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/E2C661DCB44AA3374CFA0CCB8A0E129394FCD9D31EE402428B3268164B661369.pygtex) [26]
+\openout3 = `main.pyg'.
+
+ (_minted-main/F9FE9FFF057F8BF31A5C78C3F7561D9394FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/34D9362C2E6257B856EC6F76266F381F94FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/F7EB70DBBB53A07593FFB95CDE52485394FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/2E458AF243E5117C6FF12C490F94E06294FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/F7EB70DBBB53A07593FFB95CDE52485394FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/A0531DB54FA845D213FD40D3A3146D4694FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/2492535347E81B38CB7889B5F6AC76D494FCD9D31EE402428B3268164B661369.pygtex)
+
+LaTeX Warning: Citation `ref:barrenas' on page 27 undefined on input line 255.
+
+\openout4 = `main.pyg'.
+
+(_minted-main/915FB811301B094953891DC3FD6CF17B94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ [27] (_minted-main/8B7109363D47704E271572880DBAF9A894FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/F23F0143B5EA47AFC58E80B65B3FF25994FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/F23F0143B5EA47AFC58E80B65B3FF25994FCD9D31EE402428B3268164B661369.pygtex)
+Overfull \hbox (3.30496pt too wide) in paragraph at lines 276--282
+[]\OT1/cmr/m/n/10 There is an-other func-tion in the Net-work class called [].
+ []
+
+\openout3 = `main.pyg'.
+
+(_minted-main/6611ED75ACE4AC45432BF0B3513592CC94FCD9D31EE402428B3268164B661369.pygtex) [28]
+<img/ego_3.png, id=119, 575.90157pt x 441.14813pt>
+File: img/ego_3.png Graphic file (type png)
+<use img/ego_3.png>
+Package pdftex.def Info: img/ego_3.png  used on input line 335.
+(pdftex.def)             Requested size: 143.97504pt x 110.28676pt.
+\openout3 = `main.pyg'.
+
+ [29 <./img/ego_3.png>] (_minted-main/17D8F30E1B393FB3338FC101A508C8A294FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/146FAE51856170A59C5EB9EA898185F694FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/E5CC08378185381D1EB919F79C0E265994FCD9D31EE402428B3268164B661369.pygtex)
+\openout4 = `main.pyg'.
+
+ (_minted-main/10CD95C4AD1118475E0BD97C0E8ED70E94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/250755E5FB2EAEEA59E2158DD9C834A094FCD9D31EE402428B3268164B661369.pygtex) [30]
+\openout4 = `main.pyg'.
+
+ (_minted-main/D0A91B50BE432E8DD137D4ACD3ED812394FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/0CB2818E13858C077247886C2260C10E94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/47C5106530D49DAB468B09DAB4DD4B5494FCD9D31EE402428B3268164B661369.pygtex) [31]
+<img/core_ex.png, id=131, 540.51938pt x 421.575pt>
+File: img/core_ex.png Graphic file (type png)
+<use img/core_ex.png>
+Package pdftex.def Info: img/core_ex.png  used on input line 471.
+(pdftex.def)             Requested size: 135.1295pt x 105.39348pt.
+\openout3 = `main.pyg'.
+
+ (_minted-main/A85427228AE3C10F674AE76B243582B894FCD9D31EE402428B3268164B661369.pygtex) [32 <./img/core_ex.png>]
+\openout4 = `main.pyg'.
+
+ (_minted-main/918EA83E825F438C350F5AC15F0E3E9B94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/00FF4E44BD38A4E6070240CBA191E7BC94FCD9D31EE402428B3268164B661369.pygtex) [33]
+<img/triplets.png, id=139, 450.18187pt x 435.87843pt>
+File: img/triplets.png Graphic file (type png)
+<use img/triplets.png>
+Package pdftex.def Info: img/triplets.png  used on input line 542.
+(pdftex.def)             Requested size: 112.54518pt x 108.96933pt.
+\openout3 = `main.pyg'.
+
+ (_minted-main/84C7A31F057A3D0C8393A206A64D76FA94FCD9D31EE402428B3268164B661369.pygtex)
+\openout3 = `main.pyg'.
+
+ (_minted-main/9DD1444BBDE6A45311CA750468D6C58794FCD9D31EE402428B3268164B661369.pygtex) [34 <./img/triplets.png>]) [35]
+\openout2 = `ch_conclusion.aux'.
+
+ (ch_conclusion.tex) [36
+
+
+
+
+] [37] (main.bbl
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 7.
+ (C:\Users\rmora\AppData\Local\Programs\MiKTeX\tex/latex/base\omscmr.fd
+File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 7.
+) [38
+
+
+
+] (main.aux (ch_intro.aux) (ch_types_interfaces.aux) (ch_values.aux) (ch_functions.aux) (ch_algorithms.aux) (ch_conclusion.aux))
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+runsystem(del main.pyg)...executed.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 6943 strings out of 478593
+ 201625 string characters out of 2844604
+ 500789 words of memory out of 3000000
+ 24481 multiletter control sequences out of 15000+600000
+ 475137 words of font info for 48 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 74i,7n,77p,416b,522s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <C:\Users\rmora\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/rmora/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (39 pages, 533423 bytes).
+PDF statistics:
+ 218 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,74 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+A level-1 auxiliary file: ch_intro.aux
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: ch_types_interfaces.aux
+Reallocating 'name_of_file' (item size: 1) to 14 items.
+A level-1 auxiliary file: ch_values.aux
+Reallocating 'name_of_file' (item size: 1) to 17 items.
+A level-1 auxiliary file: ch_functions.aux
+Reallocating 'name_of_file' (item size: 1) to 18 items.
+A level-1 auxiliary file: ch_algorithms.aux
+Reallocating 'name_of_file' (item size: 1) to 18 items.
+A level-1 auxiliary file: ch_conclusion.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: plain.bst
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+Database file #1: ref.bib
+Warning--entry type for "international_ecmascript_nodate" isn't style-file defined
+--line 15 of file ref.bib
+Warning--entry type for "morais_rodigunets_2022" isn't style-file defined
+--line 31 of file ref.bib
+Warning--entry type for "morais_rodigunetwork2020_2020" isn't style-file defined
+--line 41 of file ref.bib
+Warning--entry type for "noauthor_handbook_nodate" isn't style-file defined
+--line 59 of file ref.bib
+Warning--entry type for "noauthor_javascript_nodate" isn't style-file defined
+--line 67 of file ref.bib
+Warning--I didn't find a database entry for "ref:barrenas"
+Warning--to sort, need author or key in noauthor_javascript_nodate
+Warning--to sort, need author or key in noauthor_handbook_nodate
+You've used 6 entries,
+            2118 wiz_defined-function locations,
+            522 strings with 4564 characters,
+and the built_in function-call counts, 1188 in all, are:
+= -- 98
+> -- 41
+< -- 0
++ -- 19
+- -- 12
+* -- 44
+:= -- 182
+add.period$ -- 12
+call.type$ -- 6
+change.case$ -- 23
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 47
+empty$ -- 135
+format.name$ -- 12
+if$ -- 261
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 2
+newline$ -- 27
+num.names$ -- 8
+pop$ -- 53
+preamble$ -- 1
+purify$ -- 18
+quote$ -- 0
+skip$ -- 52
+stack$ -- 0
+substring$ -- 31
+swap$ -- 6
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 22
+warning$ -- 2
+while$ -- 8
+width$ -- 7
+write$ -- 45
+(There were 8 warnings)

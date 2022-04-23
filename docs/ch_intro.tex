@@ -1,17 +1,17 @@
 \chapter{Introduction}
 
 This capstone consists of two parts.
-The first part is a network science library, \textit{NeTS},
+The first part is a Network Science library, \textit{NeTS},
 which was created using TypeScript and Deno.
 A library, here, refers to code written modularly in such a way that it can be imported and used elsewhere.
 Libraries help programmers avoid doing work that was already done by someone else.
 Libraries are very important, and make up essential parts of any software project.
-NeTS, specifically, can be used for research that relates to network science,
+NeTS, specifically, can be used for research that relates to Network Science,
 or be imported into other programs or projects to serve as a base for any
 kind of computation that involves graphs.
 NumPy is an example of an important Python library widely used by programers.
-It assists those who use Python in dealing with more complex data structures,
-and contains may built-in math functions that make computations simpler.
+It assists those who use Python for dealing with more complex data structures,
+and contains built-in math functions that make computations simpler.
 
 Graph Theory is an entire field of mathematics dedicated to studying graphs.
 Graphs are a very specific kind of mathematical structure
@@ -20,22 +20,22 @@ On a most fundamental level, graph theory is about connections.
 Network Science is a field that applies the many ideas of Graph Theory to the real world
 by giving meaning to the connections it studies.
 Most things that involve conections and links,
-can be analyzed thruogh the lenses of Network science.
+can be analyzed through the lenses of Network science.
 From road networks and subway systems, to exchange markets, or even organ donations.
 
 The second part of this capstone is this document. It is organized as follows:
 
 Here, in the introduction, the technologies used in the creation of the library are described.
 A brief introduction to graph theory is also given.
-More complex concepts that relate to network science will also be
+More complex concepts that relate to Network Science and Graph Theory will also be
 provided in later chapters as they become relevant.
 
-In the Types and Interfaces chapter of this document, we give an overview of all the fundamental
+In the Types and Interfaces chapter, we give an overview of all the fundamental
 data structures and definitions of the library.
 After that, the chapter for Values and Functions describes simpler algorithms
-of NeTS, and also provides background on how these algorithms can be applied through network science.
+of NeTS, and also provides background on how these algorithms can be applied through Network Science.
 We will then explain the library's more complex algorithms as well as some of the
-decisions that went into writing them the way they currently are.
+decisions that went into writing them as they currently are.
 
 Lastly, we list further improvements and extensions that could be done with the library.
 
@@ -44,19 +44,23 @@ That version, Net20, was originally coded for the Spring 2020 Network Science cl
 at Soka University of America.
 Net20 had many flaws and inefficiencies which are addressed by the NeTS library.
 
+Both NeTS and Net20 are open-source and can be accessed
+at \cite{morais_rodigunets_2022} and \cite{morais_rodigunetwork2020_2020}, respectively.
+
 NeTS does not have a visualization tool as of the writing of this document.
 All images shown here were created using Net20's visualization tools unless stated otherwise.
 
 \section{Technical Aspects}
 
 JavaScript (JS) is a multi-paradigm programming language.
-It is the most-used language in the web.
+It is the most-used language in the web \cite{noauthor_javascript_nodate}.
 ECMAScript (ES) is the standardized specification of JS.
 ES is updated almost every year and brings many different functionalities to the language, some of which are used in this library.
 The latest version of ES is ES2021 (also called ES21),
 and is already implemented in most modern browsers.
+For more information, see \cite{international_ecmascript_nodate}.
 
-Typescript (TS) is a strongly-typed programming language that builds on JS.
+Typescript (TS) is a strongly-typed programming language that builds on JS \cite{noauthor_handbook_nodate}.
 NeTS is made specifically for dealing with networks,
 which are a special kind of mathematical object with very well defined properties.
 Thus, TS's type functionality serves the purpose of modeling networks very well.
@@ -94,7 +98,7 @@ Some of the ways in which we can classify graphs are:
   An undirected network could be used to represent friendships in a college campus,
   where the edges reflect whether two people are friends or not,
   and the nodes represent the students.
-  A common use for network science is the analysis of social networks.
+  A common use for Network Science is the analysis of social networks.
   With a social network, each user is usually represented as a node in the network.
   Edges can be used to express connections: follows, interactions, friendships.
   A specific example of an undirected network is Facebook.
@@ -119,7 +123,7 @@ Some of the ways in which we can classify graphs are:
   have the same nodes, but represent different edges. Back to the road network example, a two-way street that connects two
   intersections could be represented as two different edges that connect the same two nodes.
   \item Simple graph: simple graphs are undirected graphs with no self-loops, and no multiple edges.
-  NeTS only deals simple graphs.
+  NeTS only deals with simple graphs.
   Nevertheless, there are some functions that are setup with compatibility with
   multigraphs in mind. Thus, although multigraphs are beyond the scope of this capstone,
   in the future, NeTS could be adapted to work with multigraphs.
@@ -128,11 +132,11 @@ Some of the ways in which we can classify graphs are:
   Continuing with the example of social networks,
   we can take a look at Facebook's Messenger.
   An edge between two nodes (users) could represent
-  whether they have ever sent messages to each other,
+  whether the users have ever sent messages to each other,
   while the number of messeges exchanged could
   be represented by the edge's weight.
-  A vertex's weight, on the other hand,
-  could help represent the GDP of countries in a
+  On a different example, the weight of a vertex
+  could represent the GDP of countries in a
   network of global trade where an edge between
   two countries represents if they trade.
   NeTS considers all networks to be weighted on a technical level.
@@ -145,7 +149,8 @@ Some of the ways in which we can classify graphs are:
   \centering
   \includegraphics[scale=.25]{img/weighted_sample.png}
   \caption{A network with weighted edges. In the example of Messenger,
-          we could say that $5$ and $4$ have never messaged each other,
+          we could say that $5$ and $4$ have never messaged exchanged messages,
           while $4$ and $9$ have exchanged many messages.}
   \label{fig:net_weight}
 \end{figure}
+For more information on Network Science see \cite{menczer2020first}.

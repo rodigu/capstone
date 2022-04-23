@@ -1,0 +1,27 @@
+\begin{thebibliography}{1}
+
+\bibitem{noauthor_handbook_nodate}
+Handbook - the {TypeScript} handbook.
+
+\bibitem{noauthor_javascript_nodate}
+{JavaScript} {\textbar} {MDN}.
+
+\bibitem{international_ecmascript_nodate}
+{ECMA} International.
+\newblock {ECMAScript}® 2023 language specification.
+
+\bibitem{menczer2020first}
+F.~Menczer, S.~Fortunato, and C.A. Davis.
+\newblock {\em A First Course in Network Science}.
+\newblock Cambridge University Press, 2020.
+
+\bibitem{morais_rodigunets_2022}
+Rodrigo Morais.
+\newblock rodigu/{NeTS}.
+\newblock original-date: 2022-01-29T22:27:49Z.
+
+\bibitem{morais_rodigunetwork2020_2020}
+Rodrigo Morais.
+\newblock rodigu/network2020.
+
+\end{thebibliography}

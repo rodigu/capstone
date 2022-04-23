@@ -18,7 +18,7 @@ In this chapter, we will take a look at the most basic
 types and interfaces:
 \mintinline{ts}{base_id}, \mintinline{ts}{VertexArgs},
 \mintinline{ts}{EdgeArgs}, \mintinline{ts}{NetworkArgs}.
-And we will also describe the basic structure of the \mintinline{ts}{Vertex},
+We will also describe the basic structure of the \mintinline{ts}{Vertex},
 \mintinline{ts}{Edge}, and \mintinline{ts}{Network} classes.
 
 These type definitions are the foundation of the library.
@@ -32,7 +32,7 @@ a string of characters or a number.
 export type base_id = string | number;
 \end{minted}
 
-Given a vertex in a graph, it is necessary to assign an ID.
+Given a vertex in a graph, it is necessary to assign an ID it.
 This helps us identify what vertex we are are refering to when we
 want to do certain operations or calculations with the vertex.
 The type \mintinline{ts}{string | number} means that the ID of an vertex
@@ -52,7 +52,7 @@ the library will be expecting an object with the format of \mintinline{ts}{EdgeA
 The question-mark indicates a property is optional.
 Weights are optional parameters, and set to one by default.
 This means that, on a technical level, all networks are weighted.
-The difference between an unweighted network and a weighted one
+The difference between an unweighted network and a weighted network
 is that the weighted network contains weights other than one.
 Edges, just like vertices, also have IDs.
 

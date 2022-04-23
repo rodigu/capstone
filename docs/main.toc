@@ -1,0 +1,25 @@
+\contentsline {chapter}{Introduction}{2}{}%
+\contentsline {section}{Technical Aspects}{3}{}%
+\contentsline {section}{Basic Graph Theory}{3}{}%
+\contentsline {chapter}{Types and Interfaces}{6}{}%
+\contentsline {section}{Vertex and Edge Classes}{8}{}%
+\contentsline {section}{Network Constructor}{10}{}%
+\contentsline {chapter}{Network Values}{12}{}%
+\contentsline {section}{Functional Getters}{12}{}%
+\contentsline {section}{Calculations}{13}{}%
+\contentsline {subsection}{Weight}{13}{}%
+\contentsline {subsection}{Maximum Number of Edges}{15}{}%
+\contentsline {subsection}{Density}{15}{}%
+\contentsline {chapter}{Functions}{16}{}%
+\contentsline {chapter}{Algorithms}{23}{}%
+\contentsline {section}{Neighborhood}{23}{}%
+\contentsline {section}{Degree}{24}{}%
+\contentsline {section}{Assortativity}{27}{}%
+\contentsline {section}{Complement}{28}{}%
+\contentsline {section}{Ego}{29}{}%
+\contentsline {section}{Copy}{30}{}%
+\contentsline {section}{Core}{31}{}%
+\contentsline {section}{Clustering}{32}{}%
+\contentsline {section}{Average Clustering}{33}{}%
+\contentsline {section}{Triplets}{34}{}%
+\contentsline {chapter}{Further Work}{36}{}%
